@@ -1,0 +1,42 @@
+{
+  "generated_from_zip": "Data Analisis.zip",
+  "output_files": {
+    "scenarios.json": 7,
+    "model_metrics.json": 11,
+    "rankings.json": 4550,
+    "shap_global.json": 150,
+    "shap_local.json": 31500,
+    "target_capture.json": 25,
+    "target_rows.json": 140,
+    "road_features.json": 700
+  },
+  "notes": [
+    "RINGKASAN_TESIS was parsed with header row offset because it is presentation-oriented.",
+    "TOP_30_TESIS was not used as a primary source because it mixes narrative text and visual layout.",
+    "historical weighted 3:1 and 5:1 scenarios are included for rankings/capture but do not have separate SHAP bundles in the uploaded ZIP.",
+    "Normatif 17 workbook does not include shap_* sheets in the uploaded ZIP, so shap_global/local are only exported for normatif_20.",
+    "Historis local SHAP was converted from top1-top5 format into long format; this means each road has up to 5 exported local SHAP rows per scenario.",
+    "Model names for historis scenarios are inferred from scenario_comparison best_temporal_model sheet and bundle context.",
+    "The file name \"weigthed_2_1_interpretation_bundle.xlsx\" contains a typo in source data; exported scenario_id standardizes it as historis_weighted_2_1."
+  ],
+  "source_sheets_used": [
+    "master_report_20_Variabel.xlsx: summary_cv, ranking_*, shap_*, shap_local_*",
+    "master_report_17_variabel.xlsx: summary_cv, ranking_*",
+    "AHP_Normatif_20_Variabel.xlsx: Sheet2",
+    "AHP_Normatif_17_Variabel.xlsx: Sheet2",
+    "historis_rank_alignment_report.xlsx: scenario_comparison, k_metrics_long, target_rows_ranked",
+    "historis_full_ranking_350_FINAL_SYNC (1).xlsx: RINGKASAN_TESIS",
+    "original_interpretation_bundle.xlsx: shap_global, shap_local_top5",
+    "tender_only_interpretation_bundle.xlsx: shap_global, shap_local_top5",
+    "weigthed_2_1_interpretation_bundle.xlsx: shap_global, shap_local_top5"
+  ],
+  "source_sheets_ignored": [
+    "TOP_30_TESIS (presentation sheet)",
+    "README_ANALISIS",
+    "scenario_model_map",
+    "reconciliation_summary",
+    "case_manifest",
+    "feature_importance (not exported separately because SHAP global already covers interpretability MVP)",
+    "shap_local_all_rows (not used because shap_local_top5 is lighter for frontend MVP)"
+  ]
+}

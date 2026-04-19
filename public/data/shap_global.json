@@ -1,0 +1,1202 @@
+[
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI BAIK (%)",
+    "mean_abs_shap": 0.384990241200096,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_JUMLAH PENDUDUK YANG DILAYANI",
+    "mean_abs_shap": 0.0782168007239625,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Jarak Ke Puskesmas (m)",
+    "mean_abs_shap": 0.055342956572592,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Terhubung_Nasional_biner",
+    "mean_abs_shap": 0.0222280950375898,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Jarak Ke SD/SMP (m)",
+    "mean_abs_shap": 0.0194218497506105,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG ASPAL/ PENETRASI MACADAM (%)",
+    "mean_abs_shap": 0.0098103835220551,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI SEDANG (%)",
+    "mean_abs_shap": 0.0093689702979949,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Jarak Ke Ibukota (m)",
+    "mean_abs_shap": 0.0074590149329229,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PANJANG RUAS",
+    "mean_abs_shap": 0.0054650684457838,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Jarak Ke RSUD (m)",
+    "mean_abs_shap": 0.0045070208298424,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_JUMLAH DESA YANG DILALUI",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_JUMLAH KECAMATAN YANG DILALUI",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE KONDISI RUSAK (%)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_LEBAR RUAS",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Jarak Ke Pasar (m)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI RUSAK BERAT (%)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI RUSAK RINGAN (%)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG PERKERASAN BETON (%)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_PERSENTASE PANJANG TELFORD/ KERIKIL (%)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "feature": "Norm01_Terhubung_Provinsi_biner",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_DecisionTree"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI BAIK (%)",
+    "mean_abs_shap": 0.1866163064839409,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE KONDISI RUSAK (%)",
+    "mean_abs_shap": 0.08445512378816,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI SEDANG (%)",
+    "mean_abs_shap": 0.0777204291175945,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI RUSAK BERAT (%)",
+    "mean_abs_shap": 0.0461633018716416,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_JUMLAH PENDUDUK YANG DILAYANI",
+    "mean_abs_shap": 0.0287005192919505,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Jarak Ke Puskesmas (m)",
+    "mean_abs_shap": 0.0246777072199854,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Jarak Ke Pasar (m)",
+    "mean_abs_shap": 0.0233995419284887,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI RUSAK RINGAN (%)",
+    "mean_abs_shap": 0.0181656945298444,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Jarak Ke Ibukota (m)",
+    "mean_abs_shap": 0.0167901406987473,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Jarak Ke RSUD (m)",
+    "mean_abs_shap": 0.0167455871833357,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_JUMLAH DESA YANG DILALUI",
+    "mean_abs_shap": 0.0113853028810291,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PANJANG RUAS",
+    "mean_abs_shap": 0.0100382775165713,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG ASPAL/ PENETRASI MACADAM (%)",
+    "mean_abs_shap": 0.008477355989451,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Jarak Ke SD/SMP (m)",
+    "mean_abs_shap": 0.0078405825514269,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Terhubung_Nasional_biner",
+    "mean_abs_shap": 0.007660330595097,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_JUMLAH KECAMATAN YANG DILALUI",
+    "mean_abs_shap": 0.0053513931294602,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_LEBAR RUAS",
+    "mean_abs_shap": 0.0024055125268332,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG PERKERASAN BETON (%)",
+    "mean_abs_shap": 0.0018910009038241,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_Terhubung_Provinsi_biner",
+    "mean_abs_shap": 0.0013470842422016,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "feature": "Norm01_PERSENTASE PANJANG TELFORD/ KERIKIL (%)",
+    "mean_abs_shap": 0.0012531346082271,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_RandomForest"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI BAIK (%)",
+    "mean_abs_shap": 4.352655,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_JUMLAH PENDUDUK YANG DILAYANI",
+    "mean_abs_shap": 1.1262183,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Jarak Ke Ibukota (m)",
+    "mean_abs_shap": 1.0145262,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI SEDANG (%)",
+    "mean_abs_shap": 0.5604148,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Jarak Ke Puskesmas (m)",
+    "mean_abs_shap": 0.5068818,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Terhubung_Nasional_biner",
+    "mean_abs_shap": 0.4919394,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE KONDISI RUSAK (%)",
+    "mean_abs_shap": 0.4706779,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Jarak Ke SD/SMP (m)",
+    "mean_abs_shap": 0.44877246,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PANJANG RUAS",
+    "mean_abs_shap": 0.37712058,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Jarak Ke Pasar (m)",
+    "mean_abs_shap": 0.301405,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_JUMLAH DESA YANG DILALUI",
+    "mean_abs_shap": 0.21425699,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Jarak Ke RSUD (m)",
+    "mean_abs_shap": 0.13385971,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI RUSAK BERAT (%)",
+    "mean_abs_shap": 0.07220763,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_JUMLAH KECAMATAN YANG DILALUI",
+    "mean_abs_shap": 0.053414907,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG ASPAL/ PENETRASI MACADAM (%)",
+    "mean_abs_shap": 0.011506225,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG TELFORD/ KERIKIL (%)",
+    "mean_abs_shap": 0.009393231,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_LEBAR RUAS",
+    "mean_abs_shap": 0.007930229,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG DALAM KONDISI RUSAK RINGAN (%)",
+    "mean_abs_shap": 0.0073880428,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_Terhubung_Provinsi_biner",
+    "mean_abs_shap": 0.0052368687,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "feature": "Norm01_PERSENTASE PANJANG PERKERASAN BETON (%)",
+    "mean_abs_shap": 0,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "shap_XGBoost"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "hotmix_km",
+    "mean_abs_shap": 0.08569614534023426,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "kerikil_km",
+    "mean_abs_shap": 0.06885020837662428,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jarak_pasar_m",
+    "mean_abs_shap": 0.03767839337745808,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jarak_rsud_m",
+    "mean_abs_shap": 0.02509899816569553,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jumlah_penduduk_dilayani",
+    "mean_abs_shap": 0.02151251483388515,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "panjang_km",
+    "mean_abs_shap": 0.0211065600174575,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jarak_puskesmas_m",
+    "mean_abs_shap": 0.01748174671265457,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "baik_pct",
+    "mean_abs_shap": 0.009085720470006133,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "baik_km",
+    "mean_abs_shap": 0.008603874802446222,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "rusak_berat_km",
+    "mean_abs_shap": 0.006136858668250409,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "sedang_km",
+    "mean_abs_shap": 0.005730494937840804,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "terhubung_ruas_nasional",
+    "mean_abs_shap": 0.003698990213226958,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "sedang_pct",
+    "mean_abs_shap": 0.003661943477479778,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "tanah_km",
+    "mean_abs_shap": 0.002849407831058673,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jarak_sd_smp_m",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jarak_ibukota_m",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "beton_km",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "akses_terputus_ibukota",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "akses_terputus_pasar",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "akses_terputus_puskesmas",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "akses_terputus_rsud",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "akses_terputus_sd_smp",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "lapen_km",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "lebar_m",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jumlah_kecamatan_yang_dilalui",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "jumlah_desa_yang_dilalui",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "rusak_ringan_pct",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "rusak_ringan_km",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "rusak_berat_pct",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "feature": "terhubung_ruas_provinsi",
+    "mean_abs_shap": 0,
+    "source_file": "original_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "kerikil_km",
+    "mean_abs_shap": 0.07069892972396416,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jarak_pasar_m",
+    "mean_abs_shap": 0.03829189346562343,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "rusak_ringan_km",
+    "mean_abs_shap": 0.02094884965828456,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jarak_rsud_m",
+    "mean_abs_shap": 0.01676700682449645,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "terhubung_ruas_provinsi",
+    "mean_abs_shap": 0.01410502890364962,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "panjang_km",
+    "mean_abs_shap": 0.013883235490552,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "hotmix_km",
+    "mean_abs_shap": 0.01284826384634555,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "baik_pct",
+    "mean_abs_shap": 0.0117498445238701,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "rusak_berat_km",
+    "mean_abs_shap": 0.01095142369557666,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jarak_puskesmas_m",
+    "mean_abs_shap": 0.009137680790922458,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "baik_km",
+    "mean_abs_shap": 0.009035933462193524,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "sedang_km",
+    "mean_abs_shap": 0.008073630613974793,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jarak_sd_smp_m",
+    "mean_abs_shap": 0.007940364086528318,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "rusak_berat_pct",
+    "mean_abs_shap": 0.006030793387122243,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jumlah_desa_yang_dilalui",
+    "mean_abs_shap": 0.003481803559731119,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "lebar_m",
+    "mean_abs_shap": 0.003432693210674821,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "rusak_ringan_pct",
+    "mean_abs_shap": 0.002386821101111247,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "sedang_pct",
+    "mean_abs_shap": 0.002333754943837993,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "akses_terputus_pasar",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "akses_terputus_puskesmas",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "akses_terputus_sd_smp",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "akses_terputus_ibukota",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "beton_km",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jarak_ibukota_m",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "akses_terputus_rsud",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jumlah_kecamatan_yang_dilalui",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "lapen_km",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "jumlah_penduduk_dilayani",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "tanah_km",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "feature": "terhubung_ruas_nasional",
+    "mean_abs_shap": 0,
+    "source_file": "tender_only_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "panjang_km",
+    "mean_abs_shap": 0.09430526674220274,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "kerikil_km",
+    "mean_abs_shap": 0.07771575003076654,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "hotmix_km",
+    "mean_abs_shap": 0.0601340642382272,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jarak_pasar_m",
+    "mean_abs_shap": 0.05299001387645777,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jumlah_penduduk_dilayani",
+    "mean_abs_shap": 0.0347290489207173,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "baik_pct",
+    "mean_abs_shap": 0.03434346167258704,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jarak_sd_smp_m",
+    "mean_abs_shap": 0.02684673740561322,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "terhubung_ruas_provinsi",
+    "mean_abs_shap": 0.01525717983716349,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "rusak_berat_km",
+    "mean_abs_shap": 0.01254048016705752,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jarak_rsud_m",
+    "mean_abs_shap": 0.01169636607069045,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "tanah_km",
+    "mean_abs_shap": 0.006965320992493444,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "sedang_km",
+    "mean_abs_shap": 0.004277405129304958,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "rusak_berat_pct",
+    "mean_abs_shap": 0.003291045929981367,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "baik_km",
+    "mean_abs_shap": 0.001954383261387089,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jarak_puskesmas_m",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jarak_ibukota_m",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "beton_km",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "akses_terputus_ibukota",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "akses_terputus_pasar",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "akses_terputus_puskesmas",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "akses_terputus_rsud",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "akses_terputus_sd_smp",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "lapen_km",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "lebar_m",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jumlah_kecamatan_yang_dilalui",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "jumlah_desa_yang_dilalui",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "rusak_ringan_pct",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "rusak_ringan_km",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "sedang_pct",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "feature": "terhubung_ruas_nasional",
+    "mean_abs_shap": 0,
+    "source_file": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source_sheet": "shap_global"
+  }
+]

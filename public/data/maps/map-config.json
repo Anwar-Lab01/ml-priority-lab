@@ -1,0 +1,9 @@
+{
+  "center": [-2.80, 115.15],
+  "zoom": 10,
+  "minZoom": 8,
+  "maxZoom": 18,
+  "tileLayer": "openstreetmap",
+  "showScaleControl": true,
+  "showZoomControl": true
+}
