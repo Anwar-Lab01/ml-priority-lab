@@ -58,7 +58,6 @@ const CATEGORY_COLORS: Record<MovementCategory, string> = {
 function getMovementCategory(
   rankA: number | null,
   rankB: number | null,
-  topK: number,
   inA: boolean,
   inB: boolean
 ): MovementCategory {
@@ -99,7 +98,7 @@ export function RankingTransitionPage() {
   const [labelMode, setLabelMode] = useState<'all' | 'changed' | 'extreme' | 'hide'>('changed');
   const [movementFilter, setMovementFilter] = useState<string>('all');
   
-  const [highlightToggle, setHighlightToggle] = useState<boolean>(false);
+  const [highlightToggle] = useState<boolean>(false);
   const [extremeThreshold, setExtremeThreshold] = useState<number>(5);
   
   const chartWrapperRef = useRef<HTMLDivElement>(null);
@@ -127,7 +126,7 @@ export function RankingTransitionPage() {
   }, []);
 
   // Compute Data
-  const { allRows, filteredRows, metrics } = useMemo(() => {
+  const { filteredRows, metrics } = useMemo(() => {
     if (!appData || !scenarioA || !scenarioB || !modelA || !modelB) {
       return { allRows: [], filteredRows: [], metrics: null };
     }
@@ -157,7 +156,7 @@ export function RankingTransitionPage() {
 
       if (inA && inB) cntOverlap++;
 
-      const cat = getMovementCategory(rankA, rankB, topK, inA, inB);
+      const cat = getMovementCategory(rankA, rankB, inA, inB);
       
       const isExtreme = (inA && inB) && Math.abs(rankB! - rankA!) >= extremeThreshold;
       

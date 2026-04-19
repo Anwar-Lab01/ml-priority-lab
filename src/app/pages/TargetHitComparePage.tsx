@@ -1,13 +1,9 @@
 import { useState, useMemo, useEffect } from 'react';
-import type { ColumnDef } from '@tanstack/react-table';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Download, Target, CheckCircle2, XCircle } from 'lucide-react';
-
 import { useAppData } from '../../hooks/useAppData';
-import { LoadingState } from '../components/ui/LoadingState';
 import { EmptyState } from '../components/ui/EmptyState';
 import { ChartCard } from '../components/ui/ChartCard';
-import { DataTable } from '../components/tables/DataTable';
 import { fmt, exportToCsv, getRoadKey, isTargetPositive } from '../../lib/utils';
 import { CHART_COLORS } from '../../config/scenarios';
 import type { RankingRow } from '../../types/contracts';
@@ -30,7 +26,7 @@ interface SummaryRow {
 }
 
 export function TargetHitComparePage() {
-  const { data: appData, status } = useAppData();
+  const { data: appData } = useAppData();
 
   const [scenario, setScenario] = useState<string>('');
   const [targetType, setTargetType] = useState<TargetType>('planned_any_2026');

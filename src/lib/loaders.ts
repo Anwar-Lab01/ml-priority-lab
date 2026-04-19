@@ -175,7 +175,7 @@ export async function loadAllData(): Promise<AppData> {
     }
   });
 
-  shapGlobal.forEach((s, idx) => {
+  shapGlobal.forEach((s) => {
     if (!index.shapGlobalByScenario.has(s.scenario_id)) index.shapGlobalByScenario.set(s.scenario_id, []);
     index.shapGlobalByScenario.get(s.scenario_id)!.push(s);
   });
