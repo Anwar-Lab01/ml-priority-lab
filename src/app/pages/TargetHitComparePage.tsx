@@ -243,16 +243,23 @@ export function TargetHitComparePage() {
 
   // Drilldown formatting
   const ddData = useMemo(() => {
-    if (!ddSeries || !rankedDataBySeries.has(ddSeries)) return { captured: [], missed: [] };
+    if (!ddSeries || !rankedDataBySeries.has(ddSeries)) return { captured: [], missed: [], targetMiss: [] };
     const arr = rankedDataBySeries.get(ddSeries)!;
-    const slice = arr.slice(0, ddK);
+    
     const captured: RankingRow[] = [];
-    const missed: RankingRow[] = [];
-    for (const r of slice) {
-      if (isTargetPositive(r[ddTarget] as number | null)) captured.push(r);
-      else missed.push(r);
+    const missed: RankingRow[] = [];     // Overprediction
+    const targetMiss: RankingRow[] = []; // Missed Targets
+
+    for (const r of arr) {
+      const isTarget = isTargetPositive(r[ddTarget] as number | null);
+      if (r.rank <= ddK) {
+        if (isTarget) captured.push(r);
+        else missed.push(r);
+      } else {
+        if (isTarget) targetMiss.push(r);
+      }
     }
-    return { captured, missed };
+    return { captured, missed, targetMiss };
   }, [rankedDataBySeries, ddSeries, ddK, ddTarget]);
 
   return (
@@ -430,7 +437,7 @@ export function TargetHitComparePage() {
                </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
                {/* Captured */}
                <div className="p-0">
                   <div className="bg-slate-800/50 px-5 py-3 border-b border-white/5 flex items-center justify-between">
@@ -465,7 +472,7 @@ export function TargetHitComparePage() {
                         <ul className="space-y-1">
                            {ddData.missed.map(r => (
                              <li key={getRoadKey(r)} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
-                                <div className="text-rose-400 font-mono font-black text-[10px] bg-rose-500/10 h-6 w-6 flex items-center justify-center rounded">{r.rank}</div>
+                                <div className="text-rose-400 font-mono font-black text-[10px] bg-rose-500/10 h-6 w-6 flex items-center justify-center rounded shrink-0">{r.rank}</div>
                                 <div className="flex-1 truncate">
                                    <div className="text-xs font-bold text-slate-200 truncate">{r.road_name}</div>
                                    <div className="text-[9px] text-slate-500 font-mono mt-0.5">Score: {fmt(r.score, 4)}</div>
@@ -473,7 +480,33 @@ export function TargetHitComparePage() {
                              </li>
                            ))}
                         </ul>
-                     ) : <div className="p-5 text-center text-xs text-slate-500 font-semibold mt-10">Perfect recall within this subset!</div>}
+                     ) : <div className="p-5 text-center text-xs text-slate-500 font-semibold mt-10">No overpredictions in this slice!</div>}
+                  </div>
+               </div>
+
+               {/* Target Miss (False Negatives) */}
+               <div className="p-0">
+                  <div className="bg-slate-800/50 px-5 py-3 border-b border-white/5 flex items-center justify-between">
+                     <span className="text-xs font-black uppercase tracking-widest text-amber-400 flex items-center gap-1.5"><Target className="w-3.5 h-3.5" /> Target Miss (FN)</span>
+                     <span className="bg-amber-500/10 text-amber-400 font-mono text-[10px] font-bold px-2 py-0.5 rounded">{ddData.targetMiss.length} Segments</span>
+                  </div>
+                  <div className="h-64 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-slate-700">
+                     {ddData.targetMiss.length > 0 ? (
+                        <ul className="space-y-1">
+                           {ddData.targetMiss.map(r => (
+                             <li key={getRoadKey(r)} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
+                                <div className="text-amber-400 font-mono font-black text-[10px] bg-amber-500/10 h-6 w-6 flex items-center justify-center rounded shrink-0">{r.rank}</div>
+                                <div className="flex-1 truncate">
+                                   <div className="text-xs font-bold text-slate-200 truncate">{r.road_name}</div>
+                                   <div className="text-[9px] text-slate-500 font-mono mt-0.5 flex gap-2">
+                                      <span>Score: {fmt(r.score, 4)}</span>
+                                      <span className="text-amber-600 font-black">&Delta; +{r.rank - ddK}</span>
+                                   </div>
+                                </div>
+                             </li>
+                           ))}
+                        </ul>
+                     ) : <div className="p-5 text-center text-xs text-slate-500 font-semibold mt-10">100% Target Capture!</div>}
                   </div>
                </div>
             </div>
