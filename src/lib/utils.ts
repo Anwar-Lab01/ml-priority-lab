@@ -23,40 +23,110 @@ export function fmtInt(value: number | null | undefined): string {
   return Math.round(value).toLocaleString();
 }
 
-/** Centralized CSV Export Utility */
-export function exportToCsv(filename: string, tableData: any[], headers: string[], keys: (string | ((row: any) => any))[]) {
-  if (tableData.length === 0) return;
-  
-  const headerRow = headers.join(',');
-  const rows = tableData.map(row => {
-    return keys.map(key => {
-      let val = typeof key === 'function' ? key(row) : row[key as string];
-      if (val == null) val = '';
-      let str = String(val);
-      if (str.includes(',') || str.includes('\n')) str = `"${str.replace(/"/g, '""')}"`;
-      return str;
-    }).join(',');
-  });
+function formatDelimitedCell(value: unknown, delimiter: ',' | '\t'): string {
+  if (value == null) return '';
 
-  const csvContent = "data:text/csv;charset=utf-8," + [headerRow, ...rows].join('\n');
-  const encodedUri = encodeURI(csvContent);
-  const link = document.createElement("a");
-  link.setAttribute("href", encodedUri);
-  link.setAttribute("download", `${filename}.csv`);
+  let str = String(value);
+  if (delimiter === '\t') {
+    str = str.replace(/\r?\n/g, ' ');
+  }
+
+  const shouldQuote =
+    str.includes(delimiter) ||
+    str.includes('"') ||
+    str.includes('\n') ||
+    str.includes('\r');
+
+  if (!shouldQuote) return str;
+  return `"${str.replace(/"/g, '""')}"`;
+}
+
+function exportDelimited(
+  filename: string,
+  extension: 'csv' | 'tsv',
+  delimiter: ',' | '\t',
+  tableData: any[],
+  headers: string[],
+  keys: (string | ((row: any) => any))[]
+) {
+  if (tableData.length === 0) return;
+
+  const headerRow = headers.map((header) => formatDelimitedCell(header, delimiter)).join(delimiter);
+  const rows = tableData.map((row) =>
+    keys
+      .map((key) => {
+        const val = typeof key === 'function' ? key(row) : row[key as string];
+        return formatDelimitedCell(val, delimiter);
+      })
+      .join(delimiter)
+  );
+
+  const mimeType = extension === 'tsv' ? 'text/tab-separated-values' : 'text/csv';
+  const content = `data:${mimeType};charset=utf-8,` + [headerRow, ...rows].join('\n');
+  const encodedUri = encodeURI(content);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', `${filename}.${extension}`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+/** Centralized CSV Export Utility */
+export function exportToCsv(filename: string, tableData: any[], headers: string[], keys: (string | ((row: any) => any))[]) {
+  exportDelimited(filename, 'csv', ',', tableData, headers, keys);
+}
+
+/** Centralized TSV Export Utility */
+export function exportToTsv(filename: string, tableData: any[], headers: string[], keys: (string | ((row: any) => any))[]) {
+  exportDelimited(filename, 'tsv', '\t', tableData, headers, keys);
 }
 
 // ──────────────────────────────────────────────
 // Road Identity Helpers
 // ──────────────────────────────────────────────
 
+export interface RoadAliasMapConfig {
+  aliases?: Record<string, string>;
+}
+
+let roadAliasMap = new Map<string, string>();
+
+export function configureRoadAliases(config?: RoadAliasMapConfig | null): void {
+  roadAliasMap = new Map(Object.entries(config?.aliases || {}));
+}
+
+export function normalizeRoadIdentity(name: string): string {
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\bjl\.?\s*/g, '')
+    .replace(/\bds\.?(?=\s|$)/g, 'desa')
+    .replace(/\bsp\.?\s*/g, 'sp ')
+    .replace(/\bsei\.?\s*/g, 'sei ')
+    .replace(/\//g, ' ')
+    .replace(/[()]/g, ' ')
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function applyRoadAlias(normalizedKey: string): string {
+  let current = normalizedKey;
+  const visited = new Set<string>();
+
+  while (roadAliasMap.has(current) && !visited.has(current)) {
+    visited.add(current);
+    current = roadAliasMap.get(current)!;
+  }
+
+  return current;
+}
+
 /**
  * Derive a stable cross-scenario key from a road name.
- * Normalizes: trim, lowercase, collapse whitespace, normalize dashes.
- * When nama_ruas_norm is later added to the data pipeline,
- * this function will automatically prefer it.
+ * Applies shared identity normalization plus any configured alias map.
  */
 export function getRoadKey(row: Partial<{ nama_ruas_norm?: string; road_name: string }>): string {
   if (!row) {
@@ -68,12 +138,8 @@ export function getRoadKey(row: Partial<{ nama_ruas_norm?: string; road_name: st
     if (import.meta.env.DEV) console.warn('[getRoadKey] Missing road_name on row', row);
     return 'unknown';
   }
-  
-  return name
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
-    .replace(/[\u2013\u2014]/g, '-');
+
+  return applyRoadAlias(normalizeRoadIdentity(name));
 }
 
 /**

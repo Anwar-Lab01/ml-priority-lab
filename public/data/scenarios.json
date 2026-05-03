@@ -1,51 +1,58 @@
 [
   {
     "scenario_id": "normatif_20",
-    "scenario_label": "Normatif 20 Variabel",
+    "scenario_label": "Pendekatan Normatif (20 Variabel)",
     "family": "normatif",
     "source": "master_report_20_Variabel.xlsx",
     "completeness": "full"
   },
   {
     "scenario_id": "normatif_17",
-    "scenario_label": "Normatif 17 Variabel",
+    "scenario_label": "Pendekatan Normatif (17 Variabel)",
     "family": "normatif",
     "source": "master_report_17_variabel.xlsx",
     "completeness": "full"
   },
   {
-    "scenario_id": "historis_original",
-    "scenario_label": "Historis Original",
+    "scenario_id": "refined_base_any2026",
+    "scenario_label": "Baseline ML Historis",
     "family": "historis",
-    "source": "original_interpretation_bundle.xlsx",
+    "source": "ml_murni_refined_comprehensive_20260417_201703.xlsx",
     "completeness": "full"
   },
   {
-    "scenario_id": "historis_tender_only",
-    "scenario_label": "Historis Tender Only",
+    "scenario_id": "refined_recall_max_any2026",
+    "scenario_label": "Optimasi Recall (PolicyBoost)",
     "family": "historis",
-    "source": "tender_only_interpretation_bundle.xlsx",
+    "source": "recall_maximizer_any2026_policyboost.xlsx",
+    "completeness": "top160 only"
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "scenario_label": "Rerank Berbasis Kebijakan (Any 2026)",
+    "family": "historis",
+    "source": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
     "completeness": "full"
   },
   {
-    "scenario_id": "historis_weighted_2_1",
-    "scenario_label": "Historis Weighted 2:1",
+    "scenario_id": "refined_base_teknokratis2026",
+    "scenario_label": "Baseline ML Teknokratis 2026",
     "family": "historis",
-    "source": "weigthed_2_1_interpretation_bundle.xlsx",
+    "source": "report_planned_teknokratis_2026.xlsx",
     "completeness": "full"
   },
   {
-    "scenario_id": "historis_weighted_3_1",
-    "scenario_label": "Historis Weighted 3:1",
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "scenario_label": "Rerank Teknokratis 2026",
     "family": "historis",
-    "source": "historis_full_ranking_350_FINAL_SYNC (1).xlsx",
-    "completeness": "ranking+capture only"
+    "source": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "completeness": "full"
   },
   {
-    "scenario_id": "historis_weighted_5_1",
-    "scenario_label": "Historis Weighted 5:1",
+    "scenario_id": "refined_rerank_tender2026",
+    "scenario_label": "Rerank Tender 2026",
     "family": "historis",
-    "source": "historis_full_ranking_350_FINAL_SYNC (1).xlsx",
-    "completeness": "ranking+capture only"
+    "source": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "completeness": "full"
   }
 ]

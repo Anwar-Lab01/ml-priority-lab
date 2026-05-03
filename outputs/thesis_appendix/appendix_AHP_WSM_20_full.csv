@@ -1,0 +1,351 @@
+appendix_name,scenario_id,model,score_type,rank,export_rank,road_key,nama_ruas,nomor_ruas,desa_yang_dilalui,kecamatan_yang_dilalui,score,pred_prob,final_score,base_prob,rerank_score,planned_any_2026,planned_teknokratis_2026,planned_tender_2026,planned_pl_2026,is_top35,is_top70,is_top105
+AHP_WSM_20_full,normatif_20,AHP_WSM,,1,1,panglima batur,Panglima Batur,,,,0.7737707472198588,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,2,2,aluh idut,Aluh Idut,,,,0.7719975712979525,,,,,0,0,0,0,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,3,3,merah johansyah - melati,Merah Johansyah - Melati,,,,0.7438220954631554,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,4,4,pemuda,Pemuda,,,,0.7272104729043349,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,5,5,bakarung - rantauan,Bakarung - Rantauan,,,,0.7269937967555984,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,6,6,parindra,Parindra,,,,0.7215670954818657,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,7,7,wasah tengah - sei tarap,Wasah Tengah - Sungai Tarap,,,,0.714497116456361,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,8,8,kesehatan - komp rmh dokter,Kesehatan - Komp. Rmh Dokter,,,,0.7136479281244255,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,9,9,simpur - sp 3 muara paring agung,Simpur - Sp. 3 Muara Paring Agung,,,,0.7119733130103645,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,10,10,anggrek,Anggrek,,,,0.7118731145620214,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,11,11,wahab syahrani,Wahab Syahrani,,,,0.7079608373662095,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,12,12,menuju stadion 2 desember,Menuju Stadion 2 Desember,,,,0.7054912789940992,,,,,1,0,1,0,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,13,13,teluk mesjid - sp 4 muara banta,Teluk Mesjid - Sp. 4 Muara Banta,,,,0.6964536126244207,,,,,0,0,0,0,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,14,14,taniran selatan - rantauan,Taniran Selatan - Rantauan,,,,0.6938729277422482,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,15,15,hamalau - pahampangan,Hamalau - Pahampangan,,,,0.6881390757371346,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,16,16,angkinang - telaga langsat,Angkinang - Telaga Langsat,,,,0.6847271478980579,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,17,17,tibung raya - asam cangkuk,Tibung Raya - Asam Cangkuk,,,,0.6845976737395718,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,18,18,rantauan - sei baru pulau,Rantauan - Sungai Baru (Pulau),,,,0.6840420991609731,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,19,19,taal batang kulur - sp 3 muara prg agung,Taal Batang Kulur - Sp. 3 Muara Prg Agung,,,,0.6810209605897675,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,20,20,newangsekarti - desa gambah luar muka,Newangsekarti - Ds. Gambah Luar Muka,,,,0.6800891223660563,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,21,21,papancan - desa tanah bangkang,Papancan - Ds. Tanah Bangkang,,,,0.6787271682962229,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,22,22,air miris - desa wasah hilir,Air Miris - Ds. Wasah Hilir,,,,0.6770517088274679,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,23,23,kolonel sugiono,Kolonel Sugiono,,,,0.6762938991040395,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,24,24,aes nasution,AES Nasution,,,,0.6762521864090281,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,25,25,musyawarah nagara,Musyawarah (Nagara),,,,0.6760954770058765,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,26,26,pertanian - desa wasah tengah,Pertanian - Ds. Wasah Tengah,,,,0.6747541133821848,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,27,27,tumbukan banyu - banua hanyar,Tumbukan Banyu - Banua Hanyar,,,,0.6729555419693736,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,28,28,wasah hilir - sarang halang,Wasah Hilir - Sarang Halang,,,,0.6726385522035461,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,29,29,amawang muka - getek,Amawang Muka - Getek,,,,0.6711883266776744,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,30,30,karang intan - tanah bangkang,Karang Intan - Tanah Bangkang,,,,0.6708184060093471,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,31,31,haritas pt pertani,Haritas (PT. Pertani),,,,0.6696472366063307,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,32,32,singakarsa - palas,Singakarsa - Palas,,,,0.6695844434808903,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,33,33,tawia - kayu abang,Tawia - Kayu Abang,,,,0.6685292099675382,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,34,34,bina bakat,Bina Bakat,,,,0.6682778738354652,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,35,35,sp 4 banjarbaru - pihanin raya,SP.4. Banjarbaru - Pihanin Raya,,,,0.6677252079836076,,,,,,,,,1,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,36,36,slasa garih - desa kapuh,Slasa Garih - Ds. Kapuh,,,,0.6673579254597656,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,37,37,gerilya - desa simpur,Gerilya - Ds. Simpur,,,,0.6641172432038094,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,38,38,kalumpang - baruh,Kalumpang - Baruh,,,,0.6641114383870763,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,39,39,jangkang - desa wasah hilir,Jangkang - Ds. Wasah Hilir,,,,0.6635716529290148,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,40,40,pandan sari - desa angkinang,Pandan Sari - Ds. Angkinang,,,,0.6625812455360124,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,41,41,karampaci - desa kapuh,Karampaci - Ds. Kapuh,,,,0.658950912542515,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,42,42,desa kapuh tengah menuju majelis talim,Ds. Kapuh Tengah (Menuju Majelis Talim),,,,0.6576317981519157,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,43,43,hamalau - asam cangkok,Hamalau - Asam Cangkok,,,,0.6517005833221232,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,44,44,teratai menuju komp perumnas hamalau,Teratai Menuju Komplek Perumnas Hamalau,,,,0.65167149531436,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,45,45,simpur - simp bilui,Simpur - Simp. Bilui,,,,0.6513680004117571,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,46,46,sei kacil i - kapuh padang,Sungai Kacil I - Kapuh Padang,,,,0.6500157937200166,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,47,47,papagaran - desa amawang kanan,Papagaran - Ds. Amawang Kanan,,,,0.6484446986247157,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,48,48,munggu raya - desa hariti,Munggu Raya - Ds. Hariti,,,,0.6475646660043963,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,49,49,halayung - hantarukung,Halayung - Hantarukung,,,,0.6464351957825176,,,,,1,0,0,1,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,50,50,ambarai - madang,Ambarai - Madang,,,,0.645571625802219,,,,,1,0,0,1,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,51,51,pianggu,Pianggu,,,,0.6449225929791279,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,52,52,kalimput desa wasah hilir,Kalimput Desa Wasah Hilir,,,,0.6442505502917812,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,53,53,at - taubah - desa kapuh,At-Taubah - Ds. Kapuh,,,,0.6425651681052615,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,54,54,al - ikhlas - desa baluti,Al - Ikhlas - Ds. Baluti,,,,0.6425268021783958,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,55,55,rawati - desa panjampang bahagia,Rawati - Ds. Panjampang Bahagia,,,,0.6395664740437441,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,56,56,firdaus - desa kapuh,Firdaus - Ds. Kapuh,,,,0.6386718299850862,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,57,57,sei kacil ii,Sungai Kacil II,,,,0.6372118049598995,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,58,58,banua kambang - desa wasah tengah,Banua Kambang - Ds. Wasah Tengah,,,,0.6356122279330706,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,59,59,negara - tumbukan banyu,Negara - Tumbukan Banyu,,,,0.6345264086588139,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,60,60,sirih - taro,Sirih - Taro,,,,0.6303843781473428,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,61,61,kalumpang - balimau,Kalumpang - Balimau,,,,0.630095988084633,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,62,62,tembok kacil sei kudung,Tembok Kacil. Sei. Kudung,,,,0.6285177746094963,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,63,63,balaimas - hanau,Balaimas - Hanau,,,,0.6243829855000184,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,64,64,h saim garunggang - kalimput,H. Saim Garunggang - Kalimput,,,,0.6233551877358968,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,65,65,taminung,Taminung,,,,0.6225007953683078,,,,,1,0,0,1,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,66,66,bayanan - habirau tengah,Bayanan - Habirau Tengah,,,,0.6221672134939256,,,,,1,1,1,0,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,67,67,kh ramli - desa amparaya,KH. Ramli - DS. Amparaya,,,,0.621557169789952,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,68,68,telaga banta - patigan,Telaga Banta - Patigan,,,,0.621447388215614,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,69,69,paharuangan - sei raya selatan,Paharuangan - Sei. Raya Selatan,,,,0.6208170933304423,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,70,70,pendawa - desa tebing tinggi,Pendawa - Ds. Tebing Tinggi,,,,0.6144890941315888,,,,,,,,,0,1,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,71,71,pandak daun - baruh jaya - samuda,Pandak Daun - Baruh Jaya - Samuda,,,,0.6136475670505428,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,72,72,kantor camat daha selatan ii,Kantor Camat Daha Selatan II,,,,0.6130965235525278,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,73,73,lorong bupati,Lorong Bupati,,,,0.6116771749606106,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,74,74,pajah api - desa kapuh,Pajah Api - Ds. Kapuh,,,,0.6088000700466121,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,75,75,ks tubun,KS. Tubun,,,,0.6056921297499974,,,,,0,0,0,0,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,76,76,kandangan hulu - sp tabihi,Kandangan Hulu - Sp. Tabihi,,,,0.6038370134921361,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,77,77,balanti - p3dt,Balanti - (Ex. P3DT),,,,0.6027834285098643,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,78,78,goha - desa amawang kanan,Goha - Ds. Amawang Kanan,,,,0.6004082856606544,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,79,79,angkakai - desa amawang kiri,Angkakai - Ds. Amawang Kiri,,,,0.6002061522289424,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,80,80,sei durian - desa gumbil,Sungai Durian - Ds. Gumbil,,,,0.5995549284114341,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,81,81,batang kulur kiri - durian landung,Batang Kulur Kiri - Durian Landung,,,,0.599435775954067,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,82,82,mangamol - desa pantai ulin,Mangamol - Ds. Pantai Ulin,,,,0.5978901537938093,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,83,83,sekolah islam sei pinang,Sekolah Islam (Sungai Pinang),,,,0.597790883075101,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,84,84,gambah dalam barat - mahulung,Gambah Dalam Barat - Mahulung,,,,0.5977229266665068,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,85,85,satria,Satria,,,,0.5976550656825207,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,86,86,matang gadung - halalang,Matang Gadung - Halalang,,,,0.5925212253144643,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,87,87,pakan dalam ii,Pakan Dalam II,,,,0.5916497005158148,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,88,88,harapan sdn habirau ii sei palangan,Harapan (SDN Habirau II)/ Sei. Palangan,,,,0.5915226345958894,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,89,89,nusa indah,Nusa Indah,,,,0.5895493594392565,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,90,90,pakan dalam iii,Pakan Dalam III,,,,0.5893600521654897,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,91,91,baluti - jambu hulu paku,Baluti - Jambu Hulu (Paku),,,,0.5823263642720505,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,92,92,brigjen katamso,Brigjen Katamso,,,,0.5790193092625141,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,93,93,wasah hulu - amparaya - simpur,Wasah Hulu - Amparaya - Simpur,,,,0.5744812918473061,,,,,0,0,0,0,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,94,94,taniran selatan kubah - buntut taniran wawaran,Taniran Selatan Kubah - Buntut Taniran / Wawaran,,,,0.5729910600164941,,,,,1,1,1,0,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,95,95,galuntang tayub - desa madang,Galuntang Tayub - Ds. Madang,,,,0.5727556019570668,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,96,96,pangeran antasari - loklua,Pangeran Antasari - Loklua,,,,0.5725440033388942,,,,,1,0,1,0,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,97,97,rahmah bahran,Rahmah Bahran,,,,0.5724677256793844,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,98,98,bakarung - tabihi - karang jawa,Bakarung -Tabihi - Karang Jawa,,,,0.5716179063830785,,,,,1,0,1,0,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,99,99,longawang - gumbil,Longawang - Gumbil,,,,0.571406060355135,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,100,100,jangkang - pantai ulin,Jangkang - Pantai Ulin,,,,0.5706449356103551,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,101,101,tanjungan - sp 10 batang kulur - sei kali,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali,,,,0.5697248378096764,,,,,1,0,0,1,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,102,102,tungkaran - desa ulin,Tungkaran - Ds. Ulin,,,,0.569686579365642,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,103,103,tandik - desa wasah hilir,Tandik - Ds. Wasah Hilir,,,,0.5691154247638863,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,104,104,hamalau - telaga bidadari - wasah hilir,Hamalau - Telaga Bidadari - Wasah Hilir,,,,0.5687022802791962,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,105,105,pesantren muradiyah,Pesantren Muradiyah,,,,0.5617305622066759,,,,,,,,,0,0,1
+AHP_WSM_20_full,normatif_20,AHP_WSM,,106,106,sei damang - amawang kiri,Sungai Damang - Amawang Kiri,,,,0.5616592908859127,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,107,107,budi bakti - tiga desember,Budi Bakti - Tiga Desember,,,,0.5605187154800936,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,108,108,palajau - desa baluti,Palajau - Ds. Baluti,,,,0.5593604187456331,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,109,109,bakarung tengah - karang jawa,Bakarung Tengah - Karang Jawa,,,,0.5573020815839269,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,110,110,teluk pinang - padang rasau,Teluk Pinang - Padang Rasau,,,,0.5564858445856835,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,111,111,jend sudirman,Jend. Sudirman,,,,0.5559314970470512,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,112,112,muara banta - karang jawa,Muara Banta - Karang Jawa,,,,0.5554323090476625,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,113,113,hamalau - ganda,Hamalau - Ganda,,,,0.553730989536112,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,114,114,sman negara kh abdullah,SMAN Negara (KH. Abdullah),,,,0.5525353022651572,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,115,115,sp 3 baluti - amawang,Sp. 3 Baluti - Amawang,,,,0.5513660664747846,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,116,116,sei paring - sei hanyar pantai ulin,Sungai Paring - Sei Hanyar Pantai Ulin,,,,0.5504442454505448,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,117,117,wasah hilir - amparaya,Wasah Hilir - Amparaya,,,,0.5495905898289517,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,118,118,di panjaitan - loklua,DI. Panjaitan - Loklua,,,,0.549192618474282,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,119,119,sei raya - jambu hulu paku,Sungai Raya - Jambu Hulu/Paku,,,,0.5480667036987557,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,120,120,amparaya - karangan - hanau,Amparaya - Karangan - Hanau,,,,0.5467142540289118,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,121,121,taal jarau - sp baru tampang,Taal Jarau - Sp. Baru/Tampang,,,,0.5456841916477428,,,,,1,0,0,1,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,122,122,binjai sirih hulu - desa seranggan,Binjai (Sirih Hulu) - Ds. Seranggan,,,,0.5453330344743645,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,123,123,bariang - patigan,Bariang - Patigan,,,,0.5427587039246103,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,124,124,bago tanggul - katilang - teratai,Bago Tanggul - Katilang - Teratai,,,,0.5426976784190872,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,125,125,tembok baru - desa baluti,Tembok Baru - Ds. Baluti,,,,0.5406684266707447,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,126,126,biti - sei kupang karya bakti tni,Biti - Sungai Kupang (Karya Bakti TNI),,,,0.5398008796600867,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,127,127,nomura,Nomura,,,,0.5397933400425186,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,128,128,amawang kanan - wasah hulu,Amawang Kanan - Wasah Hulu,,,,0.5391941610557639,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,129,129,sp 4 baru tampang - sp bilui pamujaan,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan,,,,0.5383569890308633,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,130,130,angkinang selatan - tawia - wawaran,Angkinang Selatan - Tawia - Wawaran,,,,0.5381406314996314,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,131,131,angkinang - kayu abang - panggang hijau,Angkinang - Kayu Abang - Panggang Hijau,,,,0.537358903444517,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,132,132,taniran tengah - taniran selatan,Taniran Tengah - Taniran Selatan,,,,0.5370160878354456,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,133,133,gambah luar - gambah dalam,Gambah Luar - Gambah Dalam,,,,0.5325412270861698,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,134,134,buntu muara hatib - bts kab hst,Buntu Muara Hatib - Bts. Kab. HST,,,,0.5309006027596533,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,135,135,paku jambu hulu - ganda,Paku (Jambu Hulu) - Ganda,,,,0.5303329659243017,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,136,136,cangkingan herman,Cangkingan Herman,,,,0.5290670816618739,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,137,137,pakan dalam i,Pakan Dalam I,,,,0.5277995257126032,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,138,138,sei karuh,Sungai Karuh,,,,0.527573783290111,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,139,139,tibung raya - hamalau dalam,Tibung Raya - Hamalau Dalam,,,,0.5266240082644655,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,140,140,parincahan - singakarsa harapan,Parincahan - Singakarsa (Harapan),,,,0.526560369942502,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,141,141,padang batung - batulaki - malilingin,Padang Batung - Batulaki - Malilingin,,,,0.5262830021634717,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,142,142,hulu banyu - pantai langsat,Hulu Banyu - Pantai Langsat,,,,0.5256076258854568,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,143,143,soeprapto - h m rusli,Soeprapto - H.M Rusli,,,,0.5252971794375758,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,144,144,tajun - sp 3 muara paring agung,Tajun - Sp.3 Muara Paring Agung,,,,0.5251766240978606,,,,,1,0,0,1,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,145,145,pasar kandangan - oprit jembt loklua,Pasar Kandangan - Oprit Jembt. Loklua,,,,0.524403270973772,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,146,146,sekolah islam kandangan barat,Sekolah Islam (Kandangan Barat),,,,0.5240646320529864,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,147,147,soetoyo - teluk mesjid,Soetoyo - Teluk Mesjid,,,,0.5229192485035147,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,148,148,teluk pinang - pahampangan utara,Teluk Pinang - Pahampangan Utara,,,,0.5221495343312668,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,149,149,loksado - loklahung,Loksado - Loklahung,,,,0.5212050759279272,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,150,150,tabihi - telaga langsat,Tabihi - Telaga Langsat,,,,0.5200795887409249,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,151,151,sp bakarung selatan - sei kudung,Sp. Bakarung Selatan - Sungai Kudung,,,,0.5187592911257868,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,152,152,tambangan - desa baruh jaya,Tambangan - Ds. Baruh Jaya,,,,0.5185790261435574,,,,,1,1,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,153,153,papagaran palangsatan,Papagaran/Palangsatan,,,,0.5176796854528203,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,154,154,teluk pinang - baluti,Teluk Pinang - Baluti,,,,0.5175807691260954,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,155,155,buluh - desa tebing tinggi,Buluh - Ds. Tebing Tinggi,,,,0.5172795116458754,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,156,156,umpaya - tumarin,Umpaya - Tumarin,,,,0.5172430669874322,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,157,157,karasikan - sarang halang,Karasikan - Sarang Halang,,,,0.5160810655899027,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,158,158,menuju smp 7 - desa gambah dalam,Menuju SMP 7 - Ds. Gambah Dalam,,,,0.5150353875093077,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,159,159,padang rasau tambak tamiang - paku pantai,Padang Rasau (Tambak Tamiang) - Paku Pantai,,,,0.5139351886087222,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,160,160,bamban selatan - pakuan balunan,Bamban Selatan - Pakuan Balunan,,,,0.5136663554346973,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,161,161,bamban utara - longawang,Bamban Utara - Longawang,,,,0.5136659558146729,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,162,162,tembok baru asam cangkok,Tembok Baru (Asam Cangkok),,,,0.5125086993591355,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,163,163,karang jawa - ambarai - sei bungur,Karang Jawa -Ambarai - Sungai Bungur,,,,0.5099116608461336,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,164,164,gambah luar - sei kudung,Gambah Luar - Sungai Kudung,,,,0.5094519939650898,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,165,165,banyu barau - sei kalang,Banyu Barau - Sei Kalang,,,,0.5090315193608916,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,166,166,sp 4 mesjid sirih - sarang nyamuk - asam tamiyang,SP.4 Mesjid Sirih - Sarang Nyamuk - Asam Tamiyang,,,,0.5082330519904452,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,167,167,jafri zamzam,Jafri Zamzam,,,,0.5078917632181922,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,168,168,pakan dalam - kaminting batu,Pakan Dalam - Kaminting Batu,,,,0.5076269884615667,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,169,169,bamban tengah - lok nyiur,Bamban Tengah - Lok Nyiur,,,,0.5069875338948484,,,,,1,1,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,170,170,singakarsa - getek,Singakarsa - Getek,,,,0.5069441886948525,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,171,171,mesjid quba,Mesjid Quba,,,,0.5067784223229457,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,172,172,bamban selatan - pakuan,Bamban Selatan - Pakuan,,,,0.5067444387785646,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,173,173,pembangunan - desa sei raya utara,Pembangunan - Ds. Sungai Raya Utara,,,,0.5060140718372632,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,174,174,h jarkasi - desa sei paring,H. Jarkasi - Ds. Sungai Paring,,,,0.5044898993560286,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,175,175,padang haur - desa wasah tengah,Padang Haur - Ds. Wasah Tengah,,,,0.5036458942934552,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,176,176,sei raya selatan - sarang halang,Sungai Raya Selatan - Sarang Halang,,,,0.5034342948703674,,,,,1,0,0,1,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,177,177,sei raya utara - teluk pinang,Sungai Raya Utara - Teluk Pinang,,,,0.5032259370545789,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,178,178,kamboja,Kamboja,,,,0.5031681680163422,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,179,179,baiturrahim parincahan,Baiturrahim Parincahan,,,,0.5027560337534682,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,180,180,mawar daha selatan,Mawar (Daha Selatan),,,,0.5022583364545257,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,181,181,musyawarah kandangan,Musyawarah (Kandangan),,,,0.5017610797253623,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,182,182,panjampang bahagia - bayur,Panjampang  Bahagia - Bayur,,,,0.5014355600054347,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,183,183,samuda - bajayau,Samuda - Bajayau,,,,0.500950945173999,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,184,184,gambah dalam - rantauan,Gambah Dalam - Rantauan,,,,0.5005839898461538,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,185,185,malilingin - lokbahan - paniungan,Malilingin - Lokbahan - Paniungan,,,,0.5002593350112564,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,186,186,rs hasan basry ii,RS. Hasan Basry II,,,,0.4996910483763093,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,187,187,bariang - getek,Bariang - Getek,,,,0.4984578089647314,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,188,188,tembok lama - loklua,Tembok Lama - Loklua,,,,0.49781276282043346,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,189,189,bajayau - desa bajayau tengah,Bajayau - Ds. Bajayau Tengah,,,,0.4974933263755218,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,190,190,dahlia,Dahlia,,,,0.4973794273550143,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,191,191,kenanga,Kenanga,,,,0.4962241830437996,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,192,192,sp mandampa tel sili - sili - sp sei bungur,Sp. Mandampa Tel. Sili-Sili - Sp. Sei. Bungur,,,,0.49603087875193136,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,193,193,kaliring - sp padang batung,Kaliring - Sp. Padang Batung,,,,0.49596360126249084,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,194,194,sp 4 banjarbaru - pasar negara,SP.4 Banjarbaru - Pasar Negara,,,,0.4958435834523658,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,195,195,panggang hijau - desa tawar,Panggang Hijau - Ds. Tawar,,,,0.49528942360071215,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,196,196,mangunang - desa sei raya utara,Mangunang - Ds. Sungai Raya Utara,,,,0.4949246239880073,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,197,197,samping bappeda - mesjid darul halik,Samping Bappeda - Mesjid Darul Halik,,,,0.4947403479599328,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,198,198,sei paring - toba,Sungai Paring - Toba,,,,0.4946494278116666,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,199,199,sei kupang utara - simp empat lungau,Sei Kupang Utara - Simp. Empat Lungau,,,,0.4944728444266506,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,200,200,hamalau - anjiran,Hamalau - Anjiran,,,,0.4935927001874138,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,201,201,sei raya selatan - malutu - goa berangin,Sungai Raya Selatan - Malutu - Goa Berangin,,,,0.49103990641643847,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,202,202,asam cangkuk - telaga bidadari,Asam Cangkuk - Telaga Bidadari,,,,0.4901312088428513,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,203,203,mandapai - madang,Mandapai - Madang,,,,0.48968811859226846,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,204,204,sp hamalau - teluk pinang,Simpang Hamalau - Teluk Pinang,,,,0.48825175830995937,,,,,1,0,0,1,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,205,205,sei kudung - kalinduku,Sungai Kudung - Kalinduku,,,,0.48668198091916626,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,206,206,pegangsaan timur - teluk aman,Pegangsaan Timur - Teluk Aman,,,,0.48435872722203066,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,207,207,anjiran rantauan - desa taniran tengah,Anjiran Rantauan - Ds. Taniran Tengah,,,,0.4843195282241518,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,208,208,mawangi - bukuanin - telaga langsat,Mawangi - Bukuanin - Telaga Langsat,,,,0.48366682384660953,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,209,209,ulin - tanggul balai mas,Ulin - Tanggul (Balai Mas),,,,0.481427184907587,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,210,210,tanayung - simp ambarai,Tanayung - Simp. Ambarai,,,,0.4804991439872933,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,211,211,tibung dalam - teratai,Tibung Dalam - Teratai,,,,0.478852561277976,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,212,212,telaga langsat - pakuan timur,Telaga Langsat - Pakuan Timur,,,,0.47793807945725963,,,,,1,1,0,1,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,213,213,sei mandala murung raya,Sei. Mandala Murung Raya,,,,0.4778009677416441,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,214,214,banua hanyar - desa tanjung selor,Banua Hanyar - Ds. Tanjung Selor,,,,0.4771078635195496,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,215,215,rel angkinang,Rel Angkinang - TMMD Angkinang,,,,0.4745304857382552,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,216,216,kalaka indah - perumnas tibung,Kalaka Indah - Perumnas Tibung,,,,0.4737926172905117,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,217,217,pandulangan - kalinduku,Pandulangan - Kalinduku,,,,0.4733556725371882,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,218,218,sp empat lungau - garis,Sp. Empat Lungau - Garis,,,,0.4733285101512448,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,219,219,sarang halang padang - sp batang kulur,Sarang Halang Padang - Sp. Batang Kulur,,,,0.47157307281331584,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,220,220,mondar ulin - pantai ulin - desa ulin,Mondar (Ulin-Pantai Ulin) - Ds. Ulin,,,,0.47100810601476867,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,221,221,mawangi - pariangan,Mawangi - Pariangan,,,,0.4672623357171848,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,222,222,madang - ambutun,Madang - Ambutun,,,,0.46626660916289425,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,223,223,rambai - bariang,Rambai - Bariang,,,,0.4653282554971473,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,224,224,padang palas,Padang Palas,,,,0.4647620259732226,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,225,225,tanjung selor - desa badaun,Tanjung Selor - Ds. Badaun,,,,0.4647005760413603,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,226,226,bangga,Bangga TMMD,,,,0.4643213464591163,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,227,227,ida manggala - padang makmur,Ida Manggala - Padang Makmur,,,,0.4629987382700776,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,228,228,jambu hulu - paku pantai,Jambu Hulu - Paku Pantai,,,,0.46214564998232865,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,229,229,bamban selatan - tanggang - panggang hijau,Bamban Selatan - Tanggang - Panggang Hijau,,,,0.46148736358701625,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,230,230,sirih - pacakan,Sirih - Pacakan,,,,0.45893525288360915,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,231,231,palas - desa wasah tengah,Palas - Ds. Wasah Tengah,,,,0.45881613241914965,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,232,232,mandampa - longawang,Mandampa - Longawang,,,,0.45832625775274916,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,233,233,batang kulur kanan - sarangan,Batang Kulur Kanan - Sarangan,,,,0.4580606882069725,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,234,234,bayanan - pihanin,Bayanan - Pihanin,,,,0.45644887034592985,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,235,235,tanah bangkang menuju balai benih ikan,Tanah Bangkang Menuju Balai Benih Ikan,,,,0.4564322380143696,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,236,236,halaban,Halaban,,,,0.45620740288433725,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,237,237,samping mesjid mandapai,Samping Mesjid Mandapai,,,,0.4561349171335918,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,238,238,kayu abang - desa anjiran,Kayu Abang - Ds. Anjiran,,,,0.45613333627019836,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,239,239,muning tengah - batang alai pihanin raya,Muning Tengah - Batang Alai (Pihanin Raya),,,,0.4534479501794434,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,240,240,pagat batu - muara hariang,Pagat Batu - Muara Hariang,,,,0.45299822242715715,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,241,241,hariti - sei raya selatan,Hariti - Sungai Raya Selatan,,,,0.4507706917473285,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,242,242,gambir - sp empat lungau,Gambir - Sp. Empat Lungau,,,,0.4500408188794981,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,243,243,gumbil - masimpan,Gumbil - Masimpan,,,,0.4482782157399545,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,244,244,sukaramai - keramat,Sukaramai - Keramat,,,,0.4481883782390473,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,245,245,kayu abang - paya,Kayu Abang - Paya,,,,0.4469137288275826,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,246,246,suriangpati - gambah dalam barat,Suriangpati - Gambah Dalam Barat,,,,0.44601846730778183,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,247,247,sakincung - desa hakurung dalam,Sakincung - Ds. Hakurung Dalam,,,,0.44512356411613285,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,248,248,sp malutu - pahampangan,Simpang Malutu - Pahampangan,,,,0.44479036492324897,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,249,249,halunuk - riam tajam talo - hamak umpaya,Halunuk - Riam Tajam/Talo - Hamak Umpaya,,,,0.4433294737093052,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,250,250,garunggang - hantamangu,Garunggang - Hantamangu,,,,0.44262009546269704,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,251,251,jarau - parandakan,Jarau - Parandakan,,,,0.44056421118907807,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,252,252,guru h izim - desa pantai ulin,Guru H. Izim - Ds. Pantai Ulin,,,,0.4397534837375411,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,253,253,habib ibrahim - desa sei mandala,Habib Ibrahim - Ds. Sei Mandala,,,,0.43873565442221263,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,254,254,monumen 17 mei - mandapai,Monumen 17 Mei - Mandapai,,,,0.43845341063712717,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,255,255,pertukangan,Pertukangan,,,,0.4384169383445043,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,256,256,hamak timur - umpaya,Hamak Timur - Umpaya,,,,0.4378960562881631,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,257,257,baru - asam desa baru,Baru - Asam Desa Baru,,,,0.4372131098229234,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,258,258,kenanga - desa baruh kambang,Kenanga - Ds. Baruh Kambang,,,,0.43658544024701207,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,259,259,mangaris - limau manis,Mangaris - Limau Manis,,,,0.4364715314939611,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,260,260,badaun - desa bjayau lama,Badaun - Ds. Bjayau Lama,,,,0.4359154556348518,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,261,261,sp malutu - tambak,Simpang Malutu - Tambak,,,,0.43587042236796947,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,262,262,h m thaib,H.M. Thaib,,,,0.4336809702831817,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,263,263,sei minting - desa malutu,Sungai Minting - Ds. Malutu,,,,0.4335348676371556,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,264,264,panjampang bahagia - hanau,Panjampang Bahagia - Hanau,,,,0.43318209242860994,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,265,265,silaturrahim,Silaturrahim,,,,0.4328428060502159,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,266,266,bumi berkat - mungkur galah,Bumi Berkat - Mungkur Galah,,,,0.4325671581222202,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,267,267,kalumpang selatan - desa asam tamiyang,Kalumpang Selatan - Ds. Asam Tamiyang,,,,0.4299611493500529,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,268,268,tanah habang - desa simpur,Tanah Habang - Ds. Simpur,,,,0.42942919658088546,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,269,269,tpa - desa sei raya selatan,TPA - Ds. Sungai Raya Selatan,,,,0.42928456489947303,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,270,270,kalaka dayuh - desa sei raya utara,Kalaka Dayuh - Ds. Sungai Raya Utara,,,,0.4270517559297332,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,271,271,mawar kandangan utara,Mawar (Kandangan Utara),,,,0.4267646520229095,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,272,272,mungkur galah - lokpaikat,Mungkur Galah - Lokpaikat,,,,0.426260448985851,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,273,273,bamban tibung - martajiwa,Bamban (Tibung) - Martajiwa,,,,0.42509360772567845,,,,,1,1,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,274,274,tanjungan - sp 3 sakijang,Tanjungan - Sp. 3 Sakijang,,,,0.42455481714831667,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,275,275,tamiyang - desa tamiyang eks,Tamiyang - Ds. Tamiyang (Eks TMMD),,,,0.42353943723586607,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,276,276,makam habib - desa lumpangi,Makam Habib - Desa Lumpangi,,,,0.4234222823701303,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,277,277,keramat sakti - desa tebing tinggi,Keramat Sakti - Ds. Tebing Tinggi,,,,0.4225378112760568,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,278,278,bubuih - desa halunuk,Bubuih - Ds. Halunuk,,,,0.4223835098865128,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,279,279,habib,Habib,,,,0.42226545734345555,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,280,280,kaminting batu,Kaminting Batu,,,,0.42217395680026193,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,281,281,sei bugundi,Sungai Bugundi,,,,0.42196920555350914,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,282,282,teluk haur ii,Teluk Haur II,,,,0.42122174447180283,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,283,283,samping kantor camat daha utara,Samping Kantor Camat Daha Utara,,,,0.4204923963506053,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,284,284,inst pdam negara,Inst. PDAM Negara,,,,0.42008541678152456,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,285,285,gerilya depan pustu habirau,Gerilya / (Depan PUSTU Habirau),,,,0.41723056713195966,,,,,1,1,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,286,286,kampung kawat,Kampung Kawat,,,,0.417190726481175,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,287,287,sp 3 bukuanin - riam talo,Sp.3 Bukuanin - Riam Talo,,,,0.4171020179044224,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,288,288,manggis - desa baru,Manggis - Ds. Baru,,,,0.4170403553377007,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,289,289,batang kulur kanan - batang kulur kiri,Batang Kulur Kanan - Batang Kulur Kiri,,,,0.41623518209924026,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,290,290,teluk haur i,Teluk Haur I,,,,0.41594762153126325,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,291,291,sei namang - desa tanah bangkang,Sungai Namang - Ds. Tanah Bangkang,,,,0.41431308539099865,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,292,292,pandak daun buntut muradiyah - pakan dalam,Pandak Daun (Buntut Muradiyah) - Pakan Dalam,,,,0.41158214832470236,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,293,293,menuju smpn malilingin,Menuju SMPN Malilingin,,,,0.4109735390541198,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,294,294,gang bidan desa tambak bitin,Gang Bidan (Ds. Tambak Bitin),,,,0.409090502465343,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,295,295,asam duhat - desa pantai ulin,Asam Duhat - Ds. Pantai Ulin,,,,0.40893099003265504,,,,,1,0,1,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,296,296,amd - desa lok binuang,AMD - Ds. Lok Binuang,,,,0.4062954414843926,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,297,297,muara hariang - bayumbung,Muara Hariang - Bayumbung,,,,0.40524206385505057,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,298,298,sp 3 bukuanin - tayub,Sp.3 Bukuanin - Tayub,,,,0.40474227979716765,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,299,299,paramaian,Paramaian,,,,0.4035396972230605,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,300,300,tanginau - balai haruyan,Tanginau - Balai Haruyan,,,,0.4028712377285867,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,301,301,tukang garit tambangan,Tukang Garit (Tambangan),,,,0.40256350808385316,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,302,302,sp batang kulur kiri - tatas,Sp. Batang Kulur Kiri - Tatas,,,,0.4024082399906958,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,303,303,paharuangan - asam dua,Paharuangan - Asam Dua,,,,0.4022336697534963,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,304,304,muara kitar - desa lumpangi,Muara Kitar - Desa Lumpangi,,,,0.4014892137210277,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,305,305,min pandak daun,MIN Pandak Daun,,,,0.39923361015999576,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,306,306,asam seranggan - asam tamiyang,Asam Seranggan - Asam Tamiyang,,,,0.39839437766210156,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,307,307,pagar haur - malutu,Pagar  Haur - Malutu,,,,0.3959565745492265,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,308,308,batang kulur kanan - bumi berkat kisung,Batang Kulur Kanan - Bumi Berkat (Kisung),,,,0.3955935548545638,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,309,309,muning tengah - desa muning dalam,Muning Tengah - Ds. Muning Dalam,,,,0.39342911676402137,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,310,310,niagara desa halunuk - ayan,Niagara (Ds. Halunuk) - Ayan,,,,0.39315873951776137,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,311,311,malilingin - muara hariang,Malilingin - Muara Hariang,,,,0.3918704961033459,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,312,312,karya bakti - desa balimau,Karya Bakti - Ds. Balimau,,,,0.39125685633876317,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,313,313,kalumpang desa balanti - teratai,Kalumpang (Ds. Balanti) - Teratai,,,,0.38468485027605165,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,314,314,bayampah - tanuhi - tugu niih,Bayampah - Tanuhi - Tugu Niih,,,,0.3827647502600352,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,315,315,tanuhi - ulang,Tanuhi - Ulang,,,,0.38024883091363254,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,316,316,talapak manuk - desa kapuh,Talapak Manuk - Ds. Kapuh,,,,0.37779052575510075,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,317,317,tanuhi - hulu banyu,Tanuhi - Hulu Banyu,,,,0.3767043819065738,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,318,318,bubuih desa halunuk - kandihin,Bubuih (Ds. Halunuk) - Kandihin,,,,0.3760663136580631,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,319,319,sp empat lungau - bangkau,Sp. Empat Lungau - Bangkau,,,,0.37404648536154417,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,320,320,tataian - desa ulang - loksado,Tataian - (Ds. Ulang) - Loksado,,,,0.3700283860696064,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,321,321,hamak utara - samaragi,Hamak Utara - Samaragi,,,,0.36528658371766737,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,322,322,sp jadi makmur - desa samuda,Simpang Jadi Makmur - Ds. Samuda,,,,0.36252656835590263,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,323,323,balimau - murung dalam,Balimau - Murung Dalam,,,,0.3624753812439536,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,324,324,hamayung - hakurung dalam,Hamayung - Hakurung Dalam,,,,0.3616022576290109,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,325,325,loksado - pantai dusin,Loksado - Pantai Dusin,,,,0.35852960782844157,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,326,326,hamak - umbai,Hamak - Umbai,,,,0.3570890694296427,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,327,327,malinau - kandihin,Malinau - Kandihin,,,,0.35614058544177535,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,328,328,kantor camat loksado ii,Kantor Camat Loksado II,,,,0.35199995272828455,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,329,329,pantai langsat - umpaya,Pantai Langsat - Umpaya,,,,0.3500409468457114,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,330,330,hakurung dalam - desa sei haji,Hakurung Dalam - Ds. Sungai Haji,,,,0.34826055248140303,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,331,331,loklahung - kamawakan,Loklahung - Kamawakan,,,,0.34512030296461726,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,332,332,loksado - haratai,Loksado - Haratai,,,,0.3413237499973121,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,333,333,loklahung - malaris,Loklahung - Malaris,,,,0.33904872281641635,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,334,334,lambuk - desa tumingki,Lambuk - Ds. Tumingki,,,,0.3370415354964998,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,335,335,hulu banyu - datar mangkung - tumingki,Hulu Banyu - Datar Mangkung - Tumingki,,,,0.33344051169449046,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,336,336,tambak pipii - batu ampar,Tambak Pipii - Batu Ampar,,,,0.332114036126554,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,337,337,malinau - katingin - kamawakan,Malinau - Katingin - Kamawakan,,,,0.3278075199879865,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,338,338,muara pipii - tambak pipii,Muara Pipii - Tambak Pipii,,,,0.3272286108557325,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,339,339,haratai 3 balai kedayang sdn haratai 3,Haratai 3 (Balai Kedayang) / SDN Haratai 3,,,,0.32692904590546656,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,340,340,siang gantung - desa baru,Siang Gantung - Ds. Baru,,,,0.3250888533927336,,,,,0,0,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,341,341,haratai 2 balai ujung atas sdn haratai2,Haratai 2 (Balai Ujung Atas) SDN Haratai2,,,,0.3222305144973392,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,342,342,datar belimbing - muara kitar,Datar Belimbing - Muara Kitar,,,,0.32194416799861625,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,343,343,baru - desa bajayau,Baru - Ds. Bajayau,,,,0.3045424289751271,,,,,0,1,0,0,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,344,344,tambak pipii - malilingin,Tambak Pipii - Malilingin,,,,0.30292947612633314,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,345,345,batu laki - muara pipii,Batu Laki - Muara Pipii,,,,0.3022659889332432,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,346,346,kacang parang ulang - balai mawak - kias,Kacang Parang (Ulang) - Balai Mawak-Kias,,,,0.3009020553393953,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,347,347,ulang - kacang parang,Ulang - Kacang Parang,,,,0.2874936433714402,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,348,348,kacang parang ulang - balai wariung,Kacang Parang (Ulang) - Balai Wariung,,,,0.28625554137617554,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,349,349,ulang - bangkaun,Ulang - Bangkaun,,,,0.27238184088249084,,,,,,,,,0,0,0
+AHP_WSM_20_full,normatif_20,AHP_WSM,,350,350,malaris - loapanggang,Malaris - Loapanggang,,,,0.24735675218846673,,,,,,,,,0,0,0

@@ -1,0 +1,161 @@
+appendix_name,scenario_id,model,score_type,rank,export_rank,road_key,nama_ruas,nomor_ruas,desa_yang_dilalui,kecamatan_yang_dilalui,score,pred_prob,final_score,base_prob,rerank_score,planned_any_2026,planned_teknokratis_2026,planned_tender_2026,planned_pl_2026,is_top35,is_top70,is_top105
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,1,1,padang batung - batulaki - malilingin,padang batung – batulaki – malilingin,,,,0.9144727891156461,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,2,2,taniran selatan kubah - buntut taniran wawaran,Taniran Selatan Kubah - Buntut Taniran / Wawaran,,,,0.9080782312925171,,,,,1,1,1,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,3,3,palajau - desa baluti,palajau – desa baluti,,,,0.8745068027210884,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,4,4,padang haur - desa wasah tengah,padang haur – desa wasah tengah,,,,0.8656292517006801,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,5,5,sei raya selatan - malutu - goa berangin,Sungai Raya Selatan - Malutu - Goa Berangin,,,,0.8595068027210884,,,,,1,0,1,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,6,6,sei paring - sei hanyar pantai ulin,sei paring – sei hanyar pantai ulin,,,,0.8595068027210883,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,7,7,siang gantung - desa baru,Siang Gantung - Ds. Baru,,,,0.8568537414965985,,,,,0,0,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,8,8,jafri zamzam,jafri zamzam,,,,0.8528741496598637,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,9,9,samuda - bajayau,Samuda - Bajayau,,,,0.8524999999999999,,,,,1,0,1,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,10,10,tambangan - desa baruh jaya,Tambangan - Ds. Baruh Jaya,,,,0.8511734693877552,,,,,1,1,1,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,11,11,singakarsa - palas,singakarsa – palas,,,,0.8510034013605442,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,12,12,pandak daun - baruh jaya - samuda,pandak daun – baruh jaya – samuda,,,,0.8501530612244897,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,13,13,baiturrahim parincahan,baiturrahim parincahan,,,,0.8403571428571429,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,14,14,bayanan - habirau tengah,Bayanan - Habirau Tengah,,,,0.8340986394557823,,,,,1,1,1,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,15,15,sei mandala murung raya,Sei. Mandala Murung Raya,,,,0.8301870748299318,,,,,0,1,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,16,16,dahlia,dahlia,,,,0.8297448979591837,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,17,17,angkinang - kayu abang - panggang hijau,angkinang – kayu abang – panggang hijau,,,,0.825017006802721,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,18,18,mandapai - madang,mandapai – madang,,,,0.8220238095238094,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,19,19,paku jambu hulu - ganda,paku jambu hulu – ganda,,,,0.8219387755102041,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,20,20,mawangi - bukuanin - telaga langsat,Mawangi - Bukuanin - Telaga Langsat,,,,0.8215816326530613,,,,,0,1,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,21,21,bajayau - desa bajayau tengah,Bajayau - Ds. Bajayau Tengah,,,,0.8198809523809523,,,,,1,0,1,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,22,22,wasah hulu - amparaya - simpur,Wasah Hulu - Amparaya - Simpur,,,,0.8178401360544216,,,,,0,0,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,23,23,malinau - katingin - kamawakan,Malinau - Katingin - Kamawakan,,,,0.8171598639455782,,,,,0,1,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,24,24,bayanan - pihanin,bayanan – pihanin,,,,0.8168197278911564,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,25,25,loklahung - kamawakan,Loklahung - Kamawakan,,,,0.8159353741496598,,,,,0,1,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,26,26,hamalau - telaga bidadari - wasah hilir,hamalau – telaga bidadari – wasah hilir,,,,0.8073639455782312,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,27,27,tanuhi - ulang,tanuhi – ulang,,,,0.8050850340136053,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,28,28,sp 4 mesjid sirih - sarang nyamuk - asam tamiyang,sp 4 mesjid sirih – sarang nyamuk – asam tamiyang,,,,0.793639455782313,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,29,29,halunuk - riam tajam talo - hamak umpaya,Halunuk - Riam Tajam/Talo - Hamak Umpaya,,,,0.7886564625850339,,,,,0,1,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,30,30,tembok lama - loklua,tembok lama – loklua,,,,0.7861054421768707,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,31,31,gumbil - masimpan,Gumbil - Masimpan,,,,0.7841666666666665,,,,,0,1,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,32,32,asam cangkuk - telaga bidadari,asam cangkuk – telaga bidadari,,,,0.7782823129251699,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,33,33,baluti - jambu hulu paku,baluti – jambu hulu paku,,,,0.7709353741496598,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,34,34,pakan dalam - kaminting batu,pakan dalam – kaminting batu,,,,0.7690646258503402,,,,,,,,,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,35,35,karasikan - sarang halang,Karasikan - Sarang Halang,,,,0.7611224489795917,,,,,0,0,0,0,1,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,36,36,wasah hilir - amparaya,wasah hilir – amparaya,,,,0.7585884353741496,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,37,37,gerilya depan pustu habirau,Gerilya / (Depan PUSTU Habirau),,,,0.7578231292517007,,,,,1,1,1,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,38,38,taal batang kulur - sp 3 muara prg agung,taal batang kulur – sp 3 muara prg agung,,,,0.7500510204081633,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,39,39,tukang garit tambangan,Tukang Garit (Tambangan),,,,0.7494727891156463,,,,,0,0,0,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,40,40,tembok baru - desa baluti,tembok baru – desa baluti,,,,0.7488605442176871,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,41,41,samping bappeda - mesjid darul halik,samping bappeda – mesjid darul halik,,,,0.7476020408163266,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,42,42,amawang muka - getek,amawang muka – getek,,,,0.7471258503401359,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,43,43,karang jawa - ambarai - sei bungur,karang jawa – ambarai – sei bungur,,,,0.7462755102040816,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,44,44,tumbukan banyu - banua hanyar,tumbukan banyu – banua hanyar,,,,0.7305612244897959,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,45,45,sp 4 banjarbaru - pihanin raya,sp 4 banjarbaru – pihanin raya,,,,0.7300510204081633,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,46,46,mawangi - pariangan,mawangi – pariangan,,,,0.7283843537414965,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,47,47,tabihi - telaga langsat,Tabihi - Telaga Langsat,,,,0.7255612244897958,,,,,0,1,0,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,48,48,rel angkinang,rel angkinang – angkinang,,,,0.7249489795918365,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,49,49,hamalau - ganda,Hamalau - Ganda,,,,0.7247789115646258,,,,,0,0,0,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,50,50,kaminting batu,Kaminting Batu,,,,0.722329931972789,,,,,0,0,0,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,51,51,angkinang - telaga langsat,angkinang – telaga langsat,,,,0.7212074829931973,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,52,52,bakarung - tabihi - karang jawa,Bakarung -Tabihi - Karang Jawa,,,,0.7198469387755101,,,,,1,0,1,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,53,53,telaga langsat - pakuan timur,Telaga Langsat - Pakuan Timur,,,,0.7192006802721088,,,,,1,1,0,1,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,54,54,malilingin - lokbahan - paniungan,Malilingin - Lokbahan - Paniungan,,,,0.7179421768707481,,,,,1,0,1,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,55,55,tanayung - simp ambarai,tanayung – simp ambarai,,,,0.7151530612244898,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,56,56,sei raya - jambu hulu paku,sei raya – jambu hulu paku,,,,0.7137244897959183,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,57,57,panjampang bahagia - hanau,panjampang bahagia – hanau,,,,0.7087925170068026,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,58,58,kaliring - sp padang batung,Kaliring - Sp. Padang Batung,,,,0.7075680272108843,,,,,0,0,0,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,59,59,bamban selatan - pakuan,bamban selatan – pakuan,,,,0.7050000000000001,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,60,60,hamalau - anjiran,Hamalau - Anjiran,,,,0.7014455782312924,,,,,0,0,0,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,61,61,sp hamalau - teluk pinang,Simpang Hamalau - Teluk Pinang,,,,0.6998639455782312,,,,,1,0,0,1,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,62,62,panggang hijau - desa tawar,panggang hijau – desa tawar,,,,0.6977210884353742,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,63,63,bumi berkat - mungkur galah,bumi berkat – mungkur galah,,,,0.6968367346938775,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,64,64,kalumpang - balimau,kalumpang – balimau,,,,0.6954931972789117,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,65,65,pagat batu - muara hariang,pagat batu – muara hariang,,,,0.6942006802721088,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,66,66,pangeran antasari - loklua,Pangeran Antasari - Loklua,,,,0.6894047619047619,,,,,1,0,1,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,67,67,sei raya selatan - sarang halang,Sungai Raya Selatan - Sarang Halang,,,,0.688078231292517,,,,,1,0,0,1,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,68,68,negara - tumbukan banyu,negara – tumbukan banyu,,,,0.6854931972789114,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,69,69,teluk pinang - baluti,teluk pinang – baluti,,,,0.6851530612244898,,,,,,,,,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,70,70,angkinang selatan - tawia - wawaran,Angkinang Selatan - Tawia - Wawaran,,,,0.6846768707482993,,,,,1,0,1,0,0,1,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,71,71,sp empat lungau - bangkau,sp empat lungau – bangkau,,,,0.683877551020408,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,72,72,bago tanggul - katilang - teratai,bago tanggul – katilang – teratai,,,,0.6834523809523809,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,73,73,teluk pinang - padang rasau,teluk pinang – padang rasau,,,,0.6794387755102039,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,74,74,sp 4 banjarbaru - pasar negara,sp 4 banjarbaru – pasar negara,,,,0.678248299319728,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,75,75,longawang - gumbil,longawang – gumbil,,,,0.674778911564626,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,76,76,teluk haur ii,Teluk Haur II,,,,0.6739455782312926,,,,,0,1,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,77,77,tungkaran - desa ulin,tungkaran – desa ulin,,,,0.6735374149659863,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,78,78,tanjungan - sp 10 batang kulur - sei kali,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali,,,,0.6699149659863946,,,,,1,0,0,1,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,79,79,karya bakti - desa balimau,Karya Bakti - Ds. Balimau,,,,0.6669387755102041,,,,,0,1,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,80,80,mawar daha selatan,mawar daha selatan,,,,0.6613775510204081,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,81,81,sei kudung - kalinduku,sei kudung – kalinduku,,,,0.6589625850340135,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,82,82,ida manggala - padang makmur,ida manggala – padang makmur,,,,0.6560034013605442,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,83,83,hulu banyu - datar mangkung - tumingki,hulu banyu – datar mangkung – tumingki,,,,0.6536054421768706,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,84,84,bakarung tengah - karang jawa,bakarung tengah – karang jawa,,,,0.6535544217687073,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,85,85,hamalau - asam cangkok,hamalau – asam cangkok,,,,0.6525000000000001,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,86,86,pandan sari - desa angkinang,pandan sari – desa angkinang,,,,0.6492006802721086,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,87,87,tibung raya - hamalau dalam,tibung raya – hamalau dalam,,,,0.6484863945578231,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,88,88,hariti - sei raya selatan,hariti – sei raya selatan,,,,0.6461564625850339,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,89,89,batang kulur kanan - bumi berkat kisung,batang kulur kanan – bumi berkat kisung,,,,0.6432482993197277,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,90,90,banyu barau - sei kalang,Banyu Barau - Sei Kalang,,,,0.6368537414965987,,,,,0,1,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,91,91,harapan sdn habirau ii sei palangan,harapan sdn habirau ii sei palangan,,,,0.636547619047619,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,92,92,tajun - sp 3 muara paring agung,Tajun - Sp.3 Muara Paring Agung,,,,0.6354081632653061,,,,,1,0,0,1,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,93,93,h m thaib,h m thaib,,,,0.6322448979591835,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,94,94,jend sudirman,jend sudirman,,,,0.6315816326530611,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,95,95,teluk mesjid - sp 4 muara banta,Teluk Mesjid - Sp. 4 Muara Banta,,,,0.6312925170068027,,,,,0,0,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,96,96,baru - desa bajayau,Baru - Ds. Bajayau,,,,0.6284693877551021,,,,,0,1,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,97,97,tamiyang - desa tamiyang eks,Tamiyang - Ds. Tamiyang (Eks TMMD),,,,0.6283843537414966,,,,,0,1,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,98,98,cangkingan herman,Cangkingan Herman,,,,0.6260714285714286,,,,,0,0,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,99,99,amawang kanan - wasah hulu,amawang kanan – wasah hulu,,,,0.6244047619047619,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,100,100,bakarung - rantauan,bakarung – rantauan,,,,0.6234523809523809,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,101,101,balimau - murung dalam,balimau – murung dalam,,,,0.622687074829932,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,102,102,gambah luar - sei kudung,gambah luar – sei kudung,,,,0.6222789115646259,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,103,103,papagaran palangsatan,papagaran palangsatan,,,,0.6219387755102042,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,104,104,kacang parang ulang - balai mawak - kias,kacang parang ulang – balai mawak – kias,,,,0.6215986394557822,,,,,,,,,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,105,105,loksado - haratai,Loksado - Haratai,,,,0.6210714285714284,,,,,0,1,0,0,0,0,1
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,106,106,bariang - getek,bariang – getek,,,,0.6179421768707483,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,107,107,taal jarau - sp baru tampang,Taal Jarau - Sp. Baru/Tampang,,,,0.6157653061224491,,,,,1,0,0,1,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,108,108,sp malutu - tambak,sp malutu – tambak,,,,0.6152891156462585,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,109,109,asam duhat - desa pantai ulin,Asam Duhat - Ds. Pantai Ulin,,,,0.6127380952380953,,,,,1,0,1,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,110,110,haratai 3 balai kedayang sdn haratai 3,haratai 3 balai kedayang sdn haratai 3,,,,0.6112755102040817,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,111,111,haratai 2 balai ujung atas sdn haratai2,haratai 2 balai ujung atas sdn haratai2,,,,0.6074319727891155,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,112,112,pandak daun buntut muradiyah - pakan dalam,Pandak Daun (Buntut Muradiyah) - Pakan Dalam,,,,0.6059353741496598,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,113,113,rambai - bariang,rambai – bariang,,,,0.6041836734693876,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,114,114,kalimput desa wasah hilir,kalimput desa wasah hilir,,,,0.6041496598639455,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,115,115,teluk haur i,Teluk Haur I,,,,0.6023129251700681,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,116,116,banua hanyar - desa tanjung selor,Banua Hanyar - Ds. Tanjung Selor,,,,0.6014625850340136,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,117,117,batu laki - muara pipii,batu laki – muara pipii,,,,0.6003571428571428,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,118,118,sp 3 bukuanin - riam talo,Sp.3 Bukuanin - Riam Talo,,,,0.5989965986394558,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,119,119,banua kambang - desa wasah tengah,banua kambang – desa wasah tengah,,,,0.5984693877551022,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,120,120,ks tubun,KS. Tubun,,,,0.5956292517006803,,,,,0,0,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,121,121,hamayung - hakurung dalam,Hamayung - Hakurung Dalam,,,,0.5946768707482993,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,122,122,sukaramai - keramat,sukaramai – keramat,,,,0.5945068027210885,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,123,123,muning tengah - batang alai pihanin raya,Muning Tengah - Batang Alai (Pihanin Raya),,,,0.593469387755102,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,124,124,hakurung dalam - desa sei haji,hakurung dalam – desa sei haji,,,,0.5932993197278912,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,125,125,biti - sei kupang karya bakti tni,biti – sei kupang karya bakti tni,,,,0.5931972789115646,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,126,126,tanah habang - desa simpur,Tanah Habang - Ds. Simpur,,,,0.5931802721088435,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,127,127,amd - desa lok binuang,AMD - Ds. Lok Binuang,,,,0.5907312925170067,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,128,128,tanjungan - sp 3 sakijang,tanjungan – sp 3 sakijang,,,,0.5872619047619047,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,129,129,inst pdam negara,inst pdam negara,,,,0.5863945578231291,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,130,130,tanjung selor - desa badaun,tanjung selor – desa badaun,,,,0.5846598639455782,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,131,131,suriangpati - gambah dalam barat,suriangpati – gambah dalam barat,,,,0.5842006802721087,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,132,132,sp empat lungau - garis,Sp. Empat Lungau - Garis,,,,0.584047619047619,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,133,133,datar belimbing - muara kitar,datar belimbing – muara kitar,,,,0.5815816326530611,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,134,134,sp mandampa tel sili - sili - sp sei bungur,sp mandampa tel sili – sili – sp sei bungur,,,,0.579982993197279,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,135,135,wasah hilir - sarang halang,wasah hilir – sarang halang,,,,0.5781122448979591,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,136,136,muning tengah - desa muning dalam,Muning Tengah - Ds. Muning Dalam,,,,0.5766326530612246,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,137,137,simpur - sp 3 muara paring agung,simpur – sp 3 muara paring agung,,,,0.5747619047619048,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,138,138,badaun - desa bjayau lama,badaun – desa bjayau lama,,,,0.573486394557823,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,139,139,gang bidan desa tambak bitin,gang bidan desa tambak bitin,,,,0.573078231292517,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,140,140,kalaka dayuh - desa sei raya utara,kalaka dayuh – desa sei raya utara,,,,0.5710714285714286,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,141,141,habib ibrahim - desa sei mandala,habib ibrahim – desa sei mandala,,,,0.5706972789115646,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,142,142,kenanga - desa baruh kambang,kenanga – desa baruh kambang,,,,0.5674489795918367,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,143,143,sp 3 baluti - amawang,sp 3 baluti – amawang,,,,0.5610204081632653,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,144,144,sp malutu - pahampangan,Simpang Malutu - Pahampangan,,,,0.558656462585034,,,,,1,0,1,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,145,145,guru h izim - desa pantai ulin,Guru H. Izim - Ds. Pantai Ulin,,,,0.5578061224489795,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,146,146,madang - ambutun,madang – ambutun,,,,0.5574999999999999,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,147,147,sp bakarung selatan - sei kudung,sp bakarung selatan – sei kudung,,,,0.5568877551020408,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,148,148,pandulangan - kalinduku,pandulangan – kalinduku,,,,0.5562755102040816,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,149,149,sirih - pacakan,Sirih - Pacakan,,,,0.5519557823129252,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,150,150,loksado - loklahung,Loksado - Loklahung,,,,0.5516496598639457,,,,,1,0,1,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,151,151,manggis - desa baru,Manggis - Ds. Baru,,,,0.5506632653061224,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,152,152,tibung raya - asam cangkuk,tibung raya – asam cangkuk,,,,0.5480782312925171,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,153,153,sei namang - desa tanah bangkang,sei namang – desa tanah bangkang,,,,0.5477721088435374,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,154,154,sp 4 baru tampang - sp bilui pamujaan,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan,,,,0.5471938775510203,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,155,155,sp batang kulur kiri - tatas,Sp. Batang Kulur Kiri - Tatas,,,,0.5471768707482993,,,,,0,0,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,156,156,kalumpang desa balanti - teratai,Kalumpang (Ds. Balanti) - Teratai,,,,0.5456462585034014,,,,,0,1,0,0,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,157,157,bubuih desa halunuk - kandihin,bubuih desa halunuk – kandihin,,,,0.5454591836734693,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,158,158,ulang - bangkaun,ulang – bangkaun,,,,0.5435884353741496,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,159,159,bubuih - desa halunuk,bubuih – desa halunuk,,,,0.5424659863945578,,,,,,,,,0,0,0
+ANY_Top70_RF_grid0005_full,refined_recall_max_any2026,RandomForest,grid_0005,160,160,gambah luar - gambah dalam,gambah luar – gambah dalam,,,,0.5414455782312925,,,,,,,,,0,0,0

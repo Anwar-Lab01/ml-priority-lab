@@ -1,0 +1,351 @@
+appendix_name,scenario_id,model,score_type,rank,export_rank,road_key,nama_ruas,nomor_ruas,desa_yang_dilalui,kecamatan_yang_dilalui,score,pred_prob,final_score,base_prob,rerank_score,planned_any_2026,planned_teknokratis_2026,planned_tender_2026,planned_pl_2026,is_top35,is_top70,is_top105
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,1,1,padang batung - batulaki - malilingin,padang batung – batulaki – malilingin,,,,0.8892142857142858,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,2,2,taniran selatan kubah - buntut taniran wawaran,Taniran Selatan Kubah - Buntut Taniran / Wawaran,,,,0.8823857142857144,,,,,1,1,1,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,3,3,samuda - bajayau,Samuda - Bajayau,,,,0.8691857142857143,,,,,1,0,1,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,4,4,palas - desa wasah tengah,Palas - Ds. Wasah Tengah,,,,0.8602714285714287,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,5,5,mawangi - bukuanin - telaga langsat,Mawangi - Bukuanin - Telaga Langsat,,,,0.8514142857142859,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,6,6,tanjung selor - desa badaun,tanjung selor – desa badaun,,,,0.8487714285714287,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,7,7,jarau - parandakan,Jarau - Parandakan,,,,0.8447857142857144,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,8,8,loklahung - kamawakan,Loklahung - Kamawakan,,,,0.8425285714285714,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,9,9,teluk haur i,Teluk Haur I,,,,0.8368142857142857,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,10,10,anjiran rantauan - desa taniran tengah,Anjiran Rantauan - Ds. Taniran Tengah,,,,0.8282714285714287,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,11,11,halunuk - riam tajam talo - hamak umpaya,Halunuk - Riam Tajam/Talo - Hamak Umpaya,,,,0.8258142857142857,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,12,12,muning tengah - desa muning dalam,Muning Tengah - Ds. Muning Dalam,,,,0.8179142857142858,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,13,13,rambai - bariang,rambai – bariang,,,,0.8141,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,14,14,teluk haur ii,Teluk Haur II,,,,0.8130999999999999,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,15,15,banua hanyar - desa tanjung selor,Banua Hanyar - Ds. Tanjung Selor,,,,0.8100428571428572,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,16,16,angkinang - kayu abang - panggang hijau,angkinang – kayu abang – panggang hijau,,,,0.8086428571428573,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,17,17,siang gantung - desa baru,Siang Gantung - Ds. Baru,,,,0.8076428571428571,,,,,0,0,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,18,18,kayu abang - desa anjiran,kayu abang – desa anjiran,,,,0.8069857142857144,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,19,19,asam cangkuk - telaga bidadari,asam cangkuk – telaga bidadari,,,,0.8026714285714286,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,20,20,gumbil - masimpan,Gumbil - Masimpan,,,,0.8017571428571428,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,21,21,haratai 2 balai ujung atas sdn haratai2,haratai 2 balai ujung atas sdn haratai2,,,,0.7989571428571428,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,22,22,kayu abang - paya,kayu abang – paya,,,,0.7984714285714287,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,23,23,muning tengah - batang alai pihanin raya,Muning Tengah - Batang Alai (Pihanin Raya),,,,0.7972285714285715,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,24,24,tembok baru - desa baluti,tembok baru – desa baluti,,,,0.7911571428571428,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,25,25,wasah hulu - amparaya - simpur,Wasah Hulu - Amparaya - Simpur,,,,0.7907571428571428,,,,,0,0,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,26,26,tambangan - desa baruh jaya,Tambangan - Ds. Baruh Jaya,,,,0.7855857142857143,,,,,1,1,1,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,27,27,tanuhi - ulang,tanuhi – ulang,,,,0.7792714285714285,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,28,28,loksado - haratai,Loksado - Haratai,,,,0.7779857142857144,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,29,29,tajun - sp 3 muara paring agung,Tajun - Sp.3 Muara Paring Agung,,,,0.7778000000000002,,,,,1,0,0,1,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,30,30,samping bappeda - mesjid darul halik,samping bappeda – mesjid darul halik,,,,0.7758142857142858,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,31,31,angkinang - telaga langsat,angkinang – telaga langsat,,,,0.7748428571428572,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,32,32,malinau - katingin - kamawakan,Malinau - Katingin - Kamawakan,,,,0.7747571428571428,,,,,0,1,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,33,33,hamalau - anjiran,Hamalau - Anjiran,,,,0.772957142857143,,,,,0,0,0,0,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,34,34,singakarsa - palas,singakarsa – palas,,,,0.7677571428571429,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,35,35,sei raya - jambu hulu paku,sei raya – jambu hulu paku,,,,0.7656000000000001,,,,,,,,,1,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,36,36,hulu banyu - datar mangkung - tumingki,hulu banyu – datar mangkung – tumingki,,,,0.7645000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,37,37,hamalau - telaga bidadari - wasah hilir,hamalau – telaga bidadari – wasah hilir,,,,0.7630714285714286,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,38,38,hamalau - ganda,Hamalau - Ganda,,,,0.7628142857142858,,,,,0,0,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,39,39,mandapai - madang,mandapai – madang,,,,0.7607285714285714,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,40,40,loklahung - malaris,loklahung – malaris,,,,0.7540428571428572,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,41,41,manggis - desa baru,Manggis - Ds. Baru,,,,0.7535285714285714,,,,,0,1,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,42,42,badaun - desa bjayau lama,badaun – desa bjayau lama,,,,0.7533142857142858,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,43,43,sp hamalau - teluk pinang,Simpang Hamalau - Teluk Pinang,,,,0.7498714285714287,,,,,1,0,0,1,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,44,44,aes nasution,aes nasution,,,,0.7478000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,45,45,bamban selatan - pakuan,bamban selatan – pakuan,,,,0.7452142857142858,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,46,46,kaminting batu,Kaminting Batu,,,,0.7449000000000001,,,,,0,0,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,47,47,sekolah islam kandangan barat,sekolah islam kandangan barat,,,,0.7444571428571429,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,48,48,sei paring - sei hanyar pantai ulin,sei paring – sei hanyar pantai ulin,,,,0.7337571428571429,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,49,49,tanuhi - hulu banyu,tanuhi – hulu banyu,,,,0.7309,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,50,50,teluk pinang - baluti,teluk pinang – baluti,,,,0.7289142857142857,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,51,51,bago tanggul - katilang - teratai,bago tanggul – katilang – teratai,,,,0.7279428571428573,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,52,52,papagaran palangsatan,papagaran palangsatan,,,,0.7247571428571429,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,53,53,kolonel sugiono,kolonel sugiono,,,,0.7232000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,54,54,sp empat lungau - bangkau,sp empat lungau – bangkau,,,,0.7221428571428572,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,55,55,kalumpang desa balanti - teratai,Kalumpang (Ds. Balanti) - Teratai,,,,0.7206714285714286,,,,,0,1,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,56,56,merah johansyah - melati,merah johansyah – melati,,,,0.7186285714285715,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,57,57,pandak daun buntut muradiyah - pakan dalam,Pandak Daun (Buntut Muradiyah) - Pakan Dalam,,,,0.7173000000000002,,,,,0,1,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,58,58,karya bakti - desa balimau,Karya Bakti - Ds. Balimau,,,,0.7168142857142857,,,,,0,1,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,59,59,amd - desa lok binuang,AMD - Ds. Lok Binuang,,,,0.7117571428571429,,,,,0,1,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,60,60,wasah tengah - sei tarap,wasah tengah – sei tarap,,,,0.7098857142857143,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,61,61,baru - desa bajayau,Baru - Ds. Bajayau,,,,0.7098142857142858,,,,,0,1,0,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,62,62,sp bakarung selatan - sei kudung,sp bakarung selatan – sei kudung,,,,0.7095571428571429,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,63,63,tanah bangkang menuju balai benih ikan,tanah bangkang menuju balai benih ikan,,,,0.7095000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,64,64,jafri zamzam,jafri zamzam,,,,0.7094714285714286,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,65,65,tawia - kayu abang,tawia – kayu abang,,,,0.7088000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,66,66,mangaris - limau manis,mangaris – limau manis,,,,0.7085000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,67,67,gerilya depan pustu habirau,Gerilya / (Depan PUSTU Habirau),,,,0.7077285714285715,,,,,1,1,1,0,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,68,68,palajau - desa baluti,palajau – desa baluti,,,,0.6991571428571429,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,69,69,hariti - sei raya selatan,hariti – sei raya selatan,,,,0.6959857142857144,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,70,70,hamalau - pahampangan,hamalau – pahampangan,,,,0.6950000000000001,,,,,,,,,0,1,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,71,71,malilingin - lokbahan - paniungan,Malilingin - Lokbahan - Paniungan,,,,0.6890714285714287,,,,,1,0,1,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,72,72,longawang - gumbil,longawang – gumbil,,,,0.6888571428571428,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,73,73,tungkaran - desa ulin,tungkaran – desa ulin,,,,0.6878142857142857,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,74,74,teluk mesjid - sp 4 muara banta,Teluk Mesjid - Sp. 4 Muara Banta,,,,0.6876428571428571,,,,,0,0,0,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,75,75,sp mandampa tel sili - sili - sp sei bungur,sp mandampa tel sili – sili – sp sei bungur,,,,0.6857285714285714,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,76,76,tamiyang - desa tamiyang eks,Tamiyang - Ds. Tamiyang (Eks TMMD),,,,0.6857000000000001,,,,,0,1,0,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,77,77,pakan dalam - kaminting batu,pakan dalam – kaminting batu,,,,0.6850428571428573,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,78,78,taniran tengah - taniran selatan,taniran tengah – taniran selatan,,,,0.6824571428571429,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,79,79,banua kambang - desa wasah tengah,banua kambang – desa wasah tengah,,,,0.6803857142857144,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,80,80,tanayung - simp ambarai,tanayung – simp ambarai,,,,0.6801857142857144,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,81,81,pendawa - desa tebing tinggi,pendawa – desa tebing tinggi,,,,0.6799428571428573,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,82,82,hamalau - asam cangkok,hamalau – asam cangkok,,,,0.6790857142857144,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,83,83,sei raya selatan - malutu - goa berangin,Sungai Raya Selatan - Malutu - Goa Berangin,,,,0.6735285714285715,,,,,1,0,1,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,84,84,batang kulur kanan - batang kulur kiri,Batang Kulur Kanan - Batang Kulur Kiri,,,,0.6734428571428572,,,,,0,1,0,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,85,85,mawar daha selatan,mawar daha selatan,,,,0.6721571428571429,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,86,86,kacang parang ulang - balai mawak - kias,kacang parang ulang – balai mawak – kias,,,,0.6713571428571429,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,87,87,loksado - loklahung,Loksado - Loklahung,,,,0.6695571428571429,,,,,1,0,1,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,88,88,tembok lama - loklua,tembok lama – loklua,,,,0.6683857142857144,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,89,89,bubuih - desa halunuk,bubuih – desa halunuk,,,,0.6675000000000002,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,90,90,sei mandala murung raya,Sei. Mandala Murung Raya,,,,0.6643285714285715,,,,,0,1,0,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,91,91,panggang hijau - desa tawar,panggang hijau – desa tawar,,,,0.6623571428571429,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,92,92,tibung raya - hamalau dalam,tibung raya – hamalau dalam,,,,0.6614142857142857,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,93,93,biti - sei kupang karya bakti tni,biti – sei kupang karya bakti tni,,,,0.6584714285714286,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,94,94,h m thaib,h m thaib,,,,0.6580857142857144,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,95,95,bayanan - habirau tengah,Bayanan - Habirau Tengah,,,,0.6561285714285715,,,,,1,1,1,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,96,96,amawang muka - getek,amawang muka – getek,,,,0.6561285714285714,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,97,97,ambarai - madang,Ambarai - Madang,,,,0.6530857142857144,,,,,1,0,0,1,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,98,98,sp 4 baru tampang - sp bilui pamujaan,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan,,,,0.6528714285714285,,,,,0,1,0,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,99,99,firdaus - desa kapuh,firdaus – desa kapuh,,,,0.6520714285714286,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,100,100,bariang - getek,bariang – getek,,,,0.6511571428571429,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,101,101,sp 4 mesjid sirih - sarang nyamuk - asam tamiyang,sp 4 mesjid sirih – sarang nyamuk – asam tamiyang,,,,0.6491571428571429,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,102,102,balimau - murung dalam,balimau – murung dalam,,,,0.6454428571428572,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,103,103,sp 4 banjarbaru - pasar negara,sp 4 banjarbaru – pasar negara,,,,0.6445857142857142,,,,,,,,,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,104,104,bamban tibung - martajiwa,Bamban (Tibung) - Martajiwa,,,,0.6430142857142858,,,,,1,1,1,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,105,105,bajayau - desa bajayau tengah,Bajayau - Ds. Bajayau Tengah,,,,0.6419285714285714,,,,,1,0,1,0,0,0,1
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,106,106,angkinang selatan - tawia - wawaran,Angkinang Selatan - Tawia - Wawaran,,,,0.6412428571428571,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,107,107,sei durian - desa gumbil,sei durian – desa gumbil,,,,0.6395428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,108,108,sp empat lungau - garis,Sp. Empat Lungau - Garis,,,,0.6388857142857144,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,109,109,kampung kawat,Kampung Kawat,,,,0.6351285714285715,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,110,110,ida manggala - padang makmur,ida manggala – padang makmur,,,,0.6348714285714285,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,111,111,negara - tumbukan banyu,negara – tumbukan banyu,,,,0.6347285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,112,112,pandulangan - kalinduku,pandulangan – kalinduku,,,,0.6343,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,113,113,tibung raya - asam cangkuk,tibung raya – asam cangkuk,,,,0.6325142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,114,114,taal jarau - sp baru tampang,Taal Jarau - Sp. Baru/Tampang,,,,0.6290857142857144,,,,,1,0,0,1,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,115,115,hamak timur - umpaya,hamak timur – umpaya,,,,0.6286428571428573,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,116,116,suriangpati - gambah dalam barat,suriangpati – gambah dalam barat,,,,0.6271285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,117,117,menuju smp 7 - desa gambah dalam,menuju smp 7 – desa gambah dalam,,,,0.6249857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,118,118,pangeran antasari - loklua,Pangeran Antasari - Loklua,,,,0.6217000000000001,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,119,119,dahlia,dahlia,,,,0.6215285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,120,120,keramat sakti - desa tebing tinggi,keramat sakti – desa tebing tinggi,,,,0.6161714285714287,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,121,121,wahab syahrani,wahab syahrani,,,,0.6151428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,122,122,pianggu,pianggu,,,,0.6137142857142859,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,123,123,karang jawa - ambarai - sei bungur,karang jawa – ambarai – sei bungur,,,,0.6107285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,124,124,kandangan hulu - sp tabihi,kandangan hulu – sp tabihi,,,,0.6073714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,125,125,halaban,Halaban,,,,0.6073000000000001,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,126,126,bangga,bangga,,,,0.6065857142857144,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,127,127,kalumpang - balimau,kalumpang – balimau,,,,0.6063571428571428,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,128,128,asam duhat - desa pantai ulin,Asam Duhat - Ds. Pantai Ulin,,,,0.6051857142857143,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,129,129,tembok baru asam cangkok,tembok baru asam cangkok,,,,0.6029,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,130,130,pandan sari - desa angkinang,pandan sari – desa angkinang,,,,0.6004714285714287,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,131,131,guru h izim - desa pantai ulin,Guru H. Izim - Ds. Pantai Ulin,,,,0.5994714285714287,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,132,132,padang haur - desa wasah tengah,padang haur – desa wasah tengah,,,,0.5967857142857144,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,133,133,ulang - bangkaun,ulang – bangkaun,,,,0.5940142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,134,134,wasah hilir - amparaya,wasah hilir – amparaya,,,,0.5920428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,135,135,pandak daun - baruh jaya - samuda,pandak daun – baruh jaya – samuda,,,,0.5902999999999999,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,136,136,rahmah bahran,rahmah bahran,,,,0.5852857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,137,137,kaliring - sp padang batung,Kaliring - Sp. Padang Batung,,,,0.5828428571428572,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,138,138,baiturrahim parincahan,baiturrahim parincahan,,,,0.5822428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,139,139,buluh - desa tebing tinggi,buluh – desa tebing tinggi,,,,0.5807428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,140,140,tumbukan banyu - banua hanyar,tumbukan banyu – banua hanyar,,,,0.5802285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,141,141,muara banta - karang jawa,muara banta – karang jawa,,,,0.5797714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,142,142,hakurung dalam - desa sei haji,hakurung dalam – desa sei haji,,,,0.5785,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,143,143,bayampah - tanuhi - tugu niih,bayampah – tanuhi – tugu niih,,,,0.5767000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,144,144,sei kudung - kalinduku,sei kudung – kalinduku,,,,0.5763,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,145,145,papancan - desa tanah bangkang,papancan – desa tanah bangkang,,,,0.5760571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,146,146,loksado - pantai dusin,loksado – pantai dusin,,,,0.5745142857142859,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,147,147,baluti - jambu hulu paku,baluti – jambu hulu paku,,,,0.5687857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,148,148,malinau - kandihin,malinau – kandihin,,,,0.5683,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,149,149,tabihi - telaga langsat,Tabihi - Telaga Langsat,,,,0.5636142857142858,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,150,150,kalaka dayuh - desa sei raya utara,kalaka dayuh – desa sei raya utara,,,,0.5575285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,151,151,bamban selatan - tanggang - panggang hijau,Bamban Selatan - Tanggang - Panggang Hijau,,,,0.5549714285714287,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,152,152,paramaian,Paramaian,,,,0.5539857142857143,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,153,153,harapan sdn habirau ii sei palangan,harapan sdn habirau ii sei palangan,,,,0.5509000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,154,154,kantor camat loksado ii,kantor camat loksado ii,,,,0.5500000000000002,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,155,155,tibung dalam - teratai,tibung dalam – teratai,,,,0.5489,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,156,156,pembangunan - desa sei raya utara,pembangunan – desa sei raya utara,,,,0.5481000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,157,157,sp 3 baluti - amawang,sp 3 baluti – amawang,,,,0.5440142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,158,158,sei raya selatan - sarang halang,Sungai Raya Selatan - Sarang Halang,,,,0.5415857142857143,,,,,1,0,0,1,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,159,159,sirih - pacakan,Sirih - Pacakan,,,,0.5415,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,160,160,singakarsa - getek,singakarsa – getek,,,,0.5396571428571428,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,161,161,ks tubun,KS. Tubun,,,,0.5361571428571429,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,162,162,cangkingan herman,Cangkingan Herman,,,,0.5349285714285715,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,163,163,tambak pipii - malilingin,tambak pipii – malilingin,,,,0.5255428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,164,164,rel angkinang,rel angkinang – angkinang,,,,0.5205571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,165,165,goha - desa amawang kanan,goha – desa amawang kanan,,,,0.5160000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,166,166,mungkur galah - lokpaikat,mungkur galah – lokpaikat,,,,0.5157857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,167,167,pantai langsat - umpaya,pantai langsat – umpaya,,,,0.5154857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,168,168,sp 3 bukuanin - tayub,sp 3 bukuanin – tayub,,,,0.5140571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,169,169,batang kulur kanan - bumi berkat kisung,batang kulur kanan – bumi berkat kisung,,,,0.5120428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,170,170,desa kapuh tengah menuju majelis talim,desa kapuh tengah menuju majelis talim,,,,0.5096,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,171,171,sp malutu - tambak,sp malutu – tambak,,,,0.5052142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,172,172,datar belimbing - muara kitar,datar belimbing – muara kitar,,,,0.5018999999999999,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,173,173,nusa indah,nusa indah,,,,0.5008571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,174,174,bayanan - pihanin,bayanan – pihanin,,,,0.4970428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,175,175,air miris - desa wasah hilir,air miris – desa wasah hilir,,,,0.496457142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,176,176,malilingin - muara hariang,malilingin – muara hariang,,,,0.4963285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,177,177,bumi berkat - mungkur galah,bumi berkat – mungkur galah,,,,0.4895857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,178,178,al - ikhlas - desa baluti,al – ikhlas – desa baluti,,,,0.488,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,179,179,kantor camat daha selatan ii,kantor camat daha selatan ii,,,,0.4874285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,180,180,kesehatan - komp rmh dokter,kesehatan – komp rmh dokter,,,,0.484457142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,181,181,budi bakti - tiga desember,budi bakti – tiga desember,,,,0.4821714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,182,182,karampaci - desa kapuh,karampaci – desa kapuh,,,,0.4812571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,183,183,sp malutu - pahampangan,Simpang Malutu - Pahampangan,,,,0.4794142857142858,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,184,184,sei kacil i - kapuh padang,sei kacil i – kapuh padang,,,,0.4789714285714287,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,185,185,ulin - tanggul balai mas,Ulin - Tanggul (Balai Mas),,,,0.4774142857142858,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,186,186,panglima batur,panglima batur,,,,0.4759714285714287,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,187,187,bina bakat,bina bakat,,,,0.4757142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,188,188,telaga banta - patigan,telaga banta – patigan,,,,0.4756571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,189,189,gambah luar - sei kudung,gambah luar – sei kudung,,,,0.4738714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,190,190,ulang - kacang parang,ulang – kacang parang,,,,0.4735285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,191,191,kalumpang selatan - desa asam tamiyang,kalumpang selatan – desa asam tamiyang,,,,0.4687285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,192,192,simpur - simp bilui,simpur – simp bilui,,,,0.4682428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,193,193,paku jambu hulu - ganda,paku jambu hulu – ganda,,,,0.4664714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,194,194,malaris - loapanggang,malaris – loapanggang,,,,0.4592714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,195,195,hamayung - hakurung dalam,Hamayung - Hakurung Dalam,,,,0.4589857142857143,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,196,196,bakarung - tabihi - karang jawa,Bakarung -Tabihi - Karang Jawa,,,,0.4562428571428572,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,197,197,sei namang - desa tanah bangkang,sei namang – desa tanah bangkang,,,,0.4550714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,198,198,teluk pinang - pahampangan utara,teluk pinang – pahampangan utara,,,,0.4550285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,199,199,kalimput desa wasah hilir,kalimput desa wasah hilir,,,,0.4544428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,200,200,muara hariang - bayumbung,muara hariang – bayumbung,,,,0.4522857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,201,201,rawati - desa panjampang bahagia,rawati – desa panjampang bahagia,,,,0.4473142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,202,202,sman negara kh abdullah,sman negara kh abdullah,,,,0.4454,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,203,203,kh ramli - desa amparaya,kh ramli – desa amparaya,,,,0.4405714285714287,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,204,204,tandik - desa wasah hilir,tandik – desa wasah hilir,,,,0.4405142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,205,205,habib ibrahim - desa sei mandala,habib ibrahim – desa sei mandala,,,,0.4380571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,206,206,brigjen katamso,brigjen katamso,,,,0.4380000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,207,207,samping mesjid mandapai,samping mesjid mandapai,,,,0.4376142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,208,208,sukaramai - keramat,sukaramai – keramat,,,,0.4370285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,209,209,kenanga,kenanga,,,,0.4335428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,210,210,aluh idut,Aluh Idut,,,,0.4334571428571428,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,211,211,min pandak daun,min pandak daun,,,,0.4273142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,212,212,baru - asam desa baru,baru – asam desa baru,,,,0.4255857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,213,213,batu laki - muara pipii,batu laki – muara pipii,,,,0.4251,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,214,214,jend sudirman,jend sudirman,,,,0.4233714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,215,215,talapak manuk - desa kapuh,Talapak Manuk - Ds. Kapuh,,,,0.4212571428571429,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,216,216,simpur - sp 3 muara paring agung,simpur – sp 3 muara paring agung,,,,0.4211285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,217,217,musyawarah nagara,musyawarah nagara,,,,0.4201142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,218,218,taniran selatan - rantauan,taniran selatan – rantauan,,,,0.4182000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,219,219,asam seranggan - asam tamiyang,Asam Seranggan - Asam Tamiyang,,,,0.4182000000000001,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,220,220,sei raya utara - teluk pinang,Sungai Raya Utara - Teluk Pinang,,,,0.4137285714285714,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,221,221,di panjaitan - loklua,di panjaitan – loklua,,,,0.4136,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,222,222,kenanga - desa baruh kambang,kenanga – desa baruh kambang,,,,0.4065571428571428,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,223,223,panjampang bahagia - bayur,panjampang bahagia – bayur,,,,0.4031285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,224,224,bamban tengah - lok nyiur,Bamban Tengah - Lok Nyiur,,,,0.4005,,,,,1,1,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,225,225,madang - ambutun,madang – ambutun,,,,0.3986714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,226,226,soeprapto - h m rusli,soeprapto – h m rusli,,,,0.3979714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,227,227,rs hasan basry ii,rs hasan basry ii,,,,0.3946000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,228,228,paharuangan - asam dua,Paharuangan - Asam Dua,,,,0.3924000000000001,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,229,229,hulu banyu - pantai langsat,hulu banyu – pantai langsat,,,,0.3896285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,230,230,pajah api - desa kapuh,pajah api – desa kapuh,,,,0.3891428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,231,231,mandampa - longawang,mandampa – longawang,,,,0.3886142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,232,232,menuju smpn malilingin,menuju smpn malilingin,,,,0.3798142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,233,233,h jarkasi - desa sei paring,h jarkasi – desa sei paring,,,,0.3789857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,234,234,haratai 3 balai kedayang sdn haratai 3,haratai 3 balai kedayang sdn haratai 3,,,,0.3787285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,235,235,at - taubah - desa kapuh,at – taubah – desa kapuh,,,,0.3762571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,236,236,h saim garunggang - kalimput,h saim garunggang – kalimput,,,,0.3758,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,237,237,anggrek,anggrek,,,,0.3749714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,238,238,tanjungan - sp 3 sakijang,tanjungan – sp 3 sakijang,,,,0.3705857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,239,239,tanjungan - sp 10 batang kulur - sei kali,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali,,,,0.3694714285714286,,,,,1,0,0,1,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,240,240,tanginau - balai haruyan,tanginau – balai haruyan,,,,0.3688142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,241,241,banyu barau - sei kalang,Banyu Barau - Sei Kalang,,,,0.3671428571428573,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,242,242,parindra,parindra,,,,0.3661142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,243,243,sp batang kulur kiri - tatas,Sp. Batang Kulur Kiri - Tatas,,,,0.3653285714285714,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,244,244,batang kulur kiri - durian landung,batang kulur kiri – durian landung,,,,0.3624000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,245,245,muara kitar - desa lumpangi,muara kitar – desa lumpangi,,,,0.3601571428571428,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,246,246,padang palas,padang palas,,,,0.3580142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,247,247,bariang - patigan,bariang – patigan,,,,0.3568,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,248,248,sei paring - toba,sei paring – toba,,,,0.3558714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,249,249,sei minting - desa malutu,sei minting – desa malutu,,,,0.3556,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,250,250,tataian - desa ulang - loksado,tataian – desa ulang – loksado,,,,0.3555857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,251,251,monumen 17 mei - mandapai,monumen 17 mei – mandapai,,,,0.3555428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,252,252,tembok kacil sei kudung,tembok kacil sei kudung,,,,0.3548714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,253,253,teluk pinang - padang rasau,teluk pinang – padang rasau,,,,0.3522714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,254,254,sp 4 banjarbaru - pihanin raya,sp 4 banjarbaru – pihanin raya,,,,0.3503428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,255,255,gambah dalam barat - mahulung,gambah dalam barat – mahulung,,,,0.3464571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,256,256,gambah luar - gambah dalam,gambah luar – gambah dalam,,,,0.3445857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,257,257,panjampang bahagia - hanau,panjampang bahagia – hanau,,,,0.3431857142857144,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,258,258,buntu muara hatib - bts kab hst,buntu muara hatib – bts kab hst,,,,0.3417000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,259,259,sei kupang utara - simp empat lungau,sei kupang utara – simp empat lungau,,,,0.3392857142857144,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,260,260,sp 3 bukuanin - riam talo,Sp.3 Bukuanin - Riam Talo,,,,0.3352714285714286,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,261,261,bamban utara - longawang,bamban utara – longawang,,,,0.3350714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,262,262,inst pdam negara,inst pdam negara,,,,0.3339000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,263,263,sakincung - desa hakurung dalam,sakincung – desa hakurung dalam,,,,0.3329285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,264,264,bubuih desa halunuk - kandihin,bubuih desa halunuk – kandihin,,,,0.3294714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,265,265,hamak - umbai,hamak – umbai,,,,0.3289285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,266,266,karasikan - sarang halang,Karasikan - Sarang Halang,,,,0.3276142857142857,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,267,267,tpa - desa sei raya selatan,tpa – desa sei raya selatan,,,,0.3268571428571428,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,268,268,tanah habang - desa simpur,Tanah Habang - Ds. Simpur,,,,0.3215857142857143,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,269,269,sekolah islam sei pinang,sekolah islam sei pinang,,,,0.3206857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,270,270,pagat batu - muara hariang,pagat batu – muara hariang,,,,0.3184999999999999,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,271,271,bakarung tengah - karang jawa,bakarung tengah – karang jawa,,,,0.3156714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,272,272,pertukangan,pertukangan,,,,0.3090000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,273,273,binjai sirih hulu - desa seranggan,binjai sirih hulu – desa seranggan,,,,0.3088428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,274,274,mangamol - desa pantai ulin,mangamol – desa pantai ulin,,,,0.3079428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,275,275,niagara desa halunuk - ayan,niagara desa halunuk – ayan,,,,0.3077142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,276,276,habib,habib,,,,0.3047428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,277,277,kalumpang - baruh,kalumpang – baruh,,,,0.3046285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,278,278,satria,satria,,,,0.3032,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,279,279,munggu raya - desa hariti,munggu raya – desa hariti,,,,0.3019428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,280,280,bakarung - rantauan,bakarung – rantauan,,,,0.2988714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,281,281,gang bidan desa tambak bitin,gang bidan desa tambak bitin,,,,0.2988571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,282,282,kacang parang ulang - balai wariung,kacang parang ulang – balai wariung,,,,0.2981714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,283,283,lambuk - desa tumingki,lambuk – desa tumingki,,,,0.2977857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,284,284,mondar ulin - pantai ulin - desa ulin,mondar ulin – pantai ulin – desa ulin,,,,0.2973142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,285,285,gambah dalam - rantauan,gambah dalam – rantauan,,,,0.2939285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,286,286,soetoyo - teluk mesjid,Soetoyo - Teluk Mesjid,,,,0.2934571428571429,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,287,287,mesjid quba,mesjid quba,,,,0.2928000000000001,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,288,288,pasar kandangan - oprit jembt loklua,pasar kandangan – oprit jembt loklua,,,,0.2863714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,289,289,padang rasau tambak tamiang - paku pantai,padang rasau tambak tamiang – paku pantai,,,,0.2839857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,290,290,samping kantor camat daha utara,samping kantor camat daha utara,,,,0.2823714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,291,291,musyawarah kandangan,musyawarah kandangan,,,,0.2823714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,292,292,tambak pipii - batu ampar,tambak pipii – batu ampar,,,,0.2795285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,293,293,kalaka indah - perumnas tibung,kalaka indah – perumnas tibung,,,,0.2791714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,294,294,taal batang kulur - sp 3 muara prg agung,taal batang kulur – sp 3 muara prg agung,,,,0.2782142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,295,295,lorong bupati,lorong bupati,,,,0.2757428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,296,296,karang intan - tanah bangkang,karang intan – tanah bangkang,,,,0.2754285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,297,297,telaga langsat - pakuan timur,Telaga Langsat - Pakuan Timur,,,,0.2750714285714286,,,,,1,1,0,1,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,298,298,mawangi - pariangan,mawangi – pariangan,,,,0.2749285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,299,299,muara pipii - tambak pipii,Muara Pipii - Tambak Pipii,,,,0.2746714285714286,,,,,0,1,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,300,300,pegangsaan timur - teluk aman,pegangsaan timur – teluk aman,,,,0.2736714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,301,301,gerilya - desa simpur,gerilya – desa simpur,,,,0.2719428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,302,302,halayung - hantarukung,Halayung - Hantarukung,,,,0.2719428571428572,,,,,1,0,0,1,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,303,303,jambu hulu - paku pantai,jambu hulu – paku pantai,,,,0.2699571428571428,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,304,304,pagar haur - malutu,pagar haur – malutu,,,,0.2677714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,305,305,pemuda,pemuda,,,,0.2651142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,306,306,sei bugundi,Sungai Bugundi,,,,0.2645,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,307,307,gambir - sp empat lungau,gambir – sp empat lungau,,,,0.2638,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,308,308,sirih - taro,sirih – taro,,,,0.2580428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,309,309,hamak utara - samaragi,hamak utara – samaragi,,,,0.2484428571428572,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,310,310,pertanian - desa wasah tengah,pertanian – desa wasah tengah,,,,0.2482571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,311,311,jangkang - pantai ulin,jangkang – pantai ulin,,,,0.2435428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,312,312,slasa garih - desa kapuh,slasa garih – desa kapuh,,,,0.2432571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,313,313,amawang kanan - wasah hulu,amawang kanan – wasah hulu,,,,0.2406428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,314,314,sarang halang padang - sp batang kulur,sarang halang padang – sp batang kulur,,,,0.2406142857142858,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,315,315,paharuangan - sei raya selatan,paharuangan – sei raya selatan,,,,0.2388428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,316,316,mawar kandangan utara,mawar kandangan utara,,,,0.2386857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,317,317,balanti - p3dt,balanti – p3dt,,,,0.2362571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,318,318,sp jadi makmur - desa samuda,sp jadi makmur – desa samuda,,,,0.2345714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,319,319,tukang garit tambangan,Tukang Garit (Tambangan),,,,0.2333571428571428,,,,,0,0,0,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,320,320,sei kacil ii,sei kacil ii,,,,0.2271714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,321,321,matang gadung - halalang,matang gadung – halalang,,,,0.2267714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,322,322,makam habib - desa lumpangi,makam habib – desa lumpangi,,,,0.2221428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,323,323,silaturrahim,silaturrahim,,,,0.2214857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,324,324,nomura,nomura,,,,0.2183428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,325,325,menuju stadion 2 desember,Menuju Stadion 2 Desember,,,,0.2146,,,,,1,0,1,0,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,326,326,parincahan - singakarsa harapan,parincahan – singakarsa harapan,,,,0.2130285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,327,327,umpaya - tumarin,umpaya – tumarin,,,,0.2070285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,328,328,teratai menuju komp perumnas hamalau,teratai menuju komp perumnas hamalau,,,,0.2015142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,329,329,jangkang - desa wasah hilir,jangkang – desa wasah hilir,,,,0.2006,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,330,330,mangunang - desa sei raya utara,mangunang – desa sei raya utara,,,,0.1994571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,331,331,angkakai - desa amawang kiri,angkakai – desa amawang kiri,,,,0.1980285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,332,332,newangsekarti - desa gambah luar muka,newangsekarti – desa gambah luar muka,,,,0.1923714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,333,333,bamban selatan - pakuan balunan,bamban selatan – pakuan balunan,,,,0.1922285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,334,334,balaimas - hanau,balaimas – hanau,,,,0.1913714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,335,335,rantauan - sei baru pulau,rantauan – sei baru pulau,,,,0.1912714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,336,336,sei karuh,sei karuh,,,,0.1911714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,337,337,wasah hilir - sarang halang,wasah hilir – sarang halang,,,,0.1807285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,338,338,sei damang - amawang kiri,sei damang – amawang kiri,,,,0.1801285714285714,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,339,339,batang kulur kanan - sarangan,batang kulur kanan – sarangan,,,,0.1782142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,340,340,papagaran - desa amawang kanan,papagaran – desa amawang kanan,,,,0.1776571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,341,341,kamboja,kamboja,,,,0.1772857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,342,342,pakan dalam iii,pakan dalam iii,,,,0.1754571428571429,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,343,343,taminung,Taminung,,,,0.1734285714285714,,,,,1,0,0,1,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,344,344,amparaya - karangan - hanau,amparaya – karangan – hanau,,,,0.1682428571428571,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,345,345,pesantren muradiyah,pesantren muradiyah,,,,0.1657714285714286,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,346,346,pakan dalam i,pakan dalam i,,,,0.1619142857142857,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,347,347,pakan dalam ii,pakan dalam ii,,,,0.1612857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,348,348,haritas pt pertani,haritas pt pertani,,,,0.1598285714285715,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,349,349,garunggang - hantamangu,garunggang – hantamangu,,,,0.1495857142857143,,,,,,,,,0,0,0
+TEK_Top35_XGB_rerank_full,refined_rerank_teknokratis2026,XGBoost,rerank,350,350,galuntang tayub - desa madang,galuntang tayub – desa madang,,,,0.1463428571428571,,,,,,,,,0,0,0

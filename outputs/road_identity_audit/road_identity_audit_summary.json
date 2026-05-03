@@ -1,0 +1,555 @@
+{
+  "canonical_source_file": "F:\\WebApps\\1.ml_apps\\staging-source\\ml_murni_refined_comprehensive_20260417_201703.xlsx",
+  "canonical_source_sheet": "ranking_horizon_2026",
+  "canonical_universe_count": 350,
+  "current_app_unique_count_rankings_only": 519,
+  "current_app_unique_count_combined_sources": 749,
+  "rankings_summary": {
+    "safe": 515,
+    "ambiguous": 3,
+    "missing": 1,
+    "proposed_unique": 350
+  },
+  "combined_sources_summary": {
+    "safe": 640,
+    "ambiguous": 43,
+    "missing": 66,
+    "proposed_unique": 350
+  },
+  "patterns": {
+    "abbreviation_ds_desa": 205,
+    "dash_punctuation": 412,
+    "other_punctuation": 333,
+    "parentheses": 64,
+    "slash_separator": 18,
+    "abbreviation_sei_sungai": 59,
+    "abbreviation_sp": 48,
+    "spacing": 5
+  },
+  "top_risky_many_to_one": [
+    {
+      "canonical_key": "amd - desa lok binuang",
+      "canonical_name": "AMD - Ds. Lok Binuang",
+      "current_keys": [
+        "amd - desa lok binuang",
+        "amd - ds. lok binuang",
+        "jl. amd - ds. lok binuang"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "al - ikhlas - desa baluti",
+      "canonical_name": "Al - Ikhlas - Ds. Baluti",
+      "current_keys": [
+        "al - ikhlas - desa baluti",
+        "al - ikhlas - ds. baluti",
+        "jl. al - ikhlas - ds. baluti"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "angkakai - desa amawang kiri",
+      "canonical_name": "Angkakai - Ds. Amawang Kiri",
+      "current_keys": [
+        "angkakai - desa amawang kiri",
+        "angkakai - ds. amawang kiri",
+        "jl. angkakai - ds. amawang kiri"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "anjiran rantauan - desa taniran tengah",
+      "canonical_name": "Anjiran Rantauan - Ds. Taniran Tengah",
+      "current_keys": [
+        "anjiran rantauan - desa taniran tengah",
+        "anjiran rantauan - ds. taniran tengah",
+        "jl. anjiran rantauan - ds. taniran tengah"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "asam duhat - desa pantai ulin",
+      "canonical_name": "Asam Duhat - Ds. Pantai Ulin",
+      "current_keys": [
+        "asam duhat - desa pantai ulin",
+        "asam duhat - ds. pantai ulin",
+        "jl. asam duhat - ds. pantai ulin"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "badaun - desa bjayau lama",
+      "canonical_name": "Badaun - Ds. Bjayau Lama",
+      "current_keys": [
+        "badaun - desa bjayau lama",
+        "badaun - ds. bjayau lama",
+        "jl. badaun - ds. bajayau lama"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "bakarung - tabihi - karang jawa",
+      "canonical_name": "Bakarung -Tabihi - Karang Jawa",
+      "current_keys": [
+        "bakarung - tabihi - karang jawa",
+        "bakarung - tabihi -karang jawa",
+        "bakarung -tabihi - karang jawa"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "baluti - jambu hulu paku",
+      "canonical_name": "Baluti - Jambu Hulu (Paku)",
+      "current_keys": [
+        "baluti - jambu hulu (paku)",
+        "baluti - jambu hulu paku",
+        "baluti - jambu hulu/paku"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "bamban tibung - martajiwa",
+      "canonical_name": "Bamban (Tibung) - Martajiwa",
+      "current_keys": [
+        "bamban (tibung) - martajiwa",
+        "bamban tibung - martajiwa",
+        "jl. bamban (tibung) - martajiwa"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "baru - desa bajayau",
+      "canonical_name": "Baru - Ds. Bajayau",
+      "current_keys": [
+        "baru - desa bajayau",
+        "baru - ds. bajayau",
+        "jl. baru - ds. bajayau"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "batang kulur kanan - bumi berkat kisung",
+      "canonical_name": "Batang Kulur Kanan - Bumi Berkat (Kisung)",
+      "current_keys": [
+        "batang kulur kanan - bumi berkat (jl. kisung)",
+        "batang kulur kanan - bumi berkat (kisung)",
+        "batang kulur kanan - bumi berkat kisung"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "binjai sirih hulu - desa seranggan",
+      "canonical_name": "Binjai (Sirih Hulu) - Ds. Seranggan",
+      "current_keys": [
+        "binjai (sirih hulu) - ds. seranggan",
+        "binjai sirih hulu - desa seranggan",
+        "jl. binjai (sirih hulu) - ds. seranggan"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "biti - sei kupang karya bakti tni",
+      "canonical_name": "Biti - Sungai Kupang (Karya Bakti TNI)",
+      "current_keys": [
+        "biti - sei kupang karya bakti tni",
+        "biti - sungai kupang (karya bakti tni)",
+        "jl. biti - sungai kupang (karya bakti tni)"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "di panjaitan - loklua",
+      "canonical_name": "DI. Panjaitan - Loklua",
+      "current_keys": [
+        "di panjaitan - loklua",
+        "di. panjaitan - loklua",
+        "jl. di. panjaitan - loklua"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "galuntang tayub - desa madang",
+      "canonical_name": "Galuntang Tayub - Ds. Madang",
+      "current_keys": [
+        "galuntang tayub - desa madang",
+        "galuntang tayub - ds. madang",
+        "jl. galuntang tayub - ds. madang"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "gambir - sp empat lungau",
+      "canonical_name": "Gambir - Sp. Empat Lungau",
+      "current_keys": [
+        "gambir - sp empat lungau",
+        "gambir - sp. empat lungau",
+        "gambir -sp. empat lungau"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "gang bidan desa tambak bitin",
+      "canonical_name": "Gang Bidan (Ds. Tambak Bitin)",
+      "current_keys": [
+        "gang bidan (ds. tambak bitin)",
+        "gang bidan desa tambak bitin",
+        "jl. gang bidan (ds. tambak bitin)"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "gerilya depan pustu habirau",
+      "canonical_name": "Gerilya / (Depan PUSTU Habirau)",
+      "current_keys": [
+        "gerilya / (depan pustu habirau)",
+        "gerilya depan pustu habirau",
+        "jl. gerilya / (depan pustu habirau)"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "goha - desa amawang kanan",
+      "canonical_name": "Goha - Ds. Amawang Kanan",
+      "current_keys": [
+        "goha - desa amawang kanan",
+        "goha - ds. amawang kanan",
+        "jl. goha - ds. amawang kanan"
+      ],
+      "count": 3
+    },
+    {
+      "canonical_key": "harapan sdn habirau ii sei palangan",
+      "canonical_name": "Harapan (SDN Habirau II)/ Sei. Palangan",
+      "current_keys": [
+        "harapan (sdn habirau ii)/ sei. palangan",
+        "harapan sdn habirau ii sei palangan",
+        "jl. harapan (sdn habirau ii)/sei. palangan"
+      ],
+      "count": 3
+    }
+  ],
+  "top_ambiguous": [
+    {
+      "current_key": "jl. bariang - patigan",
+      "raw_examples": [
+        "Jl. Bariang - Patigan"
+      ],
+      "candidate_names": "Bariang - Patigan",
+      "confidence_score": 0.9189
+    },
+    {
+      "current_key": "jl. kayu abang - paya",
+      "raw_examples": [
+        "Jl. Kayu Abang - Paya"
+      ],
+      "candidate_names": "Kayu Abang - Paya",
+      "confidence_score": 0.9189
+    },
+    {
+      "current_key": "jl. rs. hasan basry ii",
+      "raw_examples": [
+        "Jl. RS. Hasan Basry II"
+      ],
+      "candidate_names": "RS. Hasan Basry II",
+      "confidence_score": 0.9189
+    },
+    {
+      "current_key": "tamiyang - ds. tamiyang (eks tmmd)",
+      "raw_examples": [
+        "Tamiyang - Ds. Tamiyang (Eks TMMD)"
+      ],
+      "candidate_names": "Tamiyang - Ds. Tamiyang (Eks TMMD)",
+      "confidence_score": 0.918
+    },
+    {
+      "current_key": "jl. ds. kapuh tengah (jl. menuju majelis taklim)",
+      "raw_examples": [
+        "Jl. Ds. Kapuh Tengah (Jl. Menuju Majelis Taklim)"
+      ],
+      "candidate_names": "Ds. Kapuh Tengah (Menuju Majelis Talim)",
+      "confidence_score": 0.9157
+    },
+    {
+      "current_key": "jl. kesehatan - komp. rumah dokter",
+      "raw_examples": [
+        "Jl. Kesehatan - Komp. Rumah Dokter"
+      ],
+      "candidate_names": "Kesehatan - Komp. Rmh Dokter",
+      "confidence_score": 0.9153
+    },
+    {
+      "current_key": "jl. balaimas - hanau",
+      "raw_examples": [
+        "Jl. Balaimas - Hanau"
+      ],
+      "candidate_names": "Balaimas - Hanau",
+      "confidence_score": 0.9143
+    },
+    {
+      "current_key": "jl. rambai - bariang",
+      "raw_examples": [
+        "Jl. Rambai - Bariang"
+      ],
+      "candidate_names": "Rambai - Bariang",
+      "confidence_score": 0.9143
+    },
+    {
+      "current_key": "jl. umpaya - tumarin",
+      "raw_examples": [
+        "Jl. Umpaya - Tumarin"
+      ],
+      "candidate_names": "Umpaya - Tumarin",
+      "confidence_score": 0.9143
+    },
+    {
+      "current_key": "jl. amparaya-karangan - hanau",
+      "raw_examples": [
+        "Jl. Amparaya-Karangan - Hanau"
+      ],
+      "candidate_names": "Amparaya - Karangan - Hanau",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "jl. hamalau - ganda",
+      "raw_examples": [
+        "Jl. Hamalau - Ganda"
+      ],
+      "candidate_names": "Hamalau - Ganda",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "jl. kolonel sugiono",
+      "raw_examples": [
+        "JL. Kolonel Sugiono"
+      ],
+      "candidate_names": "Kolonel Sugiono",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "jl. makam habib ds. lumpangi",
+      "raw_examples": [
+        "Jl. Makam Habib Ds. Lumpangi"
+      ],
+      "candidate_names": "Makam Habib - Desa Lumpangi",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "jl. min pandak daun",
+      "raw_examples": [
+        "Jl. MIN Pandak Daun"
+      ],
+      "candidate_names": "MIN Pandak Daun",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "jl. sungai kacil ii",
+      "raw_examples": [
+        "Jl. Sungai Kacil II"
+      ],
+      "candidate_names": "Sungai Kacil II",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "rel angkinang - tmmd angkinang",
+      "raw_examples": [
+        "Rel Angkinang - TMMD Angkinang"
+      ],
+      "candidate_names": "Rel Angkinang - TMMD Angkinang",
+      "confidence_score": 0.9091
+    },
+    {
+      "current_key": "bajayau - bajayau tengah",
+      "raw_examples": [
+        "Bajayau - Bajayau Tengah"
+      ],
+      "candidate_names": "Bajayau - Ds. Bajayau Tengah",
+      "confidence_score": 0.9057
+    },
+    {
+      "current_key": "jl. buluh ds. tebing tinggi",
+      "raw_examples": [
+        "Jl. Buluh Ds. Tebing Tinggi"
+      ],
+      "candidate_names": "Buluh - Ds. Tebing Tinggi",
+      "confidence_score": 0.9057
+    },
+    {
+      "current_key": "balanti - (ex. p3dt)",
+      "raw_examples": [
+        "Balanti - (Ex. P3DT)"
+      ],
+      "candidate_names": "Balanti - (Ex. P3DT)",
+      "confidence_score": 0.9032
+    },
+    {
+      "current_key": "jl. panglima batur",
+      "raw_examples": [
+        "Jl. Panglima Batur"
+      ],
+      "candidate_names": "Panglima Batur",
+      "confidence_score": 0.9032
+    }
+  ],
+  "top_missing": [
+    {
+      "current_key": "jl. banua hanyar - tanjung selor",
+      "raw_examples": [
+        "Jl. Banua Hanyar - Tanjung Selor"
+      ],
+      "candidate_names": "Banua Hanyar - Ds. Tanjung Selor",
+      "confidence_score": 0.875
+    },
+    {
+      "current_key": "jl. muning tengah - muning dalam",
+      "raw_examples": [
+        "Jl. Muning Tengah - Muning Dalam"
+      ],
+      "candidate_names": "Muning Tengah - Ds. Muning Dalam",
+      "confidence_score": 0.875
+    },
+    {
+      "current_key": "jl. tamiyang - ds. tamiyang (eks tmmd)",
+      "raw_examples": [
+        "Jl. Tamiyang - Ds. Tamiyang (Eks TMMD)"
+      ],
+      "candidate_names": "Tamiyang - Ds. Tamiyang (Eks TMMD)",
+      "confidence_score": 0.875
+    },
+    {
+      "current_key": "jl. bina bakat",
+      "raw_examples": [
+        "Jl. Bina Bakat"
+      ],
+      "candidate_names": "Bina Bakat",
+      "confidence_score": 0.8696
+    },
+    {
+      "current_key": "jl. nusa indah",
+      "raw_examples": [
+        "Jl. Nusa Indah"
+      ],
+      "candidate_names": "Nusa Indah",
+      "confidence_score": 0.8696
+    },
+    {
+      "current_key": "jl. hamayung - ds. hakurung dalam",
+      "raw_examples": [
+        "Jl. Hamayung - Ds. Hakurung Dalam"
+      ],
+      "candidate_names": "Hamayung - Hakurung Dalam",
+      "confidence_score": 0.8621
+    },
+    {
+      "current_key": "jl. rel angkinang - tmmd angkinang",
+      "raw_examples": [
+        "Jl. Rel Angkinang - TMMD Angkinang"
+      ],
+      "candidate_names": "Rel Angkinang - TMMD Angkinang",
+      "confidence_score": 0.8621
+    },
+    {
+      "current_key": "jl. aluh idut",
+      "raw_examples": [
+        "Jl. Aluh Idut"
+      ],
+      "candidate_names": "Aluh Idut",
+      "confidence_score": 0.8571
+    },
+    {
+      "current_key": "jl. cakingan herman",
+      "raw_examples": [
+        "Jl. Cakingan Herman"
+      ],
+      "candidate_names": "Cangkingan Herman",
+      "confidence_score": 0.8571
+    },
+    {
+      "current_key": "jl. paramaian",
+      "raw_examples": [
+        "Jl. Paramaian"
+      ],
+      "candidate_names": "Paramaian",
+      "confidence_score": 0.8571
+    },
+    {
+      "current_key": "jl. rahma bahran",
+      "raw_examples": [
+        "Jl. Rahma Bahran"
+      ],
+      "candidate_names": "Rahmah Bahran",
+      "confidence_score": 0.8571
+    },
+    {
+      "current_key": "jl. soeprapto - jl. hm. rusli",
+      "raw_examples": [
+        "Jl. Soeprapto - Jl. HM. Rusli"
+      ],
+      "candidate_names": "Soeprapto - H.M Rusli",
+      "confidence_score": 0.8511
+    },
+    {
+      "current_key": "jl. silaturahim",
+      "raw_examples": [
+        "Jl. Silaturahim"
+      ],
+      "candidate_names": "Silaturrahim",
+      "confidence_score": 0.8462
+    },
+    {
+      "current_key": "jl. ks. tubun",
+      "raw_examples": [
+        "Jl. KS. Tubun"
+      ],
+      "candidate_names": "KS. Tubun",
+      "confidence_score": 0.8421
+    },
+    {
+      "current_key": "jl. parindra",
+      "raw_examples": [
+        "Jl. Parindra"
+      ],
+      "candidate_names": "Parindra",
+      "confidence_score": 0.8421
+    },
+    {
+      "current_key": "jl. taminung",
+      "raw_examples": [
+        "Jl. Taminung"
+      ],
+      "candidate_names": "Taminung",
+      "confidence_score": 0.8421
+    },
+    {
+      "current_key": "jl. baru - asam desa baru/asam",
+      "raw_examples": [
+        "Jl. Baru - Asam Desa Baru/Asam"
+      ],
+      "candidate_names": "Baru - Asam Desa Baru",
+      "confidence_score": 0.84
+    },
+    {
+      "current_key": "jl. keminting batu",
+      "raw_examples": [
+        "Jl. Keminting Batu"
+      ],
+      "candidate_names": "Kaminting Batu",
+      "confidence_score": 0.8387
+    },
+    {
+      "current_key": "jl. tembok baru - baluti",
+      "raw_examples": [
+        "Jl. Tembok Baru - Baluti"
+      ],
+      "candidate_names": "Tembok Baru - Ds. Baluti",
+      "confidence_score": 0.8333
+    },
+    {
+      "current_key": "jl. pangeran antasari - sp. loklua",
+      "raw_examples": [
+        "Jl. Pangeran Antasari - SP. Loklua"
+      ],
+      "candidate_names": "Pangeran Antasari - Loklua",
+      "confidence_score": 0.8254
+    }
+  ]
+}

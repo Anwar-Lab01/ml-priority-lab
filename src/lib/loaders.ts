@@ -12,7 +12,7 @@ import type {
   FileLoadStatus,
   LoadStatus,
 } from '../types/contracts';
-import { getRoadKey, getShapKey } from './utils';
+import { configureRoadAliases, getRoadKey, getShapKey, type RoadAliasMapConfig } from './utils';
 
 /**
  * Development-only logger
@@ -75,7 +75,15 @@ const guards = {
   targetRows: (data: any): data is TargetRow[] => isArrayOf<TargetRow>(data, 'road_id'),
   roadFeatures: (data: any): data is RoadFeatureRow[] => isArrayOf<RoadFeatureRow>(data, 'road_id'),
   conversionReport: (data: any): data is ConversionReport => data && 'generated_from_zip' in data,
+  roadAliasMap: (data: any): data is RoadAliasMapConfig => !!data && typeof data === 'object' && (!('aliases' in data) || typeof data.aliases === 'object'),
 };
+
+function stampCanonicalRoadKey<T extends { road_name?: string; nama_ruas_norm?: string }>(rows: T[]): void {
+  rows.forEach((row) => {
+    if (!row?.road_name && !row?.nama_ruas_norm) return;
+    row.nama_ruas_norm = getRoadKey({ road_name: row.road_name || '', nama_ruas_norm: row.nama_ruas_norm });
+  });
+}
 
 // ──────────────────────────────────────────────
 // Data Loader (Main entry point)
@@ -94,6 +102,7 @@ export async function loadAllData(): Promise<AppData> {
     [targetRows, stTargetRows],
     [roadFeatures, stRoadFeatures],
     [conversionReport, stReport],
+    [roadAliasMap],
   ] = await Promise.all([
     loadFile<Scenario[]>('scenarios.json', guards.scenarios, []),
     loadFile<ModelMetric[]>('model_metrics.json', guards.modelMetrics, []),
@@ -104,9 +113,17 @@ export async function loadAllData(): Promise<AppData> {
     loadFile<TargetRow[]>('target_rows.json', guards.targetRows, []),
     loadFile<RoadFeatureRow[]>('road_features.json', guards.roadFeatures, []),
     loadFile<ConversionReport | null>('conversion_report.json', guards.conversionReport, null),
+    loadFile<RoadAliasMapConfig>('road_alias_map.json', guards.roadAliasMap, { aliases: {} }),
   ]);
 
   log('Data fetching complete. Initializing indexes...');
+
+  configureRoadAliases(roadAliasMap);
+
+  stampCanonicalRoadKey(rankings);
+  stampCanonicalRoadKey(targetRows);
+  stampCanonicalRoadKey(roadFeatures);
+  stampCanonicalRoadKey(shapLocal);
 
   // Cross-pollinate physical target truths from targetRows to compensate for scenarios that lack them
   const targetKeysMap = new Map<string, {any: number|null, tender: number|null, pl: number|null, tek26: number|null, tek27: number|null}>();

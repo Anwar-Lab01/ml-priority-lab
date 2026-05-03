@@ -5,12 +5,18 @@ import { useAppData } from '../../hooks/useAppData';
 import { EmptyState } from '../components/ui/EmptyState';
 import { ChartCard } from '../components/ui/ChartCard';
 import { fmt, exportToCsv, getRoadKey, isTargetPositive } from '../../lib/utils';
-import { CHART_COLORS } from '../../config/scenarios';
-import type { RankingRow } from '../../types/contracts';
-
-type TargetType = 'planned_any_2026' | 'planned_tender_2026' | 'planned_teknokratis_2026' | 'planned_teknokratis_2027' | 'both';
+import { TARGET_LABELS, TARGET_FIELDS, type TargetField, type TargetType } from '../../lib/targetDefs';
+import { CHART_COLORS, MODEL_CONFIG } from '../../config/scenarios';
+import type { RankingRow, TargetRow } from '../../types/contracts';
 type CompareUnit = 'model' | 'model_score';
 type MetricType = 'hits' | 'recall' | 'precision';
+
+interface DisplayRoadRow {
+  roadKey: string;
+  roadName: string;
+  rank: number | null;
+  score: number | null;
+}
 
 interface SummaryRow {
   scenario: string;
@@ -25,6 +31,57 @@ interface SummaryRow {
   precisionAtK: number;
 }
 
+interface SeriesGroup {
+  title: string;
+  items: string[];
+}
+
+const CHART_TITLES: Record<TargetField, string> = {
+  planned_any_2026: 'Capture Target (Planned Any)',
+  planned_tender_2026: 'Capture Target (Planned Tender)',
+  planned_pl_2026: 'Capture Target (Planned PL)',
+  planned_teknokratis_2026: 'Capture Target (Teknokratis 2026)',
+  planned_teknokratis_2027: 'Capture Target (Teknokratis 2027)'
+};
+
+function toDisplayRoadRow(row: RankingRow | TargetRow, fallback?: Partial<DisplayRoadRow>): DisplayRoadRow {
+  return {
+    roadKey: fallback?.roadKey || getRoadKey(row),
+    roadName: row.road_name,
+    rank: 'rank' in row && typeof row.rank === 'number' ? row.rank : fallback?.rank ?? null,
+    score: 'score' in row && typeof row.score === 'number' ? row.score : fallback?.score ?? null
+  };
+}
+
+function getSeriesModelLabel(seriesKey: string): string {
+  return seriesKey.split(' + ')[0] || seriesKey;
+}
+
+function getSeriesScoreLabel(seriesKey: string): string {
+  return seriesKey.includes(' + ') ? seriesKey.split(' + ').slice(1).join(' + ') : '';
+}
+
+function getScoreTypeCategory(scoreType: string): string {
+  if (!scoreType) return 'Base';
+  if (scoreType === 'base_ml' || scoreType === 'pred_prob') return 'Base';
+  if (scoreType.startsWith('grid_')) return 'Grid Search';
+  if (scoreType.startsWith('rerank_policy_boost')) return 'PolicyBoost';
+  if (scoreType === 'rerank') return 'Rerank';
+  if (scoreType.startsWith('rerank_')) return 'Rerank Variants';
+  return 'Other';
+}
+
+function tintColor(hex: string, offset: number): string {
+  const clean = hex.replace('#', '');
+  if (clean.length !== 6) return hex;
+  const num = Number.parseInt(clean, 16);
+  const r = (num >> 16) & 0xff;
+  const g = (num >> 8) & 0xff;
+  const b = num & 0xff;
+  const blend = (channel: number) => Math.max(0, Math.min(255, Math.round(channel + (255 - channel) * offset)));
+  return `rgb(${blend(r)} ${blend(g)} ${blend(b)})`;
+}
+
 export function TargetHitComparePage() {
   const { data: appData } = useAppData();
 
@@ -34,12 +91,16 @@ export function TargetHitComparePage() {
   const [metric, setMetric] = useState<MetricType>('hits');
   
   const [selectedSeries, setSelectedSeries] = useState<Set<string>>(new Set());
+  const [seriesSearch, setSeriesSearch] = useState<string>('');
+  const [expandedSeriesGroups, setExpandedSeriesGroups] = useState<Record<string, boolean>>({});
+  const [chartSeriesLimit, setChartSeriesLimit] = useState<number>(8);
+  const [chartExpandAll, setChartExpandAll] = useState<boolean>(false);
   
   const [customK, setCustomK] = useState<number | ''>('');
   const [activeKOptions, setActiveKOptions] = useState<Set<number>>(new Set([35, 70, 105, 140]));
 
   // Drilldown state
-  const [ddTarget, setDdTarget] = useState<'planned_any_2026' | 'planned_tender_2026' | 'planned_teknokratis_2026' | 'planned_teknokratis_2027'>('planned_any_2026');
+  const [ddTarget, setDdTarget] = useState<TargetField>('planned_any_2026');
   const [ddSeries, setDdSeries] = useState<string>('');
   const [ddK, setDdK] = useState<number>(35);
 
@@ -61,16 +122,89 @@ export function TargetHitComparePage() {
     availableSeries,
     rankedDataBySeries,
     totalPositives,
+    targetUniverseByField,
+    targetUniverseRowsByField,
     scenariosList
   } = useMemo(() => {
-    if (!appData) return { availableSeries: [], rankedDataBySeries: new Map(), totalPositives: { planned_any_2026: 0, planned_tender_2026: 0, planned_teknokratis_2026: 0, planned_teknokratis_2027: 0 }, scenariosList: [] };
+    const emptyTargetSets = {
+      planned_any_2026: new Set<string>(),
+      planned_tender_2026: new Set<string>(),
+      planned_pl_2026: new Set<string>(),
+      planned_teknokratis_2026: new Set<string>(),
+      planned_teknokratis_2027: new Set<string>()
+    };
+    const emptyTargetRows = {
+      planned_any_2026: new Map<string, TargetRow>(),
+      planned_tender_2026: new Map<string, TargetRow>(),
+      planned_pl_2026: new Map<string, TargetRow>(),
+      planned_teknokratis_2026: new Map<string, TargetRow>(),
+      planned_teknokratis_2027: new Map<string, TargetRow>()
+    };
+
+    if (!appData) {
+      return {
+        availableSeries: [],
+        rankedDataBySeries: new Map(),
+        totalPositives: {
+          planned_any_2026: 0,
+          planned_tender_2026: 0,
+          planned_pl_2026: 0,
+          planned_teknokratis_2026: 0,
+          planned_teknokratis_2027: 0
+        },
+        targetUniverseByField: emptyTargetSets,
+        targetUniverseRowsByField: emptyTargetRows,
+        scenariosList: []
+      };
+    }
     
     const scens = appData.detectedScenarios.map(id => {
       const s = appData.scenarios.find(x => x.scenario_id === id);
       return { id, label: s ? s.scenario_label : id };
     });
 
-    if (!scenario) return { availableSeries: [], rankedDataBySeries: new Map(), totalPositives: { planned_any_2026: 0, planned_tender_2026: 0, planned_teknokratis_2026: 0, planned_teknokratis_2027: 0 }, scenariosList: scens };
+    const targetSets = {
+      planned_any_2026: new Set<string>(),
+      planned_tender_2026: new Set<string>(),
+      planned_pl_2026: new Set<string>(),
+      planned_teknokratis_2026: new Set<string>(),
+      planned_teknokratis_2027: new Set<string>()
+    };
+    const targetRowsByField = {
+      planned_any_2026: new Map<string, TargetRow>(),
+      planned_tender_2026: new Map<string, TargetRow>(),
+      planned_pl_2026: new Map<string, TargetRow>(),
+      planned_teknokratis_2026: new Map<string, TargetRow>(),
+      planned_teknokratis_2027: new Map<string, TargetRow>()
+    };
+
+    for (const row of appData.targetRows ?? []) {
+      const roadKey = getRoadKey(row);
+      for (const field of TARGET_FIELDS) {
+        if (!isTargetPositive(row[field])) continue;
+        targetSets[field].add(roadKey);
+        if (!targetRowsByField[field].has(roadKey)) {
+          targetRowsByField[field].set(roadKey, row);
+        }
+      }
+    }
+
+    if (!scenario) {
+      return {
+        availableSeries: [],
+        rankedDataBySeries: new Map(),
+        totalPositives: {
+          planned_any_2026: targetSets.planned_any_2026.size,
+          planned_tender_2026: targetSets.planned_tender_2026.size,
+          planned_pl_2026: targetSets.planned_pl_2026.size,
+          planned_teknokratis_2026: targetSets.planned_teknokratis_2026.size,
+          planned_teknokratis_2027: targetSets.planned_teknokratis_2027.size
+        },
+        targetUniverseByField: targetSets,
+        targetUniverseRowsByField: targetRowsByField,
+        scenariosList: scens
+      };
+    }
 
     const ranks = appData.indexes.rankingsByScenario.get(scenario) || [];
     
@@ -88,27 +222,18 @@ export function TargetHitComparePage() {
       arr.sort((a, b) => a.rank - b.rank);
     }
 
-    let totAny = 0;
-    let totTender = 0;
-    let totTek26 = 0;
-    let totTek27 = 0;
-    if (sKeys.length > 0) {
-      const uniqueBase = seriesMap.get(sKeys[0])!;
-      totAny = uniqueBase.filter(r => isTargetPositive(r.planned_any_2026)).length;
-      totTender = uniqueBase.filter(r => isTargetPositive(r.planned_tender_2026)).length;
-      totTek26 = uniqueBase.filter(r => isTargetPositive(r.planned_teknokratis_2026)).length;
-      totTek27 = uniqueBase.filter(r => isTargetPositive(r.planned_teknokratis_2027)).length;
-    }
-
     return {
       availableSeries: sKeys,
       rankedDataBySeries: seriesMap,
       totalPositives: {
-        planned_any_2026: totAny,
-        planned_tender_2026: totTender,
-        planned_teknokratis_2026: totTek26,
-        planned_teknokratis_2027: totTek27
+        planned_any_2026: targetSets.planned_any_2026.size,
+        planned_tender_2026: targetSets.planned_tender_2026.size,
+        planned_pl_2026: targetSets.planned_pl_2026.size,
+        planned_teknokratis_2026: targetSets.planned_teknokratis_2026.size,
+        planned_teknokratis_2027: targetSets.planned_teknokratis_2027.size
       },
+      targetUniverseByField: targetSets,
+      targetUniverseRowsByField: targetRowsByField,
       scenariosList: scens
     };
   }, [appData, scenario, compareUnit]);
@@ -126,6 +251,22 @@ export function TargetHitComparePage() {
       const next = new Set(prev);
       if (next.has(s)) next.delete(s);
       else next.add(s);
+      return next;
+    });
+  };
+
+  const toggleSeriesGroup = (title: string) => {
+    setExpandedSeriesGroups(prev => ({ ...prev, [title]: !prev[title] }));
+  };
+
+  const toggleWholeGroupSelection = (items: string[]) => {
+    setSelectedSeries(prev => {
+      const next = new Set(prev);
+      const allSelected = items.every(item => next.has(item));
+      items.forEach(item => {
+        if (allSelected) next.delete(item);
+        else next.add(item);
+      });
       return next;
     });
   };
@@ -159,22 +300,56 @@ export function TargetHitComparePage() {
   const currentKs = Array.from(activeKOptions).sort((a,b) => a - b);
   const selSeriesList = availableSeries.filter(s => selectedSeries.has(s));
 
+  const filteredAvailableSeries = useMemo(() => {
+    const needle = seriesSearch.trim().toLowerCase();
+    if (!needle) return availableSeries;
+    return availableSeries.filter(seriesKey => seriesKey.toLowerCase().includes(needle));
+  }, [availableSeries, seriesSearch]);
+
+  const seriesGroups = useMemo<SeriesGroup[]>(() => {
+    const groupMap = new Map<string, string[]>();
+    for (const seriesKey of filteredAvailableSeries) {
+      const model = getSeriesModelLabel(seriesKey);
+      const scoreLabel = getSeriesScoreLabel(seriesKey);
+      const groupTitle = compareUnit === 'model'
+        ? model
+        : `${model} - ${getScoreTypeCategory(scoreLabel)}`;
+      if (!groupMap.has(groupTitle)) groupMap.set(groupTitle, []);
+      groupMap.get(groupTitle)!.push(seriesKey);
+    }
+
+    return Array.from(groupMap.entries())
+      .map(([title, items]) => ({
+        title,
+        items: items.sort((a, b) => a.localeCompare(b))
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }, [filteredAvailableSeries, compareUnit]);
+
   // Compute stats
   const tableData = useMemo(() => {
     const records: SummaryRow[] = [];
     if (!scenario || selSeriesList.length === 0 || currentKs.length === 0) return records;
 
-    const targetsToProcess = targetType === 'both' ? ['planned_any_2026', 'planned_tender_2026'] : [targetType];
+    const targetsToProcess: TargetField[] = targetType === 'both' ? ['planned_any_2026', 'planned_tender_2026'] : [targetType];
 
     for (const tgt of targetsToProcess) {
       const totObj = totalPositives[tgt as keyof typeof totalPositives] || 0;
+      const targetKeys = targetUniverseByField[tgt];
       for (const s of selSeriesList) {
         const arr = rankedDataBySeries.get(s)!;
         const rowSample = arr[0];
         
         for (const k of currentKs) {
           const slice = arr.slice(0, k);
-          const hits = slice.filter((r: RankingRow) => isTargetPositive(r[tgt as keyof RankingRow] as number | null)).length;
+          const capturedKeys = new Set<string>();
+          for (const row of slice) {
+            const roadKey = getRoadKey(row);
+            if (targetKeys.has(roadKey)) {
+              capturedKeys.add(roadKey);
+            }
+          }
+          const hits = capturedKeys.size;
           const rec = totObj > 0 ? hits / totObj : 0;
           const prec = k > 0 ? hits / k : 0;
           
@@ -194,13 +369,30 @@ export function TargetHitComparePage() {
       }
     }
     return records;
-  }, [scenario, targetType, selSeriesList, currentKs, rankedDataBySeries, totalPositives]);
+  }, [scenario, targetType, selSeriesList, currentKs, rankedDataBySeries, totalPositives, targetUniverseByField]);
 
   // Chart data formatting
-  const renderChart = (tgt: string, title: string) => {
+  const renderChart = (tgt: TargetField, title: string) => {
+    const selectedSummaries = tableData.filter(x => x.target === tgt && selSeriesList.includes(x.seriesKey));
+    const rankedSeries = selSeriesList
+      .map(seriesKey => {
+        const summaries = selectedSummaries.filter(x => x.seriesKey === seriesKey);
+        const aggregate = summaries.reduce((sum, row) => {
+          if (metric === 'hits') return sum + row.capturedPositive;
+          if (metric === 'recall') return sum + row.recallAtK;
+          return sum + row.precisionAtK;
+        }, 0);
+        return { seriesKey, aggregate };
+      })
+      .sort((a, b) => b.aggregate - a.aggregate || a.seriesKey.localeCompare(b.seriesKey));
+
+    const visibleSeries = chartExpandAll
+      ? rankedSeries.map(x => x.seriesKey)
+      : rankedSeries.slice(0, chartSeriesLimit).map(x => x.seriesKey);
+
     const cData = currentKs.map(k => {
       const g: any = { name: `Top ${k}` };
-      selSeriesList.forEach(s => {
+      visibleSeries.forEach(s => {
         const summary = tableData.find(x => x.target === tgt && x.k === k && x.seriesKey === s);
         if (summary) {
            if (metric === 'hits') g[s] = summary.capturedPositive;
@@ -217,9 +409,55 @@ export function TargetHitComparePage() {
        'precision': 'Precision @ K'
     };
 
+    const chartWidth = Math.max(620, visibleSeries.length * 120);
+
     return (
-      <ChartCard title={`${title} - ${metricNames[metric]}`}>
-        <div className="h-80 w-full mt-4">
+      <ChartCard
+        title={`${title} - ${metricNames[metric]}`}
+        actions={
+          <div className="flex flex-wrap items-center justify-end gap-2 text-[10px]">
+            <span className="rounded-full bg-slate-100 px-2 py-1 font-bold text-slate-600">
+              Showing {visibleSeries.length} of {rankedSeries.length}
+            </span>
+            <select
+              value={chartSeriesLimit}
+              onChange={e => {
+                setChartSeriesLimit(Number(e.target.value));
+                setChartExpandAll(false);
+              }}
+              className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-black uppercase tracking-widest text-slate-600 outline-none"
+            >
+              <option value="5">Top 5</option>
+              <option value="8">Top 8</option>
+              <option value="10">Top 10</option>
+            </select>
+            <button
+              onClick={() => setChartExpandAll(prev => !prev)}
+              className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-black uppercase tracking-widest text-slate-700 hover:bg-slate-50"
+            >
+              {chartExpandAll ? 'Show Summary' : 'Expand All'}
+            </button>
+          </div>
+        }
+      >
+        <div className="mt-3 flex flex-wrap gap-2">
+          {visibleSeries.map(seriesKey => {
+            const model = getSeriesModelLabel(seriesKey);
+            const baseColor = MODEL_CONFIG[model]?.color || CHART_COLORS[0];
+            return (
+              <div
+                key={`legend-${tgt}-${seriesKey}`}
+                className="max-w-[220px] truncate rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[10px] font-semibold text-slate-600"
+                title={seriesKey}
+              >
+                <span className="mr-1.5 inline-block h-2 w-2 rounded-full align-middle" style={{ backgroundColor: baseColor }} />
+                {seriesKey}
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-4 overflow-x-auto">
+          <div className="h-80 min-w-[620px]" style={{ width: `${chartWidth}px` }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={cData} margin={{ top: 10, right: 30, left: 10, bottom: 20 }}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -230,12 +468,24 @@ export function TargetHitComparePage() {
                 contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', fontSize: '12px', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
                 formatter={(val: any) => metric === 'hits' ? val : fmt(Number(val), 3)}
               />
-              <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
-              {selSeriesList.map((s, idx) => (
-                <Bar key={s} dataKey={s} fill={CHART_COLORS[idx % CHART_COLORS.length]} radius={[4, 4, 0, 0]} />
-              ))}
+              <Legend wrapperStyle={{ display: 'none' }} />
+              {visibleSeries.map((s, idx) => {
+                const model = getSeriesModelLabel(s);
+                const scoreLabel = getSeriesScoreLabel(s);
+                const modelColor = MODEL_CONFIG[model]?.color || CHART_COLORS[idx % CHART_COLORS.length];
+                const tintBase = scoreLabel ? ((idx % 6) * 0.1) : 0;
+                return (
+                  <Bar key={s} dataKey={s} fill={tintColor(modelColor, tintBase)} radius={[4, 4, 0, 0]} />
+                );
+              })}
+              {chartExpandAll === false && rankedSeries.length > visibleSeries.length && (
+                <text x="100%" y="8" textAnchor="end" fontSize="10" fill="#94a3b8">
+                  {`${rankedSeries.length - visibleSeries.length} more hidden`}
+                </text>
+              )}
             </BarChart>
           </ResponsiveContainer>
+          </div>
         </div>
       </ChartCard>
     );
@@ -245,22 +495,55 @@ export function TargetHitComparePage() {
   const ddData = useMemo(() => {
     if (!ddSeries || !rankedDataBySeries.has(ddSeries)) return { captured: [], missed: [], targetMiss: [] };
     const arr = rankedDataBySeries.get(ddSeries)!;
+    const targetKeys = targetUniverseByField[ddTarget];
+    const targetRowsByKey = targetUniverseRowsByField[ddTarget];
     
-    const captured: RankingRow[] = [];
-    const missed: RankingRow[] = [];     // Overprediction
-    const targetMiss: RankingRow[] = []; // Missed Targets
+    const captured = new Map<string, DisplayRoadRow>();
+    const missed: DisplayRoadRow[] = [];
+    const rankingByKey = new Map<string, RankingRow>();
 
-    for (const r of arr) {
-      const isTarget = isTargetPositive(r[ddTarget] as number | null);
-      if (r.rank <= ddK) {
-        if (isTarget) captured.push(r);
-        else missed.push(r);
-      } else {
-        if (isTarget) targetMiss.push(r);
+    for (const row of arr) {
+      const roadKey = getRoadKey(row);
+      if (!rankingByKey.has(roadKey)) {
+        rankingByKey.set(roadKey, row);
+      }
+
+      if (row.rank <= ddK) {
+        if (targetKeys.has(roadKey)) {
+          if (!captured.has(roadKey)) {
+            captured.set(roadKey, toDisplayRoadRow(row, { roadKey }));
+          }
+        } else {
+          missed.push(toDisplayRoadRow(row, { roadKey }));
+        }
       }
     }
-    return { captured, missed, targetMiss };
-  }, [rankedDataBySeries, ddSeries, ddK, ddTarget]);
+
+    const targetMiss: DisplayRoadRow[] = [];
+    for (const roadKey of targetKeys) {
+      if (captured.has(roadKey)) continue;
+
+      const rankedRow = rankingByKey.get(roadKey);
+      if (rankedRow) {
+        targetMiss.push(toDisplayRoadRow(rankedRow, { roadKey }));
+        continue;
+      }
+
+      const targetRow = targetRowsByKey.get(roadKey);
+      if (targetRow) {
+        targetMiss.push(toDisplayRoadRow(targetRow, { roadKey }));
+      }
+    }
+
+    targetMiss.sort((a, b) => {
+      if (a.rank === null && b.rank === null) return a.roadName.localeCompare(b.roadName);
+      if (a.rank === null) return 1;
+      if (b.rank === null) return -1;
+      return a.rank - b.rank;
+    });
+
+    return { captured: Array.from(captured.values()), missed, targetMiss };
+  }, [rankedDataBySeries, ddSeries, ddK, ddTarget, targetUniverseByField, targetUniverseRowsByField]);
 
   return (
     <div className="space-y-6 animate-in fade-in duration-300 pb-12 overflow-x-hidden">
@@ -280,14 +563,10 @@ export function TargetHitComparePage() {
            <div className="space-y-2">
              <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block">Target Def</label>
              <div className="flex bg-slate-100 p-1 rounded-lg overflow-x-auto gap-1 hide-scrollbar">
-                {(['planned_any_2026', 'planned_tender_2026', 'planned_teknokratis_2026', 'planned_teknokratis_2027', 'both'] as const).map(t => {
-                  const lbl = t === 'planned_any_2026' ? 'Any 2026' : 
-                              t === 'planned_tender_2026' ? 'Tender 2026' : 
-                              t === 'planned_teknokratis_2026' ? 'Tekno 2026' : 
-                              t === 'planned_teknokratis_2027' ? 'Tekno 2027' : 'Both (Any/Tender)';
+                {(['planned_any_2026', 'planned_tender_2026', 'planned_pl_2026', 'planned_teknokratis_2026', 'planned_teknokratis_2027', 'both'] as const).map(t => {
                   return (
                     <button key={t} onClick={() => setTargetType(t)} className={`flex-shrink-0 px-3 py-1.5 text-[11px] font-semibold rounded-md capitalize transition-colors ${targetType === t ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}>
-                      {lbl}
+                      {TARGET_LABELS[t]}
                     </button>
                   );
                 })}
@@ -307,21 +586,69 @@ export function TargetHitComparePage() {
            </div>
         </div>
 
-        {/* Mid Col: Series Multi-Select */}
-        <div className="space-y-2">
-           <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest flex items-center justify-between">
-             Series Selection <span className="font-mono bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded text-[9px]">{selSeriesList.length}/{availableSeries.length}</span>
-           </label>
-           <div className="h-44 border border-slate-200 rounded-lg overflow-y-auto bg-slate-50 p-2 space-y-1">
-             {availableSeries.map(s => (
-                <label key={s} className="flex items-center gap-2.5 p-2 bg-white rounded shadow-sm border border-slate-100 cursor-pointer hover:border-slate-300 transition-colors">
-                  <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500 w-4 h-4" checked={selectedSeries.has(s)} onChange={() => toggleSeries(s)} />
-                  <span className="text-xs font-bold text-slate-700 whitespace-nowrap overflow-hidden text-ellipsis">{s}</span>
-                </label>
-             ))}
-             {availableSeries.length === 0 && <div className="text-center p-4 text-xs text-slate-400">No series found</div>}
+         {/* Mid Col: Series Multi-Select */}
+         <div className="space-y-2">
+            <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest flex items-center justify-between">
+              Series Selection <span className="font-mono bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded text-[9px]">{selSeriesList.length}/{availableSeries.length}</span>
+            </label>
+           <div className="rounded-lg border border-slate-200 bg-slate-50 p-2">
+             <div className="mb-2 flex items-center gap-2">
+               <input
+                 type="text"
+                 value={seriesSearch}
+                 onChange={e => setSeriesSearch(e.target.value)}
+                 placeholder="Search series or score type..."
+                 className="flex-1 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold outline-none focus:ring-2 focus:ring-blue-100"
+               />
+               <button
+                 onClick={() => setSelectedSeries(new Set(filteredAvailableSeries))}
+                 className="rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-[10px] font-black uppercase tracking-widest text-slate-600 hover:bg-slate-50"
+               >
+                 Filtered All
+               </button>
+             </div>
+             <div className="h-44 space-y-2 overflow-y-auto pr-1">
+                {seriesGroups.map(group => {
+                  const selectedCount = group.items.filter(item => selectedSeries.has(item)).length;
+                  const isExpanded = expandedSeriesGroups[group.title] ?? (selectedCount > 0 || group.items.length <= 6);
+                 return (
+                   <div key={group.title} className="rounded-lg border border-slate-200 bg-white">
+                     <div className="flex items-center justify-between gap-2 px-3 py-2">
+                       <button
+                         onClick={() => toggleSeriesGroup(group.title)}
+                         className="min-w-0 flex-1 text-left"
+                       >
+                         <div className="truncate text-[11px] font-black uppercase tracking-widest text-slate-600" title={group.title}>
+                           {group.title}
+                         </div>
+                         <div className="mt-0.5 text-[10px] font-semibold text-slate-400">
+                           {selectedCount}/{group.items.length} selected
+                         </div>
+                       </button>
+                       <button
+                         onClick={() => toggleWholeGroupSelection(group.items)}
+                         className="rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-[10px] font-black uppercase tracking-widest text-slate-500 hover:bg-slate-100"
+                       >
+                         {selectedCount === group.items.length ? 'Clear' : 'All'}
+                       </button>
+                     </div>
+                     {isExpanded && (
+                       <div className="space-y-1 border-t border-slate-100 px-2 py-2">
+                         {group.items.map(s => (
+                           <label key={s} className="flex items-center gap-2.5 rounded-md border border-slate-100 p-2 transition-colors hover:border-slate-300">
+                             <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500 w-4 h-4" checked={selectedSeries.has(s)} onChange={() => toggleSeries(s)} />
+                             <span className="truncate text-xs font-bold text-slate-700" title={s}>{s}</span>
+                           </label>
+                         ))}
+                       </div>
+                     )}
+                   </div>
+                 );
+               })}
+               {seriesGroups.length === 0 && <div className="text-center p-4 text-xs text-slate-400">No series found</div>}
+             </div>
            </div>
-        </div>
+         </div>
 
         {/* Right Col: K Threshold & Metric */}
          <div className="space-y-5">
@@ -361,10 +688,11 @@ export function TargetHitComparePage() {
       {/* Main Charts */}
       {selSeriesList.length > 0 && currentKs.length > 0 ? (
         <div className={`grid gap-6 ${targetType === 'both' ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'}`}>
-          {(targetType === 'both' || targetType === 'planned_any_2026') && renderChart('planned_any_2026', 'Capture Target (Planned Any)')}
-          {(targetType === 'both' || targetType === 'planned_tender_2026') && renderChart('planned_tender_2026', 'Capture Target (Planned Tender)')}
-          {targetType === 'planned_teknokratis_2026' && renderChart('planned_teknokratis_2026', 'Capture Target (Teknokratis 2026)')}
-          {targetType === 'planned_teknokratis_2027' && renderChart('planned_teknokratis_2027', 'Capture Target (Teknokratis 2027)')}
+          {(targetType === 'both' || targetType === 'planned_any_2026') && renderChart('planned_any_2026', CHART_TITLES.planned_any_2026)}
+          {(targetType === 'both' || targetType === 'planned_tender_2026') && renderChart('planned_tender_2026', CHART_TITLES.planned_tender_2026)}
+          {targetType === 'planned_pl_2026' && renderChart('planned_pl_2026', CHART_TITLES.planned_pl_2026)}
+          {targetType === 'planned_teknokratis_2026' && renderChart('planned_teknokratis_2026', CHART_TITLES.planned_teknokratis_2026)}
+          {targetType === 'planned_teknokratis_2027' && renderChart('planned_teknokratis_2027', CHART_TITLES.planned_teknokratis_2027)}
         </div>
       ) : (
         <EmptyState title="No Datapoints" message="Select at least one series and one K threshold to view charts." />
@@ -396,7 +724,7 @@ export function TargetHitComparePage() {
                  <tbody className="divide-y divide-slate-100">
                    {tableData.map((row, i) => (
                      <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                       <td className="p-3 text-xs font-semibold text-slate-500">{row.target.replace('planned_', '').replace('_2026', '').toUpperCase()}</td>
+                       <td className="p-3 text-xs font-semibold text-slate-500">{TARGET_LABELS[row.target as TargetField]}</td>
                        <td className="p-3 text-xs font-bold text-slate-800">{row.seriesKey}</td>
                        <td className="p-3 text-xs font-mono font-bold text-slate-600 bg-slate-50/30">Top {row.k}</td>
                        <td className="p-3 text-xs font-mono text-slate-500 text-right">{row.totalPositive}</td>
@@ -421,9 +749,10 @@ export function TargetHitComparePage() {
                </div>
                
                <div className="flex flex-wrap items-center gap-3">
-                  <select value={ddTarget} onChange={e => setDdTarget(e.target.value as any)} className="bg-slate-800 border-none text-slate-200 text-xs font-semibold rounded-md py-1.5 focus:ring-1 focus:ring-emerald-500/50 outline-none">
+                  <select value={ddTarget} onChange={e => setDdTarget(e.target.value as TargetField)} className="bg-slate-800 border-none text-slate-200 text-xs font-semibold rounded-md py-1.5 focus:ring-1 focus:ring-emerald-500/50 outline-none">
                      <option value="planned_any_2026">Target: Any</option>
                      <option value="planned_tender_2026">Target: Tender</option>
+                     <option value="planned_pl_2026">Target: PL</option>
                      <option value="planned_teknokratis_2026">Target: Tekno 2026</option>
                      <option value="planned_teknokratis_2027">Target: Tekno 2027</option>
                   </select>
@@ -448,11 +777,11 @@ export function TargetHitComparePage() {
                      {ddData.captured.length > 0 ? (
                         <ul className="space-y-1">
                            {ddData.captured.map(r => (
-                             <li key={getRoadKey(r)} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
-                                <div className="text-emerald-500 font-mono font-black text-[10px] bg-emerald-500/10 h-6 w-6 flex items-center justify-center rounded">{r.rank}</div>
+                             <li key={r.roadKey} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
+                                <div className="text-emerald-500 font-mono font-black text-[10px] bg-emerald-500/10 h-6 w-6 flex items-center justify-center rounded">{r.rank ?? '•'}</div>
                                 <div className="flex-1 truncate">
-                                   <div className="text-xs font-bold text-slate-200 truncate">{r.road_name}</div>
-                                   <div className="text-[9px] text-slate-500 font-mono mt-0.5">Score: {fmt(r.score, 4)}</div>
+                                   <div className="text-xs font-bold text-slate-200 truncate">{r.roadName}</div>
+                                   <div className="text-[9px] text-slate-500 font-mono mt-0.5">Score: {r.score === null ? 'N/A' : fmt(r.score, 4)}</div>
                                 </div>
                              </li>
                            ))}
@@ -471,11 +800,11 @@ export function TargetHitComparePage() {
                      {ddData.missed.length > 0 ? (
                         <ul className="space-y-1">
                            {ddData.missed.map(r => (
-                             <li key={getRoadKey(r)} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
-                                <div className="text-rose-400 font-mono font-black text-[10px] bg-rose-500/10 h-6 w-6 flex items-center justify-center rounded shrink-0">{r.rank}</div>
+                             <li key={`${r.roadKey}-${r.rank ?? 'na'}`} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
+                                <div className="text-rose-400 font-mono font-black text-[10px] bg-rose-500/10 h-6 w-6 flex items-center justify-center rounded shrink-0">{r.rank ?? '•'}</div>
                                 <div className="flex-1 truncate">
-                                   <div className="text-xs font-bold text-slate-200 truncate">{r.road_name}</div>
-                                   <div className="text-[9px] text-slate-500 font-mono mt-0.5">Score: {fmt(r.score, 4)}</div>
+                                   <div className="text-xs font-bold text-slate-200 truncate">{r.roadName}</div>
+                                   <div className="text-[9px] text-slate-500 font-mono mt-0.5">Score: {r.score === null ? 'N/A' : fmt(r.score, 4)}</div>
                                 </div>
                              </li>
                            ))}
@@ -494,13 +823,13 @@ export function TargetHitComparePage() {
                      {ddData.targetMiss.length > 0 ? (
                         <ul className="space-y-1">
                            {ddData.targetMiss.map(r => (
-                             <li key={getRoadKey(r)} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
-                                <div className="text-amber-400 font-mono font-black text-[10px] bg-amber-500/10 h-6 w-6 flex items-center justify-center rounded shrink-0">{r.rank}</div>
+                             <li key={r.roadKey} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-800/50 rounded-lg group transition-colors">
+                                <div className="text-amber-400 font-mono font-black text-[10px] bg-amber-500/10 h-6 w-6 flex items-center justify-center rounded shrink-0">{r.rank ?? '•'}</div>
                                 <div className="flex-1 truncate">
-                                   <div className="text-xs font-bold text-slate-200 truncate">{r.road_name}</div>
+                                   <div className="text-xs font-bold text-slate-200 truncate">{r.roadName}</div>
                                    <div className="text-[9px] text-slate-500 font-mono mt-0.5 flex gap-2">
-                                      <span>Score: {fmt(r.score, 4)}</span>
-                                      <span className="text-amber-600 font-black">&Delta; +{r.rank - ddK}</span>
+                                      <span>Score: {r.score === null ? 'N/A' : fmt(r.score, 4)}</span>
+                                      <span className="text-amber-600 font-black">{r.rank === null ? 'Not present in ranking' : `\u0394 +${r.rank - ddK}`}</span>
                                    </div>
                                 </div>
                              </li>

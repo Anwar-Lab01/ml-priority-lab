@@ -1,0 +1,51 @@
+[
+  {
+    "scenario_id": "normatif_20",
+    "scenario_label": "Normatif 20 Variabel",
+    "family": "normatif",
+    "source": "master_report_20_Variabel.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "normatif_17",
+    "scenario_label": "Normatif 17 Variabel",
+    "family": "normatif",
+    "source": "master_report_17_variabel.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "historis_original",
+    "scenario_label": "Historis Original",
+    "family": "historis",
+    "source": "master_report_originall.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "scenario_label": "Historis Tender Only",
+    "family": "historis",
+    "source": "master_report_Tender_only.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "scenario_label": "Historis Weighted 2:1",
+    "family": "historis",
+    "source": "master_report_weighted_tender_tw2_pl1_neg1.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "historis_weighted_3_1",
+    "scenario_label": "Historis Weighted 3:1",
+    "family": "historis",
+    "source": "master_report_weighted_tender_tw3_pl1_neg1.xlsx",
+    "completeness": "ranking+capture only"
+  },
+  {
+    "scenario_id": "historis_weighted_5_1",
+    "scenario_label": "Historis Weighted 5:1",
+    "family": "historis",
+    "source": "master_report_weighted_tender_tw5_pl1_neg1.xlsx",
+    "completeness": "ranking+capture only"
+  }
+]

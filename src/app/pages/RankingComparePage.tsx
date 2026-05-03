@@ -9,8 +9,10 @@ import { EmptyState } from '../components/ui/EmptyState';
 import { ChartCard } from '../components/ui/ChartCard';
 import { MetricCard } from '../components/ui/MetricCard';
 import { DataTable } from '../components/tables/DataTable';
-import { fmt, exportToCsv, getRoadKey, isTargetPositive, isTargetKnown } from '../../lib/utils';
+import { fmt, exportToCsv, exportToTsv, getRoadKey, isTargetPositive, isTargetKnown } from '../../lib/utils';
+import { TARGET_LABELS, getTargetHitValue, type TargetType } from '../../lib/targetDefs';
 import { computeSpearmanCorrelation, computeJaccardSimilarity, computeOverlapSet } from '../../lib/transforms';
+import type { RankingRow, TargetRow } from '../../types/contracts';
 
 interface ComparisonRow {
   road_key: string;
@@ -26,6 +28,67 @@ interface ComparisonRow {
   planned_any: number | null;
   planned_tender: number | null;
   planned_pl: number | null;
+  planned_teknokratis: number | null;
+  planned_teknokratis_2027: number | null;
+  selectedTargetHit: number | null;
+  scoreTypeA: string | null;
+  scoreTypeB: string | null;
+  scoreTypeC: string | null;
+}
+
+type ExportScope = 'full' | 35 | 70 | 105;
+
+interface RoadMeta {
+  road_name: string;
+  nomor_ruas: string;
+  desa_yang_dilalui: string;
+  kecamatan_yang_dilalui: string;
+  planned_any_2026: number | null;
+  planned_tender_2026: number | null;
+  planned_pl_2026: number | null;
+  planned_teknokratis_2026: number | null;
+  planned_teknokratis_2027: number | null;
+}
+
+type CompareSide = 'A' | 'B' | 'C';
+
+const SCORE_TYPE_GROUP_ORDER = [
+  'Default',
+  'Base ML',
+  'Grid Search',
+  'PolicyBoost Rerank',
+  'Rerank Variants',
+  'Rerank',
+  'Other'
+] as const;
+
+function sanitizeFilePart(value: string): string {
+  return (value || 'blank')
+    .trim()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-zA-Z0-9_-]/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .toLowerCase() || 'blank';
+}
+
+function applyExportScope<T extends { rank: number }>(rows: T[], scope: ExportScope): T[] {
+  if (scope === 'full') return rows;
+  return rows.slice(0, scope);
+}
+
+function groupScoreType(scoreType: string): string {
+  if (!scoreType) return 'Default';
+  if (scoreType === 'base_ml') return 'Base ML';
+  if (scoreType.startsWith('grid_')) return 'Grid Search';
+  if (scoreType.startsWith('rerank_policy_boost')) return 'PolicyBoost Rerank';
+  if (scoreType === 'rerank') return 'Rerank';
+  if (scoreType.startsWith('rerank_')) return 'Rerank Variants';
+  return 'Other';
+}
+
+function formatScoreTypeLabel(scoreType: string): string {
+  return scoreType || '(default/blank)';
 }
 
 export function RankingComparePage() {
@@ -37,10 +100,19 @@ export function RankingComparePage() {
   const [modelB, setModelB] = useState<string>('');
   const [scenarioC, setScenarioC] = useState<string>(''); 
   const [modelC, setModelC] = useState<string>('');
+  const [scoreTypeA, setScoreTypeA] = useState<string>('');
+  const [scoreTypeB, setScoreTypeB] = useState<string>('');
+  const [scoreTypeC, setScoreTypeC] = useState<string>('');
   
   const [topK, setTopK] = useState<number | 'all'>('all');
   const [search, setSearch] = useState<string>('');
   const [targetOnly, setTargetOnly] = useState<boolean>(false);
+  const [targetType, setTargetType] = useState<TargetType>('planned_any_2026');
+  const [exportScope, setExportScope] = useState<ExportScope>('full');
+  const [scoreTypeSearchA, setScoreTypeSearchA] = useState<string>('');
+  const [scoreTypeSearchB, setScoreTypeSearchB] = useState<string>('');
+  const [scoreTypeSearchC, setScoreTypeSearchC] = useState<string>('');
+  const [expandedScoreGroups, setExpandedScoreGroups] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     if (appData && !scenarioA && appData.detectedScenarios.length > 0) {
@@ -54,23 +126,72 @@ export function RankingComparePage() {
     }
   }, [appData, scenarioA]);
 
-  const { rows, metrics, similarities } = useMemo(() => {
+  const getScoreTypes = (scen: string, model: string) => {
+    if (!appData || !scen || !model) return [] as string[];
+    return Array.from(
+      new Set(
+        (appData.indexes.rankingsByScenario.get(scen) || [])
+          .filter(r => r.model === model)
+          .map(r => r.score_type || '')
+      )
+    ).sort((a, b) => a.localeCompare(b));
+  };
+
+  const scoreTypesA = getScoreTypes(scenarioA, modelA);
+  const scoreTypesB = getScoreTypes(scenarioB, modelB);
+  const scoreTypesC = getScoreTypes(scenarioC, modelC);
+
+  const pickDefaultScoreType = (scoreTypes: string[]) => {
+    if (scoreTypes.length === 0) return '';
+    if (scoreTypes.includes('pred_prob')) return 'pred_prob';
+    if (scoreTypes.includes('base_ml')) return 'base_ml';
+    if (scoreTypes.includes('rerank')) return 'rerank';
+    if (scoreTypes.includes('')) return '';
+    return scoreTypes[0];
+  };
+
+  useEffect(() => {
+    const next = pickDefaultScoreType(scoreTypesA);
+    if (!scoreTypesA.includes(scoreTypeA)) {
+      setScoreTypeA(next);
+    }
+  }, [scenarioA, modelA, scoreTypeA, scoreTypesA.join('|')]);
+
+  useEffect(() => {
+    const next = pickDefaultScoreType(scoreTypesB);
+    if (!scoreTypesB.includes(scoreTypeB)) {
+      setScoreTypeB(next);
+    }
+  }, [scenarioB, modelB, scoreTypeB, scoreTypesB.join('|')]);
+
+  useEffect(() => {
+    const next = pickDefaultScoreType(scoreTypesC);
+    if (!scoreTypesC.includes(scoreTypeC)) {
+      setScoreTypeC(next);
+    }
+  }, [scenarioC, modelC, scoreTypeC, scoreTypesC.join('|')]);
+
+  const { rows, metrics, similarities, rankingRowsA, rankingRowsB } = useMemo(() => {
     if (!appData || !scenarioA || !scenarioB || !modelA || !modelB) {
-      return { rows: [], metrics: null, similarities: [] };
+      return { rows: [], metrics: null, similarities: [], rankingRowsA: [], rankingRowsB: [], rankingRowsC: [] };
     }
 
-    const getAllFiltered = (s: string, m: string) => {
-      let ranks = (appData.indexes.rankingsByScenario.get(s) || []).filter(r => r.model === m);
-      ranks = ranks.sort((a,b) => a.rank - b.rank);
-      if (topK !== 'all') {
+    const getAllFiltered = (s: string, m: string, scoreType: string, applyPageTopK = true) => {
+      let ranks = (appData.indexes.rankingsByScenario.get(s) || []).filter(r => r.model === m && (r.score_type || '') === scoreType);
+      ranks = ranks.slice().sort((a,b) => a.rank - b.rank);
+      if (applyPageTopK && topK !== 'all') {
         ranks = ranks.slice(0, Number(topK));
       }
       return ranks;
     };
 
-    const dataA = getAllFiltered(scenarioA, modelA);
-    const dataB = getAllFiltered(scenarioB, modelB);
-    const dataC = scenarioC ? getAllFiltered(scenarioC, modelC) : [];
+    const fullDataA = getAllFiltered(scenarioA, modelA, scoreTypeA, false);
+    const fullDataB = getAllFiltered(scenarioB, modelB, scoreTypeB, false);
+    const fullDataC = scenarioC ? getAllFiltered(scenarioC, modelC, scoreTypeC, false) : [];
+
+    const dataA = topK === 'all' ? fullDataA : fullDataA.slice(0, Number(topK));
+    const dataB = topK === 'all' ? fullDataB : fullDataB.slice(0, Number(topK));
+    const dataC = scenarioC ? (topK === 'all' ? fullDataC : fullDataC.slice(0, Number(topK))) : [];
 
     const mapA = new Map(dataA.map(r => [getRoadKey(r), r]));
     const mapB = new Map(dataB.map(r => [getRoadKey(r), r]));
@@ -87,6 +208,9 @@ export function RankingComparePage() {
     let hitAny = 0;
     let hitTender = 0;
     let hitPl = 0;
+    let hitTek = 0;
+    let hitTek2027 = 0;
+    let hitSelected = 0;
     
     let overlapABC = 0; 
     let uniqueA = 0;
@@ -121,13 +245,28 @@ export function RankingComparePage() {
       const pAny = anyRecord?.planned_any_2026 ?? null;
       const pTender = anyRecord?.planned_tender_2026 ?? null;
       const pPl = anyRecord?.planned_pl_2026 ?? null;
+      const pTek = anyRecord?.planned_teknokratis_2026 ?? null;
+      const pTek2027 = anyRecord?.planned_teknokratis_2027 ?? null;
+      const selectedTargetHit = getTargetHitValue(
+        {
+          planned_any_2026: pAny,
+          planned_tender_2026: pTender,
+          planned_pl_2026: pPl,
+          planned_teknokratis_2026: pTek,
+          planned_teknokratis_2027: pTek2027
+        },
+        targetType
+      );
 
       if (search && !road_name.toLowerCase().includes(search.toLowerCase())) continue;
-      if (targetOnly && !isTargetPositive(pAny)) continue;
+      if (targetOnly && !isTargetPositive(selectedTargetHit)) continue;
 
       if (isTargetPositive(pAny)) hitAny++;
       if (isTargetPositive(pTender)) hitTender++;
       if (isTargetPositive(pPl)) hitPl++;
+      if (isTargetPositive(pTek)) hitTek++;
+      if (isTargetPositive(pTek2027)) hitTek2027++;
+      if (isTargetPositive(selectedTargetHit)) hitSelected++;
 
       combined.push({
         road_key: id,
@@ -142,7 +281,13 @@ export function RankingComparePage() {
         absDiffAB: (rA && rB) ? Math.abs(rB.rank - rA.rank) : null,
         planned_any: pAny,
         planned_tender: pTender,
-        planned_pl: pPl
+        planned_pl: pPl,
+        planned_teknokratis: pTek,
+        planned_teknokratis_2027: pTek2027,
+        selectedTargetHit,
+        scoreTypeA: rA?.score_type ?? null,
+        scoreTypeB: rB?.score_type ?? null,
+        scoreTypeC: rC?.score_type ?? null
       });
     }
 
@@ -172,21 +317,13 @@ export function RankingComparePage() {
 
     return { 
       rows: combined, 
-      metrics: { hitAny, hitTender, hitPl, overlapABC, uniqueA, uniqueB, unionCount: allIds.length },
-      similarities: simMatrix
+      metrics: { hitAny, hitTender, hitPl, hitTek, hitTek2027, hitSelected, overlapABC, uniqueA, uniqueB, unionCount: allIds.length },
+      similarities: simMatrix,
+      rankingRowsA: fullDataA,
+      rankingRowsB: fullDataB,
+      rankingRowsC: fullDataC
     };
-  }, [appData, scenarioA, modelA, scenarioB, modelB, scenarioC, modelC, topK, search, targetOnly]);
-
-  const handleExport = () => {
-    const isC = !!scenarioC;
-    const headers = ['road_name', 'target_any', 'target_tender', 'target_pl', 'rank_A', 'rank_B', 'abs_delta_AB'];
-    const keys = ['road_name', 'planned_any', 'planned_tender', 'planned_pl', 'rankA', 'rankB', 'absDiffAB'];
-    if (isC) {
-      headers.push('rank_C');
-      keys.push('rankC');
-    }
-    exportToCsv(`ranking_comparison_${new Date().getTime()}`, rows, headers, keys);
-  };
+  }, [appData, scenarioA, modelA, scoreTypeA, scenarioB, modelB, scoreTypeB, scenarioC, modelC, scoreTypeC, topK, search, targetOnly, targetType]);
 
   const columns: ColumnDef<ComparisonRow>[] = [
     {
@@ -199,8 +336,8 @@ export function RankingComparePage() {
       ),
     },
     {
-      accessorKey: 'planned_any',
-      header: 'TGT',
+      accessorKey: 'selectedTargetHit',
+      header: `TGT: ${TARGET_LABELS[targetType]}`,
       cell: (info) => {
         const val = info.getValue() as number | null;
         if (!isTargetKnown(val)) return <span className="text-amber-400 mx-auto text-[9px] font-bold italic" title="Target data unavailable">N/A</span>;
@@ -262,6 +399,327 @@ export function RankingComparePage() {
   const modelsB = getModels(scenarioB);
   const modelsC = getModels(scenarioC);
 
+  const roadMetaMap = new Map<string, RoadMeta>();
+  for (const row of appData.targetRows) {
+    const roadKey = getRoadKey(row);
+    const anyRow = row as TargetRow & Record<string, unknown>;
+    const existing = roadMetaMap.get(roadKey);
+    roadMetaMap.set(roadKey, {
+      road_name: row.road_name || existing?.road_name || 'Unknown',
+      nomor_ruas: String(anyRow.nomor_ruas ?? existing?.nomor_ruas ?? ''),
+      desa_yang_dilalui: String(anyRow.desa_yang_dilalui ?? existing?.desa_yang_dilalui ?? ''),
+      kecamatan_yang_dilalui: String(anyRow.kecamatan_yang_dilalui ?? existing?.kecamatan_yang_dilalui ?? ''),
+      planned_any_2026: row.planned_any_2026 ?? existing?.planned_any_2026 ?? null,
+      planned_tender_2026: row.planned_tender_2026 ?? existing?.planned_tender_2026 ?? null,
+      planned_pl_2026: row.planned_pl_2026 ?? existing?.planned_pl_2026 ?? null,
+      planned_teknokratis_2026: row.planned_teknokratis_2026 ?? existing?.planned_teknokratis_2026 ?? null,
+      planned_teknokratis_2027: row.planned_teknokratis_2027 ?? existing?.planned_teknokratis_2027 ?? null,
+    });
+  }
+
+  const scenarioLabelMap = new Map(appData.scenarios.map((row) => [row.scenario_id, row.scenario_label]));
+  const scoreTypeLabelA = scoreTypeA || 'blank';
+  const scoreTypeLabelB = scoreTypeB || 'blank';
+
+  const universeCount = appData.indexes.rankingsByRoadKey.size;
+  const partialUniverseWarnings: string[] = [];
+  if (rankingRowsA.length > 0 && rankingRowsA.length < universeCount) {
+    partialUniverseWarnings.push(`Ranking A has ${rankingRowsA.length} rows, below the ${universeCount}-road universe. Export includes available rows only.`);
+  }
+  if (rankingRowsB.length > 0 && rankingRowsB.length < universeCount) {
+    partialUniverseWarnings.push(`Ranking B has ${rankingRowsB.length} rows, below the ${universeCount}-road universe. Export includes available rows only.`);
+  }
+
+  const buildStandaloneExportRows = (rowsForSide: RankingRow[], scenarioId: string, model: string) => {
+    const scopedRows = applyExportScope(rowsForSide, exportScope);
+    return scopedRows.map((row, index) => {
+      const roadKey = getRoadKey(row);
+      const meta = roadMetaMap.get(roadKey);
+      const anyRow = row as RankingRow & Record<string, unknown>;
+      const selectedTargetHitValue = getTargetHitValue(
+        {
+          planned_any_2026: meta?.planned_any_2026 ?? row.planned_any_2026 ?? null,
+          planned_tender_2026: meta?.planned_tender_2026 ?? row.planned_tender_2026 ?? null,
+          planned_pl_2026: meta?.planned_pl_2026 ?? row.planned_pl_2026 ?? null,
+          planned_teknokratis_2026: meta?.planned_teknokratis_2026 ?? row.planned_teknokratis_2026 ?? null,
+          planned_teknokratis_2027: meta?.planned_teknokratis_2027 ?? row.planned_teknokratis_2027 ?? null
+        },
+        targetType
+      );
+      return {
+        export_rank: index + 1,
+        rank: row.rank ?? '',
+        road_key: roadKey,
+        road_name: meta?.road_name || row.road_name || 'Unknown',
+        nomor_ruas: meta?.nomor_ruas || '',
+        desa_yang_dilalui: meta?.desa_yang_dilalui || '',
+        kecamatan_yang_dilalui: meta?.kecamatan_yang_dilalui || '',
+        scenario_label: scenarioLabelMap.get(scenarioId) || scenarioId,
+        scenario_key: scenarioId,
+        scenario_id: scenarioId,
+        model_name: model,
+        model_key: model,
+        model,
+        score_type: row.score_type || '',
+        score: row.score ?? '',
+        pred_prob: anyRow.pred_prob ?? '',
+        final_score: anyRow.final_score ?? '',
+        base_prob: anyRow.base_prob ?? '',
+        rerank_score: anyRow.rerank_score ?? '',
+        selected_target_def_label: TARGET_LABELS[targetType],
+        selected_target_def_key: targetType,
+        selected_target_hit_value: selectedTargetHitValue ?? '',
+        planned_any_2026: meta?.planned_any_2026 ?? row.planned_any_2026 ?? '',
+        planned_tender_2026: meta?.planned_tender_2026 ?? row.planned_tender_2026 ?? '',
+        planned_pl_2026: meta?.planned_pl_2026 ?? row.planned_pl_2026 ?? '',
+        planned_teknokratis_2026: meta?.planned_teknokratis_2026 ?? row.planned_teknokratis_2026 ?? '',
+        planned_teknokratis_2027: meta?.planned_teknokratis_2027 ?? row.planned_teknokratis_2027 ?? '',
+        target_any: meta?.planned_any_2026 ?? row.planned_any_2026 ?? '',
+        target_tender: meta?.planned_tender_2026 ?? row.planned_tender_2026 ?? '',
+        target_pl: meta?.planned_pl_2026 ?? row.planned_pl_2026 ?? '',
+        target_teknokratis: meta?.planned_teknokratis_2026 ?? row.planned_teknokratis_2026 ?? '',
+        is_top35: index + 1 <= 35 ? 1 : 0,
+        is_top70: index + 1 <= 70 ? 1 : 0,
+        is_top105: index + 1 <= 105 ? 1 : 0
+      };
+    });
+  };
+
+  const buildCompareExportRows = () => {
+    return rows
+      .filter((row) => {
+        if (exportScope === 'full') return true;
+        const inA = row.rankA !== null && row.rankA <= exportScope;
+        const inB = row.rankB !== null && row.rankB <= exportScope;
+        return inA || inB;
+      })
+      .map((row) => {
+        const delta = row.rankDiffAB;
+        let direction = 'tidak lengkap';
+        if (delta !== null) {
+          if (delta < 0) direction = 'B naik dibanding A';
+          else if (delta > 0) direction = 'B turun dibanding A';
+          else direction = 'sama';
+        }
+        return {
+          scenario_label_A: scenarioLabelMap.get(scenarioA) || scenarioA,
+          scenario_key_A: scenarioA,
+          model_name_A: modelA,
+          model_key_A: modelA,
+          scenario_label_B: scenarioLabelMap.get(scenarioB) || scenarioB,
+          scenario_key_B: scenarioB,
+          model_name_B: modelB,
+          model_key_B: modelB,
+          road_key: row.road_key,
+          road_name: row.road_name,
+          selected_target_def_label: TARGET_LABELS[targetType],
+          selected_target_def_key: targetType,
+          selected_target_hit_value: row.selectedTargetHit ?? '',
+          planned_any_2026: row.planned_any,
+          planned_tender_2026: row.planned_tender,
+          planned_pl_2026: row.planned_pl,
+          planned_teknokratis_2026: row.planned_teknokratis,
+          planned_teknokratis_2027: row.planned_teknokratis_2027,
+          target_any: row.planned_any,
+          target_tender: row.planned_tender,
+          target_pl: row.planned_pl,
+          target_teknokratis: row.planned_teknokratis,
+          scenario_A: scenarioA,
+          model_A: modelA,
+          score_type_A: row.scoreTypeA || '',
+          rank_A: row.rankA ?? '',
+          score_A: row.scoreA ?? '',
+          scenario_B: scenarioB,
+          model_B: modelB,
+          score_type_B: row.scoreTypeB || '',
+          rank_B: row.rankB ?? '',
+          score_B: row.scoreB ?? '',
+          abs_delta_AB: row.absDiffAB ?? '',
+          rank_B_minus_rank_A: delta ?? '',
+          direction,
+          is_top35_A: row.rankA !== null && row.rankA <= 35 ? 1 : 0,
+          is_top70_A: row.rankA !== null && row.rankA <= 70 ? 1 : 0,
+          is_top105_A: row.rankA !== null && row.rankA <= 105 ? 1 : 0,
+          is_top35_B: row.rankB !== null && row.rankB <= 35 ? 1 : 0,
+          is_top70_B: row.rankB !== null && row.rankB <= 70 ? 1 : 0,
+          is_top105_B: row.rankB !== null && row.rankB <= 105 ? 1 : 0
+        };
+      });
+  };
+
+  const compareExportHeaders = [
+    'scenario_label_A', 'scenario_key_A', 'model_name_A', 'model_key_A',
+    'scenario_label_B', 'scenario_key_B', 'model_name_B', 'model_key_B',
+    'road_key', 'road_name',
+    'selected_target_def_label', 'selected_target_def_key', 'selected_target_hit_value',
+    'planned_any_2026', 'planned_tender_2026', 'planned_pl_2026', 'planned_teknokratis_2026', 'planned_teknokratis_2027',
+    'target_any', 'target_tender', 'target_pl', 'target_teknokratis',
+    'scenario_A', 'model_A', 'score_type_A', 'rank_A', 'score_A',
+    'scenario_B', 'model_B', 'score_type_B', 'rank_B', 'score_B',
+    'abs_delta_AB', 'rank_B_minus_rank_A', 'direction',
+    'is_top35_A', 'is_top70_A', 'is_top105_A',
+    'is_top35_B', 'is_top70_B', 'is_top105_B'
+  ];
+
+  const standaloneExportHeaders = [
+    'export_rank', 'rank', 'road_key', 'road_name', 'nomor_ruas', 'desa_yang_dilalui', 'kecamatan_yang_dilalui',
+    'scenario_label', 'scenario_key', 'scenario_id', 'model_name', 'model_key', 'model', 'score_type',
+    'score', 'pred_prob', 'final_score', 'base_prob', 'rerank_score',
+    'selected_target_def_label', 'selected_target_def_key', 'selected_target_hit_value',
+    'planned_any_2026', 'planned_tender_2026', 'planned_pl_2026', 'planned_teknokratis_2026', 'planned_teknokratis_2027',
+    'target_any', 'target_tender', 'target_pl', 'target_teknokratis', 'is_top35', 'is_top70', 'is_top105'
+  ];
+
+  const handleExportCompare = (format: 'csv' | 'tsv') => {
+    const compareRows = buildCompareExportRows();
+    const filename = `ranking_compare__${sanitizeFilePart(scenarioA)}_${sanitizeFilePart(modelA)}_${sanitizeFilePart(scoreTypeLabelA)}__vs__${sanitizeFilePart(scenarioB)}_${sanitizeFilePart(modelB)}_${sanitizeFilePart(scoreTypeLabelB)}__${sanitizeFilePart(targetType)}`;
+    const exportFn = format === 'tsv' ? exportToTsv : exportToCsv;
+    exportFn(filename, compareRows, compareExportHeaders, compareExportHeaders);
+  };
+
+  const handleExportRankingA = () => {
+    if (rankingRowsA.length < appData.indexes.rankingsByRoadKey.size) {
+      console.warn(`[RankingComparePage] Ranking A export is partial: ${rankingRowsA.length} rows available for ${scenarioA} / ${modelA}.`);
+    }
+    exportToCsv(
+      `ranking_A__${sanitizeFilePart(scenarioA)}_${sanitizeFilePart(modelA)}_${sanitizeFilePart(scoreTypeLabelA)}`,
+      buildStandaloneExportRows(rankingRowsA, scenarioA, modelA),
+      standaloneExportHeaders,
+      standaloneExportHeaders
+    );
+  };
+
+  const handleExportRankingB = () => {
+    if (rankingRowsB.length < appData.indexes.rankingsByRoadKey.size) {
+      console.warn(`[RankingComparePage] Ranking B export is partial: ${rankingRowsB.length} rows available for ${scenarioB} / ${modelB}.`);
+    }
+    exportToCsv(
+      `ranking_B__${sanitizeFilePart(scenarioB)}_${sanitizeFilePart(modelB)}_${sanitizeFilePart(scoreTypeLabelB)}`,
+      buildStandaloneExportRows(rankingRowsB, scenarioB, modelB),
+      standaloneExportHeaders,
+      standaloneExportHeaders
+    );
+  };
+
+  const toggleScoreGroup = (side: CompareSide, group: string) => {
+    const key = `${side}:${group}`;
+    setExpandedScoreGroups(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const renderScoreTypePicker = (
+    side: CompareSide,
+    scoreTypes: string[],
+    selectedScoreType: string,
+    setSelectedScoreType: (value: string) => void,
+    searchValue: string,
+    setSearchValue: (value: string) => void
+  ) => {
+    if (scoreTypes.length <= 1) {
+      return (
+        <div className="mt-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
+          <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+            Score Type
+          </div>
+          <div className="mt-2 inline-flex items-center rounded-full bg-white px-3 py-1 text-[11px] font-bold text-slate-700 shadow-sm">
+            {formatScoreTypeLabel(selectedScoreType)}
+          </div>
+        </div>
+      );
+    }
+
+    const filteredScoreTypes = scoreTypes.filter(scoreType =>
+      formatScoreTypeLabel(scoreType).toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    const grouped = SCORE_TYPE_GROUP_ORDER
+      .map(group => ({
+        group,
+        scoreTypes: filteredScoreTypes.filter(scoreType => groupScoreType(scoreType) === group)
+      }))
+      .filter(group => group.scoreTypes.length > 0);
+
+    const visibleCount = filteredScoreTypes.length;
+
+    return (
+      <div className="mt-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
+        <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div className="min-w-0">
+            <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Score Type
+            </div>
+            <div className="mt-1 flex items-center gap-2 text-[11px] text-slate-600">
+              <span className="rounded-full bg-white px-2 py-1 font-bold text-slate-700" title={formatScoreTypeLabel(selectedScoreType)}>
+                Selected: {formatScoreTypeLabel(selectedScoreType)}
+              </span>
+              <span className="font-semibold text-slate-500">
+                {visibleCount} filtered, total {scoreTypes.length}
+              </span>
+            </div>
+          </div>
+          <input
+            type="text"
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}
+            placeholder="Filter score type..."
+            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-semibold outline-none focus:ring-2 focus:ring-blue-50 md:w-52"
+          />
+        </div>
+        <div className="mt-3 space-y-2">
+          {grouped.map(({ group, scoreTypes: groupScoreTypes }) => {
+            const key = `${side}:${group}`;
+            const autoExpanded = groupScoreTypes.includes(selectedScoreType) || grouped.length === 1;
+            const isExpanded = expandedScoreGroups[key] ?? autoExpanded;
+            return (
+              <div key={key} className="rounded-lg border border-slate-200 bg-white">
+                <button
+                  type="button"
+                  onClick={() => toggleScoreGroup(side, group)}
+                  className="flex w-full items-center justify-between gap-3 px-3 py-2 text-left"
+                >
+                  <span className="text-[11px] font-black uppercase tracking-widest text-slate-600">
+                    {group}
+                  </span>
+                  <span className="text-[11px] font-bold text-slate-400">
+                    {groupScoreTypes.length} {isExpanded ? 'hide' : 'show'}
+                  </span>
+                </button>
+                {isExpanded && (
+                  <div className="overflow-x-auto border-t border-slate-100 px-3 py-3">
+                    <div className="flex min-w-max gap-2">
+                      {groupScoreTypes.map(scoreType => {
+                        const active = scoreType === selectedScoreType;
+                        return (
+                          <button
+                            key={`${side}:${scoreType || 'blank'}`}
+                            type="button"
+                            title={formatScoreTypeLabel(scoreType)}
+                            onClick={() => setSelectedScoreType(scoreType)}
+                            className={`max-w-[220px] truncate rounded-full border px-3 py-1.5 text-[11px] font-bold transition ${
+                              active
+                                ? 'border-blue-300 bg-blue-50 text-blue-700'
+                                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'
+                            }`}
+                          >
+                            {formatScoreTypeLabel(scoreType)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          {grouped.length === 0 && (
+            <div className="rounded-lg border border-dashed border-slate-200 bg-white px-3 py-4 text-center text-xs text-slate-400">
+              No score type matches the current filter.
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   const scatterData = rows.filter(r => r.rankA != null && r.rankB != null).map(r => ({
     name: r.road_name,
     x: r.rankA,
@@ -284,6 +742,7 @@ export function RankingComparePage() {
                 {modelsA.map(m => <option key={m} value={m}>{m}</option>)}
               </select>
             </div>
+            {renderScoreTypePicker('A', scoreTypesA, scoreTypeA, setScoreTypeA, scoreTypeSearchA, setScoreTypeSearchA)}
          </div>
          <div className="space-y-2">
             <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">B: Comparison Subject</label>
@@ -295,6 +754,7 @@ export function RankingComparePage() {
                 {modelsB.map(m => <option key={m} value={m}>{m}</option>)}
               </select>
             </div>
+            {renderScoreTypePicker('B', scoreTypesB, scoreTypeB, setScoreTypeB, scoreTypeSearchB, setScoreTypeSearchB)}
          </div>
          <div className="space-y-2">
             <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">C: Control Subject (Optional)</label>
@@ -309,8 +769,25 @@ export function RankingComparePage() {
                  </select>
               )}
             </div>
+            {scenarioC && renderScoreTypePicker('C', scoreTypesC, scoreTypeC, setScoreTypeC, scoreTypeSearchC, setScoreTypeSearchC)}
          </div>
          <div className="space-y-2 xl:pl-6 xl:border-l border-slate-100 flex flex-col justify-end">
+            <div className="space-y-3">
+              <div>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Target Def</label>
+                <select
+                  value={targetType}
+                  onChange={e => setTargetType(e.target.value as TargetType)}
+                  className="mt-2 w-full text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 p-2 outline-none"
+                >
+                  <option value="planned_any_2026">Any 2026</option>
+                  <option value="planned_tender_2026">Tender 2026</option>
+                  <option value="planned_pl_2026">PL 2026</option>
+                  <option value="planned_teknokratis_2026">Tekno 2026</option>
+                  <option value="planned_teknokratis_2027">Tekno 2027</option>
+                  <option value="both">Both (Any/Tender)</option>
+                </select>
+              </div>
             <div className="flex gap-3">
               <div className="flex-1">
                  <select value={topK} onChange={e => setTopK(e.target.value === 'all' ? 'all' : Number(e.target.value))} className="w-full text-xs font-black rounded-lg border border-slate-300 bg-white p-2 outline-none uppercase tracking-tighter">
@@ -324,8 +801,11 @@ export function RankingComparePage() {
               </div>
               <div className="flex items-center gap-2">
                  <input type="checkbox" id="tgt_chk" checked={targetOnly} onChange={e=>setTargetOnly(e.target.checked)} className="rounded text-blue-600 focus:ring-blue-500 w-4 h-4 cursor-pointer" />
-                 <label htmlFor="tgt_chk" className="text-[11px] font-black uppercase tracking-tight text-slate-500 cursor-pointer">Target Filter</label>
+                 <label htmlFor="tgt_chk" className="text-[11px] font-black uppercase tracking-tight text-slate-500 cursor-pointer">
+                   {`Target Filter: ${TARGET_LABELS[targetType]}`}
+                 </label>
               </div>
+            </div>
             </div>
          </div>
       </div>
@@ -348,9 +828,9 @@ export function RankingComparePage() {
              subtitle="Absence in reference arrays"
           />
           <MetricCard 
-             label="Target Capture Analysis" 
-             value={metrics.hitAny} 
-             subtitle={`${metrics.hitTender} Tender / ${metrics.hitPl} Penunjukan Langsung`}
+             label={`Target Capture: ${TARGET_LABELS[targetType]}`}
+             value={metrics.hitSelected} 
+             subtitle={`Any ${metrics.hitAny} / Tender ${metrics.hitTender} / PL ${metrics.hitPl} / Tekno26 ${metrics.hitTek} / Tekno27 ${metrics.hitTek2027}`}
           />
         </div>
       )}
@@ -361,11 +841,37 @@ export function RankingComparePage() {
             title="Comparative Analysis Table" 
             subtitle={`Filtered view of ${rows.length} segments. Priority by Rank Δ.`}
             actions={
-              <div className="flex items-center gap-3">
-                <input type="text" placeholder="Search by segment name..." value={search} onChange={e=>setSearch(e.target.value)} className="text-xs font-semibold border border-slate-300 p-2 rounded-lg w-48 outline-none focus:ring-2 focus:ring-blue-50 bg-slate-50" />
-                <button onClick={handleExport} className="flex items-center gap-2 text-xs font-black uppercase tracking-widest bg-slate-900 text-white px-4 py-2 rounded-lg shadow-sm hover:bg-slate-800 transition transform active:scale-95">
-                  <Download className="w-3.5 h-3.5" /> CSV
-                </button>
+              <div className="flex flex-col items-end gap-2">
+                <div className="flex items-center gap-3">
+                  <input type="text" placeholder="Search by segment name..." value={search} onChange={e=>setSearch(e.target.value)} className="text-xs font-semibold border border-slate-300 p-2 rounded-lg w-48 outline-none focus:ring-2 focus:ring-blue-50 bg-slate-50" />
+                  <select value={String(exportScope)} onChange={e => setExportScope(e.target.value === 'full' ? 'full' : Number(e.target.value) as ExportScope)} className="text-[11px] font-black rounded-lg border border-slate-300 bg-white px-2 py-2 outline-none uppercase tracking-tight">
+                    <option value="full">Full ranking</option>
+                    <option value="35">Top-35</option>
+                    <option value="70">Top-70</option>
+                    <option value="105">Top-105</option>
+                  </select>
+                </div>
+                <div className="flex flex-wrap items-center justify-end gap-2">
+                  <button onClick={() => handleExportCompare('csv')} className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest bg-slate-900 text-white px-3 py-2 rounded-lg shadow-sm hover:bg-slate-800 transition transform active:scale-95">
+                    <Download className="w-3.5 h-3.5" /> Export CSV
+                  </button>
+                  <button onClick={() => handleExportCompare('tsv')} className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest bg-slate-700 text-white px-3 py-2 rounded-lg shadow-sm hover:bg-slate-600 transition transform active:scale-95">
+                    <Download className="w-3.5 h-3.5" /> Export TSV
+                  </button>
+                  <button onClick={handleExportRankingA} className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest bg-blue-700 text-white px-3 py-2 rounded-lg shadow-sm hover:bg-blue-600 transition transform active:scale-95">
+                    <Download className="w-3.5 h-3.5" /> Export Ranking A CSV
+                  </button>
+                  <button onClick={handleExportRankingB} className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest bg-emerald-700 text-white px-3 py-2 rounded-lg shadow-sm hover:bg-emerald-600 transition transform active:scale-95">
+                    <Download className="w-3.5 h-3.5" /> Export Ranking B CSV
+                  </button>
+                </div>
+                {partialUniverseWarnings.length > 0 && (
+                  <div className="text-right text-[10px] font-semibold text-amber-600">
+                    {partialUniverseWarnings.map((note) => (
+                      <div key={note}>{note}</div>
+                    ))}
+                  </div>
+                )}
               </div>
             }
           >

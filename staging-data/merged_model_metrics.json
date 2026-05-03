@@ -1,0 +1,3038 @@
+[
+  {
+    "scenario_id": "normatif_20",
+    "model": "XGBoost",
+    "roc_auc": 0.9902818270165209,
+    "pr_auc": 0.9807990474372335,
+    "pos_rate": 0.3,
+    "best_threshold": 0.76,
+    "top30_precision": 0.9142857142857143,
+    "top30_recall": 0.9142857142857143,
+    "top30_mcc": 0.8775510204081632,
+    "top30_bal_acc": 0.9387755102040816,
+    "mccopt_precision": 0.96875,
+    "mccopt_recall": 0.8857142857142857,
+    "mccopt_mcc": 0.8971662048361566,
+    "mccopt_bal_acc": 0.9367346938775509,
+    "thr05_precision": 0.9056603773584906,
+    "thr05_recall": 0.9142857142857143,
+    "thr05_mcc": 0.8711190975810794,
+    "thr05_bal_acc": 0.9367346938775509,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "summary_cv"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "RandomForest",
+    "roc_auc": 0.9899514091350826,
+    "pr_auc": 0.9792866667572637,
+    "pos_rate": 0.3,
+    "best_threshold": 0.45,
+    "top30_precision": 0.9047619047619048,
+    "top30_recall": 0.9047619047619048,
+    "top30_mcc": 0.8639455782312925,
+    "top30_bal_acc": 0.9319727891156462,
+    "mccopt_precision": 0.9782608695652174,
+    "mccopt_recall": 0.8571428571428571,
+    "mccopt_mcc": 0.8838349592306067,
+    "mccopt_bal_acc": 0.9244897959183673,
+    "thr05_precision": 0.9886363636363636,
+    "thr05_recall": 0.8285714285714286,
+    "thr05_mcc": 0.8709054234346343,
+    "thr05_bal_acc": 0.9122448979591837,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "summary_cv"
+  },
+  {
+    "scenario_id": "normatif_20",
+    "model": "DecisionTree",
+    "roc_auc": 0.9149659863945577,
+    "pr_auc": 0.7964502164502165,
+    "pos_rate": 0.3,
+    "best_threshold": 0.01,
+    "top30_precision": 0.8571428571428571,
+    "top30_recall": 0.8571428571428571,
+    "top30_mcc": 0.7959183673469388,
+    "top30_bal_acc": 0.8979591836734694,
+    "mccopt_precision": 0.8545454545454545,
+    "mccopt_recall": 0.8952380952380953,
+    "mccopt_mcc": 0.8192533467591366,
+    "mccopt_bal_acc": 0.9149659863945578,
+    "thr05_precision": 0.8545454545454545,
+    "thr05_recall": 0.8952380952380953,
+    "thr05_mcc": 0.8192533467591366,
+    "thr05_bal_acc": 0.9149659863945578,
+    "source_file": "master_report_20_Variabel.xlsx",
+    "source_sheet": "summary_cv"
+  },
+  {
+    "scenario_id": "normatif_17",
+    "model": "XGBoost",
+    "roc_auc": 0.9870165208940719,
+    "pr_auc": 0.9767739706361822,
+    "pos_rate": 0.3,
+    "best_threshold": 0.23,
+    "top30_precision": 0.9047619047619048,
+    "top30_recall": 0.9047619047619048,
+    "top30_mcc": 0.8639455782312925,
+    "top30_bal_acc": 0.9319727891156462,
+    "mccopt_precision": 0.8928571428571429,
+    "mccopt_recall": 0.9523809523809523,
+    "mccopt_mcc": 0.8874848378700706,
+    "mccopt_bal_acc": 0.9517006802721089,
+    "thr05_precision": 0.9117647058823529,
+    "thr05_recall": 0.8857142857142857,
+    "thr05_mcc": 0.856148334216461,
+    "thr05_bal_acc": 0.9244897959183673,
+    "source_file": "master_report_17_variabel.xlsx",
+    "source_sheet": "summary_cv"
+  },
+  {
+    "scenario_id": "normatif_17",
+    "model": "RandomForest",
+    "roc_auc": 0.9861224489795919,
+    "pr_auc": 0.9740770486512503,
+    "pos_rate": 0.3,
+    "best_threshold": 0.43,
+    "top30_precision": 0.9047619047619048,
+    "top30_recall": 0.9047619047619048,
+    "top30_mcc": 0.8639455782312925,
+    "top30_bal_acc": 0.9319727891156462,
+    "mccopt_precision": 0.9393939393939394,
+    "mccopt_recall": 0.8857142857142857,
+    "mccopt_mcc": 0.8762733517450436,
+    "mccopt_bal_acc": 0.9306122448979592,
+    "thr05_precision": 0.967391304347826,
+    "thr05_recall": 0.8476190476190476,
+    "thr05_mcc": 0.869670937448065,
+    "thr05_bal_acc": 0.917687074829932,
+    "source_file": "master_report_17_variabel.xlsx",
+    "source_sheet": "summary_cv"
+  },
+  {
+    "scenario_id": "normatif_17",
+    "model": "DecisionTree",
+    "roc_auc": 0.8918367346938776,
+    "pr_auc": 0.7571428571428571,
+    "pos_rate": 0.3,
+    "best_threshold": 0.01,
+    "top30_precision": 0.8380952380952381,
+    "top30_recall": 0.8380952380952381,
+    "top30_mcc": 0.7687074829931972,
+    "top30_bal_acc": 0.8843537414965986,
+    "mccopt_precision": 0.8333333333333334,
+    "mccopt_recall": 0.8571428571428571,
+    "mccopt_mcc": 0.7774872491997801,
+    "mccopt_bal_acc": 0.8918367346938776,
+    "thr05_precision": 0.8333333333333334,
+    "thr05_recall": 0.8571428571428571,
+    "thr05_mcc": 0.7774872491997801,
+    "thr05_bal_acc": 0.8918367346938776,
+    "source_file": "master_report_17_variabel.xlsx",
+    "source_sheet": "summary_cv"
+  },
+  {
+    "scenario_id": "refined_base_any2026",
+    "model": "RandomForest",
+    "source_file": "ml_murni_refined_comprehensive_20260417_201703.xlsx",
+    "source_sheet": "eval_horizon_2026",
+    "mcc": 0.1585741864073475
+  },
+  {
+    "scenario_id": "refined_base_any2026",
+    "model": "XGBoost",
+    "source_file": "ml_murni_refined_comprehensive_20260417_201703.xlsx",
+    "source_sheet": "eval_horizon_2026",
+    "mcc": 0.1028824934865117
+  },
+  {
+    "scenario_id": "refined_base_any2026",
+    "model": "DecisionTree",
+    "source_file": "ml_murni_refined_comprehensive_20260417_201703.xlsx",
+    "source_sheet": "eval_horizon_2026",
+    "mcc": 0.1120975935849153
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "DecisionTree",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_DT_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_prob",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "Ensemble_RF_XGB_avg_rank",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "RandomForest",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "model": "XGBoost",
+    "source_file": "recall_maximizer_any2026_policyboost.xlsx",
+    "source_sheet": "summary_pivot"
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "model": "RandomForest",
+    "source_file": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1558939597417435
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "model": "XGBoost",
+    "source_file": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1082015898788424
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "model": "DecisionTree",
+    "source_file": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1120975935849153
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "model": "RandomForest",
+    "source_file": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1685050927484539
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "model": "XGBoost",
+    "source_file": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1438540229993946
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "model": "DecisionTree",
+    "source_file": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1092355978998026
+  },
+  {
+    "scenario_id": "refined_base_teknokratis2026",
+    "model": "XGBoost",
+    "source_file": "report_planned_teknokratis_2026.xlsx",
+    "source_sheet": "eval_horizon_2026",
+    "mcc": 0.2813293095871307
+  },
+  {
+    "scenario_id": "refined_base_teknokratis2026",
+    "model": "RandomForest",
+    "source_file": "report_planned_teknokratis_2026.xlsx",
+    "source_sheet": "eval_horizon_2026",
+    "mcc": 0.2313041739789325
+  },
+  {
+    "scenario_id": "refined_base_teknokratis2026",
+    "model": "DecisionTree",
+    "source_file": "report_planned_teknokratis_2026.xlsx",
+    "source_sheet": "eval_horizon_2026",
+    "mcc": 0.2791974860955932
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "model": "XGBoost",
+    "source_file": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.3290157677560527
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "model": "RandomForest",
+    "source_file": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.2422693112372188
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "model": "DecisionTree",
+    "source_file": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.3036016069541793
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "model": "XGBoost",
+    "source_file": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.3414178068795597
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "model": "RandomForest",
+    "source_file": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.2832737312851447
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "model": "DecisionTree",
+    "source_file": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.3070419760060973
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "model": "RandomForest",
+    "source_file": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1836834498876192
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "model": "DecisionTree",
+    "source_file": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1670304914844143
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "model": "XGBoost",
+    "source_file": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.125254666917725
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "model": "RandomForest",
+    "source_file": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1909132779134008
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "model": "DecisionTree",
+    "source_file": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1398355582633588
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "model": "XGBoost",
+    "source_file": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "source_sheet": "eval_horizon_only",
+    "mcc": 0.1836834498876192
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "scenario_id": "historis_original",
+    "model": "RandomForest",
+    "source_file": "master_report_originall.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.113783640115434
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "DecisionTree",
+    "source_file": "master_report_originall.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.2016313986403433
+  },
+  {
+    "scenario_id": "historis_original",
+    "model": "XGBoost",
+    "source_file": "master_report_originall.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1761297911967201
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "XGBoost",
+    "source_file": "master_report_Tender_only.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.0861277651986615
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "RandomForest",
+    "source_file": "master_report_Tender_only.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.050863195698038
+  },
+  {
+    "scenario_id": "historis_tender_only",
+    "model": "DecisionTree",
+    "source_file": "master_report_Tender_only.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.0561274427233599
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "RandomForest",
+    "source_file": "master_report_weighted_tender_tw2_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1792195789771388
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "XGBoost",
+    "source_file": "master_report_weighted_tender_tw2_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1839064220215344
+  },
+  {
+    "scenario_id": "historis_weighted_2_1",
+    "model": "DecisionTree",
+    "source_file": "master_report_weighted_tender_tw2_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.2223625736135822
+  },
+  {
+    "scenario_id": "historis_weighted_3_1",
+    "model": "RandomForest",
+    "source_file": "master_report_weighted_tender_tw3_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1360659000767433
+  },
+  {
+    "scenario_id": "historis_weighted_3_1",
+    "model": "XGBoost",
+    "source_file": "master_report_weighted_tender_tw3_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1878885284610913
+  },
+  {
+    "scenario_id": "historis_weighted_3_1",
+    "model": "DecisionTree",
+    "source_file": "master_report_weighted_tender_tw3_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1588883031582323
+  },
+  {
+    "scenario_id": "historis_weighted_5_1",
+    "model": "RandomForest",
+    "source_file": "master_report_weighted_tender_tw5_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.0909901209643192
+  },
+  {
+    "scenario_id": "historis_weighted_5_1",
+    "model": "XGBoost",
+    "source_file": "master_report_weighted_tender_tw5_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.1479143763214178
+  },
+  {
+    "scenario_id": "historis_weighted_5_1",
+    "model": "DecisionTree",
+    "source_file": "master_report_weighted_tender_tw5_pl1_neg1.xlsx",
+    "source_sheet": "eval_summary",
+    "mcc": 0.0279573515652576
+  }
+]

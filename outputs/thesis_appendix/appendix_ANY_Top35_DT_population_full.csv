@@ -1,0 +1,161 @@
+appendix_name,scenario_id,model,score_type,rank,export_rank,road_key,nama_ruas,nomor_ruas,desa_yang_dilalui,kecamatan_yang_dilalui,score,pred_prob,final_score,base_prob,rerank_score,planned_any_2026,planned_teknokratis_2026,planned_tender_2026,planned_pl_2026,is_top35,is_top70,is_top105
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,1,1,palajau - desa baluti,palajau – desa baluti,,,,0.8872285714285715,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,2,2,padang batung - batulaki - malilingin,padang batung – batulaki – malilingin,,,,0.8573142857142857,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,3,3,angkinang - kayu abang - panggang hijau,angkinang – kayu abang – panggang hijau,,,,0.8194285714285715,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,4,4,baluti - jambu hulu paku,baluti – jambu hulu paku,,,,0.8150000000000001,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,5,5,samuda - bajayau,Samuda - Bajayau,,,,0.8143428571428573,,,,,1,0,1,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,6,6,hamalau - telaga bidadari - wasah hilir,hamalau – telaga bidadari – wasah hilir,,,,0.8047714285714286,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,7,7,tembok baru - desa baluti,tembok baru – desa baluti,,,,0.8028,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,8,8,baiturrahim parincahan,baiturrahim parincahan,,,,0.8005428571428571,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,9,9,tukang garit tambangan,Tukang Garit (Tambangan),,,,0.7948571428571428,,,,,0,0,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,10,10,sei raya selatan - malutu - goa berangin,Sungai Raya Selatan - Malutu - Goa Berangin,,,,0.7926857142857143,,,,,1,0,1,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,11,11,sukaramai - keramat,sukaramai – keramat,,,,0.7842,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,12,12,sp 4 mesjid sirih - sarang nyamuk - asam tamiyang,sp 4 mesjid sirih – sarang nyamuk – asam tamiyang,,,,0.7841142857142858,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,13,13,padang haur - desa wasah tengah,padang haur – desa wasah tengah,,,,0.7804857142857143,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,14,14,gerilya depan pustu habirau,Gerilya / (Depan PUSTU Habirau),,,,0.7797142857142857,,,,,1,1,1,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,15,15,sp 4 banjarbaru - pihanin raya,sp 4 banjarbaru – pihanin raya,,,,0.7771714285714286,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,16,16,angkinang selatan - tawia - wawaran,Angkinang Selatan - Tawia - Wawaran,,,,0.7742857142857144,,,,,1,0,1,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,17,17,tumbukan banyu - banua hanyar,tumbukan banyu – banua hanyar,,,,0.7708857142857144,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,18,18,jafri zamzam,jafri zamzam,,,,0.7698571428571429,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,19,19,angkinang - telaga langsat,angkinang – telaga langsat,,,,0.7690285714285715,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,20,20,amawang muka - getek,amawang muka – getek,,,,0.7661142857142857,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,21,21,tanjungan - sp 10 batang kulur - sei kali,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali,,,,0.7629714285714286,,,,,1,0,0,1,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,22,22,rambai - bariang,rambai – bariang,,,,0.7605999999999999,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,23,23,mawangi - bukuanin - telaga langsat,Mawangi - Bukuanin - Telaga Langsat,,,,0.7586285714285714,,,,,0,1,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,24,24,bajayau - desa bajayau tengah,Bajayau - Ds. Bajayau Tengah,,,,0.7585714285714287,,,,,1,0,1,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,25,25,sei raya - jambu hulu paku,sei raya – jambu hulu paku,,,,0.757457142857143,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,26,26,tabihi - telaga langsat,Tabihi - Telaga Langsat,,,,0.7548,,,,,0,1,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,27,27,hamalau - ganda,Hamalau - Ganda,,,,0.7531714285714287,,,,,0,0,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,28,28,bakarung - tabihi - karang jawa,Bakarung -Tabihi - Karang Jawa,,,,0.7503142857142857,,,,,1,0,1,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,29,29,mandapai - madang,mandapai – madang,,,,0.7440000000000001,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,30,30,malinau - katingin - kamawakan,Malinau - Katingin - Kamawakan,,,,0.7434857142857143,,,,,0,1,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,31,31,kaliring - sp padang batung,Kaliring - Sp. Padang Batung,,,,0.7414000000000001,,,,,0,0,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,32,32,siang gantung - desa baru,Siang Gantung - Ds. Baru,,,,0.7362857142857144,,,,,0,0,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,33,33,gumbil - masimpan,Gumbil - Masimpan,,,,0.7346857142857144,,,,,0,1,0,0,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,34,34,panggang hijau - desa tawar,panggang hijau – desa tawar,,,,0.7343142857142857,,,,,,,,,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,35,35,sei raya selatan - sarang halang,Sungai Raya Selatan - Sarang Halang,,,,0.7340857142857143,,,,,1,0,0,1,1,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,36,36,muara banta - karang jawa,muara banta – karang jawa,,,,0.7313142857142858,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,37,37,sp empat lungau - bangkau,sp empat lungau – bangkau,,,,0.7297428571428572,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,38,38,samping bappeda - mesjid darul halik,samping bappeda – mesjid darul halik,,,,0.7285714285714285,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,39,39,tanuhi - ulang,tanuhi – ulang,,,,0.7258857142857142,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,40,40,sp 4 baru tampang - sp bilui pamujaan,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan,,,,0.7182571428571429,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,41,41,gang bidan desa tambak bitin,gang bidan desa tambak bitin,,,,0.7177428571428571,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,42,42,karasikan - sarang halang,Karasikan - Sarang Halang,,,,0.7168857142857143,,,,,0,0,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,43,43,bakarung tengah - karang jawa,bakarung tengah – karang jawa,,,,0.7132857142857144,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,44,44,banyu barau - sei kalang,Banyu Barau - Sei Kalang,,,,0.7016000000000001,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,45,45,bamban selatan - pakuan,bamban selatan – pakuan,,,,0.7001428571428572,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,46,46,hamalau - anjiran,Hamalau - Anjiran,,,,0.6979142857142857,,,,,0,0,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,47,47,kacang parang ulang - balai mawak - kias,kacang parang ulang – balai mawak – kias,,,,0.6976857142857144,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,48,48,tanjungan - sp 3 sakijang,tanjungan – sp 3 sakijang,,,,0.694657142857143,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,49,49,kayu abang - desa anjiran,kayu abang – desa anjiran,,,,0.6944857142857143,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,50,50,gambah luar - sei kudung,gambah luar – sei kudung,,,,0.6893428571428571,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,51,51,hamayung - hakurung dalam,Hamayung - Hakurung Dalam,,,,0.6884285714285714,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,52,52,bago tanggul - katilang - teratai,bago tanggul – katilang – teratai,,,,0.6876285714285716,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,53,53,sp empat lungau - garis,Sp. Empat Lungau - Garis,,,,0.684657142857143,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,54,54,tungkaran - desa ulin,tungkaran – desa ulin,,,,0.6839142857142856,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,55,55,firdaus - desa kapuh,firdaus – desa kapuh,,,,0.6826857142857142,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,56,56,suriangpati - gambah dalam barat,suriangpati – gambah dalam barat,,,,0.6812285714285715,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,57,57,kalumpang - balimau,kalumpang – balimau,,,,0.6783428571428571,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,58,58,biti - sei kupang karya bakti tni,biti – sei kupang karya bakti tni,,,,0.6760285714285714,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,59,59,teluk pinang - padang rasau,teluk pinang – padang rasau,,,,0.6748285714285713,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,60,60,ulin - tanggul balai mas,Ulin - Tanggul (Balai Mas),,,,0.6740857142857143,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,61,61,loklahung - kamawakan,Loklahung - Kamawakan,,,,0.6725714285714286,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,62,62,sei kudung - kalinduku,sei kudung – kalinduku,,,,0.6720285714285714,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,63,63,halaban,Halaban,,,,0.6706,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,64,64,sp malutu - pahampangan,Simpang Malutu - Pahampangan,,,,0.6684285714285715,,,,,1,0,1,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,65,65,jangkang - pantai ulin,jangkang – pantai ulin,,,,0.6682857142857144,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,66,66,taal jarau - sp baru tampang,Taal Jarau - Sp. Baru/Tampang,,,,0.6680285714285715,,,,,1,0,0,1,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,67,67,hamalau - asam cangkok,hamalau – asam cangkok,,,,0.6667428571428573,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,68,68,karya bakti - desa balimau,Karya Bakti - Ds. Balimau,,,,0.6634571428571429,,,,,0,1,0,0,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,69,69,ida manggala - padang makmur,ida manggala – padang makmur,,,,0.6619142857142857,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,70,70,bumi berkat - mungkur galah,bumi berkat – mungkur galah,,,,0.6609428571428572,,,,,,,,,0,1,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,71,71,pandulangan - kalinduku,pandulangan – kalinduku,,,,0.6606000000000001,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,72,72,habib,habib,,,,0.6606,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,73,73,bamban tengah - lok nyiur,Bamban Tengah - Lok Nyiur,,,,0.6603714285714286,,,,,1,1,1,0,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,74,74,simpur - sp 3 muara paring agung,simpur – sp 3 muara paring agung,,,,0.6603142857142859,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,75,75,bariang - getek,bariang – getek,,,,0.6564857142857142,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,76,76,panjampang bahagia - hanau,panjampang bahagia – hanau,,,,0.6541428571428572,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,77,77,menuju smp 7 - desa gambah dalam,menuju smp 7 – desa gambah dalam,,,,0.6535142857142857,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,78,78,muara hariang - bayumbung,muara hariang – bayumbung,,,,0.6525428571428571,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,79,79,pandak daun buntut muradiyah - pakan dalam,Pandak Daun (Buntut Muradiyah) - Pakan Dalam,,,,0.6524285714285715,,,,,0,1,0,0,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,80,80,hariti - sei raya selatan,hariti – sei raya selatan,,,,0.6497142857142857,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,81,81,kantor camat loksado ii,kantor camat loksado ii,,,,0.6479999999999999,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,82,82,pegangsaan timur - teluk aman,pegangsaan timur – teluk aman,,,,0.6468857142857143,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,83,83,ambarai - madang,Ambarai - Madang,,,,0.6450285714285715,,,,,1,0,0,1,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,84,84,sp malutu - tambak,sp malutu – tambak,,,,0.6432857142857142,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,85,85,bamban selatan - tanggang - panggang hijau,Bamban Selatan - Tanggang - Panggang Hijau,,,,0.6428285714285715,,,,,0,1,0,0,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,86,86,sp mandampa tel sili - sili - sp sei bungur,sp mandampa tel sili – sili – sp sei bungur,,,,0.6420857142857143,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,87,87,banua kambang - desa wasah tengah,banua kambang – desa wasah tengah,,,,0.6399142857142858,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,88,88,padang rasau tambak tamiang - paku pantai,padang rasau tambak tamiang – paku pantai,,,,0.6381428571428571,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,89,89,mawangi - pariangan,mawangi – pariangan,,,,0.6331142857142856,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,90,90,sp 3 bukuanin - riam talo,Sp.3 Bukuanin - Riam Talo,,,,0.6330571428571428,,,,,0,1,0,0,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,91,91,habib ibrahim - desa sei mandala,habib ibrahim – desa sei mandala,,,,0.6325999999999999,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,92,92,malinau - kandihin,malinau – kandihin,,,,0.6288285714285715,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,93,93,panjampang bahagia - bayur,panjampang bahagia – bayur,,,,0.6261428571428571,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,94,94,tambak pipii - batu ampar,tambak pipii – batu ampar,,,,0.6255142857142857,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,95,95,silaturrahim,silaturrahim,,,,0.6251714285714286,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,96,96,gambah luar - gambah dalam,gambah luar – gambah dalam,,,,0.6246,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,97,97,niagara desa halunuk - ayan,niagara desa halunuk – ayan,,,,0.6207428571428572,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,98,98,amd - desa lok binuang,AMD - Ds. Lok Binuang,,,,0.6167142857142857,,,,,0,1,0,0,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,99,99,bamban utara - longawang,bamban utara – longawang,,,,0.6157428571428571,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,100,100,sakincung - desa hakurung dalam,sakincung – desa hakurung dalam,,,,0.6144857142857143,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,101,101,sei kupang utara - simp empat lungau,sei kupang utara – simp empat lungau,,,,0.6144571428571429,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,102,102,gambah dalam - rantauan,gambah dalam – rantauan,,,,0.6127714285714285,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,103,103,papagaran palangsatan,papagaran palangsatan,,,,0.6119142857142856,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,104,104,pembangunan - desa sei raya utara,pembangunan – desa sei raya utara,,,,0.6112285714285715,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,105,105,batu laki - muara pipii,batu laki – muara pipii,,,,0.6111714285714286,,,,,,,,,0,0,1
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,106,106,malilingin - muara hariang,malilingin – muara hariang,,,,0.6067142857142858,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,107,107,telaga langsat - pakuan timur,Telaga Langsat - Pakuan Timur,,,,0.6024285714285714,,,,,1,1,0,1,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,108,108,gambir - sp empat lungau,gambir – sp empat lungau,,,,0.5990285714285715,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,109,109,sei karuh,sei karuh,,,,0.5990285714285715,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,110,110,batang kulur kanan - bumi berkat kisung,batang kulur kanan – bumi berkat kisung,,,,0.5964285714285715,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,111,111,pagat batu - muara hariang,pagat batu – muara hariang,,,,0.5955714285714285,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,112,112,manggis - desa baru,Manggis - Ds. Baru,,,,0.5901428571428572,,,,,0,1,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,113,113,badaun - desa bjayau lama,badaun – desa bjayau lama,,,,0.5889428571428572,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,114,114,tajun - sp 3 muara paring agung,Tajun - Sp.3 Muara Paring Agung,,,,0.5881714285714286,,,,,1,0,0,1,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,115,115,mondar ulin - pantai ulin - desa ulin,mondar ulin – pantai ulin – desa ulin,,,,0.5867428571428572,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,116,116,amawang kanan - wasah hulu,amawang kanan – wasah hulu,,,,0.5856285714285715,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,117,117,muara pipii - tambak pipii,Muara Pipii - Tambak Pipii,,,,0.5818571428571429,,,,,0,1,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,118,118,kalumpang - baruh,kalumpang – baruh,,,,0.5816,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,119,119,mangaris - limau manis,mangaris – limau manis,,,,0.5803428571428572,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,120,120,datar belimbing - muara kitar,datar belimbing – muara kitar,,,,0.5795142857142856,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,121,121,tambangan - desa baruh jaya,Tambangan - Ds. Baruh Jaya,,,,0.5765714285714286,,,,,1,1,1,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,122,122,mandampa - longawang,mandampa – longawang,,,,0.5746,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,123,123,madang - ambutun,madang – ambutun,,,,0.5728857142857143,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,124,124,bariang - patigan,bariang – patigan,,,,0.5724571428571429,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,125,125,balaimas - hanau,balaimas – hanau,,,,0.5701714285714287,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,126,126,singakarsa - palas,singakarsa – palas,,,,0.5694285714285714,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,127,127,amparaya - karangan - hanau,amparaya – karangan – hanau,,,,0.5675714285714286,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,128,128,pakan dalam - kaminting batu,pakan dalam – kaminting batu,,,,0.5658285714285715,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,129,129,sei damang - amawang kiri,sei damang – amawang kiri,,,,0.5649428571428571,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,130,130,sp 3 bukuanin - tayub,sp 3 bukuanin – tayub,,,,0.5632857142857144,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,131,131,asam duhat - desa pantai ulin,Asam Duhat - Ds. Pantai Ulin,,,,0.5621428571428572,,,,,1,0,1,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,132,132,gambah dalam barat - mahulung,gambah dalam barat – mahulung,,,,0.5616000000000001,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,133,133,taniran selatan kubah - buntut taniran wawaran,Taniran Selatan Kubah - Buntut Taniran / Wawaran,,,,0.5602285714285714,,,,,1,1,1,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,134,134,paharuangan - sei raya selatan,paharuangan – sei raya selatan,,,,0.5595714285714285,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,135,135,pandak daun - baruh jaya - samuda,pandak daun – baruh jaya – samuda,,,,0.5577714285714287,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,136,136,taminung,Taminung,,,,0.5576000000000001,,,,,1,0,0,1,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,137,137,rawati - desa panjampang bahagia,rawati – desa panjampang bahagia,,,,0.5553142857142858,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,138,138,tamiyang - desa tamiyang eks,Tamiyang - Ds. Tamiyang (Eks TMMD),,,,0.553,,,,,0,1,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,139,139,sei raya utara - teluk pinang,Sungai Raya Utara - Teluk Pinang,,,,0.5512285714285714,,,,,1,0,1,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,140,140,papancan - desa tanah bangkang,papancan – desa tanah bangkang,,,,0.5504571428571429,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,141,141,sei paring - sei hanyar pantai ulin,sei paring – sei hanyar pantai ulin,,,,0.5492,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,142,142,loksado - loklahung,Loksado - Loklahung,,,,0.5466,,,,,1,0,1,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,143,143,longawang - gumbil,longawang – gumbil,,,,0.5456000000000001,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,144,144,haratai 2 balai ujung atas sdn haratai2,haratai 2 balai ujung atas sdn haratai2,,,,0.5444857142857144,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,145,145,baru - asam desa baru,baru – asam desa baru,,,,0.5429428571428572,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,146,146,bayanan - habirau tengah,Bayanan - Habirau Tengah,,,,0.5410285714285714,,,,,1,1,1,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,147,147,pantai langsat - umpaya,pantai langsat – umpaya,,,,0.540457142857143,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,148,148,binjai sirih hulu - desa seranggan,binjai sirih hulu – desa seranggan,,,,0.5387142857142857,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,149,149,baru - desa bajayau,Baru - Ds. Bajayau,,,,0.5374857142857142,,,,,0,1,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,150,150,wasah hulu - amparaya - simpur,Wasah Hulu - Amparaya - Simpur,,,,0.5367999999999999,,,,,0,0,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,151,151,asam seranggan - asam tamiyang,Asam Seranggan - Asam Tamiyang,,,,0.5350285714285715,,,,,0,1,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,152,152,paharuangan - asam dua,Paharuangan - Asam Dua,,,,0.5313142857142857,,,,,0,0,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,153,153,sei mandala murung raya,Sei. Mandala Murung Raya,,,,0.5282857142857142,,,,,0,1,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,154,154,bayanan - pihanin,bayanan – pihanin,,,,0.5279428571428572,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,155,155,teluk pinang - pahampangan utara,teluk pinang – pahampangan utara,,,,0.5278857142857143,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,156,156,hamak timur - umpaya,hamak timur – umpaya,,,,0.5260857142857143,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,157,157,tambak pipii - malilingin,tambak pipii – malilingin,,,,0.5232000000000001,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,158,158,sp batang kulur kiri - tatas,Sp. Batang Kulur Kiri - Tatas,,,,0.523,,,,,0,0,0,0,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,159,159,rel angkinang,rel angkinang – angkinang,,,,0.522,,,,,,,,,0,0,0
+ANY_Top35_DT_population_full,refined_recall_max_any2026,DecisionTree,rerank_population_focus,160,160,asam cangkuk - telaga bidadari,asam cangkuk – telaga bidadari,,,,0.5165714285714286,,,,,,,,,0,0,0

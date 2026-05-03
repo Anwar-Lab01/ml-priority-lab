@@ -1,0 +1,58 @@
+[
+  {
+    "scenario_id": "normatif_20",
+    "scenario_label": "Normatif 20 Variabel",
+    "family": "normatif",
+    "source": "master_report_20_Variabel.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "normatif_17",
+    "scenario_label": "Normatif 17 Variabel",
+    "family": "normatif",
+    "source": "master_report_17_variabel.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "refined_base_any2026",
+    "scenario_label": "REFINED BASE ANY2026",
+    "family": "historis",
+    "source": "ml_murni_refined_comprehensive_20260417_201703.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "refined_recall_max_any2026",
+    "scenario_label": "REFINED RECALL MAX ANY2026",
+    "family": "historis",
+    "source": "recall_maximizer_any2026_policyboost.xlsx",
+    "completeness": "top160 only"
+  },
+  {
+    "scenario_id": "refined_rerank_any2026",
+    "scenario_label": "REFINED RERANK ANY2026",
+    "family": "historis",
+    "source": "report_rerank_refined_planned_any_2026_20260417_211301.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "refined_base_teknokratis2026",
+    "scenario_label": "REFINED BASE TEKNOKRATIS2026",
+    "family": "historis",
+    "source": "report_planned_teknokratis_2026.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "refined_rerank_teknokratis2026",
+    "scenario_label": "REFINED RERANK TEKNOKRATIS2026",
+    "family": "historis",
+    "source": "report_rerank_refined_planned_teknokratis_2026_20260422_215256.xlsx",
+    "completeness": "full"
+  },
+  {
+    "scenario_id": "refined_rerank_tender2026",
+    "scenario_label": "REFINED RERANK TENDER2026",
+    "family": "historis",
+    "source": "report_rerank_refined_planned_tender_2026_20260417_212741.xlsx",
+    "completeness": "full"
+  }
+]
