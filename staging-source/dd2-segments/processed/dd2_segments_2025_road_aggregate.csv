@@ -1,0 +1,351 @@
+﻿nomor_ruas,nama_ruas_raw,name_variants_count,segments,panjang_m,baik_m,sedang_m,rusak_ringan_m,rusak_berat_m,mantap_m,tidak_mantap_m,baik_pct,sedang_pct,rusak_ringan_pct,rusak_berat_pct,tidak_mantap_pct,surface_code_mode,surface_label_mode,lebar_m_mode,tahun_survei_mode,name_variants
+001,Jl. Pangeran Antasari - Loklua,1,6,560.0,0,360.0,200.0,0,360.0,200.0,0.0,64.285714,35.714286,0.0,35.714286,A,Aspal,12.0,2025,Jl. Pangeran Antasari - Loklua
+002,Jl. Soeprapto - Jl. H.M Rusli,1,6,520.0,0,520.0,0,0,520.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Soeprapto - Jl. H.M Rusli
+003,Jl. Pasar Kandangan - Oprit Jembt. Loklua,1,3,280.0,280.0,0,0,0,280.0,0,100.0,0.0,0.0,0.0,0.0,B,Beton,6.0,2025,Jl. Pasar Kandangan - Oprit Jembt. Loklua
+004,Jl. Soetoyo - Teluk Mesjid,1,3,260.0,260.0,0,0,0,260.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,5.0,2025,Jl. Soetoyo - Teluk Mesjid
+005,Jl. Teluk Mesjid - Sp. 4 Muara Banta,1,15,1430.0,0,1230.0,200.0,0,1230.0,200.0,0.0,86.013986,13.986014,0.0,13.986014,A,Aspal,5.0,2025,Jl. Teluk Mesjid - Sp. 4 Muara Banta
+006,Jl. Merah Johansyah - Jl. Melati,1,9,820.0,820.0,0,0,0,820.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Merah Johansyah - Jl. Melati
+007,Jl. Menuju Stadion 2 Desember,1,3,290.0,0,290.0,0,0,290.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,12.0,2025,Jl. Menuju Stadion 2 Desember
+008,Jl. Aluh Idut,1,14,1340.0,500.0,840.0,0,0,1340.0,0,37.313433,62.686567,0.0,0.0,0.0,A,Aspal,5.0,2025,Jl. Aluh Idut
+009,Jl. Panglima Batur,1,11,1090.0,800.0,290.0,0,0,1090.0,0,73.394495,26.605505,0.0,0.0,0.0,A,Aspal,5.0,2025,Jl. Panglima Batur
+010,Jl. Nusa Indah,1,4,380.0,200.0,180.0,0,0,380.0,0,52.631579,47.368421,0.0,0.0,0.0,A,Aspal,5.0,2025,Jl. Nusa Indah
+011,Jl. Anggrek,1,3,230.0,230.0,0,0,0,230.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Anggrek
+012,Jl. Kenanga,1,3,230.0,230.0,0,0,0,230.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Kenanga
+013,Jl. Mawar (Kandangan Utara),1,3,230.0,0,230.0,0,0,230.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,7.0,2025,Jl. Mawar (Kandangan Utara)
+014,Jl. Kamboja,1,3,210.0,0,210.0,0,0,210.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,4.0,2025,Jl. Kamboja
+015,Jl. Dahlia,1,2,180.0,0,0,100.0,80.0,0,180.0,0.0,0.0,55.555556,44.444444,100.0,A,Aspal,3.0,2025,Jl. Dahlia
+016,Jl. KS. Tubun,1,10,960.0,160.0,300.0,500.0,0,460.0,500.0,16.666667,31.25,52.083333,0.0,52.083333,A,Aspal,3.0,2025,Jl. KS. Tubun
+017,Jl. Pemuda,1,3,260.0,260.0,0,0,0,260.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Pemuda
+018,Jl. Parindra,1,3,280.0,180.0,100.0,0,0,280.0,0,64.285714,35.714286,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Parindra
+019,Jl. Wahab Syahrani,1,2,120.0,0,120.0,0,0,120.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Wahab Syahrani
+020,Jl. Musyawarah (Kandangan),1,4,320.0,100.0,220.0,0,0,320.0,0,31.25,68.75,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Musyawarah (Kandangan)
+021,Jl. Sekolah Islam (Kandangan Barat),1,2,200.0,200.0,0,0,0,200.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. Sekolah Islam (Kandangan Barat)
+022,Jl. Rahmah Bahran,1,3,220.0,0,220.0,0,0,220.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,4.0,2025,Jl. Rahmah Bahran
+023,Jl. Brigjen Katamso,1,4,350.0,0,350.0,0,0,350.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Brigjen Katamso
+024,Jl. Kolonel Sugiono,1,3,220.0,220.0,0,0,0,220.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Kolonel Sugiono
+025,Singakarsa - Palas,1,54,5320.0,1100.0,1700.0,1320.0,1200.0,2800.0,2520.0,20.676692,31.954887,24.81203,22.556391,47.368421,A,Aspal,4.0,2025,Singakarsa - Palas
+026,Singakarsa - Getek,1,2,200.0,0,200.0,0,0,200.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,4.0,2025,Singakarsa - Getek
+027,Parincahan - Singakarsa (Jl. Harapan),1,7,660.0,0,660.0,0,0,660.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Parincahan - Singakarsa (Jl. Harapan)
+028,Budi Bakti - Tiga Desember,1,9,810.0,0,810.0,0,0,810.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,5.0,2025,Budi Bakti - Tiga Desember
+029,Jl. Jafri Zamzam,1,11,1070.0,0,670.0,200.0,200.0,670.0,400.0,0.0,62.616822,18.691589,18.691589,37.383178,A,Aspal,3.0,2025,Jl. Jafri Zamzam
+030,Sungai Damang - Amawang Kiri,1,26,2510.0,600.0,1710.0,200.0,0,2310.0,200.0,23.904382,68.12749,7.968127,0.0,7.968127,A,Aspal,3.5,2025,Sungai Damang - Amawang Kiri
+031,Amawang Muka - Getek,1,55,5410.0,4500.0,410.0,500.0,0,4910.0,500.0,83.179298,7.578558,9.242144,0.0,9.242144,A,Aspal,3.5,2025,Amawang Muka - Getek
+032,Amawang Kanan - Wasah Hulu,1,32,3170.0,0,2470.0,700.0,0,2470.0,700.0,0.0,77.917981,22.082019,0.0,22.082019,A,Aspal,3.5,2025,Amawang Kanan - Wasah Hulu
+033,Jl. DI. Panjaitan - Loklua,1,5,410.0,0,410.0,0,0,410.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,4.5,2025,Jl. DI. Panjaitan - Loklua
+034,Jl. Jend. Sudirman,1,25,2440.0,0,2440.0,0,0,2440.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,8.0,2025,Jl. Jend. Sudirman
+035,Jl. AES Nasution,1,3,240.0,240.0,0,0,0,240.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. AES Nasution
+036,Tembok Lama - Loklua,1,9,840.0,0,440.0,300.0,100.0,440.0,400.0,0.0,52.380952,35.714286,11.904762,47.619048,A,Aspal,3.0,2025,Tembok Lama - Loklua
+037,Jl. Kesehatan - Komp. Rmh Dokter,1,3,280.0,280.0,0,0,0,280.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Kesehatan - Komp. Rmh Dokter
+038,Jl. Samping Bappeda - Mesjid Darul Halik,1,2,190.0,0,0,190.0,0,0,190.0,0.0,0.0,100.0,0.0,100.0,A,Aspal,3.5,2025,Jl. Samping Bappeda - Mesjid Darul Halik
+039,Jl.  Bina Bakat,1,3,240.0,240.0,0,0,0,240.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl.  Bina Bakat
+040,Baluti - Jambu Hulu (Paku),1,41,4070.0,500.0,1800.0,1270.0,500.0,2300.0,1770.0,12.285012,44.226044,31.203931,12.285012,43.488943,A,Aspal,3.5,2025,Baluti - Jambu Hulu (Paku)
+041,Sp. 3 Baluti - Amawang,1,16,1570.0,400.0,1070.0,100.0,0,1470.0,100.0,25.477707,68.152866,6.369427,0.0,6.369427,A,Aspal,3.0,2025,Sp. 3 Baluti - Amawang
+042,Sei Kupang Utara - Simp. Empat Lungau,1,24,2360.0,1500.0,860.0,0,0,2360.0,0,63.559322,36.440678,0.0,0.0,0.0,A,Aspal,3.5,2025,Sei Kupang Utara - Simp. Empat Lungau
+043,Sp. Empat Lungau - Bangkau,1,81,8100.0,0,2200.0,0,5900.0,2200.0,5900.0,0.0,27.160494,0.0,72.839506,72.839506,T,Tanah,3.0,2025,Sp. Empat Lungau - Bangkau
+044,Sp. Empat Lungau - Garis,1,82,8190.0,0,1600.0,0,6590.0,1600.0,6590.0,0.0,19.53602,0.0,80.46398,80.46398,T,Tanah,3.0,2025,Sp. Empat Lungau - Garis
+045,Gambir - Sp. Empat Lungau,1,30,2950.0,0,1500.0,0,1450.0,1500.0,1450.0,0.0,50.847458,0.0,49.152542,49.152542,A,Aspal,3.0,2025,Gambir - Sp. Empat Lungau
+046,Bariang - Getek,1,13,1240.0,0,400.0,840.0,0,400.0,840.0,0.0,32.258065,67.741935,0.0,67.741935,A,Aspal,3.0,2025,Bariang - Getek
+047,Muara Banta - Karang Jawa,1,16,1590.0,0,1590.0,0,0,1590.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Muara Banta - Karang Jawa
+048,Sungai Paring - Sei Hanyar Pantai Ulin,1,59,5850.0,0,1400.0,2300.0,2150.0,1400.0,4450.0,0.0,23.931624,39.316239,36.752137,76.068376,A,Aspal,3.0,2025,Sungai Paring - Sei Hanyar Pantai Ulin
+049,Kandangan Hulu - Sp. Tabihi,1,13,1250.0,350.0,900.0,0,0,1250.0,0,28.0,72.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Kandangan Hulu - Sp. Tabihi
+050,Banyu Barau - Sei Kalang,1,21,2100.0,900.0,1200.0,0,0,2100.0,0,42.857143,57.142857,0.0,0.0,0.0,A,Aspal,3.0,2025,Banyu Barau - Sei Kalang
+051,Tibung Raya - Asam Cangkuk,1,9,860.0,860.0,0,0,0,860.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Tibung Raya - Asam Cangkuk
+052,Gambah Dalam - Rantauan,1,16,1520.0,0,1020.0,500.0,0,1020.0,500.0,0.0,67.105263,32.894737,0.0,32.894737,A,Aspal,3.0,2025,Gambah Dalam - Rantauan
+053,Gambah Luar - Gambah Dalam,1,13,1290.0,0,990.0,300.0,0,990.0,300.0,0.0,76.744186,23.255814,0.0,23.255814,A,Aspal,3.0,2025,Gambah Luar - Gambah Dalam
+054,Pegangsaan Timur - Teluk Aman,1,11,1050.0,0,750.0,300.0,0,750.0,300.0,0.0,71.428571,28.571429,0.0,28.571429,A,Aspal,3.0,2025,Pegangsaan Timur - Teluk Aman
+055,Gambah Luar - Sungai Kudung,1,9,890.0,0,390.0,400.0,100.0,390.0,500.0,0.0,43.820225,44.94382,11.235955,56.179775,A,Aspal,3.5,2025,Gambah Luar - Sungai Kudung
+056,Bakarung Tengah - Karang Jawa,1,38,3770.0,0,3070.0,700.0,0,3070.0,700.0,0.0,81.432361,18.567639,0.0,18.567639,A,Aspal,3.5,2025,Bakarung Tengah - Karang Jawa
+057,Jl. Papagaran/Palangsatan,1,10,1000.0,0,300.0,700.0,0,300.0,700.0,0.0,30.0,70.0,0.0,70.0,A,Aspal,3.0,2025,Jl. Papagaran/Palangsatan
+058,Jl. Tembok Kacil. Sei. Kudung,1,4,370.0,0,300.0,70.0,0,300.0,70.0,0.0,81.081081,18.918919,0.0,18.918919,A,Aspal,3.0,2025,Jl. Tembok Kacil. Sei. Kudung
+059,Jl. Mesjid Quba,1,3,210.0,0,210.0,0,0,210.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Mesjid Quba
+060,Jl. Sungai Karuh,1,20,1960.0,0,1960.0,0,0,1960.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Sungai Karuh
+061,Rambai - Bariang,1,13,1210.0,0,600.0,200.0,410.0,600.0,610.0,0.0,49.586777,16.528926,33.884298,50.413223,A,Aspal,3.0,2025,Rambai - Bariang
+062,Jangkang - Pantai Ulin,1,17,1690.0,1000.0,0,100.0,590.0,1000.0,690.0,59.171598,0.0,5.91716,34.911243,40.828402,A,Aspal,3.0,2025,Jangkang - Pantai Ulin
+063,Jl. Padang Palas,1,7,680.0,0,480.0,200.0,0,480.0,200.0,0.0,70.588235,29.411765,0.0,29.411765,A,Aspal,3.0,2025,Jl. Padang Palas
+064,Tibung Dalam - Teratai,1,6,520.0,0,420.0,100.0,0,420.0,100.0,0.0,80.769231,19.230769,0.0,19.230769,A,Aspal,3.0,2025,Tibung Dalam - Teratai
+065,Jl. Kalaka Indah - Perumnas Tibung,1,5,410.0,0,410.0,0,0,410.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Kalaka Indah - Perumnas Tibung
+066,Jl. Teratai Menuju Komplek Perumnas Hamalau,1,5,410.0,100.0,310.0,0,0,410.0,0,24.390244,75.609756,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Teratai Menuju Komplek Perumnas Hamalau
+067,Teluk Pinang - Baluti,1,17,1640.0,0,1640.0,0,0,1640.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Teluk Pinang - Baluti
+068,Tibung Raya - Hamalau Dalam,1,10,910.0,200.0,600.0,110.0,0,800.0,110.0,21.978022,65.934066,12.087912,0.0,12.087912,A,Aspal,3.5,2025,Tibung Raya - Hamalau Dalam
+069,Jl. Baiturrahim Parincahan,1,15,1420.0,0,300.0,300.0,820.0,300.0,1120.0,0.0,21.126761,21.126761,57.746479,78.873239,A,Aspal,3.0,2025,Jl. Baiturrahim Parincahan
+070,Jl. Newangsekarti - Ds. Gambah Luar Muka,1,3,290.0,290.0,0,0,0,290.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Newangsekarti - Ds. Gambah Luar Muka
+071,Jl. Tembok Baru (Asam Cangkok),1,5,500.0,0,400.0,100.0,0,400.0,100.0,0.0,80.0,20.0,0.0,20.0,A,Aspal,3.0,2025,Jl. Tembok Baru (Asam Cangkok)
+072,Sungai Paring - Toba,1,9,840.0,0,300.0,540.0,0,300.0,540.0,0.0,35.714286,64.285714,0.0,64.285714,A,Aspal,3.0,2025,Sungai Paring - Toba
+073,Jl. Tembok Baru - Ds. Baluti,1,2,140.0,0,40.0,100.0,0,40.0,100.0,0.0,28.571429,71.428571,0.0,71.428571,A,Aspal,3.0,2025,Jl. Tembok Baru - Ds. Baluti
+074,Jl. H. Jarkasi - Ds. Sungai Paring,1,2,120.0,0,100.0,20.0,0,100.0,20.0,0.0,83.333333,16.666667,0.0,16.666667,A,Aspal,3.0,2025,Jl. H. Jarkasi - Ds. Sungai Paring
+075,Bariang - Patigan,1,17,1630.0,600.0,1030.0,0,0,1630.0,0,36.809816,63.190184,0.0,0.0,0.0,A,Aspal,3.0,2025,Bariang - Patigan
+076,Gambah Dalam Barat - Mahulung,1,20,1920.0,120.0,1800.0,0,0,1920.0,0,6.25,93.75,0.0,0.0,0.0,A,Aspal,3.0,2025,Gambah Dalam Barat - Mahulung
+077,Jl. Suriangpati - Gambah Dalam Barat,1,29,2820.0,100.0,100.0,500.0,2120.0,200.0,2620.0,3.546099,3.546099,17.730496,75.177305,92.907801,K,Kerikil,3.0,2025,Jl. Suriangpati - Gambah Dalam Barat
+078,Jl. Menuju SMP 7 - Ds. Gambah Dalam,1,10,1000.0,0,400.0,600.0,0,400.0,600.0,0.0,40.0,60.0,0.0,60.0,A,Aspal,3.0,2025,Jl. Menuju SMP 7 - Ds. Gambah Dalam
+079,Telaga Banta - Patigan,1,7,640.0,640.0,0,0,0,640.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Telaga Banta - Patigan
+080,Jl. Nomura,1,5,410.0,0,410.0,0,0,410.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Nomura
+081,Jl. Lorong Bupati,1,4,390.0,100.0,290.0,0,0,390.0,0,25.641026,74.358974,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Lorong Bupati
+082,Jl. Biti - Sungai Kupang (Karya Bakti TNI),1,19,1820.0,500.0,300.0,620.0,400.0,800.0,1020.0,27.472527,16.483516,34.065934,21.978022,56.043956,A,Aspal,3.0,2025,Jl. Biti - Sungai Kupang (Karya Bakti TNI)
+083,Jl. Palajau - Ds. Baluti,1,13,1280.0,400.0,0,0,880.0,400.0,880.0,31.25,0.0,0.0,68.75,68.75,B,Beton,3.0,2025,Jl. Palajau - Ds. Baluti
+084,Jl. RS. Hasan Basry II,1,1,100.0,0,100.0,0,0,100.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,10.0,2025,Jl. RS. Hasan Basry II
+085,Tajun - Sp.3 Muara Paring Agung,1,50,4970.0,4470.0,500.0,0,0,4970.0,0,89.939638,10.060362,0.0,0.0,0.0,A,Aspal,3.5,2025,Tajun - Sp.3 Muara Paring Agung
+086,Hamalau - Anjiran,1,9,900.0,0,800.0,100.0,0,800.0,100.0,0.0,88.888889,11.111111,0.0,11.111111,A,Aspal,3.0,2025,Hamalau - Anjiran
+087,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali,1,73,7300.0,0,7000.0,300.0,0,7000.0,300.0,0.0,95.890411,4.109589,0.0,4.109589,A,Aspal,3.0,2025,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali
+088,Sungai Raya Selatan - Sarang Halang,1,27,2620.0,0,320.0,700.0,1600.0,320.0,2300.0,0.0,12.21374,26.717557,61.068702,87.78626,A,Aspal,3.0,2025,Sungai Raya Selatan - Sarang Halang
+089,Sp. Batang Kulur Kiri - Tatas,1,24,2370.0,0,570.0,1800.0,0,570.0,1800.0,0.0,24.050633,75.949367,0.0,75.949367,A,Aspal,3.0,2025,Sp. Batang Kulur Kiri - Tatas
+090,Taal Batang Kulur - Sp. 3 Muara Prg Agung,1,42,4120.0,200.0,2100.0,1020.0,800.0,2300.0,1820.0,4.854369,50.970874,24.757282,19.417476,44.174757,A,Aspal,3.5,2025,Taal Batang Kulur - Sp. 3 Muara Prg Agung
+091,Batang Kulur Kanan - Sarangan,1,22,2180.0,0,1680.0,500.0,0,1680.0,500.0,0.0,77.06422,22.93578,0.0,22.93578,A,Aspal,3.0,2025,Batang Kulur Kanan - Sarangan
+092,Bumi Berkat - Mungkur Galah,1,16,1510.0,0,1200.0,310.0,0,1200.0,310.0,0.0,79.470199,20.529801,0.0,20.529801,A,Aspal,3.0,2025,Bumi Berkat - Mungkur Galah
+093,Taal Jarau - Sp. Baru/Tampang,1,57,5650.0,2850.0,2800.0,0,0,5650.0,0,50.442478,49.557522,0.0,0.0,0.0,A,Aspal,3.0,2025,Taal Jarau - Sp. Baru/Tampang
+094,Sungai Raya - Jambu Hulu/Paku,1,52,5170.0,5170.0,0,0,0,5170.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,5.0,2025,Sungai Raya - Jambu Hulu/Paku
+095,Sungai Raya Selatan - Malutu - Goa Berangin,1,64,6350.0,600.0,3300.0,400.0,2050.0,3900.0,2450.0,9.448819,51.968504,6.299213,32.283465,38.582677,A,Aspal,3.5,2025,Sungai Raya Selatan - Malutu - Goa Berangin
+096,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan,1,38,3770.0,0,2570.0,1100.0,100.0,2570.0,1200.0,0.0,68.169761,29.177719,2.65252,31.830239,A,Aspal,3.0,2025,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan
+097,Asam Cangkuk - Telaga Bidadari,1,9,830.0,200.0,30.0,0,600.0,230.0,600.0,24.096386,3.614458,0.0,72.289157,72.289157,A,Aspal,2.0,2025,Asam Cangkuk - Telaga Bidadari
+098,Hamalau - Pahampangan,1,8,780.0,780.0,0,0,0,780.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Hamalau - Pahampangan
+099,Ida Manggala - Padang Makmur,1,37,3690.0,0,900.0,1500.0,1290.0,900.0,2790.0,0.0,24.390244,40.650407,34.95935,75.609756,A,Aspal,3.5,2025,Ida Manggala - Padang Makmur
+100,Simpang Hamalau - Teluk Pinang,1,7,680.0,80.0,400.0,100.0,100.0,480.0,200.0,11.764706,58.823529,14.705882,14.705882,29.411765,A,Aspal,3.5,2025,Simpang Hamalau - Teluk Pinang
+101,Teluk Pinang - Pahampangan Utara,1,23,2220.0,1600.0,620.0,0,0,2220.0,0,72.072072,27.927928,0.0,0.0,0.0,A,Aspal,3.5,2025,Teluk Pinang - Pahampangan Utara
+102,Hamalau - Telaga Bidadari - Wasah Hilir,1,50,4940.0,140.0,1900.0,2600.0,300.0,2040.0,2900.0,2.834008,38.461538,52.631579,6.072874,58.704453,A,Aspal,5.0,2025,Hamalau - Telaga Bidadari - Wasah Hilir
+103,Karasikan - Sarang Halang,1,19,1900.0,0,900.0,300.0,700.0,900.0,1000.0,0.0,47.368421,15.789474,36.842105,52.631579,A,Aspal,3.0,2025,Karasikan - Sarang Halang
+104,Tanjungan - Sp. 3 Sakijang,1,16,1590.0,0,100.0,500.0,990.0,100.0,1490.0,0.0,6.289308,31.446541,62.264151,93.710692,A,Aspal,3.0,2025,Tanjungan - Sp. 3 Sakijang
+105,Sarang Halang Padang - Sp. Batang Kulur,1,22,2110.0,500.0,1110.0,200.0,300.0,1610.0,500.0,23.696682,52.606635,9.478673,14.218009,23.696682,A,Aspal,3.0,2025,Sarang Halang Padang - Sp. Batang Kulur
+106,Hamalau - Ganda,1,12,1170.0,0,500.0,670.0,0,500.0,670.0,0.0,42.735043,57.264957,0.0,57.264957,A,Aspal,3.5,2025,Hamalau - Ganda
+107,Tamiyang - Ds. Tamiyang (Eks TMMD),1,21,2040.0,0,0,0,2040.0,0,2040.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.0,2025,Tamiyang - Ds. Tamiyang (Eks TMMD)
+108,Tanah Bangkang Menuju Balai Benih Ikan,1,7,660.0,0,200.0,100.0,360.0,200.0,460.0,0.0,30.30303,15.151515,54.545455,69.69697,A,Aspal,3.0,2025,Tanah Bangkang Menuju Balai Benih Ikan
+109,Karang Intan - Tanah Bangkang,1,12,1110.0,0,1110.0,0,0,1110.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Karang Intan - Tanah Bangkang
+110,Jl. Haritas (PT. Pertani),1,7,640.0,200.0,440.0,0,0,640.0,0,31.25,68.75,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Haritas (PT. Pertani)
+111,Paharuangan - Sei. Raya Selatan,1,20,1960.0,600.0,800.0,460.0,100.0,1400.0,560.0,30.612245,40.816327,23.469388,5.102041,28.571429,A,Aspal,3.5,2025,Paharuangan - Sei. Raya Selatan
+112,Jl. Bangga TMMD,1,8,790.0,0,0,790.0,0,0,790.0,0.0,0.0,100.0,0.0,100.0,A,Aspal,3.5,2025,Jl. Bangga TMMD
+113,Batang Kulur Kiri - Durian Landung,1,6,550.0,450.0,100.0,0,0,550.0,0,81.818182,18.181818,0.0,0.0,0.0,A,Aspal,3.5,2025,Batang Kulur Kiri - Durian Landung
+114,Jl. Taminung,1,21,2020.0,0,2000.0,0,20.0,2000.0,20.0,0.0,99.009901,0.0,0.990099,0.990099,A,Aspal,3.5,2025,Jl. Taminung
+115,Matang Gadung - Halalang,1,5,420.0,420.0,0,0,0,420.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Matang Gadung - Halalang
+116,Sungai Raya Utara - Teluk Pinang,1,17,1700.0,0,1500.0,200.0,0,1500.0,200.0,0.0,88.235294,11.764706,0.0,11.764706,A,Aspal,3.0,2025,Sungai Raya Utara - Teluk Pinang
+117,Jl. Mangunang - Ds. Sungai Raya Utara,1,7,700.0,0,700.0,0,0,700.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Mangunang - Ds. Sungai Raya Utara
+118,Hamalau - Asam Cangkok,1,15,1430.0,930.0,500.0,0,0,1430.0,0,65.034965,34.965035,0.0,0.0,0.0,A,Aspal,3.0,2025,Hamalau - Asam Cangkok
+119,Hariti - Sungai Raya Selatan,1,27,2660.0,0,400.0,300.0,1960.0,400.0,2260.0,0.0,15.037594,11.278195,73.684211,84.962406,K,Kerikil,3.0,2025,Hariti - Sungai Raya Selatan
+120,Mangaris - Limau Manis,1,41,4100.0,0,0,0,4100.0,0,4100.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.5,2025,Mangaris - Limau Manis
+121,Jl. Munggu Raya - Ds. Hariti,1,5,460.0,100.0,360.0,0,0,460.0,0,21.73913,78.26087,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Munggu Raya - Ds. Hariti
+122,Paharuangan - Asam Dua,1,10,910.0,0,200.0,0,710.0,200.0,710.0,0.0,21.978022,0.0,78.021978,78.021978,K,Kerikil,3.5,2025,Paharuangan - Asam Dua
+123,Asam Seranggan - Asam Tamiyang,1,11,1020.0,1020.0,0,0,0,1020.0,0,100.0,0.0,0.0,0.0,0.0,B,Beton,4.0,2025,Asam Seranggan - Asam Tamiyang
+124,Jl. Papancan - Ds. Tanah Bangkang,1,15,1460.0,1460.0,0,0,0,1460.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Papancan - Ds. Tanah Bangkang
+125,Jl. Baru - Asam Desa Baru,1,14,1320.0,200.0,920.0,200.0,0,1120.0,200.0,15.151515,69.69697,15.151515,0.0,15.151515,A,Aspal,3.0,2025,Jl. Baru - Asam Desa Baru
+126,Jl. Sungai Namang - Ds. Tanah Bangkang,1,8,730.0,0,0,0,730.0,0,730.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.0,2025,Jl. Sungai Namang - Ds. Tanah Bangkang
+127,Jarau - Parandakan,1,7,700.0,0,0,200.0,500.0,0,700.0,0.0,0.0,28.571429,71.428571,100.0,A,Aspal,3.0,2025,Jarau - Parandakan
+128,Mungkur Galah - Lokpaikat,1,8,710.0,0,200.0,510.0,0,200.0,510.0,0.0,28.169014,71.830986,0.0,71.830986,A,Aspal,3.0,2025,Mungkur Galah - Lokpaikat
+129,Batang Kulur Kanan - Bumi Berkat (Jl. Kisung),1,17,1610.0,0,0,0,1610.0,0,1610.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.0,2025,Batang Kulur Kanan - Bumi Berkat (Jl. Kisung)
+130,Batang Kulur Kanan - Batang Kulur Kiri,1,9,820.0,0,0,0,820.0,0,820.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.5,2025,Batang Kulur Kanan - Batang Kulur Kiri
+131,Jl. Manggis - Ds. Baru,1,13,1280.0,0,0,0,1280.0,0,1280.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.5,2025,Jl. Manggis - Ds. Baru
+132,Jl. TPA - Ds. Sungai Raya Selatan,1,9,850.0,650.0,200.0,0,0,850.0,0,76.470588,23.529412,0.0,0.0,0.0,A,Aspal,6.0,2025,Jl. TPA - Ds. Sungai Raya Selatan
+133,Jl. Pembangunan - Ds. Sungai Raya Utara,1,10,950.0,0,350.0,400.0,200.0,350.0,600.0,0.0,36.842105,42.105263,21.052632,63.157895,A,Aspal,3.0,2025,Jl. Pembangunan - Ds. Sungai Raya Utara
+134,Jl. Kalaka Dayuh - Ds. Sungai Raya Utara,1,5,430.0,0,0,0,430.0,0,430.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.0,2025,Jl. Kalaka Dayuh - Ds. Sungai Raya Utara
+135,Teluk Pinang - Padang Rasau,1,22,2180.0,0,1200.0,980.0,0,1200.0,980.0,0.0,55.045872,44.954128,0.0,44.954128,A,Aspal,3.5,2025,Teluk Pinang - Padang Rasau
+136,Tanayung - Simp. Ambarai,1,17,1610.0,0,1210.0,300.0,100.0,1210.0,400.0,0.0,75.15528,18.63354,6.21118,24.84472,A,Aspal,3.5,2025,Tanayung - Simp. Ambarai
+137,Tabihi - Telaga Langsat,1,87,8650.0,2750.0,5600.0,300.0,0,8350.0,300.0,31.791908,64.739884,3.468208,0.0,3.468208,A,Aspal,4.0,2025,Tabihi - Telaga Langsat
+138,Karang Jawa -Ambarai - Sungai Bungur,1,41,4040.0,0,1840.0,1400.0,800.0,1840.0,2200.0,0.0,45.544554,34.653465,19.80198,54.455446,A,Aspal,3.5,2025,Karang Jawa -Ambarai - Sungai Bungur
+139,Ambarai - Madang,1,18,1740.0,1340.0,400.0,0,0,1740.0,0,77.011494,22.988506,0.0,0.0,0.0,A,Aspal,3.5,2025,Ambarai - Madang
+140,Padang Batung - Batulaki - Malilingin,1,89,8880.0,0,2480.0,1900.0,4500.0,2480.0,6400.0,0.0,27.927928,21.396396,50.675676,72.072072,A,Aspal,3.5,2025,Padang Batung - Batulaki - Malilingin
+141,Malilingin - Lokbahan - Paniungan,1,107,10660.0,6400.0,1900.0,200.0,2160.0,8300.0,2360.0,60.037523,17.82364,1.876173,20.262664,22.138837,A,Aspal,3.0,2025,Malilingin - Lokbahan - Paniungan
+142,Mawangi - Bukuanin - Telaga Langsat,1,143,14220.0,0,8120.0,4600.0,1500.0,8120.0,6100.0,0.0,57.102672,32.348805,10.548523,42.897328,A,Aspal,4.0,2025,Mawangi - Bukuanin - Telaga Langsat
+143,Mandapai - Madang,1,59,5820.0,0,2920.0,1800.0,1100.0,2920.0,2900.0,0.0,50.171821,30.927835,18.900344,49.828179,A,Aspal,3.5,2025,Mandapai - Madang
+144,Kaliring - Sp. Padang Batung,1,45,4500.0,0,2400.0,1400.0,700.0,2400.0,2100.0,0.0,53.333333,31.111111,15.555556,46.666667,A,Aspal,3.0,2025,Kaliring - Sp. Padang Batung
+145,Pagar  Haur - Malutu,1,3,220.0,220.0,0,0,0,220.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Pagar  Haur - Malutu
+146,Simpang Malutu - Pahampangan,1,46,4510.0,0,0,0,4510.0,0,4510.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Simpang Malutu - Pahampangan
+147,Simpang Malutu - Tambak,1,29,2870.0,800.0,1000.0,770.0,300.0,1800.0,1070.0,27.874564,34.843206,26.829268,10.452962,37.28223,A,Aspal,3.5,2025,Simpang Malutu - Tambak
+148,Pagat Batu - Muara Hariang,1,33,3270.0,0,2570.0,300.0,400.0,2570.0,700.0,0.0,78.593272,9.174312,12.232416,21.406728,A,Aspal,3.5,2025,Pagat Batu - Muara Hariang
+149,Paku (Jambu Hulu) - Ganda,1,19,1880.0,0,0,1580.0,300.0,0,1880.0,0.0,0.0,84.042553,15.957447,100.0,A,Aspal,3.0,2025,Paku (Jambu Hulu) - Ganda
+150,Sp.3 Bukuanin - Riam Talo,1,32,3120.0,0,1000.0,920.0,1200.0,1000.0,2120.0,0.0,32.051282,29.487179,38.461538,67.948718,A,Aspal,3.0,2025,Sp.3 Bukuanin - Riam Talo
+151,Sp.3 Bukuanin - Tayub,1,34,3390.0,0,600.0,0,2790.0,600.0,2790.0,0.0,17.699115,0.0,82.300885,82.300885,T,Tanah,3.0,2025,Sp.3 Bukuanin - Tayub
+152,Madang - Ambutun,1,30,2940.0,0,2040.0,800.0,100.0,2040.0,900.0,0.0,69.387755,27.210884,3.401361,30.612245,A,Aspal,3.5,2025,Madang - Ambutun
+153,Jl. Monumen 17 Mei - Mandapai,1,1,60.0,60.0,0,0,0,60.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Monumen 17 Mei - Mandapai
+154,Batu Laki - Muara Pipii,1,43,4270.0,600.0,300.0,400.0,2970.0,900.0,3370.0,14.051522,7.025761,9.367681,69.555035,78.922717,A,Aspal,3.5,2025,Batu Laki - Muara Pipii
+155,Muara Pipii - Tambak Pipii,1,47,4650.0,0,0,400.0,4250.0,0,4650.0,0.0,0.0,8.602151,91.397849,100.0,K,Kerikil,3.0,2025,Muara Pipii - Tambak Pipii
+156,Tambak Pipii - Malilingin,1,49,4880.0,0,980.0,0,3900.0,980.0,3900.0,0.0,20.081967,0.0,79.918033,79.918033,T,Tanah,3.5,2025,Tambak Pipii - Malilingin
+157,Malilingin - Muara Hariang,1,46,4570.0,0,0,0,4570.0,0,4570.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,4.0,2025,Malilingin - Muara Hariang
+158,Mawangi - Pariangan,1,24,2350.0,100.0,1150.0,1000.0,100.0,1250.0,1100.0,4.255319,48.93617,42.553191,4.255319,46.808511,A,Aspal,3.5,2025,Mawangi - Pariangan
+159,Jambu Hulu - Paku Pantai,1,17,1620.0,0,1500.0,120.0,0,1500.0,120.0,0.0,92.592593,7.407407,0.0,7.407407,A,Aspal,3.0,2025,Jambu Hulu - Paku Pantai
+160,Sungai Minting - Ds. Malutu,1,5,470.0,0,470.0,0,0,470.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Sungai Minting - Ds. Malutu
+161,Padang Rasau (Tambak Tamiang) - Paku Pantai,1,23,2230.0,0,1930.0,300.0,0,1930.0,300.0,0.0,86.547085,13.452915,0.0,13.452915,A,Aspal,3.0,2025,Padang Rasau (Tambak Tamiang) - Paku Pantai
+162,Jl. Galuntang Tayub - Ds. Madang,1,24,2360.0,2060.0,300.0,0,0,2360.0,0,87.288136,12.711864,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Galuntang Tayub - Ds. Madang
+163,Jl. Menuju SMPN Malilingin,1,5,450.0,0,350.0,100.0,0,350.0,100.0,0.0,77.777778,22.222222,0.0,22.222222,A,Aspal,3.0,2025,Jl. Menuju SMPN Malilingin
+164,Jl. Samping Mesjid Mandapai,1,3,240.0,0,140.0,100.0,0,140.0,100.0,0.0,58.333333,41.666667,0.0,41.666667,A,Aspal,3.0,2025,Jl. Samping Mesjid Mandapai
+165,Muara Hariang - Bayumbung,1,40,4000.0,0,300.0,0,3700.0,300.0,3700.0,0.0,7.5,0.0,92.5,92.5,T,Tanah,2.0,2025,Muara Hariang - Bayumbung
+166,Tambak Pipii - Batu Ampar,1,20,1980.0,0,0,0,1980.0,0,1980.0,0.0,0.0,0.0,100.0,100.0,B,Beton,1.5,2025,Tambak Pipii - Batu Ampar
+167,Bakarung - Rantauan,1,31,3030.0,1000.0,1130.0,900.0,0,2130.0,900.0,33.0033,37.293729,29.70297,0.0,29.70297,A,Aspal,3.5,2025,Bakarung - Rantauan
+168,Taniran Selatan - Rantauan,1,12,1110.0,910.0,200.0,0,0,1110.0,0,81.981982,18.018018,0.0,0.0,0.0,A,Aspal,3.0,2025,Taniran Selatan - Rantauan
+169,Bakarung -Tabihi - Karang Jawa,1,46,4570.0,0,2570.0,2000.0,0,2570.0,2000.0,0.0,56.236324,43.763676,0.0,43.763676,A,Aspal,3.5,2025,Bakarung -Tabihi - Karang Jawa
+170,Pandulangan - Kalinduku,1,11,1070.0,0,70.0,500.0,500.0,70.0,1000.0,0.0,6.542056,46.728972,46.728972,93.457944,A,Aspal,3.0,2025,Pandulangan - Kalinduku
+171,Taniran Selatan Kubah - Buntut Taniran / Wawaran,1,68,6740.0,900.0,2140.0,2000.0,1700.0,3040.0,3700.0,13.353116,31.750742,29.673591,25.222552,54.896142,A,Aspal,3.0,2025,Taniran Selatan Kubah - Buntut Taniran / Wawaran
+172,Angkinang Selatan - Tawia - Wawaran,1,59,5880.0,1700.0,3280.0,900.0,0,4980.0,900.0,28.911565,55.782313,15.306122,0.0,15.306122,A,Aspal,3.0,2025,Angkinang Selatan - Tawia - Wawaran
+173,Tawia - Kayu Abang,1,15,1490.0,1490.0,0,0,0,1490.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Tawia - Kayu Abang
+174,Bamban Selatan - Tanggang - Panggang Hijau,1,36,3580.0,0,1000.0,100.0,2480.0,1000.0,2580.0,0.0,27.932961,2.793296,69.273743,72.067039,K,Kerikil,3.0,2025,Bamban Selatan - Tanggang - Panggang Hijau
+175,Angkinang - Telaga Langsat,1,56,5580.0,400.0,3980.0,1200.0,0,4380.0,1200.0,7.168459,71.326165,21.505376,0.0,21.505376,A,Aspal,3.0,2025,Angkinang - Telaga Langsat
+176,Bamban Selatan - Pakuan,1,21,2090.0,0,1890.0,200.0,0,1890.0,200.0,0.0,90.430622,9.569378,0.0,9.569378,A,Aspal,3.0,2025,Bamban Selatan - Pakuan
+177,Bamban Utara - Longawang,1,22,2110.0,0,2010.0,100.0,0,2010.0,100.0,0.0,95.260664,4.739336,0.0,4.739336,A,Aspal,3.5,2025,Bamban Utara - Longawang
+178,Angkinang - Kayu Abang - Panggang Hijau,1,70,7000.0,1400.0,1100.0,1300.0,3200.0,2500.0,4500.0,20.0,15.714286,18.571429,45.714286,64.285714,A,Aspal,3.0,2025,Angkinang - Kayu Abang - Panggang Hijau
+179,Sp. Mandampa Tel. Sili-Sili - Sp. Sei. Bungur,1,49,4900.0,0,3000.0,1900.0,0,3000.0,1900.0,0.0,61.22449,38.77551,0.0,38.77551,A,Aspal,3.5,2025,Sp. Mandampa Tel. Sili-Sili - Sp. Sei. Bungur
+180,Sungai Kudung - Kalinduku,1,30,2950.0,0,1050.0,1600.0,300.0,1050.0,1900.0,0.0,35.59322,54.237288,10.169492,64.40678,A,Aspal,3.5,2025,Sungai Kudung - Kalinduku
+181,Bamban Tengah - Lok Nyiur,1,13,1260.0,0,700.0,300.0,260.0,700.0,560.0,0.0,55.555556,23.809524,20.634921,44.444444,A,Aspal,3.5,2025,Bamban Tengah - Lok Nyiur
+182,Sp. Bakarung Selatan - Sungai Kudung,1,6,550.0,100.0,200.0,100.0,150.0,300.0,250.0,18.181818,36.363636,18.181818,27.272727,45.454545,A,Aspal,3.0,2025,Sp. Bakarung Selatan - Sungai Kudung
+183,Panggang Hijau - Ds. Tawar,1,37,3670.0,0,0,0,3670.0,0,3670.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Panggang Hijau - Ds. Tawar
+184,Taniran Tengah - Taniran Selatan,1,23,2260.0,1200.0,1060.0,0,0,2260.0,0,53.097345,46.902655,0.0,0.0,0.0,A,Aspal,3.0,2025,Taniran Tengah - Taniran Selatan
+185,Jl. Kayu Abang - Ds. Anjiran,1,10,980.0,0,580.0,100.0,300.0,580.0,400.0,0.0,59.183673,10.204082,30.612245,40.816327,B,Beton,3.0,2025,Jl. Kayu Abang - Ds. Anjiran
+186,Jl. Rel Angkinang - TMMD Angkinang,1,37,3630.0,0,200.0,1100.0,2330.0,200.0,3430.0,0.0,5.509642,30.30303,64.187328,94.490358,K,Kerikil,3.0,2025,Jl. Rel Angkinang - TMMD Angkinang
+187,Jl. AMD - Ds. Lok Binuang,1,16,1570.0,0,0,0,1570.0,0,1570.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.5,2025,Jl. AMD - Ds. Lok Binuang
+188,Jl. Pandan Sari - Ds. Angkinang,1,5,440.0,300.0,40.0,0,100.0,340.0,100.0,68.181818,9.090909,0.0,22.727273,22.727273,A,Aspal,3.0,2025,Jl. Pandan Sari - Ds. Angkinang
+189,Bamban Selatan - Pakuan Balunan,1,18,1710.0,500.0,1210.0,0,0,1710.0,0,29.239766,70.760234,0.0,0.0,0.0,A,Aspal,3.0,2025,Bamban Selatan - Pakuan Balunan
+190,Kayu Abang - Paya,1,7,700.0,100.0,300.0,200.0,100.0,400.0,300.0,14.285714,42.857143,28.571429,14.285714,42.857143,A,Aspal,3.0,2025,Kayu Abang - Paya
+191,Bamban (Tibung) - Martajiwa,1,7,660.0,0,0,100.0,560.0,0,660.0,0.0,0.0,15.151515,84.848485,100.0,K,Kerikil,3.0,2025,Bamban (Tibung) - Martajiwa
+192,Rantauan - Sungai Baru (Jl. Pulau),1,12,1180.0,980.0,100.0,100.0,0,1080.0,100.0,83.050847,8.474576,8.474576,0.0,8.474576,A,Aspal,3.5,2025,Rantauan - Sungai Baru (Jl. Pulau)
+193,Telaga Langsat - Pakuan Timur,1,29,2820.0,0,900.0,1020.0,900.0,900.0,1920.0,0.0,31.914894,36.170213,31.914894,68.085106,A,Aspal,3.0,2025,Telaga Langsat - Pakuan Timur
+194,Longawang - Gumbil,1,17,1660.0,100.0,1560.0,0,0,1660.0,0,6.024096,93.975904,0.0,0.0,0.0,A,Aspal,3.5,2025,Longawang - Gumbil
+195,Mandampa - Longawang,1,29,2860.0,0,2600.0,260.0,0,2600.0,260.0,0.0,90.909091,9.090909,0.0,9.090909,A,Aspal,3.5,2025,Mandampa - Longawang
+196,Gumbil - Masimpan,1,50,5000.0,0,3800.0,1100.0,100.0,3800.0,1200.0,0.0,76.0,22.0,2.0,24.0,A,Aspal,3.0,2025,Gumbil - Masimpan
+197,Hamak Timur - Umpaya,1,42,4190.0,700.0,2490.0,1000.0,0,3190.0,1000.0,16.706444,59.427208,23.866348,0.0,23.866348,A,Aspal,3.0,2025,Hamak Timur - Umpaya
+198,Hamak - Umbai,1,10,970.0,0,100.0,300.0,570.0,100.0,870.0,0.0,10.309278,30.927835,58.762887,89.690722,B,Beton,1.5,2025,Hamak - Umbai
+199,Hamak Utara - Samaragi,1,3,300.0,0,0,200.0,100.0,0,300.0,0.0,0.0,66.666667,33.333333,100.0,B,Beton,3.0,2025,Hamak Utara - Samaragi
+200,Umpaya - Tumarin,1,6,560.0,360.0,200.0,0,0,560.0,0,64.285714,35.714286,0.0,0.0,0.0,A,Aspal,3.5,2025,Umpaya - Tumarin
+201,Jl. Sungai Durian - Ds. Gumbil,1,10,950.0,0,900.0,0,50.0,900.0,50.0,0.0,94.736842,0.0,5.263158,5.263158,B,Beton,3.5,2025,Jl. Sungai Durian - Ds. Gumbil
+202,Pantai Langsat - Umpaya,1,45,4450.0,0,4450.0,0,0,4450.0,0,0.0,100.0,0.0,0.0,0.0,B,Beton,2.0,2025,Pantai Langsat - Umpaya
+203,Halayung - Hantarukung,1,20,1910.0,1810.0,100.0,0,0,1910.0,0,94.764398,5.235602,0.0,0.0,0.0,A,Aspal,3.0,2025,Halayung - Hantarukung
+204,Wasah Hulu - Amparaya - Simpur,1,64,6360.0,400.0,800.0,2100.0,3060.0,1200.0,5160.0,6.289308,12.578616,33.018868,48.113208,81.132075,A,Aspal,3.5,2025,Wasah Hulu - Amparaya - Simpur
+205,Wasah Hilir - Sarang Halang,1,32,3130.0,1130.0,1400.0,600.0,0,2530.0,600.0,36.102236,44.728435,19.169329,0.0,19.169329,A,Aspal,3.0,2025,Wasah Hilir - Sarang Halang
+206,Simpur - Simp. Bilui,1,11,1030.0,230.0,600.0,200.0,0,830.0,200.0,22.330097,58.252427,19.417476,0.0,19.417476,A,Aspal,3.0,2025,Simpur - Simp. Bilui
+207,Simpur - Sp. 3 Muara Paring Agung,1,28,2730.0,1030.0,1500.0,200.0,0,2530.0,200.0,37.728938,54.945055,7.326007,0.0,7.326007,A,Aspal,3.5,2025,Simpur - Sp. 3 Muara Paring Agung
+208,Wasah Tengah - Sungai Tarap,1,34,3350.0,3350.0,0,0,0,3350.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Wasah Tengah - Sungai Tarap
+209,Wasah Hilir - Amparaya,1,30,2930.0,1000.0,100.0,530.0,1300.0,1100.0,1830.0,34.129693,3.412969,18.088737,44.368601,62.457338,A,Aspal,3.0,2025,Wasah Hilir - Amparaya
+210,Panjampang  Bahagia - Bayur,1,16,1560.0,100.0,1160.0,300.0,0,1260.0,300.0,6.410256,74.358974,19.230769,0.0,19.230769,A,Aspal,3.5,2025,Panjampang  Bahagia - Bayur
+211,Ulin - Tanggul (Balai Mas),1,40,3910.0,0,1700.0,900.0,1310.0,1700.0,2210.0,0.0,43.478261,23.017903,33.503836,56.521739,A,Aspal,3.5,2025,Ulin - Tanggul (Balai Mas)
+212,Panjampang Bahagia - Hanau,1,48,4780.0,0,2300.0,300.0,2180.0,2300.0,2480.0,0.0,48.117155,6.276151,45.606695,51.882845,A,Aspal,3.5,2025,Panjampang Bahagia - Hanau
+213,Jl. Halaban,1,22,2120.0,0,100.0,300.0,1720.0,100.0,2020.0,0.0,4.716981,14.150943,81.132075,95.283019,A,Aspal,3.5,2025,Jl. Halaban
+214,Amparaya - Karangan - Hanau,1,44,4360.0,2000.0,2160.0,200.0,0,4160.0,200.0,45.87156,49.541284,4.587156,0.0,4.587156,A,Aspal,3.5,2025,Amparaya - Karangan - Hanau
+215,Jl. Kalimput Desa Wasah Hilir,1,9,900.0,0,400.0,500.0,0,400.0,500.0,0.0,44.444444,55.555556,0.0,55.555556,A,Aspal,3.5,2025,Jl. Kalimput Desa Wasah Hilir
+216,Jl. Sungai Kacil I - Kapuh Padang,1,14,1320.0,1320.0,0,0,0,1320.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Sungai Kacil I - Kapuh Padang
+217,Jl. Sungai Kacil II,1,4,390.0,290.0,100.0,0,0,390.0,0,74.358974,25.641026,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Sungai Kacil II
+218,Jl. Papagaran - Ds. Amawang Kanan,1,6,540.0,0,540.0,0,0,540.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Papagaran - Ds. Amawang Kanan
+219,Balaimas - Hanau,1,24,2330.0,0,2330.0,0,0,2330.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Balaimas - Hanau
+220,Garunggang - Hantamangu,1,12,1160.0,0,800.0,200.0,160.0,800.0,360.0,0.0,68.965517,17.241379,13.793103,31.034483,A,Aspal,3.0,2025,Garunggang - Hantamangu
+221,Jl. KH. Ramli - DS. Amparaya,1,4,340.0,140.0,200.0,0,0,340.0,0,41.176471,58.823529,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. KH. Ramli - DS. Amparaya
+222,Jl. Tungkaran - Ds. Ulin,1,13,1240.0,0,640.0,0,600.0,640.0,600.0,0.0,51.612903,0.0,48.387097,48.387097,A,Aspal,3.0,2025,Jl. Tungkaran - Ds. Ulin
+223,Jl. Mondar (Ulin-Pantai Ulin) - Ds. Ulin,1,19,1860.0,0,1860.0,0,0,1860.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Mondar (Ulin-Pantai Ulin) - Ds. Ulin
+224,Jl. Pendawa - Ds. Tebing Tinggi,1,9,820.0,200.0,500.0,0,120.0,700.0,120.0,24.390244,60.97561,0.0,14.634146,14.634146,A,Aspal,3.0,2025,Jl. Pendawa - Ds. Tebing Tinggi
+225,Jl. Mangamol - Ds. Pantai Ulin,1,7,690.0,690.0,0,0,0,690.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Mangamol - Ds. Pantai Ulin
+226,Jl. Guru H. Izim - Ds. Pantai Ulin,1,7,620.0,0,0,0,620.0,0,620.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.0,2025,Jl. Guru H. Izim - Ds. Pantai Ulin
+227,Jl. Rawati - Ds. Panjampang Bahagia,1,13,1210.0,1210.0,0,0,0,1210.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Rawati - Ds. Panjampang Bahagia
+228,Jl. Pianggu,1,9,820.0,820.0,0,0,0,820.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Pianggu
+229,Jl. Buluh - Ds. Tebing Tinggi,1,13,1280.0,500.0,100.0,0,680.0,600.0,680.0,39.0625,7.8125,0.0,53.125,53.125,K,Kerikil,3.5,2025,Jl. Buluh - Ds. Tebing Tinggi
+230,Jl. H. Saim Garunggang - Kalimput,1,8,710.0,610.0,100.0,0,0,710.0,0,85.915493,14.084507,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. H. Saim Garunggang - Kalimput
+231,Jl. Padang Haur - Ds. Wasah Tengah,1,13,1230.0,0,230.0,500.0,500.0,230.0,1000.0,0.0,18.699187,40.650407,40.650407,81.300813,A,Aspal,3.0,2025,Jl. Padang Haur - Ds. Wasah Tengah
+232,Jl. Gerilya - Ds. Simpur,1,6,520.0,420.0,100.0,0,0,520.0,0,80.769231,19.230769,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Gerilya - Ds. Simpur
+233,Jl. Jangkang - Ds. Wasah Hilir,1,4,340.0,340.0,0,0,0,340.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Jangkang - Ds. Wasah Hilir
+234,Jl. Air Miris - Ds. Wasah Hilir,1,11,1060.0,260.0,800.0,0,0,1060.0,0,24.528302,75.471698,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Air Miris - Ds. Wasah Hilir
+235,Jl. Tandik - Ds. Wasah Hilir,1,5,500.0,200.0,300.0,0,0,500.0,0,40.0,60.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Tandik - Ds. Wasah Hilir
+236,Jl. Ds. Kapuh Tengah (Jl. Menuju Majelis Talim),1,6,600.0,600.0,0,0,0,600.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Ds. Kapuh Tengah (Jl. Menuju Majelis Talim)
+237,Jl. Karampaci - Ds. Kapuh,1,6,520.0,420.0,100.0,0,0,520.0,0,80.769231,19.230769,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Karampaci - Ds. Kapuh
+238,Jl. At-Taubah - Ds. Kapuh,1,5,470.0,100.0,370.0,0,0,470.0,0,21.276596,78.723404,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. At-Taubah - Ds. Kapuh
+239,Jl. Firdaus - Ds. Kapuh,1,3,300.0,0,100.0,200.0,0,100.0,200.0,0.0,33.333333,66.666667,0.0,66.666667,A,Aspal,3.0,2025,Jl. Firdaus - Ds. Kapuh
+240,Jl. Slasa Garih - Ds. Kapuh,1,5,500.0,0,500.0,0,0,500.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Slasa Garih - Ds. Kapuh
+241,Jl. Palas - Ds. Wasah Tengah,1,9,830.0,0,0,0,830.0,0,830.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.0,2025,Jl. Palas - Ds. Wasah Tengah
+242,Jl. Tanah Habang - Ds. Simpur,1,11,1050.0,0,0,0,1050.0,0,1050.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.5,2025,Jl. Tanah Habang - Ds. Simpur
+243,Jl. Banua Kambang - Ds. Wasah Tengah,1,14,1390.0,400.0,490.0,500.0,0,890.0,500.0,28.776978,35.251799,35.971223,0.0,35.971223,A,Aspal,3.0,2025,Jl. Banua Kambang - Ds. Wasah Tengah
+244,Jl. Pajah Api - Ds. Kapuh,1,4,340.0,240.0,100.0,0,0,340.0,0,70.588235,29.411765,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Pajah Api - Ds. Kapuh
+245,Jl. Talapak Manuk - Ds. Kapuh,1,8,760.0,0,160.0,0,600.0,160.0,600.0,0.0,21.052632,0.0,78.947368,78.947368,T,Tanah,3.0,2025,Jl. Talapak Manuk - Ds. Kapuh
+246,Sirih - Taro,1,13,1260.0,0,1160.0,100.0,0,1160.0,100.0,0.0,92.063492,7.936508,0.0,7.936508,A,Aspal,3.5,2025,Sirih - Taro
+247,Kalumpang - Balimau,1,53,5210.0,1310.0,3600.0,300.0,0,4910.0,300.0,25.143954,69.097889,5.758157,0.0,5.758157,A,Aspal,3.5,2025,Kalumpang - Balimau
+248,Kalumpang (Ds. Balanti) - Teratai,1,57,5690.0,0,0,0,5690.0,0,5690.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,5.0,2025,Kalumpang (Ds. Balanti) - Teratai
+249,Bago Tanggul - Katilang - Teratai,1,98,9710.0,6600.0,700.0,0,2410.0,7300.0,2410.0,67.971164,7.209063,0.0,24.819773,24.819773,A,Aspal,4.0,2025,Bago Tanggul - Katilang - Teratai
+250,Binjai (Sirih Hulu) - Ds. Seranggan,1,44,4340.0,1540.0,1400.0,1400.0,0,2940.0,1400.0,35.483871,32.258065,32.258065,0.0,32.258065,A,Aspal,3.5,2025,Binjai (Sirih Hulu) - Ds. Seranggan
+251,Balanti - (Ex. P3DT),1,17,1660.0,1060.0,600.0,0,0,1660.0,0,63.855422,36.144578,0.0,0.0,0.0,A,Aspal,3.0,2025,Balanti - (Ex. P3DT)
+252,Kalumpang - Baruh,1,28,2720.0,700.0,2020.0,0,0,2720.0,0,25.735294,74.264706,0.0,0.0,0.0,A,Aspal,3.0,2025,Kalumpang - Baruh
+253,Sirih - Pacakan,1,7,640.0,0,400.0,0,240.0,400.0,240.0,0.0,62.5,0.0,37.5,37.5,A,Aspal,3.0,2025,Sirih - Pacakan
+254,SP.4 Mesjid Sirih - Sarang Nyamuk - Asam Tamiyang,1,61,6100.0,1600.0,2300.0,1400.0,800.0,3900.0,2200.0,26.229508,37.704918,22.95082,13.114754,36.065574,A,Aspal,3.0,2025,SP.4 Mesjid Sirih - Sarang Nyamuk - Asam Tamiyang
+255,Kalumpang Selatan - Ds. Asam Tamiyang,1,9,820.0,0,0,0,820.0,0,820.0,0.0,0.0,0.0,100.0,100.0,B,Beton,3.0,2025,Kalumpang Selatan - Ds. Asam Tamiyang
+256,Balimau - Murung Dalam,1,15,1460.0,0,0,0,1460.0,0,1460.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,2.5,2025,Balimau - Murung Dalam
+257,Jl. Karya Bakti - Ds. Balimau,1,9,860.0,500.0,100.0,0,260.0,600.0,260.0,58.139535,11.627907,0.0,30.232558,30.232558,A,Aspal,5.0,2025,Jl. Karya Bakti - Ds. Balimau
+258,Tanuhi - Ulang,1,77,7650.0,2200.0,3050.0,2000.0,400.0,5250.0,2400.0,28.75817,39.869281,26.143791,5.228758,31.372549,A,Aspal,3.0,2025,Tanuhi - Ulang
+259,Loksado - Loklahung,1,13,1280.0,900.0,180.0,0,200.0,1080.0,200.0,70.3125,14.0625,0.0,15.625,15.625,A,Aspal,3.0,2025,Loksado - Loklahung
+260,Loksado - Haratai,1,72,7170.0,0,570.0,6600.0,0,570.0,6600.0,0.0,7.949791,92.050209,0.0,92.050209,B,Beton,2.0,2025,Loksado - Haratai
+261,Loklahung - Kamawakan,1,69,6820.0,300.0,2220.0,0,4300.0,2520.0,4300.0,4.398827,32.55132,0.0,63.049853,63.049853,B,Beton,2.0,2025,Loklahung - Kamawakan
+262,Jl. Niagara (Ds. Halunuk) - Ayan,1,21,2060.0,560.0,0,0,1500.0,560.0,1500.0,27.184466,0.0,0.0,72.815534,72.815534,K,Kerikil,3.5,2025,Jl. Niagara (Ds. Halunuk) - Ayan
+263,Malinau - Katingin - Kamawakan,1,95,9460.0,3000.0,300.0,500.0,5660.0,3300.0,6160.0,31.712474,3.171247,5.285412,59.830867,65.116279,A,Aspal,3.0,2025,Malinau - Katingin - Kamawakan
+264,Loklahung - Malaris,1,9,810.0,0,210.0,300.0,300.0,210.0,600.0,0.0,25.925926,37.037037,37.037037,74.074074,B,Beton,3.5,2025,Loklahung - Malaris
+265,Jl. Bubuih - Ds. Halunuk,1,8,740.0,0,100.0,140.0,500.0,100.0,640.0,0.0,13.513514,18.918919,67.567568,86.486486,A,Aspal,3.5,2025,Jl. Bubuih - Ds. Halunuk
+266,Halunuk - Riam Tajam/Talo - Hamak Umpaya,1,78,7780.0,0,4180.0,900.0,2700.0,4180.0,3600.0,0.0,53.727506,11.568123,34.70437,46.272494,A,Aspal,3.0,2025,Halunuk - Riam Tajam/Talo - Hamak Umpaya
+267,Jl. Muara Kitar - Desa Lumpangi,1,5,430.0,0,230.0,200.0,0,230.0,200.0,0.0,53.488372,46.511628,0.0,46.511628,A,Aspal,3.0,2025,Jl. Muara Kitar - Desa Lumpangi
+268,Jl. Hulu Banyu - Pantai Langsat,1,18,1790.0,890.0,900.0,0,0,1790.0,0,49.72067,50.27933,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Hulu Banyu - Pantai Langsat
+269,Jl. Bayampah - Tanuhi - Tugu Niih,1,7,610.0,0,210.0,0,400.0,210.0,400.0,0.0,34.42623,0.0,65.57377,65.57377,A,Aspal,3.5,2025,Jl. Bayampah - Tanuhi - Tugu Niih
+270,Jl. Kantor Camat Loksado II,1,2,120.0,120.0,0,0,0,120.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Kantor Camat Loksado II
+271,Jl. Buntu Muara Hatib - Bts. Kab. HST,1,12,1160.0,0,1060.0,100.0,0,1060.0,100.0,0.0,91.37931,8.62069,0.0,8.62069,A,Aspal,3.5,2025,Jl. Buntu Muara Hatib - Bts. Kab. HST
+272,Tanuhi - Hulu Banyu,1,7,660.0,0,200.0,400.0,60.0,200.0,460.0,0.0,30.30303,60.606061,9.090909,69.69697,B,Beton,1.5,2025,Tanuhi - Hulu Banyu
+273,Hulu Banyu - Datar Mangkung - Tumingki,1,70,7000.0,0,4700.0,1900.0,400.0,4700.0,2300.0,0.0,67.142857,27.142857,5.714286,32.857143,B,Beton,1.5,2025,Hulu Banyu - Datar Mangkung - Tumingki
+274,Lambuk - Ds. Tumingki,1,7,670.0,0,0,670.0,0,0,670.0,0.0,0.0,100.0,0.0,100.0,B,Beton,2.0,2025,Lambuk - Ds. Tumingki
+275,Malaris - Loapanggang,1,16,1580.0,0,100.0,1480.0,0,100.0,1480.0,0.0,6.329114,93.670886,0.0,93.670886,B,Beton,1.5,2025,Malaris - Loapanggang
+276,Jl. Haratai 3 (Balai Kedayang) / SDN Haratai 3,1,53,5250.0,1050.0,1800.0,1700.0,700.0,2850.0,2400.0,20.0,34.285714,32.380952,13.333333,45.714286,B,Beton,2.0,2025,Jl. Haratai 3 (Balai Kedayang) / SDN Haratai 3
+277,Jl. Haratai 2 (Balai Ujung Atas) SDN Haratai2,1,27,2700.0,0,2100.0,200.0,400.0,2100.0,600.0,0.0,77.777778,7.407407,14.814815,22.222222,B,Beton,2.0,2025,Jl. Haratai 2 (Balai Ujung Atas) SDN Haratai2
+278,Jl. Bubuih (Ds. Halunuk) - Kandihin,1,30,2930.0,0,0,2230.0,700.0,0,2930.0,0.0,0.0,76.109215,23.890785,100.0,B,Beton,2.0,2025,Jl. Bubuih (Ds. Halunuk) - Kandihin
+279,Jl. Makam Habib - Desa Lumpangi,1,4,380.0,0,380.0,0,0,380.0,0,0.0,100.0,0.0,0.0,0.0,B,Beton,1.5,2025,Jl. Makam Habib - Desa Lumpangi
+280,Jl. Datar Belimbing - Muara Kitar,1,49,4860.0,0,2760.0,300.0,1800.0,2760.0,2100.0,0.0,56.790123,6.17284,37.037037,43.209877,B,Beton,1.5,2025,Jl. Datar Belimbing - Muara Kitar
+281,Jl. Tanginau - Balai Haruyan,1,12,1160.0,0,360.0,800.0,0,360.0,800.0,0.0,31.034483,68.965517,0.0,68.965517,B,Beton,1.5,2025,Jl. Tanginau - Balai Haruyan
+282,Jl. Tataian - (Ds. Ulang) - Loksado,1,4,400.0,0,300.0,0,100.0,300.0,100.0,0.0,75.0,0.0,25.0,25.0,B,Beton,1.5,2025,Jl. Tataian - (Ds. Ulang) - Loksado
+283,Jl. Ulang - Kacang Parang,1,18,1750.0,0,700.0,800.0,250.0,700.0,1050.0,0.0,40.0,45.714286,14.285714,60.0,B,Beton,2.0,2025,Jl. Ulang - Kacang Parang
+284,Jl. Kacang Parang (Ulang) - Balai Mawak-Kias,1,21,2080.0,0,1180.0,800.0,100.0,1180.0,900.0,0.0,56.730769,38.461538,4.807692,43.269231,B,Beton,1.5,2025,Jl. Kacang Parang (Ulang) - Balai Mawak-Kias
+285,Jl. Kacang Parang (Ulang) - Balai Wariung,1,9,830.0,0,830.0,0,0,830.0,0,0.0,100.0,0.0,0.0,0.0,B,Beton,1.5,2025,Jl. Kacang Parang (Ulang) - Balai Wariung
+286,Jl. Loksado - Pantai Dusin,1,23,2270.0,0,2270.0,0,0,2270.0,0,0.0,100.0,0.0,0.0,0.0,B,Beton,1.5,2025,Jl. Loksado - Pantai Dusin
+287,Jl. Malinau - Kandihin,1,42,4160.0,0,200.0,700.0,3260.0,200.0,3960.0,0.0,4.807692,16.826923,78.365385,95.192308,T,Tanah,1.5,2025,Jl. Malinau - Kandihin
+288,Jl. Ulang - Bangkaun,1,36,3560.0,0,1360.0,0,2200.0,1360.0,2200.0,0.0,38.202247,0.0,61.797753,61.797753,B,Beton,1.5,2025,Jl. Ulang - Bangkaun
+289,Bayanan - Habirau Tengah,1,29,2860.0,200.0,1300.0,300.0,1060.0,1500.0,1360.0,6.993007,45.454545,10.48951,37.062937,47.552448,A,Aspal,3.5,2025,Bayanan - Habirau Tengah
+290,Tumbukan Banyu - Banua Hanyar,1,50,5000.0,5000.0,0,0,0,5000.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Tumbukan Banyu - Banua Hanyar
+291,Jl. Satria,1,4,370.0,370.0,0,0,0,370.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Satria
+292,Jl. Musyawarah (Nagara),1,5,410.0,410.0,0,0,0,410.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Musyawarah (Nagara)
+293,Jl. Sekolah Islam (Sungai Pinang / Sei Pinang),1,4,400.0,400.0,0,0,0,400.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Sekolah Islam (Sungai Pinang / Sei Pinang)
+294,Jl. Habib,1,4,320.0,320.0,0,0,0,320.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Habib
+295,Jl. Mawar (Daha Selatan),1,3,270.0,0,0,270.0,0,0,270.0,0.0,0.0,100.0,0.0,100.0,A,Aspal,3.5,2025,Jl. Mawar (Daha Selatan)
+296,Jl. Inst. PDAM Negara,1,3,260.0,0,160.0,100.0,0,160.0,100.0,0.0,61.538462,38.461538,0.0,38.461538,A,Aspal,3.5,2025,Jl. Inst. PDAM Negara
+297,Jl. Gerilya / (Depan PUSTU Habirau),1,3,240.0,0,0,0,240.0,0,240.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.5,2025,Jl. Gerilya / (Depan PUSTU Habirau)
+298,Jl. Harapan (SDN Habirau II)/ Sei. Palangan,1,3,210.0,0,0,210.0,0,0,210.0,0.0,0.0,100.0,0.0,100.0,A,Aspal,3.0,2025,Jl. Harapan (SDN Habirau II)/ Sei. Palangan
+299,Samuda - Bajayau,1,85,8500.0,5000.0,700.0,700.0,2100.0,5700.0,2800.0,58.823529,8.235294,8.235294,24.705882,32.941176,A,Aspal,3.5,2025,Samuda - Bajayau
+300,Jl. Tambangan - Ds. Baruh Jaya,1,23,2230.0,0,0,630.0,1600.0,0,2230.0,0.0,0.0,28.251121,71.748879,100.0,B,Beton,3.0,2025,Jl. Tambangan - Ds. Baruh Jaya
+301,Muning Tengah - Batang Alai (Pihanin Raya),1,53,5260.0,0,0,0,5260.0,0,5260.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Muning Tengah - Batang Alai (Pihanin Raya)
+302,Muning Tengah - Ds. Muning Dalam,1,172,17110.0,0,0,0,17110.0,0,17110.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Muning Tengah - Ds. Muning Dalam
+303,SP.4 Banjarbaru - Pasar Negara,1,7,660.0,0,560.0,100.0,0,560.0,100.0,0.0,84.848485,15.151515,0.0,15.151515,A,Aspal,3.5,2025,SP.4 Banjarbaru - Pasar Negara
+304,Negara - Tumbukan Banyu,1,6,530.0,130.0,300.0,100.0,0,430.0,100.0,24.528302,56.603774,18.867925,0.0,18.867925,A,Aspal,5.0,2025,Negara - Tumbukan Banyu
+305,SP.4. Banjarbaru - Pihanin Raya,1,11,1040.0,1040.0,0,0,0,1040.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,4.0,2025,SP.4. Banjarbaru - Pihanin Raya
+306,Bayanan - Pihanin,1,23,2210.0,600.0,400.0,600.0,610.0,1000.0,1210.0,27.149321,18.099548,27.149321,27.60181,54.751131,A,Aspal,3.5,2025,Bayanan - Pihanin
+307,Jl. Kantor Camat Daha Selatan II,1,4,320.0,0,320.0,0,0,320.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,4.0,2025,Jl. Kantor Camat Daha Selatan II
+308,Jl. Sungai Bugundi,1,4,310.0,0,0,310.0,0,0,310.0,0.0,0.0,100.0,0.0,100.0,B,Beton,3.0,2025,Jl. Sungai Bugundi
+309,Jl. Tukang Garit (Tambangan),1,5,480.0,0,0,0,480.0,0,480.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.0,2025,Jl. Tukang Garit (Tambangan)
+310,Pandak Daun - Baruh Jaya - Samuda,1,74,7330.0,200.0,5100.0,1530.0,500.0,5300.0,2030.0,2.728513,69.57708,20.873124,6.821282,27.694407,A,Aspal,3.5,2025,Pandak Daun - Baruh Jaya - Samuda
+311,Sei. Mandala Murung Raya,1,21,2100.0,100.0,300.0,1000.0,700.0,400.0,1700.0,4.761905,14.285714,47.619048,33.333333,80.952381,A,Aspal,3.5,2025,Sei. Mandala Murung Raya
+312,Jl. Teluk Haur I,1,2,180.0,0,0,0,180.0,0,180.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.0,2025,Jl. Teluk Haur I
+313,Jl. Teluk Haur II,1,3,210.0,0,0,0,210.0,0,210.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.0,2025,Jl. Teluk Haur II
+314,Jl. H.M. Thaib,1,4,350.0,0,150.0,100.0,100.0,150.0,200.0,0.0,42.857143,28.571429,28.571429,57.142857,A,Aspal,3.0,2025,Jl. H.M. Thaib
+315,Jl. Kenanga - Ds. Baruh Kambang,1,4,310.0,200.0,0,0,110.0,200.0,110.0,64.516129,0.0,0.0,35.483871,35.483871,A,Aspal,3.0,2025,Jl. Kenanga - Ds. Baruh Kambang
+316,Jl. SMAN Negara (KH. Abdullah),1,4,340.0,340.0,0,0,0,340.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. SMAN Negara (KH. Abdullah)
+317,Jl. Pertukangan,1,4,320.0,320.0,0,0,0,320.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Pertukangan
+318,Jl. Silaturrahim,1,3,280.0,280.0,0,0,0,280.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Silaturrahim
+319,Jl. Habib Ibrahim - Ds. Sei Mandala,1,2,170.0,170.0,0,0,0,170.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Habib Ibrahim - Ds. Sei Mandala
+320,Jl. Sukaramai - Keramat,1,8,730.0,730.0,0,0,0,730.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Sukaramai - Keramat
+321,Jl. Pakan Dalam I,1,4,320.0,0,320.0,0,0,320.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Pakan Dalam I
+322,Jl. Pakan Dalam II,1,3,290.0,0,290.0,0,0,290.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Pakan Dalam II
+323,Jl. Pakan Dalam III,1,3,280.0,0,280.0,0,0,280.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Pakan Dalam III
+324,Jl. Paramaian,1,3,300.0,0,0,0,300.0,0,300.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.0,2025,Jl. Paramaian
+325,Jl. MIN Pandak Daun,1,3,300.0,0,100.0,0,200.0,100.0,200.0,0.0,33.333333,0.0,66.666667,66.666667,K,Kerikil,3.0,2025,Jl. MIN Pandak Daun
+326,Jl. Pesantren Muradiyah,1,3,270.0,0,270.0,0,0,270.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Pesantren Muradiyah
+327,Pandak Daun (Buntut Muradiyah) - Pakan Dalam,1,17,1650.0,0,0,0,1650.0,0,1650.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.5,2025,Pandak Daun (Buntut Muradiyah) - Pakan Dalam
+328,Pakan Dalam - Kaminting Batu,1,19,1820.0,200.0,800.0,220.0,600.0,1000.0,820.0,10.989011,43.956044,12.087912,32.967033,45.054945,A,Aspal,3.0,2025,Pakan Dalam - Kaminting Batu
+329,Jl. Samping Kantor Camat Daha Utara,1,2,150.0,0,150.0,0,0,150.0,0,0.0,100.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Samping Kantor Camat Daha Utara
+330,Jl. Gang Bidan (Ds. Tambak Bitin),1,6,570.0,570.0,0,0,0,570.0,0,100.0,0.0,0.0,0.0,0.0,B,Beton,3.0,2025,Jl. Gang Bidan (Ds. Tambak Bitin)
+331,Jl. Cangkingan Herman,1,4,320.0,0,200.0,100.0,20.0,200.0,120.0,0.0,62.5,31.25,6.25,37.5,A,Aspal,3.0,2025,Jl. Cangkingan Herman
+332,Jl. Kampung Kawat,1,4,330.0,0,0,0,330.0,0,330.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.0,2025,Jl. Kampung Kawat
+333,Jl. Kaminting Batu,1,4,350.0,0,0,0,350.0,0,350.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.0,2025,Jl. Kaminting Batu
+334,Jl. Hamayung - Hakurung Dalam,1,41,4100.0,0,100.0,1400.0,2600.0,100.0,4000.0,0.0,2.439024,34.146341,63.414634,97.560976,B,Beton,3.0,2025,Jl. Hamayung - Hakurung Dalam
+335,Simpang Jadi Makmur - Ds. Samuda,1,7,660.0,0,660.0,0,0,660.0,0,0.0,100.0,0.0,0.0,0.0,B,Beton,2.0,2025,Simpang Jadi Makmur - Ds. Samuda
+336,Jl. Sakincung - Ds. Hakurung Dalam,1,14,1340.0,0,340.0,600.0,400.0,340.0,1000.0,0.0,25.373134,44.776119,29.850746,74.626866,B,Beton,2.0,2025,Jl. Sakincung - Ds. Hakurung Dalam
+337,Jl. Hakurung Dalam - Ds. Sungai Haji,1,6,570.0,0,270.0,100.0,200.0,270.0,300.0,0.0,47.368421,17.54386,35.087719,52.631579,B,Beton,3.0,2025,Jl. Hakurung Dalam - Ds. Sungai Haji
+338,Jl. Siang Gantung - Ds. Baru,1,70,6930.0,0,1930.0,600.0,4400.0,1930.0,5000.0,0.0,27.849928,8.658009,63.492063,72.150072,A,Aspal,3.5,2025,Jl. Siang Gantung - Ds. Baru
+339,Jl. Baru - Ds. Bajayau,1,24,2330.0,0,0,0,2330.0,0,2330.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,4.0,2025,Jl. Baru - Ds. Bajayau
+340,Jl. Bajayau - Ds. Bajayau Tengah,1,76,7580.0,2100.0,400.0,100.0,4980.0,2500.0,5080.0,27.704485,5.277045,1.319261,65.699208,67.01847,T,Tanah,3.5,2025,Jl. Bajayau - Ds. Bajayau Tengah
+341,Jl. Banua Hanyar - Ds. Tanjung Selor,1,57,5610.0,0,0,0,5610.0,0,5610.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Jl. Banua Hanyar - Ds. Tanjung Selor
+342,Jl. Tanjung Selor - Ds. Badaun,1,81,8030.0,0,0,0,8030.0,0,8030.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Jl. Tanjung Selor - Ds. Badaun
+343,Jl. Badaun - Ds. Bjayau Lama,1,31,3100.0,0,0,0,3100.0,0,3100.0,0.0,0.0,0.0,100.0,100.0,T,Tanah,3.0,2025,Jl. Badaun - Ds. Bjayau Lama
+344,Jl. Goha - Ds. Amawang Kanan,1,7,700.0,700.0,0,0,0,700.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Goha - Ds. Amawang Kanan
+345,Jl. Al - Ikhlas - Ds. Baluti,1,4,380.0,380.0,0,0,0,380.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Al - Ikhlas - Ds. Baluti
+346,Jl. Angkakai - Ds. Amawang Kiri,1,4,400.0,400.0,0,0,0,400.0,0,100.0,0.0,0.0,0.0,0.0,A,Aspal,3.5,2025,Jl. Angkakai - Ds. Amawang Kiri
+347,Jl. Anjiran Rantauan - Ds. Taniran Tengah,1,13,1210.0,0,0,0,1210.0,0,1210.0,0.0,0.0,0.0,100.0,100.0,A,Aspal,3.5,2025,Jl. Anjiran Rantauan - Ds. Taniran Tengah
+348,Jl. Asam Duhat - Ds. Pantai Ulin,1,12,1110.0,0,0,0,1110.0,0,1110.0,0.0,0.0,0.0,100.0,100.0,K,Kerikil,3.5,2025,Jl. Asam Duhat - Ds. Pantai Ulin
+349,Jl. Pertanian - Ds. Wasah Tengah,1,4,360.0,100.0,260.0,0,0,360.0,0,27.777778,72.222222,0.0,0.0,0.0,A,Aspal,3.0,2025,Jl. Pertanian - Ds. Wasah Tengah
+350,Jl. Keramat Sakti - Ds. Tebing Tinggi,1,7,690.0,200.0,400.0,0,90.0,600.0,90.0,28.985507,57.971014,0.0,13.043478,13.043478,A,Aspal,3.0,2025,Jl. Keramat Sakti - Ds. Tebing Tinggi

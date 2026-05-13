@@ -1,0 +1,27 @@
+{
+  "source_file": "SIPDJDC_63_06(format_jaju).xlsx",
+  "master_rows_extracted": 7487,
+  "summary_rows_extracted": 351,
+  "unique_nomor_ruas": 350,
+  "unique_nama_ruas_raw": 350,
+  "unique_nomor_nama_pairs": 350,
+  "nomor_with_multiple_names": {},
+  "nama_with_multiple_nomor": {},
+  "survey_years": [
+    2025
+  ],
+  "validation_issues_count": 0,
+  "sta_gap_overlap_count": 0,
+  "condition_sum_mismatch_count": 0,
+  "kemantapan_sum_mismatch_count": 0,
+  "sta_length_mismatch_count": 0,
+  "summary_compare_mismatch_count": 1,
+  "duplicate_sensitive_guardrails": {
+    "do_not_resolve_by_name_only": [
+      "Jl. Mawar",
+      "Jl. Musyawarah",
+      "Jl. Sekolah Islam"
+    ],
+    "note": "If these appear as duplicate raw names, resolve by nomor_ruas/legacy_ref/occurrence-specific context only."
+  }
+}

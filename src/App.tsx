@@ -9,6 +9,7 @@ import { DataDictionaryPage } from './app/pages/DataDictionaryPage';
 import { MapExplorerPage } from './app/pages/MapExplorerPage';
 import { TargetHitComparePage } from './app/pages/TargetHitComparePage';
 import { RankingTransitionPage } from './app/pages/RankingTransitionPage';
+import { TreatmentEnginePage } from './app/pages/TreatmentEnginePage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="shap-explorer" element={<ShapExplorerPage />} />
           <Route path="road-inspector" element={<RoadInspectorPage />} />
           <Route path="metrics-capture" element={<MetricsCapturePage />} />
+          <Route path="treatment-engine" element={<TreatmentEnginePage />} />
           <Route path="data-dictionary" element={<DataDictionaryPage />} />
         </Route>
       </Routes>

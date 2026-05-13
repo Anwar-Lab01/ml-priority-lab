@@ -1,0 +1,56 @@
+[
+  {
+    "dd2_row_index": 13,
+    "raw_name": "Jl. Mawar",
+    "canonical_name": "Mawar (Kandangan Utara)",
+    "canonical_key": "mawar kandangan utara",
+    "resolution_method": "occurrence_specific_manual",
+    "evidence_context": "Found in block with kecamatan=Kandangan. Surrounded by: Jl. Aluh Idut [Kandangan], Jl. Panglima Batur [Kandangan]...",
+    "confidence": "high"
+  },
+  {
+    "dd2_row_index": 20,
+    "raw_name": "Jl. Musyawarah",
+    "canonical_name": "Musyawarah (Kandangan)",
+    "canonical_key": "musyawarah kandangan",
+    "resolution_method": "occurrence_specific_manual",
+    "evidence_context": "Found in block with kecamatan=Kandangan. Surrounded by: Jl. Dahlia [Kandangan], Jl. KS. Tubun [Kandangan]...",
+    "confidence": "high"
+  },
+  {
+    "dd2_row_index": 21,
+    "raw_name": "Jl. Sekolah Islam",
+    "canonical_name": "Sekolah Islam (Kandangan Barat)",
+    "canonical_key": "sekolah islam kandangan barat",
+    "resolution_method": "occurrence_specific_manual",
+    "evidence_context": "Found in block with kecamatan=Kandangan. Surrounded by: Jl. KS. Tubun [Kandangan], Jl. Pemuda [Kandangan]...",
+    "confidence": "high"
+  },
+  {
+    "dd2_row_index": 294,
+    "raw_name": "Jl. Musyawarah",
+    "canonical_name": "Musyawarah (Nagara)",
+    "canonical_key": "musyawarah nagara",
+    "resolution_method": "occurrence_specific_manual",
+    "evidence_context": "Found in block with kecamatan=Daha Selatan. Surrounded by: Jl. Malinau - Kandihin [Loksado], Jl. Ulang - Bangkaun [Loksado]...",
+    "confidence": "high"
+  },
+  {
+    "dd2_row_index": 295,
+    "raw_name": "Jl. Sekolah Islam",
+    "canonical_name": "Sekolah Islam (Sungai Pinang)",
+    "canonical_key": "sekolah islam sei pinang",
+    "resolution_method": "occurrence_specific_manual",
+    "evidence_context": "Found in block with kecamatan=Daha Selatan. Surrounded by: Jl. Ulang - Bangkaun [Loksado], Bayanan - Habirau Tengah [Daha Selatan]...",
+    "confidence": "high"
+  },
+  {
+    "dd2_row_index": 297,
+    "raw_name": "Jl. Mawar",
+    "canonical_name": "Mawar (Daha Selatan)",
+    "canonical_key": "mawar daha selatan",
+    "resolution_method": "occurrence_specific_manual",
+    "evidence_context": "Found in block with kecamatan=Daha Selatan. Surrounded by: Tumbukan Banyu - Banua Hanyar [Daha Selatan], Jl. Satria  [Daha Selatan]...",
+    "confidence": "high"
+  }
+]

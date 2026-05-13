@@ -1,0 +1,258 @@
+[
+  {
+    "geometry_road_name": "Jl. Guru H. Izim",
+    "geometry_legacy_ref": "ruas_018",
+    "resolved_key": "guru h izim",
+    "proposed_dd2_name": "Aluh Idut",
+    "proposed_dd2_key": "aluh idut",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "SP. Mandampa Telaga Sili-Sili - SP. Sungai Bungur",
+    "geometry_legacy_ref": "ruas_020",
+    "resolved_key": "sp mandampa telaga sili - sili - sp sungai bungur",
+    "proposed_dd2_name": "Sp. Mandampa Tel. Sili-Sili - Sp. Sei. Bungur",
+    "proposed_dd2_key": "sp mandampa tel sili - sili - sp sei bungur",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Jl. Sungai Karuh Tembus Tawar",
+    "geometry_legacy_ref": "ruas_021",
+    "resolved_key": "sungai karuh tembus tawar",
+    "proposed_dd2_name": "Singakarsa - Palas",
+    "proposed_dd2_key": "singakarsa - palas",
+    "distance": 14
+  },
+  {
+    "geometry_road_name": "Jl. Tungkaran",
+    "geometry_legacy_ref": "ruas_061",
+    "resolved_key": "tungkaran",
+    "proposed_dd2_name": "Anggrek",
+    "proposed_dd2_key": "anggrek",
+    "distance": 6
+  },
+  {
+    "geometry_road_name": "Jl. Mangamol",
+    "geometry_legacy_ref": "ruas_086",
+    "resolved_key": "mangamol",
+    "proposed_dd2_name": "Anggrek",
+    "proposed_dd2_key": "anggrek",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. Tukang Garit",
+    "geometry_legacy_ref": "ruas_133",
+    "resolved_key": "tukang garit",
+    "proposed_dd2_name": "Anggrek",
+    "proposed_dd2_key": "anggrek",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Jl. Instalasi PDAM Negara",
+    "geometry_legacy_ref": "ruas_136",
+    "resolved_key": "instalasi pdam negara",
+    "proposed_dd2_name": "Inst. PDAM Negara",
+    "proposed_dd2_key": "inst pdam negara",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. KH. Ramli",
+    "geometry_legacy_ref": "ruas_190",
+    "resolved_key": "kh ramli",
+    "proposed_dd2_name": "Kenanga",
+    "proposed_dd2_key": "kenanga",
+    "distance": 6
+  },
+  {
+    "geometry_road_name": "Jl. Banua Hanyar - Tanjung Selor",
+    "geometry_legacy_ref": "ruas_194",
+    "resolved_key": "banua hanyar - tanjung selor",
+    "proposed_dd2_name": "Banua Hanyar - Ds. Tanjung Selor",
+    "proposed_dd2_key": "banua hanyar - desa tanjung selor",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. Pandan Sari",
+    "geometry_legacy_ref": "ruas_212",
+    "resolved_key": "pandan sari",
+    "proposed_dd2_name": "Padang Palas",
+    "proposed_dd2_key": "padang palas",
+    "distance": 6
+  },
+  {
+    "geometry_road_name": "Simp. Bakarung Selatan - Sungai Kudung",
+    "geometry_legacy_ref": "ruas_215",
+    "resolved_key": "simp bakarung selatan - sungai kudung",
+    "proposed_dd2_name": "Sp. Bakarung Selatan - Sungai Kudung",
+    "proposed_dd2_key": "sp bakarung selatan - sei kudung",
+    "distance": 6
+  },
+  {
+    "geometry_road_name": "Jl. Haratai 2 (SDN Haratai2)",
+    "geometry_legacy_ref": "ruas_230",
+    "resolved_key": "haratai 2 sdn haratai2",
+    "proposed_dd2_name": "Haritas (PT. Pertani)",
+    "proposed_dd2_key": "haritas pt pertani",
+    "distance": 12
+  },
+  {
+    "geometry_road_name": "Jl. Bubuih - Kandihin",
+    "geometry_legacy_ref": "ruas_232",
+    "resolved_key": "bubuih - kandihin",
+    "proposed_dd2_name": "Malinau - Kandihin",
+    "proposed_dd2_key": "malinau - kandihin",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Jl. Tembok Baru - Baluti",
+    "geometry_legacy_ref": "ruas_258",
+    "resolved_key": "tembok baru - baluti",
+    "proposed_dd2_name": "Tembok Baru - Ds. Baluti",
+    "proposed_dd2_key": "tembok baru - desa baluti",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. Baru - Asam Desa Baru/Asam",
+    "geometry_legacy_ref": "ruas_269",
+    "resolved_key": "baru - asam desa baru asam",
+    "proposed_dd2_name": "Baru - Asam Desa Baru",
+    "proposed_dd2_key": "baru - asam desa baru",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. Rawati",
+    "geometry_legacy_ref": "ruas_284",
+    "resolved_key": "rawati",
+    "proposed_dd2_name": "Dahlia",
+    "proposed_dd2_key": "dahlia",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. H. Saim/Garunggang",
+    "geometry_legacy_ref": "ruas_287",
+    "resolved_key": "h saim garunggang",
+    "proposed_dd2_name": "Sungai Karuh",
+    "proposed_dd2_key": "sei karuh",
+    "distance": 11
+  },
+  {
+    "geometry_road_name": "Jl. Air Miris",
+    "geometry_legacy_ref": "ruas_288",
+    "resolved_key": "air miris",
+    "proposed_dd2_name": "Aluh Idut",
+    "proposed_dd2_key": "aluh idut",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Tandik - Wasah Hilir",
+    "geometry_legacy_ref": "ruas_289",
+    "resolved_key": "tandik - wasah hilir",
+    "proposed_dd2_name": "Tandik - Ds. Wasah Hilir",
+    "proposed_dd2_key": "tandik - desa wasah hilir",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. Karampaci",
+    "geometry_legacy_ref": "ruas_290",
+    "resolved_key": "karampaci",
+    "proposed_dd2_name": "Paramaian",
+    "proposed_dd2_key": "paramaian",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. At-Taubah",
+    "geometry_legacy_ref": "ruas_291",
+    "resolved_key": "at - taubah",
+    "proposed_dd2_name": "KS. Tubun",
+    "proposed_dd2_key": "ks tubun",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Jl. Habib Iberahim",
+    "geometry_legacy_ref": "ruas_293",
+    "resolved_key": "habib iberahim",
+    "proposed_dd2_name": "Silaturrahim",
+    "proposed_dd2_key": "silaturrahim",
+    "distance": 8
+  },
+  {
+    "geometry_road_name": "Jl. Suriangpati",
+    "geometry_legacy_ref": "ruas_295",
+    "resolved_key": "suriangpati",
+    "proposed_dd2_name": "Kenanga",
+    "proposed_dd2_key": "kenanga",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Jl. H. Jarkasi",
+    "geometry_legacy_ref": "ruas_310",
+    "resolved_key": "h jarkasi",
+    "proposed_dd2_name": "Halaban",
+    "proposed_dd2_key": "halaban",
+    "distance": 6
+  },
+  {
+    "geometry_road_name": "Jl. Mangunang",
+    "geometry_legacy_ref": "ruas_311",
+    "resolved_key": "mangunang",
+    "proposed_dd2_name": "Bangga TMMD",
+    "proposed_dd2_key": "bangga",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Jl. Buntu Muara Hatib",
+    "geometry_legacy_ref": "ruas_318",
+    "resolved_key": "buntu muara hatib",
+    "proposed_dd2_name": "Panglima Batur",
+    "proposed_dd2_key": "panglima batur",
+    "distance": 11
+  },
+  {
+    "geometry_road_name": "Jl. Pajah Api",
+    "geometry_legacy_ref": "ruas_324",
+    "resolved_key": "pajah api",
+    "proposed_dd2_name": "Halaban",
+    "proposed_dd2_key": "halaban",
+    "distance": 6
+  },
+  {
+    "geometry_road_name": "Jl. Banua Kambang",
+    "geometry_legacy_ref": "ruas_325",
+    "resolved_key": "banua kambang",
+    "proposed_dd2_name": "Bina Bakat",
+    "proposed_dd2_key": "bina bakat",
+    "distance": 7
+  },
+  {
+    "geometry_road_name": "Jl. TPA Sungai Raya Selatan",
+    "geometry_legacy_ref": "ruas_326",
+    "resolved_key": "tpa sungai raya selatan",
+    "proposed_dd2_name": "TPA - Ds. Sungai Raya Selatan",
+    "proposed_dd2_key": "tpa - desa sei raya selatan",
+    "distance": 8
+  },
+  {
+    "geometry_road_name": "Jl. Telapak Manuk",
+    "geometry_legacy_ref": "ruas_335",
+    "resolved_key": "telapak manuk",
+    "proposed_dd2_name": "Rel Angkinang - TMMD Angkinang",
+    "proposed_dd2_key": "rel angkinang",
+    "distance": 8
+  },
+  {
+    "geometry_road_name": "Bajayau - Bajayau Tengah",
+    "geometry_legacy_ref": "ruas_336",
+    "resolved_key": "bajayau - bajayau tengah",
+    "proposed_dd2_name": "Bajayau - Ds. Bajayau Tengah",
+    "proposed_dd2_key": "bajayau - desa bajayau tengah",
+    "distance": 5
+  },
+  {
+    "geometry_road_name": "Simpang Jadi Makmur Ds. Samuda",
+    "geometry_legacy_ref": "ruas_339",
+    "resolved_key": "simpang jadi makmur desa samuda",
+    "proposed_dd2_name": "Simpang Jadi Makmur - Ds. Samuda",
+    "proposed_dd2_key": "sp jadi makmur - desa samuda",
+    "distance": 7
+  }
+]

@@ -78,6 +78,7 @@ export const NAV_ITEMS: NavItem[] = [
   { path: '/shap-explorer',   label: 'SHAP Explorer',     icon: 'Sparkles' },
   { path: '/road-inspector',  label: 'Road Inspector',    icon: 'Target' },
   { path: '/metrics-capture', label: 'Metrics & Capture', icon: 'Target' },
+  { path: '/treatment-engine', label: 'Treatment Engine',  icon: 'Wrench' },
   { path: '/data-dictionary', label: 'Data Dictionary',   icon: 'BookOpen' },
 ];
 
@@ -93,5 +94,6 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
   '/shap-explorer':   { title: 'SHAP Explorer',     description: 'Global and local SHAP feature importance analysis.' },
   '/road-inspector':  { title: 'Road Inspector',    description: 'Drill into individual road segment features and rankings.' },
   '/metrics-capture': { title: 'Metrics & Capture', description: 'Model performance metrics and target capture at various K thresholds.' },
+  '/treatment-engine': { title: 'Treatment Engine',  description: 'Rule-based treatment indication and indicative budgeting from DD2 / ASB data.' },
   '/data-dictionary': { title: 'Data Dictionary',   description: 'Documentation of all data fields and their sources.' },
 };

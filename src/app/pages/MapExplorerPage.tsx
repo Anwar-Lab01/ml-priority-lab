@@ -4,7 +4,13 @@ import 'leaflet/dist/leaflet.css';
 import { useAppData } from '../../hooks/useAppData';
 import { LoadingState } from '../components/ui/LoadingState';
 import { EmptyState } from '../components/ui/EmptyState';
-import { getRoadKey, isTargetPositive, isTargetKnown } from '../../lib/utils';
+import { isTargetPositive, isTargetKnown } from '../../lib/utils';
+import {
+  buildMapExplorerRankingLookup,
+  matchMapExplorerRoad,
+  type MapExplorerDiagnosticsRow,
+  type MapExplorerMatchMethod,
+} from '../../lib/mapExplorerMatching';
 
 // Setup basic map interfaces
 interface Coordinate {
@@ -24,6 +30,18 @@ interface BgRoad {
   id: string;
   name: string;
   coordinates: Coordinate[];
+}
+interface MapExplorerFeature {
+  geo: MapGeo;
+  rank: number | null;
+  score: number | null;
+  planned: number | null;
+  isMatched: boolean;
+  matchMethod: MapExplorerMatchMethod;
+  matchedRankingName: string | null;
+  matchedRankingKey: string | null;
+  diagnostics: MapExplorerDiagnosticsRow;
+  layerKey: string;
 }
 interface MapConfig {
   center: [number, number];
@@ -121,7 +139,7 @@ export function MapExplorerPage() {
   const { config, geos, bgs, basemapConfig, status: mapStatus } = useMapData();
 
   // State: Basemap
-  const [activeBasemap, setActiveBasemap] = useState<'osm'|'esri-streets'|'esri-imagery'>('osm');
+  const [activeBasemap, setActiveBasemap] = useState<'osm'|'satellite'|'esri-streets'|'esri-imagery'>('osm');
 
   // State: Controls
   const [scenario, setScenario] = useState<string>('');
@@ -146,32 +164,45 @@ export function MapExplorerPage() {
   }, [appData, scenario]);
 
   // Combine geometries with ranking data
-  const { mapFeatures, counters } = useMemo(() => {
+  const { mapFeatures, counters, diagnosticsRows } = useMemo(() => {
     if (!appData || !scenario || !model || !geos.length) {
-      return { mapFeatures: [], counters: { total: 0, matched: 0, unmatched: 0, top30: 0, top10: 0 } };
+      return {
+        mapFeatures: [] as MapExplorerFeature[],
+        counters: {
+          total: 0,
+          matched: 0,
+          unmatched: 0,
+          ambiguous: 0,
+          direct: 0,
+          alias: 0,
+          manualAlias: 0,
+          manualRefAlias: 0,
+          matchedName: 0,
+          top30: 0,
+          top10: 0,
+        },
+        diagnosticsRows: [] as MapExplorerDiagnosticsRow[],
+      };
     }
     
     const ranks = (appData.indexes.rankingsByScenario.get(scenario) || []).filter(r => r.model === model);
-    const mapByKey = new Map(ranks.map(r => [getRoadKey(r), r]));
+    const rankingLookup = buildMapExplorerRankingLookup(ranks);
 
-    let features = geos.map(geo => {
-      let rankingRow = null;
-      const geoKey1 = getRoadKey(geo as any);
-      const geoKey2 = geo.matched_name ? getRoadKey({ road_name: geo.matched_name } as any) : null;
+    let features = geos.map((geo, index) => {
+      const match = matchMapExplorerRoad(geo.legacy_ref, geo.road_name, geo.matched_name, rankingLookup);
+      const rankingRow = match.rankingRow;
 
-      if (mapByKey.has(geoKey1)) {
-        rankingRow = mapByKey.get(geoKey1);
-      } else if (geoKey2 && mapByKey.has(geoKey2)) {
-         rankingRow = mapByKey.get(geoKey2);
-      }
-      
       return {
         geo,
         rank: rankingRow?.rank ?? null,
         score: rankingRow?.score ?? null,
         planned: rankingRow?.planned_any_2026 ?? null,
         isMatched: !!rankingRow,
-        layerKey: `name-${geoKey1}`
+        matchMethod: match.matchMethod,
+        matchedRankingName: match.diagnostics.matchedRankingName,
+        matchedRankingKey: match.diagnostics.matchedRankingKey,
+        diagnostics: match.diagnostics,
+        layerKey: `road-${geo.legacy_ref || geo.road_id || index}`
       };
     });
 
@@ -189,12 +220,25 @@ export function MapExplorerPage() {
     // Calculate counters for currently visible features
     let matchedCount = 0;
     let unmatchedCount = 0;
+    let ambiguousCount = 0;
+    let directCount = 0;
+    let aliasCount = 0;
+    let manualAliasCount = 0;
+    let manualRefAliasCount = 0;
+    let matchedNameCount = 0;
     let top30Count = 0;
     let top10Count = 0;
     
     features.forEach(f => {
-      if (f.isMatched) matchedCount++;
+      if (f.matchMethod === 'ambiguous') ambiguousCount++;
+      else if (f.isMatched) matchedCount++;
       else unmatchedCount++;
+
+      if (f.matchMethod === 'direct') directCount++;
+      if (f.matchMethod === 'alias') aliasCount++;
+      if (f.matchMethod === 'manual_alias') manualAliasCount++;
+      if (f.matchMethod === 'manual_ref_alias') manualRefAliasCount++;
+      if (f.matchMethod === 'matched_name') matchedNameCount++;
       
       if (f.rank !== null) {
         if (f.rank <= 30) top30Count++;
@@ -204,20 +248,44 @@ export function MapExplorerPage() {
 
     return { 
       mapFeatures: features, 
+      diagnosticsRows: features.map(f => f.diagnostics),
       counters: { 
         total: features.length, 
         matched: matchedCount, 
         unmatched: unmatchedCount, 
-        top30: top30Count, 
-        top10: top10Count 
+        ambiguous: ambiguousCount,
+        direct: directCount,
+        alias: aliasCount,
+        manualAlias: manualAliasCount,
+        manualRefAlias: manualRefAliasCount,
+        matchedName: matchedNameCount,
+        top30: top30Count,
+        top10: top10Count
       } 
     };
   }, [appData, scenario, model, geos, showMatchedOnly, showTop30, showTop10, highlightPlanned, searchTerm]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    (window as any).__MAP_EXPLORER_DIAGNOSTICS__ = {
+      scenario,
+      model,
+      summary: counters,
+      rows: diagnosticsRows,
+      unmatched: diagnosticsRows.filter((row) => row.matchMethod === 'unmatched'),
+      ambiguous: diagnosticsRows.filter((row) => row.matchMethod === 'ambiguous'),
+    };
+  }, [scenario, model, counters, diagnosticsRows]);
+
   // Styling logic
-  const getStyle = (f: any, isSelected: boolean) => {
+  const getStyle = (f: MapExplorerFeature, isSelected: boolean) => {
     // Selected highlights
     if (isSelected) return { color: '#f59e0b', weight: 8, opacity: 1, zIndexOffset: 2000 };
+
+    if (f.matchMethod === 'ambiguous') {
+      return { color: '#f59e0b', weight: 3.5, opacity: 0.8, dashArray: '6 4' };
+    }
     
     // Unmatched geometry
     if (!f.isMatched) return { color: '#94a3b8', weight: 2.5, opacity: 0.4, dashArray: '4 4' };
@@ -254,28 +322,54 @@ export function MapExplorerPage() {
         </div>
         
         {/* Statistics Counters */}
-        <div className="p-4 grid grid-cols-2 gap-2 border-b border-slate-100 bg-white">
-           <div className="bg-slate-50 border border-slate-200 rounded p-2 text-center">
-              <span className="block text-[9px] font-black uppercase text-slate-400">Total Visible</span>
-              <span className="text-sm font-bold text-slate-800">{counters.total}</span>
+        <div className="p-4 space-y-2 border-b border-slate-100 bg-white">
+           <div className="grid grid-cols-2 gap-2">
+              <div className="bg-slate-50 border border-slate-200 rounded p-2 text-center">
+                 <span className="block text-[9px] font-black uppercase text-slate-400">Total Visible</span>
+                 <span className="text-sm font-bold text-slate-800">{counters.total}</span>
+              </div>
+              <div className="bg-blue-50 border border-blue-100 rounded p-2 text-center">
+                 <span className="block text-[9px] font-black uppercase text-blue-400">Matched Base</span>
+                 <span className="text-sm font-bold text-blue-800">{counters.matched}</span>
+              </div>
+              <div className="bg-slate-100 border border-slate-200 rounded p-2 text-center">
+                 <span className="block text-[9px] font-black uppercase text-slate-400 opacity-80">Unmatched</span>
+                 <span className="text-sm font-bold text-slate-600">{counters.unmatched}</span>
+              </div>
+              <div className="bg-amber-50 border border-amber-100 rounded p-2 text-center">
+                 <span className="block text-[9px] font-black uppercase text-amber-500">Ambiguous</span>
+                 <span className="text-sm font-bold text-amber-700">{counters.ambiguous}</span>
+              </div>
            </div>
-           <div className="bg-blue-50 border border-blue-100 rounded p-2 text-center">
-              <span className="block text-[9px] font-black uppercase text-blue-400">Matched Base</span>
-              <span className="text-sm font-bold text-blue-800">{counters.matched}</span>
-           </div>
-           <div className="bg-slate-100 border border-slate-200 rounded p-2 text-center">
-              <span className="block text-[9px] font-black uppercase text-slate-400 opacity-80">Unmatched</span>
-              <span className="text-sm font-bold text-slate-600">{counters.unmatched}</span>
-           </div>
-           <div className="grid grid-cols-2 gap-1 col-span-1">
+           <div className="grid grid-cols-6 gap-1">
+              <div className="bg-emerald-50 border border-emerald-100 rounded p-1 text-center flex flex-col justify-center">
+                <span className="block text-[8px] font-black uppercase text-emerald-500 leading-tight">Direct</span>
+                <span className="text-xs font-bold text-emerald-800">{counters.direct}</span>
+              </div>
+              <div className="bg-cyan-50 border border-cyan-100 rounded p-1 text-center flex flex-col justify-center">
+                <span className="block text-[8px] font-black uppercase text-cyan-500 leading-tight">Alias</span>
+                <span className="text-xs font-bold text-cyan-800">{counters.alias}</span>
+              </div>
+              <div className="bg-amber-50 border border-amber-100 rounded p-1 text-center flex flex-col justify-center">
+                <span className="block text-[8px] font-black uppercase text-amber-500 leading-tight">Manual</span>
+                <span className="text-xs font-bold text-amber-800">{counters.manualAlias}</span>
+              </div>
+              <div className="bg-orange-50 border border-orange-100 rounded p-1 text-center flex flex-col justify-center">
+                <span className="block text-[8px] font-black uppercase text-orange-500 leading-tight">Ref Manual</span>
+                <span className="text-xs font-bold text-orange-800">{counters.manualRefAlias}</span>
+              </div>
+              <div className="bg-violet-50 border border-violet-100 rounded p-1 text-center flex flex-col justify-center">
+                <span className="block text-[8px] font-black uppercase text-violet-500 leading-tight">Matched Name</span>
+                <span className="text-xs font-bold text-violet-800">{counters.matchedName}</span>
+              </div>
               <div className="bg-red-50 border border-red-100 rounded p-1 text-center flex flex-col justify-center">
                 <span className="block text-[8px] font-black uppercase text-red-400 leading-tight">Top 10</span>
                 <span className="text-xs font-bold text-red-800">{counters.top10}</span>
               </div>
-              <div className="bg-blue-50 border border-blue-100 rounded p-1 text-center flex flex-col justify-center">
-                <span className="block text-[8px] font-black uppercase text-blue-500 leading-tight">Top 30</span>
-                <span className="text-xs font-bold text-blue-800">{counters.top30}</span>
-              </div>
+           </div>
+           <div className="bg-blue-50 border border-blue-100 rounded p-1 text-center flex flex-col justify-center">
+              <span className="block text-[8px] font-black uppercase text-blue-500 leading-tight">Top 30</span>
+              <span className="text-xs font-bold text-blue-800">{counters.top30}</span>
            </div>
         </div>
 
@@ -298,10 +392,10 @@ export function MapExplorerPage() {
            <div className="pt-4 border-t border-slate-100 space-y-3">
              <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-2">Basemap Preferences</label>
              <select value={activeBasemap} onChange={e => setActiveBasemap(e.target.value as any)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-white p-2 outline-none">
-               <option value="osm">OpenStreetMap (Default)</option>
+               <option value="osm">Terrain / Light (Default)</option>
+               <option value="satellite">Satellite (Esri Imagery)</option>
                {basemapConfig?.enableEsri && <option value="esri-streets">Esri World Streets</option>}
                {basemapConfig?.enableEsri && <option value="esri-imagery">Esri World Imagery</option>}
-               {!basemapConfig?.enableEsri && <option value="" disabled>Esri layers unconfigured</option>}
              </select>
            </div>
 
@@ -354,6 +448,10 @@ export function MapExplorerPage() {
               <div className="w-6 h-[2px] border-t-2 border-dashed border-slate-400"></div>
               <span className="text-[10px] font-semibold text-slate-700">Unmatched / Orphaned Geometry</span>
            </div>
+           <div className="flex items-center gap-3 opacity-80">
+              <div className="w-6 h-[2px] border-t-2 border-dashed border-amber-500"></div>
+              <span className="text-[10px] font-semibold text-slate-700">Ambiguous Candidate Match</span>
+           </div>
            <div className="flex items-center gap-3 opacity-40">
               <div className="w-6 h-0.5 bg-slate-400 rounded"></div>
               <span className="text-[10px] font-semibold text-slate-700">Background Reference Context</span>
@@ -381,6 +479,13 @@ export function MapExplorerPage() {
              <TileLayer
                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+             />
+           )}
+           {activeBasemap === 'satellite' && (
+             <TileLayer
+               attribution='&copy; <a href="https://www.esri.com/">Esri</a> &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+               url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+               maxZoom={18}
              />
            )}
            {activeBasemap === 'esri-streets' && (
@@ -421,7 +526,11 @@ export function MapExplorerPage() {
                      <div className="text-xs font-mono font-bold leading-tight text-slate-700">
                         {f.geo.road_name} <br/>
                         <span className={f.isMatched ? "text-blue-600" : "text-slate-400 italic"}>
-                           {f.isMatched ? `Evaluated Rank: ${f.rank || '>30'}` : 'Unmatched Geometry'}
+                           {f.isMatched
+                             ? `${f.matchMethod.replace('_', ' ')} match • Rank ${f.rank || '>30'}`
+                             : f.matchMethod === 'ambiguous'
+                               ? 'Ambiguous geometry match'
+                               : 'Unmatched Geometry'}
                         </span>
                      </div>
                    </Tooltip>
@@ -464,6 +573,21 @@ export function MapExplorerPage() {
                            </span>
                         </div>
                      </div>
+
+                     <div className="grid grid-cols-2 gap-3 text-[10px] font-semibold uppercase tracking-widest text-slate-400">
+                        <div className="rounded border border-slate-200 bg-slate-50 p-2">
+                           <span className="block mb-1">Match Method</span>
+                           <span className="text-[11px] font-bold normal-case tracking-normal text-slate-700">
+                              {selectedFeature.matchMethod.replace('_', ' ')}
+                           </span>
+                        </div>
+                        <div className="rounded border border-slate-200 bg-slate-50 p-2">
+                           <span className="block mb-1">Matched Ranking</span>
+                           <span className="text-[11px] font-bold normal-case tracking-normal text-slate-700">
+                              {selectedFeature.matchedRankingName || '—'}
+                           </span>
+                        </div>
+                     </div>
                      
                      <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 text-[11px] text-slate-600 leading-relaxed font-medium">
                         Geometry spatial alignment verified explicitly against priority records within the active analytical scenario constraints.
@@ -482,6 +606,16 @@ export function MapExplorerPage() {
                         </div>
                      )}
                   </>
+                ) : selectedFeature.matchMethod === 'ambiguous' ? (
+                  <div className="py-2 space-y-3">
+                     <div className="flex items-center gap-2 text-amber-700 bg-amber-50 border border-amber-200 px-3 py-2 rounded-lg">
+                        <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                        <span className="text-[11px] font-bold">Conservative match withheld</span>
+                     </div>
+                     <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+                        More than one ranking candidate is plausible for this geometry under the current conservative rules, so the road remains excluded until the naming conflict is resolved explicitly.
+                     </p>
+                  </div>
                 ) : (
                   <div className="py-2 space-y-3">
                      <div className="flex items-center gap-2 text-amber-600 bg-amber-50 border border-amber-200 px-3 py-2 rounded-lg">

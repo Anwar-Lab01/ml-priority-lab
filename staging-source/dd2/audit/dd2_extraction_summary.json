@@ -1,0 +1,12 @@
+{
+  "source_file": "FormDD1-2025.xlsx",
+  "sheet": "Referensi",
+  "data_rows_extracted": 350,
+  "expected_road_universe": 350,
+  "row_range": "9-358",
+  "notes": [
+    "Raw xlsx preserved unchanged",
+    "CSV is staging only, not public/data",
+    "Canonical identity resolution not applied yet"
+  ]
+}

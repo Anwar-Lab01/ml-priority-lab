@@ -1,0 +1,352 @@
+﻿nomor_ruas,nama_ruas_raw,mantap_m,tidak_mantap_m,tahun_survei
+001,Jl. Pangeran Antasari - Loklua,360.0,200.0,2025
+002,Jl. Soeprapto - Jl. H.M Rusli,520.0,0.0,2025
+003,Jl. Pasar Kandangan - Oprit Jembt. Loklua,280.0,0.0,2025
+004,Jl. Soetoyo - Teluk Mesjid,260.0,0.0,2025
+005,Jl. Teluk Mesjid - Sp. 4 Muara Banta,1230.0,200.0,2025
+006,Jl. Merah Johansyah - Jl. Melati,820.0,0.0,2025
+007,Jl. Menuju Stadion 2 Desember,290.0,0.0,2025
+008,Jl. Aluh Idut,1340.0,0.0,2025
+009,Jl. Panglima Batur,1090.0,0.0,2025
+010,Jl. Nusa Indah,380.0,0.0,2025
+011,Jl. Anggrek,230.0,0.0,2025
+012,Jl. Kenanga,230.0,0.0,2025
+013,Jl. Mawar,230.0,0.0,2025
+014,Jl. Kamboja,210.0,0.0,2025
+015,Jl. Dahlia,0.0,180.0,2025
+016,Jl. KS. Tubun,460.0,500.0,2025
+017,Jl. Pemuda,260.0,0.0,2025
+018,Jl. Parindra,280.0,0.0,2025
+019,Jl. Wahab Syahrani,120.0,0.0,2025
+020,Jl. Musyawarah,320.0,0.0,2025
+021,Jl. Sekolah Islam,200.0,0.0,2025
+022,Jl. Rahmah Bahran,220.0,0.0,2025
+023,Jl. Brigjen Katamso,350.0,0.0,2025
+024,Jl. Kolonel Sugiono,220.0,0.0,2025
+025,Singakarsa - Palas,2800.0,2520.0,2025
+026,Singakarsa - Getek,200.0,0.0,2025
+027,Parincahan - Singakarsa (Jl. Harapan),660.0,0.0,2025
+028,Budi Bakti - Tiga Desember,810.0,0.0,2025
+029,Jl. Jafri Zamzam,670.0,400.0,2025
+030,Sungai Damang - Amawang Kiri,2310.0,200.0,2025
+031,Amawang Muka - Getek,4910.0,500.0,2025
+032,Amawang Kanan - Wasah Hulu,2470.0,700.0,2025
+033,Jl. DI. Panjaitan - Loklua,410.0,0.0,2025
+034,Jl. Jend. Sudirman,2440.0,0.0,2025
+035,Jl. AES Nasution,240.0,0.0,2025
+036,Tembok Lama - Loklua,440.0,400.0,2025
+037,Jl. Kesehatan - Komp. Rmh Dokter,280.0,0.0,2025
+038,Jl. Samping Bappeda - Mesjid Darul Halik,0.0,190.0,2025
+039,Jl.  Bina Bakat,240.0,0.0,2025
+040,Baluti - Jambu Hulu (Paku),2300.0,1770.0,2025
+041,Sp. 3 Baluti - Amawang,1470.0,100.0,2025
+042,Sei Kupang Utara - Simp. Empat Lungau,2360.0,0.0,2025
+043,Sp. Empat Lungau - Bangkau,2200.0,5900.0,2025
+044,Sp. Empat Lungau - Garis,1600.0,6590.0,2025
+045,Gambir - Sp. Empat Lungau,1500.0,1450.0,2025
+046,Bariang - Getek,400.0,840.0,2025
+047,Muara Banta - Karang Jawa,1590.0,0.0,2025
+048,Sungai Paring - Sei Hanyar Pantai Ulin,1400.0,4450.0,2025
+049,Kandangan Hulu - Sp. Tabihi,1250.0,0.0,2025
+050,Banyu Barau - Sei Kalang,2100.0,0.0,2025
+051,Tibung Raya - Asam Cangkuk,860.0,0.0,2025
+052,Gambah Dalam - Rantauan,1020.0,500.0,2025
+053,Gambah Luar - Gambah Dalam,990.0,300.0,2025
+054,Pegangsaan Timur - Teluk Aman,750.0,300.0,2025
+055,Gambah Luar - Sungai Kudung,390.0,500.0,2025
+056,Bakarung Tengah - Karang Jawa,3070.0,700.0,2025
+057,Jl. Papagaran/Palangsatan,300.0,700.0,2025
+058,Jl. Tembok Kacil. Sei. Kudung,300.0,70.0,2025
+059,Jl. Mesjid Quba,210.0,0.0,2025
+060,Jl. Sungai Karuh,1960.0,0.0,2025
+061,Rambai - Bariang,600.0,610.0,2025
+062,Jangkang - Pantai Ulin,1000.0,690.0,2025
+063,Jl. Padang Palas,480.0,200.0,2025
+064,Tibung Dalam - Teratai,420.0,100.0,2025
+065,Jl. Kalaka Indah - Perumnas Tibung,410.0,0.0,2025
+066,Jl. Teratai Menuju Komplek Perumnas Hamalau,410.0,0.0,2025
+067,Teluk Pinang - Baluti,1640.0,0.0,2025
+068,Tibung Raya - Hamalau Dalam,800.0,110.0,2025
+069,Jl. Baiturrahim Parincahan,300.0,1120.0,2025
+070,Jl. Newangsekarti - Ds. Gambah Luar Muka,290.0,0.0,2025
+071,Jl. Tembok Baru (Asam Cangkok),400.0,100.0,2025
+072,Sungai Paring - Toba,300.0,540.0,2025
+073,Jl. Tembok Baru - Ds. Baluti,40.0,100.0,2025
+074,Jl. H. Jarkasi - Ds. Sungai Paring,100.0,20.0,2025
+075,Bariang - Patigan,1630.0,0.0,2025
+076,Gambah Dalam Barat - Mahulung,1920.0,0.0,2025
+077,Jl. Suriangpati - Gambah Dalam Barat,200.0,2620.0,2025
+078,Jl. Menuju SMP 7 - Ds. Gambah Dalam,400.0,600.0,2025
+079,Telaga Banta - Patigan,640.0,0.0,2025
+080,Jl. Nomura,410.0,0.0,2025
+081,Jl. Lorong Bupati,390.0,0.0,2025
+082,Jl. Biti - Sungai Kupang (Karya Bakti TNI),800.0,1020.0,2025
+083,Jl. Palajau - Ds. Baluti,400.0,880.0,2025
+084,Jl. RS. Hasan Basry II,100.0,0.0,2025
+085,Tajun - Sp.3 Muara Paring Agung,4970.0,0.0,2025
+086,Hamalau - Anjiran,800.0,100.0,2025
+087,Tanjungan - Sp. 10 Batang Kulur - Sungai Kali,7000.0,300.0,2025
+088,Sungai Raya Selatan - Sarang Halang,320.0,2300.0,2025
+089,Sp. Batang Kulur Kiri - Tatas,570.0,1800.0,2025
+090,Taal Batang Kulur - Sp. 3 Muara Prg Agung,2300.0,1820.0,2025
+091,Batang Kulur Kanan - Sarangan,1680.0,500.0,2025
+092,Bumi Berkat - Mungkur Galah,1200.0,310.0,2025
+093,Taal Jarau - Sp. Baru/Tampang,5650.0,0.0,2025
+094,Sungai Raya - Jambu Hulu/Paku,5170.0,0.0,2025
+095,Sungai Raya Selatan - Malutu - Goa Berangin,3900.0,2450.0,2025
+096,Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan,2570.0,1200.0,2025
+097,Asam Cangkuk - Telaga Bidadari,230.0,600.0,2025
+098,Hamalau - Pahampangan,780.0,0.0,2025
+099,Ida Manggala - Padang Makmur,900.0,2790.0,2025
+100,Simpang Hamalau - Teluk Pinang,480.0,200.0,2025
+101,Teluk Pinang - Pahampangan Utara,2220.0,0.0,2025
+102,Hamalau - Telaga Bidadari - Wasah Hilir,2040.0,2900.0,2025
+103,Karasikan - Sarang Halang,900.0,1000.0,2025
+104,Tanjungan - Sp. 3 Sakijang,100.0,1490.0,2025
+105,Sarang Halang Padang - Sp. Batang Kulur,1610.0,500.0,2025
+106,Hamalau - Ganda,500.0,670.0,2025
+107,Tamiyang - Ds. Tamiyang (Eks TMMD),0.0,2040.0,2025
+108,Tanah Bangkang Menuju Balai Benih Ikan,200.0,460.0,2025
+109,Karang Intan - Tanah Bangkang,1110.0,0.0,2025
+110,Jl. Haritas (PT. Pertani),640.0,0.0,2025
+111,Paharuangan - Sei. Raya Selatan,1400.0,560.0,2025
+112,Jl. Bangga TMMD,0.0,790.0,2025
+113,Batang Kulur Kiri - Durian Landung,550.0,0.0,2025
+114,Jl. Taminung,2000.0,20.0,2025
+115,Matang Gadung - Halalang,420.0,0.0,2025
+116,Sungai Raya Utara - Teluk Pinang,1500.0,200.0,2025
+117,Jl. Mangunang - Ds. Sungai Raya Utara,700.0,0.0,2025
+118,Hamalau - Asam Cangkok,1430.0,0.0,2025
+119,Hariti - Sungai Raya Selatan,400.0,2260.0,2025
+120,Mangaris - Limau Manis,0.0,4100.0,2025
+121,Jl. Munggu Raya - Ds. Hariti,460.0,0.0,2025
+122,Paharuangan - Asam Dua,200.0,710.0,2025
+123,Asam Seranggan - Asam Tamiyang,1020.0,0.0,2025
+124,Jl. Papancan - Ds. Tanah Bangkang,1460.0,0.0,2025
+125,Jl. Baru - Asam Desa Baru,1120.0,200.0,2025
+126,Jl. Sungai Namang - Ds. Tanah Bangkang,0.0,730.0,2025
+127,Jarau - Parandakan,0.0,700.0,2025
+128,Mungkur Galah - Lokpaikat,200.0,510.0,2025
+129,Batang Kulur Kanan - Bumi Berkat (Jl. Kisung),0.0,1610.0,2025
+130,Batang Kulur Kanan - Batang Kulur Kiri,0.0,820.0,2025
+131,Jl. Manggis - Ds. Baru,0.0,1280.0,2025
+132,Jl. TPA - Ds. Sungai Raya Selatan,850.0,0.0,2025
+133,Jl. Pembangunan - Ds. Sungai Raya Utara,350.0,600.0,2025
+134,Jl. Kalaka Dayuh - Ds. Sungai Raya Utara,0.0,430.0,2025
+135,Teluk Pinang - Padang Rasau,1200.0,980.0,2025
+136,Tanayung - Simp. Ambarai,1210.0,400.0,2025
+137,Tabihi - Telaga Langsat,8350.0,300.0,2025
+138,Karang Jawa -Ambarai - Sungai Bungur,1840.0,2200.0,2025
+139,Ambarai - Madang,1740.0,0.0,2025
+140,Padang Batung - Batulaki - Malilingin,2480.0,6400.0,2025
+141,Malilingin - Lokbahan - Paniungan,8300.0,2360.0,2025
+142,Mawangi - Bukuanin - Telaga Langsat,8120.0,6100.0,2025
+143,Mandapai - Madang,2920.0,2900.0,2025
+144,Kaliring - Sp. Padang Batung,2400.0,2100.0,2025
+145,Pagar  Haur - Malutu,220.0,0.0,2025
+146,Simpang Malutu - Pahampangan,0.0,4510.0,2025
+147,Simpang Malutu - Tambak,1800.0,1070.0,2025
+148,Pagat Batu - Muara Hariang,2570.0,700.0,2025
+149,Paku (Jambu Hulu) - Ganda,0.0,1880.0,2025
+150,Sp.3 Bukuanin - Riam Talo,1000.0,2120.0,2025
+151,Sp.3 Bukuanin - Tayub,600.0,2790.0,2025
+152,Madang - Ambutun,2040.0,900.0,2025
+153,Jl. Monumen 17 Mei - Mandapai,60.0,0.0,2025
+154,Batu Laki - Muara Pipii,900.0,3370.0,2025
+155,Muara Pipii - Tambak Pipii,0.0,4650.0,2025
+156,Tambak Pipii - Malilingin,980.0,3900.0,2025
+157,Malilingin - Muara Hariang,0.0,4570.0,2025
+158,Mawangi - Pariangan,1250.0,1100.0,2025
+159,Jambu Hulu - Paku Pantai,1500.0,120.0,2025
+160,Sungai Minting - Ds. Malutu,470.0,0.0,2025
+161,Padang Rasau (Tambak Tamiang) - Paku Pantai,1930.0,300.0,2025
+162,Jl. Galuntang Tayub - Ds. Madang,2360.0,0.0,2025
+163,Jl. Menuju SMPN Malilingin,350.0,100.0,2025
+164,Jl. Samping Mesjid Mandapai,140.0,100.0,2025
+165,Muara Hariang - Bayumbung,300.0,3700.0,2025
+166,Tambak Pipii - Batu Ampar,0.0,1980.0,2025
+167,Bakarung - Rantauan,2130.0,900.0,2025
+168,Taniran Selatan - Rantauan,1110.0,0.0,2025
+169,Bakarung -Tabihi - Karang Jawa,2570.0,2000.0,2025
+170,Pandulangan - Kalinduku,70.0,1000.0,2025
+171,Taniran Selatan Kubah - Buntut Taniran / Wawaran,3040.0,3700.0,2025
+172,Angkinang Selatan - Tawia - Wawaran,4980.0,900.0,2025
+173,Tawia - Kayu Abang,1490.0,0.0,2025
+174,Bamban Selatan - Tanggang - Panggang Hijau,1000.0,2580.0,2025
+175,Angkinang - Telaga Langsat,4380.0,1200.0,2025
+176,Bamban Selatan - Pakuan,1890.0,200.0,2025
+177,Bamban Utara - Longawang,2010.0,100.0,2025
+178,Angkinang - Kayu Abang - Panggang Hijau,2500.0,4500.0,2025
+179,Sp. Mandampa Tel. Sili-Sili - Sp. Sei. Bungur,3000.0,1900.0,2025
+180,Sungai Kudung - Kalinduku,1050.0,1900.0,2025
+181,Bamban Tengah - Lok Nyiur,700.0,560.0,2025
+182,Sp. Bakarung Selatan - Sungai Kudung,300.0,250.0,2025
+183,Panggang Hijau - Ds. Tawar,0.0,3670.0,2025
+184,Taniran Tengah - Taniran Selatan,2260.0,0.0,2025
+185,Jl. Kayu Abang - Ds. Anjiran,580.0,400.0,2025
+186,Jl. Rel Angkinang - TMMD Angkinang,200.0,3430.0,2025
+187,Jl. AMD - Ds. Lok Binuang,0.0,1570.0,2025
+188,Jl. Pandan Sari - Ds. Angkinang,340.0,100.0,2025
+189,Bamban Selatan - Pakuan Balunan,1710.0,0.0,2025
+190,Kayu Abang - Paya,400.0,300.0,2025
+191,Bamban (Tibung) - Martajiwa,0.0,660.0,2025
+192,Rantauan - Sungai Baru (Jl. Pulau),1080.0,100.0,2025
+193,Telaga Langsat - Pakuan Timur,900.0,1920.0,2025
+194,Longawang - Gumbil,1660.0,0.0,2025
+195,Mandampa - Longawang,2600.0,260.0,2025
+196,Gumbil - Masimpan,3800.0,1200.0,2025
+197,Hamak Timur - Umpaya,3190.0,1000.0,2025
+198,Hamak - Umbai,100.0,870.0,2025
+199,Hamak Utara - Samaragi,0.0,300.0,2025
+200,Umpaya - Tumarin,560.0,0.0,2025
+201,Jl. Sungai Durian - Ds. Gumbil,900.0,50.0,2025
+202,Pantai Langsat - Umpaya,4450.0,0.0,2025
+203,Halayung - Hantarukung,1910.0,0.0,2025
+204,Wasah Hulu - Amparaya - Simpur,1200.0,5160.0,2025
+205,Wasah Hilir - Sarang Halang,2530.0,600.0,2025
+206,Simpur - Simp. Bilui,830.0,200.0,2025
+207,Simpur - Sp. 3 Muara Paring Agung,2530.0,200.0,2025
+208,Wasah Tengah - Sungai Tarap,3350.0,0.0,2025
+209,Wasah Hilir - Amparaya,1100.0,1830.0,2025
+210,Panjampang  Bahagia - Bayur,1260.0,300.0,2025
+211,Ulin - Tanggul (Balai Mas),1700.0,2210.0,2025
+212,Panjampang Bahagia - Hanau,2300.0,2480.0,2025
+213,Jl. Halaban,100.0,2020.0,2025
+214,Amparaya - Karangan - Hanau,4160.0,200.0,2025
+215,Jl. Kalimput Desa Wasah Hilir,400.0,500.0,2025
+216,Jl. Sungai Kacil I - Kapuh Padang,1320.0,0.0,2025
+217,Jl. Sungai Kacil II,390.0,0.0,2025
+218,Jl. Papagaran - Ds. Amawang Kanan,540.0,0.0,2025
+219,Balaimas - Hanau,2330.0,0.0,2025
+220,Garunggang - Hantamangu,800.0,360.0,2025
+221,Jl. KH. Ramli - DS. Amparaya,340.0,0.0,2025
+222,Jl. Tungkaran - Ds. Ulin,640.0,600.0,2025
+223,Jl. Mondar (Ulin-Pantai Ulin) - Ds. Ulin,1860.0,0.0,2025
+224,Jl. Pendawa - Ds. Tebing Tinggi,700.0,120.0,2025
+225,Jl. Mangamol - Ds. Pantai Ulin,690.0,0.0,2025
+226,Jl. Guru H. Izim - Ds. Pantai Ulin,0.0,620.0,2025
+227,Jl. Rawati - Ds. Panjampang Bahagia,1210.0,0.0,2025
+228,Jl. Pianggu,820.0,0.0,2025
+229,Jl. Buluh - Ds. Tebing Tinggi,600.0,680.0,2025
+230,Jl. H. Saim Garunggang - Kalimput,710.0,0.0,2025
+231,Jl. Padang Haur - Ds. Wasah Tengah,230.0,1000.0,2025
+232,Jl. Gerilya - Ds. Simpur,520.0,0.0,2025
+233,Jl. Jangkang - Ds. Wasah Hilir,340.0,0.0,2025
+234,Jl. Air Miris - Ds. Wasah Hilir,1060.0,0.0,2025
+235,Jl. Tandik - Ds. Wasah Hilir,500.0,0.0,2025
+236,Jl. Ds. Kapuh Tengah (Jl. Menuju Majelis Talim),600.0,0.0,2025
+237,Jl. Karampaci - Ds. Kapuh,520.0,0.0,2025
+238,Jl. At-Taubah - Ds. Kapuh,470.0,0.0,2025
+239,Jl. Firdaus - Ds. Kapuh,100.0,200.0,2025
+240,Jl. Slasa Garih - Ds. Kapuh,500.0,0.0,2025
+241,Jl. Palas - Ds. Wasah Tengah,0.0,830.0,2025
+242,Jl. Tanah Habang - Ds. Simpur,0.0,1050.0,2025
+243,Jl. Banua Kambang - Ds. Wasah Tengah,890.0,500.0,2025
+244,Jl. Pajah Api - Ds. Kapuh,340.0,0.0,2025
+245,Jl. Talapak Manuk - Ds. Kapuh,160.0,600.0,2025
+246,Sirih - Taro,1160.0,100.0,2025
+247,Kalumpang - Balimau,4910.0,300.0,2025
+248,Kalumpang (Ds. Balanti) - Teratai,0.0,5690.0,2025
+249,Bago Tanggul - Katilang - Teratai,7300.0,2410.0,2025
+250,Binjai (Sirih Hulu) - Ds. Seranggan,2940.0,1400.0,2025
+251,Balanti - (Ex. P3DT),1660.0,0.0,2025
+252,Kalumpang - Baruh,2720.0,0.0,2025
+253,Sirih - Pacakan,400.0,240.0,2025
+254,SP.4 Mesjid Sirih - Sarang Nyamuk - Asam Tamiyang,3900.0,2200.0,2025
+255,Kalumpang Selatan - Ds. Asam Tamiyang,0.0,820.0,2025
+256,Balimau - Murung Dalam,0.0,1460.0,2025
+257,Jl. Karya Bakti - Ds. Balimau,600.0,260.0,2025
+258,Tanuhi - Ulang,5250.0,2400.0,2025
+259,Loksado - Loklahung,1080.0,200.0,2025
+260,Loksado - Haratai,570.0,6600.0,2025
+261,Loklahung - Kamawakan,2520.0,4300.0,2025
+262,Jl. Niagara (Ds. Halunuk) - Ayan,560.0,1500.0,2025
+263,Malinau - Katingin - Kamawakan,3300.0,6160.0,2025
+264,Loklahung - Malaris,210.0,600.0,2025
+265,Jl. Bubuih - Ds. Halunuk,100.0,640.0,2025
+266,Halunuk - Riam Tajam/Talo - Hamak Umpaya,4180.0,3600.0,2025
+267,Jl. Muara Kitar - Desa Lumpangi,230.0,200.0,2025
+268,Jl. Hulu Banyu - Pantai Langsat,1790.0,0.0,2025
+269,Jl. Bayampah - Tanuhi - Tugu Niih,210.0,400.0,2025
+270,Jl. Kantor Camat Loksado II,120.0,0.0,2025
+271,Jl. Buntu Muara Hatib - Bts. Kab. HST,1060.0,100.0,2025
+272,Tanuhi - Hulu Banyu,200.0,460.0,2025
+273,Hulu Banyu - Datar Mangkung - Tumingki,4700.0,2300.0,2025
+274,Lambuk - Ds. Tumingki,0.0,670.0,2025
+275,Malaris - Loapanggang,100.0,1480.0,2025
+276,Jl. Haratai 3 (Balai Kedayang) / SDN Haratai 3,2850.0,2400.0,2025
+277,Jl. Haratai 2 (Balai Ujung Atas) SDN Haratai2,2100.0,600.0,2025
+278,Jl. Bubuih (Ds. Halunuk) - Kandihin,0.0,2930.0,2025
+279,Jl. Makam Habib - Desa Lumpangi,380.0,0.0,2025
+280,Jl. Datar Belimbing - Muara Kitar,2760.0,2100.0,2025
+281,Jl. Tanginau - Balai Haruyan,360.0,800.0,2025
+282,Jl. Tataian - (Ds. Ulang) - Loksado,300.0,100.0,2025
+283,Jl. Ulang - Kacang Parang,700.0,1050.0,2025
+284,Jl. Kacang Parang (Ulang) - Balai Mawak-Kias,1180.0,900.0,2025
+285,Jl. Kacang Parang (Ulang) - Balai Wariung,830.0,0.0,2025
+286,Jl. Loksado - Pantai Dusin,2270.0,0.0,2025
+287,Jl. Malinau - Kandihin,200.0,3960.0,2025
+288,Jl. Ulang - Bangkaun,1360.0,2200.0,2025
+289,Bayanan - Habirau Tengah,1500.0,1360.0,2025
+290,Tumbukan Banyu - Banua Hanyar,5000.0,0.0,2025
+291,Jl. Satria,370.0,0.0,2025
+292,Jl. Musyawarah,410.0,0.0,2025
+293,Jl. Sekolah Islam,400.0,0.0,2025
+294,Jl. Habib,320.0,0.0,2025
+295,Jl. Mawar,0.0,270.0,2025
+296,Jl. Inst. PDAM Negara,160.0,100.0,2025
+297,Jl. Gerilya / (Depan PUSTU Habirau),0.0,240.0,2025
+298,Jl. Harapan (SDN Habirau II)/ Sei. Palangan,0.0,210.0,2025
+299,Samuda - Bajayau,5700.0,2800.0,2025
+300,Jl. Tambangan - Ds. Baruh Jaya,0.0,2230.0,2025
+301,Muning Tengah - Batang Alai (Pihanin Raya),0.0,5260.0,2025
+302,Muning Tengah - Ds. Muning Dalam,0.0,17110.0,2025
+303,SP.4 Banjarbaru - Pasar Negara,560.0,100.0,2025
+304,Negara - Tumbukan Banyu,430.0,100.0,2025
+305,SP.4. Banjarbaru - Pihanin Raya,1040.0,0.0,2025
+306,Bayanan - Pihanin,1000.0,1210.0,2025
+307,Jl. Kantor Camat Daha Selatan II,320.0,0.0,2025
+308,Jl. Sungai Bugundi,0.0,310.0,2025
+309,Jl. Tukang Garit (Tambangan),0.0,480.0,2025
+310,Pandak Daun - Baruh Jaya - Samuda,5300.0,2030.0,2025
+311,Sei. Mandala Murung Raya,400.0,1700.0,2025
+312,Jl. Teluk Haur I,0.0,180.0,2025
+313,Jl. Teluk Haur II,0.0,210.0,2025
+314,Jl. H.M. Thaib,150.0,200.0,2025
+315,Jl. Kenanga - Ds. Baruh Kambang,200.0,110.0,2025
+316,Jl. SMAN Negara (KH. Abdullah),340.0,0.0,2025
+317,Jl. Pertukangan,320.0,0.0,2025
+318,Jl. Silaturrahim,280.0,0.0,2025
+319,Jl. Habib Ibrahim - Ds. Sei Mandala,170.0,0.0,2025
+320,Jl. Sukaramai - Keramat,730.0,0.0,2025
+321,Jl. Pakan Dalam I,320.0,0.0,2025
+322,Jl. Pakan Dalam II,290.0,0.0,2025
+323,Jl. Pakan Dalam III,280.0,0.0,2025
+324,Jl. Paramaian,0.0,300.0,2025
+325,Jl. MIN Pandak Daun,100.0,200.0,2025
+326,Jl. Pesantren Muradiyah,270.0,0.0,2025
+327,Pandak Daun (Buntut Muradiyah) - Pakan Dalam,0.0,1650.0,2025
+328,Pakan Dalam - Kaminting Batu,1000.0,820.0,2025
+329,Jl. Samping Kantor Camat Daha Utara,150.0,0.0,2025
+330,Jl. Gang Bidan (Ds. Tambak Bitin),570.0,0.0,2025
+331,Jl. Cangkingan Herman,200.0,120.0,2025
+332,Jl. Kampung Kawat,0.0,330.0,2025
+333,Jl. Kaminting Batu,0.0,350.0,2025
+334,Jl. Hamayung - Hakurung Dalam,100.0,4000.0,2025
+335,Simpang Jadi Makmur - Ds. Samuda,660.0,0.0,2025
+336,Jl. Sakincung - Ds. Hakurung Dalam,340.0,1000.0,2025
+337,Jl. Hakurung Dalam - Ds. Sungai Haji,270.0,300.0,2025
+338,Jl. Siang Gantung - Ds. Baru,1930.0,5000.0,2025
+339,Jl. Baru - Ds. Bajayau,0.0,2330.0,2025
+340,Jl. Bajayau - Ds. Bajayau Tengah,2500.0,5080.0,2025
+341,Jl. Banua Hanyar - Ds. Tanjung Selor,0.0,5610.0,2025
+342,Jl. Tanjung Selor - Ds. Badaun,0.0,8030.0,2025
+343,Jl. Badaun - Ds. Bjayau Lama,0.0,3100.0,2025
+344,Jl. Goha - Ds. Amawang Kanan,700.0,0.0,2025
+345,Jl. Al - Ikhlas - Ds. Baluti,380.0,0.0,2025
+346,Jl. Angkakai - Ds. Amawang Kiri,400.0,0.0,2025
+347,Jl. Anjiran Rantauan - Ds. Taniran Tengah,0.0,1210.0,2025
+348,Jl. Asam Duhat - Ds. Pantai Ulin,0.0,1110.0,2025
+349,Jl. Pertanian - Ds. Wasah Tengah,360.0,0.0,2025
+350,Jl. Keramat Sakti - Ds. Tebing Tinggi,600.0,90.0,2025
+,TOTAL,392890.0,339570.0,

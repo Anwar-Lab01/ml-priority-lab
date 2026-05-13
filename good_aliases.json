@@ -1,0 +1,250 @@
+[
+  {
+    "geometry_road_name": "Taal Batang Kulur - SP.3 Muara Paring Agung",
+    "geometry_legacy_ref": "ruas_002",
+    "resolved_key": "taal batang kulur - sp 3 muara paring agung",
+    "proposed_dd2_name": "Taal Batang Kulur - Sp. 3 Muara Prg Agung",
+    "proposed_dd2_key": "taal batang kulur - sp 3 muara prg agung",
+    "distance": 3
+  },
+  {
+    "geometry_road_name": "Batulaki - Muara Pipii",
+    "geometry_legacy_ref": "ruas_006",
+    "resolved_key": "batulaki - muara pipii",
+    "proposed_dd2_name": "Batu Laki - Muara Pipii",
+    "proposed_dd2_key": "batu laki - muara pipii",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "SP.4 Baru/Tampang - SP. Biluy Pamujaan",
+    "geometry_legacy_ref": "ruas_012",
+    "resolved_key": "sp 4 baru tampang - sp biluy pamujaan",
+    "proposed_dd2_name": "Sp. 4 Baru/Tampang - Sp. Bilui Pamujaan",
+    "proposed_dd2_key": "sp 4 baru tampang - sp bilui pamujaan",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Brigjend. Katamso",
+    "geometry_legacy_ref": "ruas_026",
+    "resolved_key": "brigjend katamso",
+    "proposed_dd2_name": "Brigjen Katamso",
+    "proposed_dd2_key": "brigjen katamso",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Kalumpang (Ds. Belanti) - Teratai",
+    "geometry_legacy_ref": "ruas_056",
+    "resolved_key": "kalumpang desa belanti - teratai",
+    "proposed_dd2_name": "Kalumpang (Ds. Balanti) - Teratai",
+    "proposed_dd2_key": "kalumpang desa balanti - teratai",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Soeprapto - Jl. HM. Rusli",
+    "geometry_legacy_ref": "ruas_065",
+    "resolved_key": "soeprapto - hm rusli",
+    "proposed_dd2_name": "Soeprapto - H.M Rusli",
+    "proposed_dd2_key": "soeprapto - h m rusli",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Papagaran/Pelangsatan",
+    "geometry_legacy_ref": "ruas_074",
+    "resolved_key": "papagaran pelangsatan",
+    "proposed_dd2_name": "Papagaran/Palangsatan",
+    "proposed_dd2_key": "papagaran palangsatan",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Tanayung - Simpang Ambarai",
+    "geometry_legacy_ref": "ruas_075",
+    "resolved_key": "tanayung - simpang ambarai",
+    "proposed_dd2_name": "Tanayung - Simp. Ambarai",
+    "proposed_dd2_key": "tanayung - simp ambarai",
+    "distance": 3
+  },
+  {
+    "geometry_road_name": "Simpur - Simpang Bilui",
+    "geometry_legacy_ref": "ruas_085",
+    "resolved_key": "simpur - simpang bilui",
+    "proposed_dd2_name": "Simpur - Simp. Bilui",
+    "proposed_dd2_key": "simpur - simp bilui",
+    "distance": 3
+  },
+  {
+    "geometry_road_name": "Sei. Mandala - Murung Raya",
+    "geometry_legacy_ref": "ruas_110",
+    "resolved_key": "sei mandala - murung raya",
+    "proposed_dd2_name": "Sei. Mandala Murung Raya",
+    "proposed_dd2_key": "sei mandala murung raya",
+    "distance": 2
+  },
+  {
+    "geometry_road_name": "Jl. Cakingan Herman",
+    "geometry_legacy_ref": "ruas_117",
+    "resolved_key": "cakingan herman",
+    "proposed_dd2_name": "Cangkingan Herman",
+    "proposed_dd2_key": "cangkingan herman",
+    "distance": 2
+  },
+  {
+    "geometry_road_name": "Pakan Dalam - Keminting Batu",
+    "geometry_legacy_ref": "ruas_121",
+    "resolved_key": "pakan dalam - keminting batu",
+    "proposed_dd2_name": "Pakan Dalam - Kaminting Batu",
+    "proposed_dd2_key": "pakan dalam - kaminting batu",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Keminting Batu",
+    "geometry_legacy_ref": "ruas_134",
+    "resolved_key": "keminting batu",
+    "proposed_dd2_name": "Kaminting Batu",
+    "proposed_dd2_key": "kaminting batu",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Banyu Barau - Sungai Kalang",
+    "geometry_legacy_ref": "ruas_145",
+    "resolved_key": "banyu barau - sungai kalang",
+    "proposed_dd2_name": "Banyu Barau - Sei Kalang",
+    "proposed_dd2_key": "banyu barau - sei kalang",
+    "distance": 4
+  },
+  {
+    "geometry_road_name": "Paharuangan - Sungai Raya Selatan",
+    "geometry_legacy_ref": "ruas_163",
+    "resolved_key": "paharuangan - sungai raya selatan",
+    "proposed_dd2_name": "Paharuangan - Sei. Raya Selatan",
+    "proposed_dd2_key": "paharuangan - sei raya selatan",
+    "distance": 4
+  },
+  {
+    "geometry_road_name": "Jl. Rahma Bahran",
+    "geometry_legacy_ref": "ruas_165",
+    "resolved_key": "rahma bahran",
+    "proposed_dd2_name": "Rahmah Bahran",
+    "proposed_dd2_key": "rahmah bahran",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Pasar Kandangan - Oprit Jembatan Loklua",
+    "geometry_legacy_ref": "ruas_169",
+    "resolved_key": "pasar kandangan - oprit jembatan loklua",
+    "proposed_dd2_name": "Pasar Kandangan - Oprit Jembt. Loklua",
+    "proposed_dd2_key": "pasar kandangan - oprit jembt loklua",
+    "distance": 3
+  },
+  {
+    "geometry_road_name": "Jl. Kesehatan - Komp. Rumah Dokter",
+    "geometry_legacy_ref": "ruas_170",
+    "resolved_key": "kesehatan - komp rumah dokter",
+    "proposed_dd2_name": "Kesehatan - Komp. Rmh Dokter",
+    "proposed_dd2_key": "kesehatan - komp rmh dokter",
+    "distance": 2
+  },
+  {
+    "geometry_road_name": "Tibung Raya - Asam Cangkok",
+    "geometry_legacy_ref": "ruas_174",
+    "resolved_key": "tibung raya - asam cangkok",
+    "proposed_dd2_name": "Tibung Raya - Asam Cangkuk",
+    "proposed_dd2_key": "tibung raya - asam cangkuk",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Mesjid Kuba",
+    "geometry_legacy_ref": "ruas_176",
+    "resolved_key": "mesjid kuba",
+    "proposed_dd2_name": "Mesjid Quba",
+    "proposed_dd2_key": "mesjid quba",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Bamban Selatan - Tangang - Panggang Hijau",
+    "geometry_legacy_ref": "ruas_186",
+    "resolved_key": "bamban selatan - tangang - panggang hijau",
+    "proposed_dd2_name": "Bamban Selatan - Tanggang - Panggang Hijau",
+    "proposed_dd2_key": "bamban selatan - tanggang - panggang hijau",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Silaturahim",
+    "geometry_legacy_ref": "ruas_233",
+    "resolved_key": "silaturahim",
+    "proposed_dd2_name": "Silaturrahim",
+    "proposed_dd2_key": "silaturrahim",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Baiturrahim",
+    "geometry_legacy_ref": "ruas_255",
+    "resolved_key": "baiturrahim",
+    "proposed_dd2_name": "Silaturrahim",
+    "proposed_dd2_key": "silaturrahim",
+    "distance": 4
+  },
+  {
+    "geometry_road_name": "Jl. Buluh Ds. Tebing Tinggi",
+    "geometry_legacy_ref": "ruas_286",
+    "resolved_key": "buluh desa tebing tinggi",
+    "proposed_dd2_name": "Buluh - Ds. Tebing Tinggi",
+    "proposed_dd2_key": "buluh - desa tebing tinggi",
+    "distance": 2
+  },
+  {
+    "geometry_road_name": "Jl. HM. Thaib",
+    "geometry_legacy_ref": "ruas_292",
+    "resolved_key": "hm thaib",
+    "proposed_dd2_name": "H.M. Thaib",
+    "proposed_dd2_key": "h m thaib",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Sakincung Ds. Hakurun Dalam",
+    "geometry_legacy_ref": "ruas_297",
+    "resolved_key": "sakincung desa hakurun dalam",
+    "proposed_dd2_name": "Sakincung - Ds. Hakurung Dalam",
+    "proposed_dd2_key": "sakincung - desa hakurung dalam",
+    "distance": 3
+  },
+  {
+    "geometry_road_name": "Jl. Ds. Kapuh Tengah (Jl. Menuju Majelis Taklim)",
+    "geometry_legacy_ref": "ruas_301",
+    "resolved_key": "desa kapuh tengah menuju majelis taklim",
+    "proposed_dd2_name": "Ds. Kapuh Tengah (Menuju Majelis Talim)",
+    "proposed_dd2_key": "desa kapuh tengah menuju majelis talim",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Gerilya Ds. Simpur",
+    "geometry_legacy_ref": "ruas_303",
+    "resolved_key": "gerilya desa simpur",
+    "proposed_dd2_name": "Gerilya - Ds. Simpur",
+    "proposed_dd2_key": "gerilya - desa simpur",
+    "distance": 2
+  },
+  {
+    "geometry_road_name": "Jl. Bubuih (Ds. Halunuk)",
+    "geometry_legacy_ref": "ruas_312",
+    "resolved_key": "bubuih desa halunuk",
+    "proposed_dd2_name": "Bubuih - Ds. Halunuk",
+    "proposed_dd2_key": "bubuih - desa halunuk",
+    "distance": 2
+  },
+  {
+    "geometry_road_name": "Padang Batung - Batu Laki - Malilingin",
+    "geometry_legacy_ref": "ruas_332",
+    "resolved_key": "padang batung - batu laki - malilingin",
+    "proposed_dd2_name": "Padang Batung - Batulaki - Malilingin",
+    "proposed_dd2_key": "padang batung - batulaki - malilingin",
+    "distance": 1
+  },
+  {
+    "geometry_road_name": "Jl. Badaun - Ds. Bajayau Lama",
+    "geometry_legacy_ref": "ruas_337",
+    "resolved_key": "badaun - desa bajayau lama",
+    "proposed_dd2_name": "Badaun - Ds. Bjayau Lama",
+    "proposed_dd2_key": "badaun - desa bjayau lama",
+    "distance": 1
+  }
+]

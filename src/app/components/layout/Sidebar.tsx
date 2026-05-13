@@ -9,6 +9,7 @@ import {
   Target,
   BookOpen,
   Map,
+  Wrench,
 } from 'lucide-react';
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -19,6 +20,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Target,
   BookOpen,
   Map,
+  Wrench,
 };
 
 export function Sidebar() {
