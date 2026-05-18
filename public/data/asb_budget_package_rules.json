@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "version": "0.1",
+    "description": "ASB Budget Package Selection Rules for Indicative Budget Reasonableness",
+    "year": 2027,
+    "disclaimer": "Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis.",
+    "asb_source": "ASB BM 2027.xlsx",
+    "generated_at": "2026-05-17T00:00:00Z"
+  },
+  "structural_profiles": {
+    "surface_only": { "asb_type": "A", "description": "Lapisan permukaan aspal saja" },
+    "base_course": { "asb_type": "B", "description": "Permukaan + Lapis Pondasi Agregat A (LPA)" },
+    "base_plus_subbase": { "asb_type": "C", "description": "Permukaan + LPA + LPB" },
+    "base_subbase_fill": { "asb_type": "D", "description": "Permukaan + LPA + LPB + Timbunan Pilihan" },
+    "surface_with_shoulders": { "asb_type": "E", "description": "Permukaan + Bahu Beton" },
+    "full_reconstruction_drainage": { "asb_type": "F", "description": "Permukaan + LPA + LPB + Timbunan + Drainase + Bahu" },
+    "rigid": { "asb_type": "G", "description": "Jalan Cor Beton" },
+    "no_major_asb_package": { "asb_type": "NONE", "description": "Kondisi mantap, tidak memerlukan paket ASB struktural besar" }
+  },
+  "selection_rules": [
+    {
+      "rule_id": "R01",
+      "priority": 1,
+      "label": "Kerusakan Struktural Berat / Belum Beraspal",
+      "condition": {
+        "OR": [
+          { "unpaved_pct": { "gte": 50 } },
+          { "AND": [
+            { "non_mantap_pct": { "gte": 40 } },
+            { "rusak_berat_pct": { "gte": 20 } }
+          ]}
+        ]
+      },
+      "selected_profile": "base_subbase_fill",
+      "confidence": "high",
+      "rationale": "Full-depth budget package justified only for majority unpaved or severe heavy-damage condition."
+    },
+    {
+      "rule_id": "R02",
+      "priority": 2,
+      "label": "Kerusakan Berat Tanpa Timbunan",
+      "condition": {
+        "non_mantap_pct": { "gte": 40 }
+      },
+      "selected_profile": "base_plus_subbase",
+      "confidence": "high",
+      "rationale": "Severe non-mantap but not enough evidence for full-depth fill."
+    },
+    {
+      "rule_id": "R03",
+      "priority": 3,
+      "label": "Kerusakan Sedang-Berat (Komponen Rusak Berat)",
+      "condition": {
+        "AND": [
+          { "non_mantap_pct": { "gte": 25 } },
+          { "rusak_berat_pct": { "gte": 10 } }
+        ]
+      },
+      "selected_profile": "base_plus_subbase",
+      "confidence": "high",
+      "rationale": "Significant damage with heavy component requires base+subbase."
+    },
+    {
+      "rule_id": "R04",
+      "priority": 4,
+      "label": "Kerusakan Sedang",
+      "condition": {
+        "AND": [
+          { "non_mantap_pct": { "gte": 25 } },
+          { "rusak_berat_pct": { "lt": 10 } }
+        ]
+      },
+      "selected_profile": "base_course",
+      "confidence": "medium",
+      "rationale": "Moderate structural distress without heavy dominant damage."
+    },
+    {
+      "rule_id": "R05",
+      "priority": 5,
+      "label": "Kerusakan Ringan",
+      "condition": {
+        "AND": [
+          { "non_mantap_pct": { "gte": 10 } },
+          { "non_mantap_pct": { "lt": 25 } }
+        ]
+      },
+      "selected_profile": "surface_only",
+      "confidence": "medium",
+      "rationale": "Light surface distress."
+    },
+    {
+      "rule_id": "R06",
+      "priority": 6,
+      "label": "Kondisi Baik / Mantap",
+      "condition": {
+        "non_mantap_pct": { "lt": 10 }
+      },
+      "selected_profile": "no_major_asb_package",
+      "confidence": "low",
+      "rationale": "No automatic ASB construction package unless user explicitly overrides."
+    }
+  ],
+  "heuristics": {
+    "width_matching": {
+      "strategy": "round_up_nearest",
+      "fallback": "use_max_and_flag_manual_review",
+      "default_width_m": 4.5
+    },
+    "surface_preference": {
+      "Tipe_A": "HRS-WC",
+      "Tipe_BCD": "HRS-Base",
+      "Rigid": "manual_only"
+    },
+    "costing_mode_defaults": {
+      "v0_1": "full_segment_mode"
+    }
+  }
+}

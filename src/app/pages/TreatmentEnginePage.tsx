@@ -121,6 +121,45 @@ export interface RuleV1Result {
 
 export interface DD2RoadFeatureWithRule extends DD2RoadFeature {
   rule_v1: RuleV1Result;
+  asb_budget?: ASBBudgetResult;
+}
+
+export interface ASBItem {
+  asb_id: string;
+  no: number;
+  kelompok_barang: string;
+  kode_barang: string;
+  uraian: string;
+  spesifikasi: string;
+  satuan: string;
+  harga_rp: number;
+  kelompok_belanja: string;
+  treatment_family: string | null;
+  surface_type: string | null;
+  width_m: number | null;
+  layer_thickness_cm: number | null;
+}
+
+export interface ASBBudgetResult {
+  status: 'estimated' | 'no_rule_matched' | 'no_asb_candidate_found' | 'insufficient_data';
+  rule_id?: string;
+  rule_label?: string;
+  confidence?: 'high' | 'medium' | 'low';
+  structural_profile?: string;
+  asb_type?: string;
+  asb_id?: string;
+  asb_uraian?: string;
+  asb_spesifikasi?: string;
+  harga_satuan_rp?: number;
+  satuan?: string;
+  panjang_m?: number;
+  pagu_indikatif_rp?: number;
+  width_matched_m?: number;
+  surface_matched?: string;
+  costing_mode?: string;
+  flags?: string[];
+  disclaimer?: string;
+  reason?: string;
 }
 
 export interface DD2DataWithRules {
@@ -134,6 +173,13 @@ export interface DD2DataWithRules {
     rehab: number;
     rekon: number;
     peningkatan: number;
+  };
+  asbStats?: {
+    totalItemsLoaded: number;
+    totalRulesLoaded: number;
+    estimatedRoads: number;
+    noMajorPackage: number;
+    manualReviewRequired: number;
   };
 }
 
@@ -221,6 +267,107 @@ function evaluateTreatmentRuleV1(road: DD2RoadFeature): RuleV1Result {
   };
 }
 
+function estimatePaguIndikatif(road: DD2RoadFeature, rules: any, asbItems: ASBItem[]): ASBBudgetResult {
+  if (!road.panjang_ruas_km) {
+     return { status: 'insufficient_data', flags: ['missing_length'], reason: 'Panjang ruas tidak tersedia.' };
+  }
+
+  let selectedRule = null;
+  const unpaved_pct = ((road.perkerasan_tanah_belum_tembus_km || 0) + (road.perkerasan_telford_kerikil_km || 0)) / road.panjang_ruas_km * 100;
+  const non_mantap_pct = road.non_mantap_pct ?? ((road.kondisi_rusak_ringan_pct || 0) + (road.kondisi_rusak_berat_pct || 0));
+  const rusak_berat_pct = road.kondisi_rusak_berat_pct ?? 0;
+
+  for (const r of rules.selection_rules) {
+     let match = false;
+     if (r.rule_id === 'R01') {
+        match = unpaved_pct >= 50 || (non_mantap_pct >= 40 && rusak_berat_pct >= 20);
+     } else if (r.rule_id === 'R02') {
+        match = non_mantap_pct >= 40;
+     } else if (r.rule_id === 'R03') {
+        match = non_mantap_pct >= 25 && rusak_berat_pct >= 10;
+     } else if (r.rule_id === 'R04') {
+        match = non_mantap_pct >= 25 && rusak_berat_pct < 10;
+     } else if (r.rule_id === 'R05') {
+        match = non_mantap_pct >= 10 && non_mantap_pct < 25;
+     } else if (r.rule_id === 'R06') {
+        match = non_mantap_pct < 10;
+     }
+     if (match) {
+        selectedRule = r;
+        break;
+     }
+  }
+
+  if (!selectedRule || selectedRule.selected_profile === 'no_major_asb_package') {
+     return { 
+       status: 'no_rule_matched', 
+       rule_id: selectedRule?.rule_id, 
+       rule_label: selectedRule?.label, 
+       confidence: selectedRule?.confidence,
+       reason: 'Kondisi mantap, tidak memerlukan paket ASB struktural besar.'
+     };
+  }
+
+  const profileKey = selectedRule.selected_profile;
+  const asbType = rules.structural_profiles[profileKey].asb_type;
+
+  const candidates = asbItems.filter(i => {
+      const match = (i.uraian || '').match(/Jalan Tipe ([A-Z])/i);
+      return match && match[1].toUpperCase() === asbType;
+  });
+
+  if (candidates.length === 0) return { status: 'no_asb_candidate_found', reason: 'No ASB candidates found for Type ' + asbType };
+
+  let flags: string[] = [];
+  let roadWidth = road.lebar_ruas_m;
+  if (!roadWidth || roadWidth <= 0) {
+     roadWidth = rules.heuristics.width_matching.default_width_m || 4.5;
+     flags.push('width_assumption_used');
+  }
+
+  let matchedWidth = candidates.filter(i => (i.width_m || 0) >= (roadWidth as number)).sort((a,b) => (a.width_m || 0) - (b.width_m || 0));
+  if (matchedWidth.length === 0) {
+      matchedWidth = candidates.sort((a,b) => (b.width_m || 0) - (a.width_m || 0));
+      flags.push('manual_review_width_exceeded');
+  }
+
+  const selectedWidth = matchedWidth[0].width_m;
+  const widthCandidates = matchedWidth.filter(i => i.width_m === selectedWidth);
+
+  let prefSurface = asbType === 'A' ? rules.heuristics.surface_preference.Tipe_A : rules.heuristics.surface_preference.Tipe_BCD;
+  let surfaceCandidates = widthCandidates.filter(i => i.surface_type === prefSurface);
+
+  if (surfaceCandidates.length === 0) {
+      surfaceCandidates = widthCandidates;
+      flags.push('surface_fallback_used');
+  }
+
+  const selectedASB = surfaceCandidates[0];
+  const panjangM = road.panjang_ruas_km * 1000;
+  const pagu = selectedASB.harga_rp * panjangM;
+
+  return {
+    status: 'estimated',
+    rule_id: selectedRule.rule_id,
+    rule_label: selectedRule.label,
+    confidence: selectedRule.confidence,
+    structural_profile: profileKey,
+    asb_type: asbType,
+    asb_id: selectedASB.asb_id,
+    asb_uraian: selectedASB.uraian,
+    asb_spesifikasi: selectedASB.spesifikasi,
+    harga_satuan_rp: selectedASB.harga_rp,
+    satuan: selectedASB.satuan,
+    panjang_m: panjangM,
+    pagu_indikatif_rp: pagu,
+    width_matched_m: selectedASB.width_m || 0,
+    surface_matched: selectedASB.surface_type || 'Unknown',
+    costing_mode: rules.heuristics.costing_mode_defaults.v0_1,
+    flags,
+    disclaimer: rules.metadata.disclaimer
+  };
+}
+
 // ── Data Loaders ──────────────────────────────────────────────────────────────
 
 function useTreatmentData() {
@@ -234,11 +381,13 @@ function useTreatmentData() {
     async function load() {
       setStatus('loading');
       try {
-        const [resCfg, resGeo, resDd2, resSeg] = await Promise.all([
+        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules] = await Promise.all([
           fetch('/data/maps/map-config.json'),
           fetch('/data/maps/road-geometries.json'),
           fetch('/data/dd2_road_features.json'),
-          fetch('/data/dd2_damage_segments.json')
+          fetch('/data/dd2_damage_segments.json'),
+          fetch('/data/asb_unit_prices.json'),
+          fetch('/data/asb_budget_package_rules.json')
         ]);
         
         if (!resCfg.ok || !resGeo.ok) throw new Error('Failed to load map data');
@@ -246,11 +395,16 @@ function useTreatmentData() {
         setConfig(await resCfg.json());
         setGeos(await resGeo.json());
         
+        const asbItemsData = resAsbItems.ok ? await resAsbItems.json() : null;
+        const asbRulesData = resAsbRules.ok ? await resAsbRules.json() : null;
+        
         if (resDd2.ok) {
           const rawData = await resDd2.json();
           let totalEvaluated = 0, insufficientData = 0, rutin = 0, berkala = 0, rehab = 0, rekon = 0, peningkatan = 0;
+          let estimatedRoads = 0, noMajorPackage = 0, manualReviewRequired = 0;
           
-          const roadsWithRules = rawData.roads.map((r: DD2RoadFeature) => {
+          const sourceRoads = Array.isArray(rawData?.roads) ? rawData.roads : [];
+          const roadsWithRules = sourceRoads.map((r: DD2RoadFeature) => {
             const rule = evaluateTreatmentRuleV1(r);
             totalEvaluated++;
             if (rule.treatment_category === 'Data Tidak Cukup') insufficientData++;
@@ -260,18 +414,39 @@ function useTreatmentData() {
             else if (rule.treatment_category === 'Rehabilitasi / Rekonstruksi Indikatif') rekon++;
             else if (rule.treatment_category === 'Kandidat Peningkatan Permukaan') peningkatan++;
             
-            return { ...r, rule_v1: rule };
+            let asb_budget;
+            if (asbItemsData && asbRulesData) {
+               asb_budget = estimatePaguIndikatif(r, asbRulesData, asbItemsData.items || []);
+               if (asb_budget.status === 'estimated') estimatedRoads++;
+               else if (asb_budget.status === 'no_rule_matched') noMajorPackage++;
+               
+               if (asb_budget.flags && asb_budget.flags.length > 0) manualReviewRequired++;
+            }
+            
+            return { ...r, rule_v1: rule, asb_budget };
           });
           
           setDd2Data({
-             ...rawData, 
+             ...rawData,
+             _metadata: rawData?._metadata ?? { generated_at: '', total_records: sourceRoads.length, matched: 0, unmatched: 0, ambiguous: 0 },
              roads: roadsWithRules,
-             ruleStats: { totalEvaluated, insufficientData, rutin, berkala, rehab, rekon, peningkatan }
+             ruleStats: { totalEvaluated, insufficientData, rutin, berkala, rehab, rekon, peningkatan },
+             asbStats: {
+                totalItemsLoaded: asbItemsData?.items?.length || 0,
+                totalRulesLoaded: asbRulesData?.selection_rules?.length || 0,
+                estimatedRoads,
+                noMajorPackage,
+                manualReviewRequired
+             }
           });
         }
 
         if (resSeg && resSeg.ok) {
-          setSegmentData(await resSeg.json());
+          const rawSegments = await resSeg.json();
+          setSegmentData({
+            metadata: rawSegments?.metadata ?? { total_segments: 0, unique_roads: 0, generated_at: '' },
+            segments: Array.isArray(rawSegments?.segments) ? rawSegments.segments : []
+          });
         }
         
         setStatus('done');
@@ -314,17 +489,17 @@ const NEXT_STEPS = [
   },
   {
     step: 4,
-    label: 'Connect ASB price table',
-    description: 'Integrate Analisa Satuan Biaya unit-price reference for cost estimation',
+    label: 'Connect ASB price table & Rules',
+    description: 'Integrate ASB unit-price reference and structural mapping rules',
     icon: DollarSign,
-    status: 'pending' as const,
+    status: 'done' as const,
   },
   {
     step: 5,
-    label: 'Simulate indicative treatment & budget',
-    description: 'Apply DD2 condition rules to derive treatment type and indicative cost allocation',
+    label: 'Estimate Pagu Indikatif',
+    description: 'Read-only ASB package selection to preview indicative budget reasonableness',
     icon: Calculator,
-    status: 'pending' as const,
+    status: 'done' as const,
   },
 ];
 
@@ -799,11 +974,11 @@ export function TreatmentEnginePage() {
   const filteredTableData = useMemo(() => {
     if (!dd2Data) return [];
     if (!searchTerm) return dd2Data.roads;
-    const term = searchTerm.toLowerCase();
+    const term = (searchTerm || '').toLowerCase();
     return dd2Data.roads.filter(r => 
-      r.canonical_road_name.toLowerCase().includes(term) ||
-      r.dd2_road_name_raw.toLowerCase().includes(term) ||
-      (r.kecamatan_dilalui && r.kecamatan_dilalui.toLowerCase().includes(term))
+      (r.canonical_road_name || '').toLowerCase().includes(term) ||
+      (r.dd2_road_name_raw || '').toLowerCase().includes(term) ||
+      ((r.kecamatan_dilalui || '').toLowerCase().includes(term))
     );
   }, [dd2Data, searchTerm]);
 
@@ -1004,6 +1179,43 @@ export function TreatmentEnginePage() {
                <div className="mt-2 h-1 w-16 mx-auto rounded-full bg-rose-100/50 overflow-hidden">
                  <div className="h-full bg-rose-500" style={{ width: `${(dd2Data.ruleStats.insufficientData / dd2Data.ruleStats.totalEvaluated) * 100}%` }} />
                </div>
+             </div>
+          </div>
+        )}
+      </div>
+      
+      {/* ── ASB Budget Estimator Overview ───────────────────────────────────────── */}
+      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+        <div className="border-b border-slate-100 px-5 py-3.5 flex justify-between items-center bg-indigo-50/50">
+          <div className="flex items-center gap-2.5">
+            <DollarSign className="h-4 w-4 text-indigo-500" />
+            <h3 className="text-sm font-semibold text-slate-800">Estimasi Kewajaran Anggaran (ASB)</h3>
+          </div>
+          <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-100 px-2.5 py-1 text-[10px] font-bold text-indigo-700">
+            Read-Only Preview
+          </span>
+        </div>
+        {dd2Data?.asbStats && (
+          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-slate-100">
+             <div className="p-4 text-center bg-slate-50">
+               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Roads Estimated</p>
+               <p className="mt-1 text-2xl font-black text-slate-800">{dd2Data.asbStats.estimatedRoads}</p>
+             </div>
+             <div className="p-4 text-center">
+               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Mantap (No Major Pkg)</p>
+               <p className="mt-1 text-2xl font-black text-slate-600">{dd2Data.asbStats.noMajorPackage}</p>
+             </div>
+             <div className="p-4 text-center">
+               <p className="text-[10px] font-bold uppercase tracking-wider text-amber-500">Flags / Manual Review</p>
+               <p className="mt-1 text-2xl font-black text-amber-600">{dd2Data.asbStats.manualReviewRequired}</p>
+             </div>
+             <div className="p-4 text-center">
+               <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">ASB Items Loaded</p>
+               <p className="mt-1 text-xl font-bold text-indigo-600">{dd2Data.asbStats.totalItemsLoaded}</p>
+             </div>
+             <div className="p-4 text-center">
+               <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">Rules Loaded</p>
+               <p className="mt-1 text-xl font-bold text-indigo-600">{dd2Data.asbStats.totalRulesLoaded}</p>
              </div>
           </div>
         )}
@@ -1619,18 +1831,80 @@ export function TreatmentEnginePage() {
                   </div>
                 )}
                 
-                {/* DD2 treatment status — placeholder */}
-                <div className="flex items-start gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-                  <DollarSign className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
-                  <div>
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
-                      ASB / Budget Status
-                    </p>
-                    <p className="mt-0.5 text-[11px] font-medium text-slate-500">
-                      Not yet estimated — awaiting ASB price table
-                    </p>
+                {/* DD2 treatment status */}
+                {selectedDd2Feature && (
+                  <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
+                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center gap-1.5">
+                      <DollarSign className="h-3.5 w-3.5 text-slate-400" />
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-500">
+                        Pagu Indikatif ASB
+                      </p>
+                    </div>
+                    {selectedDd2Feature.asb_budget?.status === 'estimated' && (
+                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded border border-indigo-200 bg-indigo-100 text-indigo-700">
+                          {selectedDd2Feature.asb_budget.costing_mode === 'full_segment_mode' ? 'Full Ruas / Pagu Usulan' : selectedDd2Feature.asb_budget.costing_mode}
+                       </span>
+                    )}
                   </div>
+
+                  {selectedDd2Feature.asb_budget?.status === 'estimated' ? (
+                     <div className="space-y-2 text-xs">
+                        <div className="bg-white rounded border border-slate-100 p-2 shadow-sm text-center">
+                           <p className="text-[9px] font-bold text-slate-400 uppercase">Estimasi Pagu Indikatif</p>
+                           <p className="text-lg font-black text-indigo-700 mt-0.5">
+                              Rp {selectedDd2Feature.asb_budget.pagu_indikatif_rp?.toLocaleString('id-ID')}
+                           </p>
+                        </div>
+                        <div className="space-y-1 mt-2">
+                           <div className="flex justify-between border-b border-slate-100 pb-1">
+                              <span className="text-slate-500">Paket Anggaran:</span>
+                              <span className="font-semibold text-slate-800">Tipe {selectedDd2Feature.asb_budget.asb_type} ({selectedDd2Feature.asb_budget.structural_profile})</span>
+                           </div>
+                           <div className="flex justify-between border-b border-slate-100 pb-1">
+                              <span className="text-slate-500">Dasar Pemilihan:</span>
+                              <span className="font-medium text-slate-700 truncate max-w-[150px]" title={selectedDd2Feature.asb_budget.rule_label}>
+                                {selectedDd2Feature.asb_budget.rule_id} — {selectedDd2Feature.asb_budget.rule_label}
+                              </span>
+                           </div>
+                           <div className="flex justify-between border-b border-slate-100 pb-1">
+                              <span className="text-slate-500">Volume (m):</span>
+                              <span className="font-mono text-slate-700">{selectedDd2Feature.asb_budget.panjang_m?.toLocaleString()} m</span>
+                           </div>
+                           <div className="flex justify-between border-b border-slate-100 pb-1">
+                              <span className="text-slate-500">Harga ASB / m:</span>
+                              <span className="font-mono text-slate-700">Rp {selectedDd2Feature.asb_budget.harga_satuan_rp?.toLocaleString('id-ID')}</span>
+                           </div>
+                           <div className="flex justify-between border-b border-slate-100 pb-1">
+                              <span className="text-slate-500">Match Params:</span>
+                              <span className="font-mono text-[10px] text-slate-600 bg-slate-100 px-1 rounded">
+                                 {selectedDd2Feature.asb_budget.width_matched_m}m | {selectedDd2Feature.asb_budget.surface_matched}
+                              </span>
+                           </div>
+                        </div>
+                        <p className="text-[9px] text-slate-500 mt-1 leading-tight font-mono">{selectedDd2Feature.asb_budget.asb_uraian} — {selectedDd2Feature.asb_budget.asb_spesifikasi}</p>
+                        
+                        {selectedDd2Feature.asb_budget.flags && selectedDd2Feature.asb_budget.flags.length > 0 && (
+                           <div className="mt-2 flex flex-wrap gap-1">
+                              {selectedDd2Feature.asb_budget.flags.map(f => (
+                                 <span key={f} className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 border border-amber-200 rounded px-1.5 py-0.5 text-[9px] font-bold">
+                                    <AlertTriangle className="h-2.5 w-2.5" />
+                                    {f}
+                                 </span>
+                              ))}
+                           </div>
+                        )}
+                        <p className="text-[8px] text-slate-400 italic leading-tight mt-1 pt-1 border-t border-slate-200">
+                           {selectedDd2Feature.asb_budget.disclaimer}
+                        </p>
+                     </div>
+                  ) : (
+                     <p className="mt-0.5 text-[11px] font-medium text-slate-500">
+                        {selectedDd2Feature.asb_budget?.reason || 'Tidak ada estimasi pagu'}
+                     </p>
+                  )}
                 </div>
+                )}
               </div>
             </div>
           )}
@@ -1749,7 +2023,8 @@ export function TreatmentEnginePage() {
                 <th className="px-5 py-3 font-medium">Raw DD2 Name</th>
                 <th className="px-5 py-3 font-medium text-right">Length (km)</th>
                 <th className="px-5 py-3 font-medium text-right">Non-Mantap %</th>
-                <th className="px-5 py-3 font-medium">Rule v0.1</th>
+                <th className="px-5 py-3 font-medium">ASB Package</th>
+                <th className="px-5 py-3 font-medium text-right">Pagu Indikatif</th>
                 <th className="px-5 py-3 font-medium">Match Method</th>
               </tr>
             </thead>
@@ -1784,50 +2059,21 @@ export function TreatmentEnginePage() {
                       </span>
                     </td>
                     <td className="px-5 py-3">
-                      <div className="flex items-center gap-2">
-                         <span className="font-semibold text-indigo-600 text-[11px]">{getDisplayRuleCategory(road.rule_v1?.treatment_category)}</span>
-                         
-                         {road.rule_v1 && (
-                            <div className="group relative inline-block">
-                               <button className="flex items-center justify-center w-5 h-5 rounded-full hover:bg-indigo-100 text-indigo-400 hover:text-indigo-600 transition-colors focus:outline-none">
-                                  <Info className="h-3.5 w-3.5" />
-                               </button>
-                               {/* Detailed Hover Popover */}
-                               <div className="pointer-events-none absolute z-[60] bottom-full left-0 mb-2 w-72 rounded-xl bg-white p-4 shadow-2xl ring-1 ring-black/5 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 ease-out origin-bottom-left whitespace-normal">
-                                  <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-slate-100">
-                                     <div className="flex items-center gap-1.5">
-                                        <Calculator className="h-3.5 w-3.5 text-indigo-500" />
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Rule Trace</span>
-                                     </div>
-                                     <span className={`text-[9px] font-black px-2 py-0.5 rounded-full border shadow-sm ${
-                                        road.rule_v1.rule_confidence === 'High' ? 'bg-emerald-50 border-emerald-200 text-emerald-700' :
-                                        road.rule_v1.rule_confidence === 'Medium' ? 'bg-amber-50 border-amber-200 text-amber-700' :
-                                        'bg-slate-50 border-slate-200 text-slate-600'
-                                     }`}>
-                                        {road.rule_v1.rule_confidence} Confidence
-                                     </span>
-                                  </div>
-                                  <p className="text-xs leading-relaxed font-medium text-slate-800 mb-3 bg-slate-50 p-2 rounded-md border border-slate-100">
-                                     {road.rule_v1.rule_reason}
-                                  </p>
-                                  {road.rule_v1.fields_used && road.rule_v1.fields_used.length > 0 && (
-                                     <div>
-                                        <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Input Fields Used</p>
-                                        <div className="flex flex-wrap gap-1.5">
-                                           {road.rule_v1.fields_used.map((f: string) => (
-                                              <span key={f} className="text-[9px] font-mono font-medium text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded-md">
-                                                 {f}
-                                              </span>
-                                           ))}
-                                        </div>
-                                     </div>
-                                  )}
-                                  {/* Caret indicator */}
-                                  <div className="absolute top-full left-2 -mt-1 border-[6px] border-transparent border-t-white"></div>
-                               </div>
-                            </div>
+                      <div className="flex flex-col gap-0.5">
+                         {road.asb_budget?.status === 'estimated' ? (
+                            <>
+                               <span className="font-bold text-indigo-700 text-[11px]">Tipe {road.asb_budget.asb_type}</span>
+                               <span className="text-[9px] text-slate-500">{road.asb_budget.rule_id}</span>
+                            </>
+                         ) : (
+                            <span className="text-[10px] text-slate-400 italic">No package</span>
                          )}
                       </div>
+                    </td>
+                    <td className="px-5 py-3 text-right">
+                       <span className="font-mono text-xs font-semibold text-slate-700">
+                          {road.asb_budget?.status === 'estimated' ? `Rp ${(road.asb_budget.pagu_indikatif_rp || 0).toLocaleString('id-ID')}` : '—'}
+                       </span>
                     </td>
                     <td className="px-5 py-3">
                       <span className="inline-flex items-center rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[9px] text-slate-500">

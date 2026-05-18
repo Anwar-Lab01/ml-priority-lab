@@ -20,7 +20,8 @@ export const MODEL_CONFIG: Record<string, { label: string; color: string; bgColo
 // ──────────────────────────────────────────────
 // Top-K thresholds for capture analysis
 // ──────────────────────────────────────────────
-export const TOP_K_OPTIONS = [19, 28, 35, 70, 105] as const;
+export const DEFAULT_TOP_K = 35 as const;
+export const TOP_K_OPTIONS = [35, 70, 105, 140] as const;
 export type TopK = typeof TOP_K_OPTIONS[number];
 
 // ──────────────────────────────────────────────
@@ -31,10 +32,10 @@ export const NORMATIF_METRIC_LABELS: Record<string, string> = {
   pr_auc: 'PR AUC',
   pos_rate: 'Positive Rate',
   best_threshold: 'Best Threshold',
-  top30_precision: 'Top-30 Precision',
-  top30_recall: 'Top-30 Recall',
-  top30_mcc: 'Top-30 MCC',
-  top30_bal_acc: 'Top-30 Balanced Acc.',
+  top30_precision: 'Legacy Top-30 Precision',
+  top30_recall: 'Legacy Top-30 Recall',
+  top30_mcc: 'Legacy Top-30 MCC',
+  top30_bal_acc: 'Legacy Top-30 Balanced Acc.',
   mccopt_precision: 'MCC-Opt Precision',
   mccopt_recall: 'MCC-Opt Recall',
   mccopt_mcc: 'MCC-Opt MCC',
@@ -86,13 +87,13 @@ export const NAV_ITEMS: NavItem[] = [
 // Page titles & descriptions
 // ──────────────────────────────────────────────
 export const PAGE_META: Record<string, { title: string; description: string }> = {
-  '/':                { title: 'Dashboard',         description: 'Overview of scenario performance, key metrics, and data coverage.' },
-  '/ranking-compare': { title: 'Ranking Compare',   description: 'Side-by-side ranking comparison across scenarios and models.' },
-  '/target-hit-compare': { title: 'Target Hit Compare', description: 'Compare target capture rates across multiple ranking series at top-K thresholds.' },
+  '/':                { title: 'Dashboard',         description: 'Ringkasan lintas score type untuk performa skenario, metrik, dan cakupan data.' },
+  '/ranking-compare': { title: 'Ranking Compare',   description: 'Bandingkan irisan Top-K antar konfigurasi ranking terpilih (skenario, model, score_type).' },
+  '/target-hit-compare': { title: 'Target Hit Compare', description: 'Ukur cakupan target dan Recall@K antar konfigurasi ranking terpilih pada ambang Top-K.' },
   '/ranking-transition': { title: 'Ranking Transition', description: 'Visual explanation of how rank positions change between two selected scenarios.' },
   '/map-explorer':    { title: 'Map Explorer',      description: 'Spatial exploration of road segments overlaid with prioritization rankings.' },
-  '/shap-explorer':   { title: 'SHAP Explorer',     description: 'Global and local SHAP feature importance analysis.' },
-  '/road-inspector':  { title: 'Road Inspector',    description: 'Drill into individual road segment features and rankings.' },
+  '/shap-explorer':   { title: 'SHAP Explorer',     description: 'SHAP menjelaskan pengaruh fitur model; konteks ranking mengikuti score_type terpilih.' },
+  '/road-inspector':  { title: 'Road Inspector',    description: 'Inspeksi satu ruas dalam konteks skenario-model-score_type terpilih.' },
   '/metrics-capture': { title: 'Metrics & Capture', description: 'Model performance metrics and target capture at various K thresholds.' },
   '/treatment-engine': { title: 'Treatment Engine',  description: 'Rule-based treatment indication and indicative budgeting from DD2 / ASB data.' },
   '/data-dictionary': { title: 'Data Dictionary',   description: 'Documentation of all data fields and their sources.' },

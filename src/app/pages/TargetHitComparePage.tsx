@@ -6,7 +6,7 @@ import { EmptyState } from '../components/ui/EmptyState';
 import { ChartCard } from '../components/ui/ChartCard';
 import { fmt, exportToCsv, getRoadKey, isTargetPositive } from '../../lib/utils';
 import { TARGET_LABELS, TARGET_FIELDS, type TargetField, type TargetType } from '../../lib/targetDefs';
-import { CHART_COLORS, MODEL_CONFIG } from '../../config/scenarios';
+import { CHART_COLORS, DEFAULT_TOP_K, MODEL_CONFIG, TOP_K_OPTIONS } from '../../config/scenarios';
 import type { RankingRow, TargetRow } from '../../types/contracts';
 type CompareUnit = 'model' | 'model_score';
 type MetricType = 'hits' | 'recall' | 'precision';
@@ -37,11 +37,11 @@ interface SeriesGroup {
 }
 
 const CHART_TITLES: Record<TargetField, string> = {
-  planned_any_2026: 'Capture Target (Planned Any)',
-  planned_tender_2026: 'Capture Target (Planned Tender)',
-  planned_pl_2026: 'Capture Target (Planned PL)',
-  planned_teknokratis_2026: 'Capture Target (Teknokratis 2026)',
-  planned_teknokratis_2027: 'Capture Target (Teknokratis 2027)'
+  planned_any_2026: 'Cakupan Target (Planned Any)',
+  planned_tender_2026: 'Cakupan Target (Planned Tender)',
+  planned_pl_2026: 'Cakupan Target (Planned PL)',
+  planned_teknokratis_2026: 'Cakupan Target (Teknokratis 2026)',
+  planned_teknokratis_2027: 'Cakupan Target (Teknokratis 2027)'
 };
 
 function toDisplayRoadRow(row: RankingRow | TargetRow, fallback?: Partial<DisplayRoadRow>): DisplayRoadRow {
@@ -87,7 +87,7 @@ export function TargetHitComparePage() {
 
   const [scenario, setScenario] = useState<string>('');
   const [targetType, setTargetType] = useState<TargetType>('planned_any_2026');
-  const [compareUnit, setCompareUnit] = useState<CompareUnit>('model');
+  const [compareUnit, setCompareUnit] = useState<CompareUnit>('model_score');
   const [metric, setMetric] = useState<MetricType>('hits');
   
   const [selectedSeries, setSelectedSeries] = useState<Set<string>>(new Set());
@@ -97,12 +97,12 @@ export function TargetHitComparePage() {
   const [chartExpandAll, setChartExpandAll] = useState<boolean>(false);
   
   const [customK, setCustomK] = useState<number | ''>('');
-  const [activeKOptions, setActiveKOptions] = useState<Set<number>>(new Set([35, 70, 105, 140]));
+  const [activeKOptions, setActiveKOptions] = useState<Set<number>>(new Set(TOP_K_OPTIONS));
 
   // Drilldown state
   const [ddTarget, setDdTarget] = useState<TargetField>('planned_any_2026');
   const [ddSeries, setDdSeries] = useState<string>('');
-  const [ddK, setDdK] = useState<number>(35);
+  const [ddK, setDdK] = useState<number>(DEFAULT_TOP_K);
 
   useEffect(() => {
     if (appData && !scenario && appData.detectedScenarios.length > 0) {
@@ -114,6 +114,9 @@ export function TargetHitComparePage() {
     if (compareUnit === 'model') return r.model;
     return r.score_type ? `${r.model} + ${r.score_type}` : r.model;
   };
+
+  const getPreferredScoreType = (types: string[]) =>
+    ['pred_prob', 'base_ml', 'rerank'].find(v => types.includes(v)) || types[0] || '';
 
   const getSeriesModel = (r: RankingRow) => r.model;
   const getSeriesScoreType = (r: RankingRow) => r.score_type || '-';
@@ -208,9 +211,25 @@ export function TargetHitComparePage() {
 
     const ranks = appData.indexes.rankingsByScenario.get(scenario) || [];
     
-    // Group ranks by seriesKey
+    // Group ranks by seriesKey; in model mode pick one score_type per model
+    const modelSelectedScoreType = new Map<string, string>();
+    if (compareUnit === 'model') {
+      const modelTypes = new Map<string, Set<string>>();
+      for (const r of ranks) {
+        if (!modelTypes.has(r.model)) modelTypes.set(r.model, new Set<string>());
+        modelTypes.get(r.model)!.add(r.score_type || '');
+      }
+      modelTypes.forEach((types, modelName) => {
+        modelSelectedScoreType.set(modelName, getPreferredScoreType(Array.from(types).sort()));
+      });
+    }
+
     const seriesMap = new Map<string, RankingRow[]>();
     for (const r of ranks) {
+      if (compareUnit === 'model') {
+        const selectedType = modelSelectedScoreType.get(r.model) || '';
+        if ((r.score_type || '') !== selectedType) continue;
+      }
       const k = getSeriesKey(r);
       if (!seriesMap.has(k)) seriesMap.set(k, []);
       seriesMap.get(k)!.push(r);
@@ -222,8 +241,8 @@ export function TargetHitComparePage() {
       arr.sort((a, b) => a.rank - b.rank);
     }
 
-    return {
-      availableSeries: sKeys,
+      return {
+        availableSeries: sKeys,
       rankedDataBySeries: seriesMap,
       totalPositives: {
         planned_any_2026: targetSets.planned_any_2026.size,
@@ -303,7 +322,7 @@ export function TargetHitComparePage() {
   const filteredAvailableSeries = useMemo(() => {
     const needle = seriesSearch.trim().toLowerCase();
     if (!needle) return availableSeries;
-    return availableSeries.filter(seriesKey => seriesKey.toLowerCase().includes(needle));
+    return availableSeries.filter(seriesKey => (seriesKey || '').toLowerCase().includes(needle));
   }, [availableSeries, seriesSearch]);
 
   const seriesGroups = useMemo<SeriesGroup[]>(() => {
@@ -404,7 +423,7 @@ export function TargetHitComparePage() {
     });
 
     const metricNames = {
-       'hits': 'Hits Count',
+       'hits': 'Cakupan Target (Hits)',
        'recall': 'Recall @ K',
        'precision': 'Precision @ K'
     };
@@ -666,12 +685,12 @@ export function TargetHitComparePage() {
                Top K Array
              </label>
              <div className="flex flex-wrap gap-2">
-                {[35, 70, 105, 140].map(k => (
+                {TOP_K_OPTIONS.map(k => (
                   <button key={k} onClick={() => handleToggleK(k)} className={`px-3 py-1.5 rounded border text-xs font-bold font-mono transition-colors ${activeKOptions.has(k) ? 'bg-slate-800 text-white border-slate-800' : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'}`}>
                     {k}
                   </button>
                 ))}
-                {Array.from(activeKOptions).filter(k => ![35,70,105,140].includes(k)).map(k => (
+                {Array.from(activeKOptions).filter(k => !TOP_K_OPTIONS.includes(k as any)).map(k => (
                   <button key={`c-${k}`} onClick={() => handleToggleK(k)} className="px-3 py-1.5 rounded border border-indigo-200 bg-indigo-50 text-indigo-700 text-xs font-bold font-mono">
                     {k} ✕
                   </button>
@@ -695,13 +714,13 @@ export function TargetHitComparePage() {
           {targetType === 'planned_teknokratis_2027' && renderChart('planned_teknokratis_2027', CHART_TITLES.planned_teknokratis_2027)}
         </div>
       ) : (
-        <EmptyState title="No Datapoints" message="Select at least one series and one K threshold to view charts." />
+        <EmptyState title="Konfigurasi Ranking Belum Lengkap" message="Pilih minimal satu konfigurasi ranking dan satu ambang Top-K untuk melihat cakupan target / Recall@K." />
       )}
 
       {/* Analytics Table */}
       {tableData.length > 0 && (
          <ChartCard 
-           title="Capture Summary Data" 
+           title="Ringkasan Cakupan Target / Recall@K" 
            actions={
              <button onClick={() => exportToCsv(`capture_summary_${Date.now()}`, tableData, ['Scenario', 'Target', 'Series', 'K', 'Hits', 'Recall', 'Precision'], ['scenario', 'target', 'seriesKey', 'k', 'capturedPositive', 'recallAtK', 'precisionAtK'])} className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest bg-white border border-slate-200 text-slate-700 px-3 py-1.5 rounded shadow-sm hover:bg-slate-50 transition">
                <Download className="w-3 h-3" /> Export
@@ -713,7 +732,7 @@ export function TargetHitComparePage() {
                  <thead className="bg-slate-50 border-b border-slate-200 font-black text-slate-500 uppercase text-[10px] tracking-widest">
                    <tr>
                      <th className="p-3">Target</th>
-                     <th className="p-3">Series Key</th>
+                     <th className="p-3">Konfigurasi Ranking</th>
                      <th className="p-3">K</th>
                      <th className="p-3 text-right">Universe Tgt</th>
                      <th className="p-3 text-right bg-blue-50/50">Hits</th>
@@ -845,3 +864,4 @@ export function TargetHitComparePage() {
     </div>
   );
 }
+

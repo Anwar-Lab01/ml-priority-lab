@@ -13,6 +13,7 @@ import { fmt, exportToCsv, exportToTsv, getRoadKey, isTargetPositive, isTargetKn
 import { TARGET_LABELS, getTargetHitValue, type TargetType } from '../../lib/targetDefs';
 import { computeSpearmanCorrelation, computeJaccardSimilarity, computeOverlapSet } from '../../lib/transforms';
 import type { RankingRow, TargetRow } from '../../types/contracts';
+import { TOP_K_OPTIONS } from '../../config/scenarios';
 
 interface ComparisonRow {
   road_key: string;
@@ -791,11 +792,7 @@ export function RankingComparePage() {
             <div className="flex gap-3">
               <div className="flex-1">
                  <select value={topK} onChange={e => setTopK(e.target.value === 'all' ? 'all' : Number(e.target.value))} className="w-full text-xs font-black rounded-lg border border-slate-300 bg-white p-2 outline-none uppercase tracking-tighter">
-                   <option value="10">Top 10 Only</option>
-                   <option value="20">Top 20 Only</option>
-                   <option value="30">Top 30 Only</option>
-                   <option value="50">Top 50 Only</option>
-                   <option value="100">Top 100 Only</option>
+                   {TOP_K_OPTIONS.map(k => <option key={k} value={k}>{`Top ${k} Only`}</option>)}
                    <option value="all">View Complete Array</option>
                  </select>
               </div>
@@ -813,7 +810,7 @@ export function RankingComparePage() {
       {metrics && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <MetricCard 
-             label={scenarioC ? "Overlay Count (A∩B∩C)" : "Overlap Count (A∩B)"} 
+             label={scenarioC ? "Irisan Top-K (AnBnC)" : "Irisan Top-K (AnB)"} 
              value={metrics.overlapABC} 
              subtitle={`Universe: ${appData.indexes.rankingsByRoadKey.size} segments`}
           />
@@ -839,7 +836,7 @@ export function RankingComparePage() {
         <div className="lg:col-span-2">
           <ChartCard 
             title="Comparative Analysis Table" 
-            subtitle={`Filtered view of ${rows.length} segments. Priority by Rank Δ.`}
+            subtitle={`Perbandingan irisan Top-K antar konfigurasi ranking terpilih (${rows.length} segmen). Prioritas berdasarkan ? Rank.`}
             actions={
               <div className="flex flex-col items-end gap-2">
                 <div className="flex items-center gap-3">
@@ -876,13 +873,17 @@ export function RankingComparePage() {
             }
           >
              <div className="overflow-auto max-h-[600px] scrollbar-thin">
-                <DataTable columns={columns} data={rows} pageSize={20} />
+                {rows.length > 0 ? (
+                  <DataTable columns={columns} data={rows} pageSize={20} />
+                ) : (
+                  <EmptyState title="Konfigurasi Ranking Tidak Memiliki Baris" message="Tidak ada baris ranking untuk kombinasi skenario, model, dan score_type yang dipilih pada Top-K ini." />
+                )}
              </div>
           </ChartCard>
         </div>
 
         <div className="space-y-8">
-           <ChartCard title="Rank Correlation Statistics" subtitle="Statistical similarity between selection subjects">
+           <ChartCard title="Rank Correlation Statistics" subtitle="Kemiripan statistik antar konfigurasi ranking terpilih.">
              <div className="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
                 <table className="w-full text-left border-collapse">
                   <thead className="bg-slate-50 border-b border-slate-200 font-black text-slate-500 uppercase text-[10px] tracking-widest">
@@ -905,7 +906,7 @@ export function RankingComparePage() {
              </div>
            </ChartCard>
 
-           <ChartCard title="Dispersion Overlay (A vs B)" subtitle="Scatter distribution of rank displacement">
+           <ChartCard title="Dispersion Overlay (A vs B)" subtitle="Sebaran perpindahan rank antar dua konfigurasi ranking (A vs B).">
              {scatterData.length > 0 ? (
                <div className="pt-4 pr-4">
                  <ResponsiveContainer width="100%" height={280}>
@@ -934,3 +935,4 @@ export function RankingComparePage() {
     </div>
   );
 }
+

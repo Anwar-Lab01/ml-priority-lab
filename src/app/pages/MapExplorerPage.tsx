@@ -11,6 +11,7 @@ import {
   type MapExplorerDiagnosticsRow,
   type MapExplorerMatchMethod,
 } from '../../lib/mapExplorerMatching';
+import { DEFAULT_TOP_K } from '../../config/scenarios';
 
 // Setup basic map interfaces
 interface Coordinate {
@@ -144,10 +145,11 @@ export function MapExplorerPage() {
   // State: Controls
   const [scenario, setScenario] = useState<string>('');
   const [model, setModel] = useState<string>('');
+  const [scoreType, setScoreType] = useState<string>('');
   
   // State: Filters
   const [showMatchedOnly, setShowMatchedOnly] = useState(false);
-  const [showTop30, setShowTop30] = useState(false);
+  const [showTop35, setShowTop35] = useState(false);
   const [showTop10, setShowTop10] = useState(false);
   const [highlightPlanned, setHighlightPlanned] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -162,6 +164,23 @@ export function MapExplorerPage() {
       setModel(appData.detectedModels[0] ?? 'XGBoost');
     }
   }, [appData, scenario]);
+
+  const availableScoreTypes = useMemo(() => {
+    if (!appData || !scenario || !model) return [];
+    const rows = (appData.indexes.rankingsByScenario.get(scenario) || []).filter(r => r.model === model);
+    return Array.from(new Set(rows.map(r => r.score_type || ''))).sort();
+  }, [appData, scenario, model]);
+
+  useEffect(() => {
+    if (availableScoreTypes.length === 0) {
+      setScoreType('');
+      return;
+    }
+    const preferred = ['pred_prob', 'base_ml', 'rerank'].find(t => availableScoreTypes.includes(t)) || availableScoreTypes[0];
+    if (!availableScoreTypes.includes(scoreType)) {
+      setScoreType(preferred);
+    }
+  }, [availableScoreTypes, scoreType]);
 
   // Combine geometries with ranking data
   const { mapFeatures, counters, diagnosticsRows } = useMemo(() => {
@@ -178,14 +197,14 @@ export function MapExplorerPage() {
           manualAlias: 0,
           manualRefAlias: 0,
           matchedName: 0,
-          top30: 0,
+          top35: 0,
           top10: 0,
         },
         diagnosticsRows: [] as MapExplorerDiagnosticsRow[],
       };
     }
     
-    const ranks = (appData.indexes.rankingsByScenario.get(scenario) || []).filter(r => r.model === model);
+    const ranks = (appData.indexes.rankingsByScenario.get(scenario) || []).filter(r => r.model === model && ((r.score_type || '') === scoreType));
     const rankingLookup = buildMapExplorerRankingLookup(ranks);
 
     let features = geos.map((geo, index) => {
@@ -208,13 +227,13 @@ export function MapExplorerPage() {
 
     // Apply filters
     if (showMatchedOnly) features = features.filter(f => f.isMatched);
-    if (showTop30) features = features.filter(f => f.rank !== null && f.rank <= 30);
+    if (showTop35) features = features.filter(f => f.rank !== null && f.rank <= DEFAULT_TOP_K);
     if (showTop10) features = features.filter(f => f.rank !== null && f.rank <= 10);
     if (highlightPlanned) features = features.filter(f => isTargetPositive(f.planned));
     
     if (searchTerm) {
-      const q = searchTerm.toLowerCase();
-      features = features.filter(f => f.geo.road_name.toLowerCase().includes(q) || (f.geo.matched_name && f.geo.matched_name.toLowerCase().includes(q)));
+      const q = (searchTerm || '').toLowerCase();
+      features = features.filter(f => (f.geo.road_name || '').toLowerCase().includes(q) || ((f.geo.matched_name || '').toLowerCase().includes(q)));
     }
     
     // Calculate counters for currently visible features
@@ -226,7 +245,7 @@ export function MapExplorerPage() {
     let manualAliasCount = 0;
     let manualRefAliasCount = 0;
     let matchedNameCount = 0;
-    let top30Count = 0;
+    let top35Count = 0;
     let top10Count = 0;
     
     features.forEach(f => {
@@ -241,7 +260,7 @@ export function MapExplorerPage() {
       if (f.matchMethod === 'matched_name') matchedNameCount++;
       
       if (f.rank !== null) {
-        if (f.rank <= 30) top30Count++;
+        if (f.rank <= DEFAULT_TOP_K) top35Count++;
         if (f.rank <= 10) top10Count++;
       }
     });
@@ -259,11 +278,11 @@ export function MapExplorerPage() {
         manualAlias: manualAliasCount,
         manualRefAlias: manualRefAliasCount,
         matchedName: matchedNameCount,
-        top30: top30Count,
+        top35: top35Count,
         top10: top10Count
       } 
     };
-  }, [appData, scenario, model, geos, showMatchedOnly, showTop30, showTop10, highlightPlanned, searchTerm]);
+  }, [appData, scenario, model, scoreType, geos, showMatchedOnly, showTop35, showTop10, highlightPlanned, searchTerm]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -293,10 +312,10 @@ export function MapExplorerPage() {
     // Top 10 -> Thick vibrant red
     if (f.rank && f.rank <= 10) return { color: '#dc2626', weight: 6, opacity: 0.95 };
     
-    // Top 30 -> Medium prominent blue
-    if (f.rank && f.rank <= 30) return { color: '#2563eb', weight: 4.5, opacity: 0.85 };
+    // Top 35 -> Medium prominent blue
+    if (f.rank && f.rank <= DEFAULT_TOP_K) return { color: '#2563eb', weight: 4.5, opacity: 0.85 };
     
-    // Standard matched (outside Top 30)
+    // Standard matched (outside Top 35)
     return { color: '#475569', weight: 3, opacity: 0.6 };
   };
 
@@ -368,8 +387,8 @@ export function MapExplorerPage() {
               </div>
            </div>
            <div className="bg-blue-50 border border-blue-100 rounded p-1 text-center flex flex-col justify-center">
-              <span className="block text-[8px] font-black uppercase text-blue-500 leading-tight">Top 30</span>
-              <span className="text-xs font-bold text-blue-800">{counters.top30}</span>
+              <span className="block text-[8px] font-black uppercase text-blue-500 leading-tight">Top 35</span>
+              <span className="text-xs font-bold text-blue-800">{counters.top35}</span>
            </div>
         </div>
 
@@ -385,6 +404,12 @@ export function MapExplorerPage() {
                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-1">Inference Model</label>
                <select value={model} onChange={e => setModel(e.target.value)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-white p-2 outline-none">
                  {appData?.detectedModels.map(m => <option key={m} value={m}>{m}</option>)}
+               </select>
+             </div>
+             <div>
+               <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest block mb-1">Score Type</label>
+               <select value={scoreType} onChange={e => setScoreType(e.target.value)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-white p-2 outline-none">
+                 {availableScoreTypes.map(s => <option key={s || 'empty'} value={s}>{s || 'N/A'}</option>)}
                </select>
              </div>
            </div>
@@ -409,8 +434,8 @@ export function MapExplorerPage() {
                   <span className="text-xs font-medium text-slate-600">Exclude Unmatched Geometries</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={showTop30} onChange={e=>setShowTop30(e.target.checked)} className="rounded text-blue-600 w-3.5 h-3.5" />
-                  <span className="text-xs font-medium text-slate-600">Isolate Top-30 Ranking Set</span>
+                  <input type="checkbox" checked={showTop35} onChange={e=>setShowTop35(e.target.checked)} className="rounded text-blue-600 w-3.5 h-3.5" />
+                  <span className="text-xs font-medium text-slate-600">Isolate Top-35 Ranking Set</span>
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" checked={showTop10} onChange={e=>setShowTop10(e.target.checked)} className="rounded text-blue-600 w-3.5 h-3.5" />
@@ -434,7 +459,7 @@ export function MapExplorerPage() {
            </div>
            <div className="flex items-center gap-3">
               <div className="w-6 h-1.5 bg-blue-600 rounded opacity-85"></div>
-              <span className="text-[10px] font-semibold text-slate-700">Top-30 Rank (Medium Priority)</span>
+              <span className="text-[10px] font-semibold text-slate-700">Top-35 Rank (Medium Priority)</span>
            </div>
            <div className="flex items-center gap-3">
               <div className="w-6 h-1 bg-slate-600 rounded opacity-60"></div>

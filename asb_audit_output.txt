@@ -1,0 +1,190 @@
+﻿=== ASB CLASSIFICATION AUDIT ===
+1. Count by kelompok_barang: {
+  "Jalan Kabupaten": 932,
+  "Jembatan pada Jalan Kabupaten": 78
+}
+2. Count by kelompok_belanja: {
+  "Belanja Modal Jalan Kabupaten": 932,
+  "Belanja Modal Jembatan pada Jalan Kabupaten": 78
+}
+3. Count by satuan: {
+  "Meter": 966,
+  "Unit": 44
+}
+4. Count by surface_type: {
+  "HRS-Base": 427,
+  "HRS-WC": 418,
+  "Rigid": 25,
+  "null": 140
+}
+5. Count by width_m: Parsed=890, Null=120
+6. Count by layer_thickness_cm: Parsed=865, Null=145
+7. Top 50 uraian:
+   - 1: Jalan Tipe A1
+   - 1: Jalan Tipe A2
+   - 1: Jalan Tipe A3
+   - 1: Jalan Tipe A4
+   - 1: Jalan Tipe A5
+   - 1: Jalan Tipe A6
+   - 1: Jalan Tipe A7
+   - 1: Jalan Tipe A8
+   - 1: Jalan Tipe A9
+   - 1: Jalan Tipe A10
+   - 1: Jalan Tipe A11
+   - 1: Jalan Tipe A12
+   - 1: Jalan Tipe A13
+   - 1: Jalan Tipe A14
+   - 1: Jalan Tipe A15
+   - 1: Jalan Tipe A16
+   - 1: Jalan Tipe A17
+   - 1: Jalan Tipe A18
+   - 1: Jalan Tipe A19
+   - 1: Jalan Tipe A20
+   - 1: Jalan Tipe A21
+   - 1: Jalan Tipe A22
+   - 1: Jalan Tipe A23
+   - 1: Jalan Tipe A24
+   - 1: Jalan Tipe A25
+   - 1: Jalan Tipe B1
+   - 1: Jalan Tipe B2
+   - 1: Jalan Tipe B3
+   - 1: Jalan Tipe B4
+   - 1: Jalan Tipe B5
+   - 1: Jalan Tipe B6
+   - 1: Jalan Tipe B7
+   - 1: Jalan Tipe B8
+   - 1: Jalan Tipe B9
+   - 1: Jalan Tipe B10
+   - 1: Jalan Tipe B11
+   - 1: Jalan Tipe B12
+   - 1: Jalan Tipe B13
+   - 1: Jalan Tipe B14
+   - 1: Jalan Tipe B15
+   - 1: Jalan Tipe B16
+   - 1: Jalan Tipe B17
+   - 1: Jalan Tipe B18
+   - 1: Jalan Tipe B19
+   - 1: Jalan Tipe B20
+   - 1: Jalan Tipe B21
+   - 1: Jalan Tipe B22
+   - 1: Jalan Tipe B23
+   - 1: Jalan Tipe B24
+   - 1: Jalan Tipe B25
+8. Top 50 spesifikasi:
+   - 5: Jembatan Rangka Baja lebar 6 m, menggunakan Pondasi Sumuran (Tanah Keras)
+   - 5: Jembatan Rangka Baja lebar 6 m, menggunakan Tiang Pancang (Lebih Dari 20 m)
+   - 4: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 4: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 4: Jembatan Rangka Baja lebar 6 m, menggunakan Tiang Pancang (s/d 20 m)
+   - 3: Jembatan Girder Baja lebar 6 m, menggunakan Pondasi Sumuran (Tanah Keras)
+   - 3: Jembatan Girder Baja lebar 6 m, menggunakan Tiang Pancang (Lebih Dari 20 m)
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 5 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-Base = 5 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 30 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 20 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 40 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+   - 2: Lebar = 4,5 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 50 cm
+
+9. Candidate Groups & Sample Items
+
+Family: pemeliharaan_rutin
+- Match Rule: uraian/kelompok contains 'rutin'
+- Matched Items: 0
+- Confidence: N/A
+- Sample 5 items:
+
+Family: pemeliharaan_berkala
+- Match Rule: uraian/kelompok contains 'berkala'
+- Matched Items: 0
+- Confidence: N/A
+- Sample 5 items:
+
+Family: rehabilitasi
+- Match Rule: uraian/kelompok contains 'rehabilitasi'
+- Matched Items: 0
+- Confidence: N/A
+- Sample 5 items:
+
+Family: rekonstruksi
+- Match Rule: uraian/kelompok contains 'rekon'
+- Matched Items: 0
+- Confidence: N/A
+- Sample 5 items:
+
+Family: peningkatan_permukaan
+- Match Rule: uraian/kelompok contains 'peningkatan' and not jembatan
+- Matched Items: 0
+- Confidence: N/A
+- Sample 5 items:
+
+Family: drainase
+- Match Rule: uraian/kelompok/spec contains 'saluran', 'drainase', 'gorong', 'box culvert'
+- Matched Items: 1
+- Confidence: medium (keyword based)
+- Sample 5 items:
+    [asb_0874] Jalan Tipe H9 (Drainase Pasangan Batu Tinggi = 1 m) - Meter - Rp1297000
+
+Family: jembatan
+- Match Rule: uraian/kelompok contains 'jembatan'
+- Matched Items: 78
+- Confidence: medium (keyword based)
+- Sample 5 items:
+    [asb_0905] Jembatan Tipe A1 (Box Culvert Single S 1/1 Lebar 3,5 m) - Unit - Rp101172000
+    [asb_0906] Jembatan Tipe A2 (Box Culvert Single S 1/1,5 Lebar 3,5 m) - Unit - Rp116847000
+    [asb_0907] Jembatan Tipe A3 (Box Culvert Single S 1/2 Lebar 3,5 m) - Unit - Rp131364000
+    [asb_0908] Jembatan Tipe A4 (Box Culvert Single S 2/1Lebar 3,5 m) - Unit - Rp128890000
+    [asb_0909] Jembatan Tipe A5 (Box Culvert Single S 2/1,5Lebar 3,5 m) - Unit - Rp141492000
+
+Family: other_non_road
+- Match Rule: uraian/kelompok contains 'bangunan', 'gedung', 'tanah', 'peralatan', 'jasa'
+- Matched Items: 0
+- Confidence: N/A
+- Sample 5 items:
+
+Family: unclassified
+- Match Rule: fallback for rest
+- Matched Items: 931
+- Confidence: low (need manual review)
+- Sample 5 items:
+    [asb_0001] Jalan Tipe A1 (Lebar = 3 m, HRS-Base = 3,5 cm) - Meter - Rp723000
+    [asb_0002] Jalan Tipe A2 (Lebar = 3,5 m, HRS-Base = 3,5 cm) - Meter - Rp834000
+    [asb_0003] Jalan Tipe A3 (Lebar = 4 m, HRS-Base = 3,5 cm) - Meter - Rp947000
+    [asb_0004] Jalan Tipe A4 (Lebar = 4,5 m, HRS-Base = 3,5 cm) - Meter - Rp1059000
+    [asb_0005] Jalan Tipe A5 (Lebar = 5 m, HRS-Base = 3,5 cm) - Meter - Rp1323000

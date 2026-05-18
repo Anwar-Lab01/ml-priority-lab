@@ -12,6 +12,7 @@ import { ChartCard } from '../components/ui/ChartCard';
 import { DataTable } from '../components/tables/DataTable';
 import { FilterBar, type FilterState } from '../components/filters/FilterBar';
 import { fmt, exportToCsv, getRoadKey, getShapKey, isTargetPositive, isTargetKnown } from '../../lib/utils';
+import { DEFAULT_TOP_K } from '../../config/scenarios';
 
 export function ShapExplorerPage() {
   const { data: appData, status } = useAppData();
@@ -24,6 +25,7 @@ export function ShapExplorerPage() {
   });
 
   const [selectedRoadKey, setSelectedRoadKey] = useState<string | null>(null);
+  const [selectedScoreType, setSelectedScoreType] = useState<string>('');
 
   useEffect(() => {
     if (appData && !filters.scenarioId && appData.detectedScenarios.length > 0) {
@@ -34,6 +36,23 @@ export function ShapExplorerPage() {
       }));
     }
   }, [appData, filters.scenarioId]);
+
+  const availableScoreTypes = useMemo(() => {
+    if (!appData || !filters.scenarioId || !filters.model) return [] as string[];
+    const rows = (appData.indexes.rankingsByScenario.get(filters.scenarioId) || []).filter(r => r.model === filters.model);
+    return Array.from(new Set(rows.map(r => r.score_type || ''))).sort();
+  }, [appData, filters.scenarioId, filters.model]);
+
+  useEffect(() => {
+    if (availableScoreTypes.length === 0) {
+      setSelectedScoreType('');
+      return;
+    }
+    if (!availableScoreTypes.includes(selectedScoreType)) {
+      const preferred = ['pred_prob', 'base_ml', 'rerank'].find(v => availableScoreTypes.includes(v)) || availableScoreTypes[0];
+      setSelectedScoreType(preferred);
+    }
+  }, [availableScoreTypes, selectedScoreType]);
 
   // 1. Global Importance Logic
   const { globalShapData, hasGlobalShap } = useMemo(() => {
@@ -57,6 +76,12 @@ export function ShapExplorerPage() {
 
   const globalChartData = useMemo(() => globalShapData.slice(0, 15), [globalShapData]);
 
+  const rankingContextRows = useMemo(() => {
+    if (!appData || !filters.scenarioId || !filters.model) return [];
+    return (appData.indexes.rankingsByScenario.get(filters.scenarioId) || [])
+      .filter(r => r.model === filters.model && (r.score_type || '') === selectedScoreType);
+  }, [appData, filters.scenarioId, filters.model, selectedScoreType]);
+
   // 2. Local Segment Pool
   const { availableRoads, hasLocalShap } = useMemo(() => {
     if (!appData || !filters.scenarioId) return { availableRoads: [], hasLocalShap: false };
@@ -73,17 +98,19 @@ export function ShapExplorerPage() {
 
     const list = Array.from(roadsMap.entries()).map(([key, name]) => ({ key, name })).sort((a, b) => a.name.localeCompare(b.name));
     
-    if (list.length > 0 && (!selectedRoadKey || !roadsMap.has(selectedRoadKey))) {
-      setSelectedRoadKey(list[0].key);
-    }
-    
     return { availableRoads: list, hasLocalShap: hasLocal };
   }, [appData, filters.scenarioId, filters.model]);
 
+  useEffect(() => {
+    if (availableRoads.length > 0 && (!selectedRoadKey || !availableRoads.some(r => r.key === selectedRoadKey))) {
+      setSelectedRoadKey(availableRoads[0].key);
+    }
+  }, [availableRoads, selectedRoadKey]);
+
   const filteredRoadsList = useMemo(() => {
     if (!filters.search) return availableRoads;
-    const q = filters.search.toLowerCase();
-    return availableRoads.filter(r => r.name.toLowerCase().includes(q) || r.key.includes(q));
+    const q = (filters.search || '').toLowerCase();
+    return availableRoads.filter(r => (r.name || '').toLowerCase().includes(q) || (r.key || '').includes(q));
   }, [availableRoads, filters.search]);
 
   // 3. Local Contribution Data
@@ -112,7 +139,12 @@ export function ShapExplorerPage() {
   const roadContext = useMemo(() => {
     if (!appData || !selectedRoadKey || !filters.scenarioId) return null;
     const ranks = appData.indexes.rankingsByScenario.get(filters.scenarioId) || [];
-    const rr = ranks.find(r => getRoadKey(r) === selectedRoadKey && r.model === filters.model);
+    const rr = ranks.find(
+      r =>
+        getRoadKey(r) === selectedRoadKey &&
+        r.model === filters.model &&
+        (r.score_type || '') === selectedScoreType
+    );
     if (!rr) return null;
 
     return {
@@ -120,10 +152,10 @@ export function ShapExplorerPage() {
       road_key: getRoadKey(rr),
       rank: rr.rank,
       score: rr.score,
-      inTop30: rr.rank <= 30,
+      inTopK: rr.rank <= DEFAULT_TOP_K,
       planned_any_2026: rr.planned_any_2026 ?? null
     };
-  }, [appData, selectedRoadKey, filters.scenarioId, filters.model]);
+  }, [appData, selectedRoadKey, filters.scenarioId, filters.model, selectedScoreType]);
 
   const handleGlobalExport = () => {
     exportToCsv(`global_importance_${filters.scenarioId}_${filters.model}`, globalShapData, ['Rank', 'Feature', 'Mean_Abs_SHAP'], ['rank', 'feature', 'mean_abs_shap']);
@@ -188,8 +220,8 @@ export function ShapExplorerPage() {
               <Info className="h-10 w-10 text-slate-300 mb-3" />
               <h3 className="font-black text-slate-800 uppercase tracking-tight">Global Explanations Unavailable</h3>
               <p className="text-sm text-slate-500 max-w-sm mx-auto mt-2 italic leading-relaxed">
-                Importance vectors were not detected for <b>{filters.scenarioId} / {filters.model}</b>. 
-                This is consistent with baseline or non-ML variants.
+                Importance vectors were not detected for <b>{filters.scenarioId} / {filters.model} / {selectedScoreType || 'N/A'}</b>.
+                SHAP dapat tidak tersedia untuk konfigurasi ranking ini.
               </p>
            </div>
         ) : (
@@ -241,7 +273,7 @@ export function ShapExplorerPage() {
               <Info className="h-10 w-10 text-slate-300 mb-3" />
               <h3 className="font-black text-slate-800 uppercase tracking-tight">Local Explanations Unavailable</h3>
               <p className="text-sm text-slate-500 max-w-sm mx-auto mt-2 italic leading-relaxed">
-                Segment-level explanation vectors were not extracted for this configuration.
+                Segment-level SHAP belum tersedia untuk konfigurasi ranking ini.
               </p>
            </div>
         ) : (
@@ -261,6 +293,17 @@ export function ShapExplorerPage() {
                        onChange={e => setFilters(prev => ({...prev, search: e.target.value}))} 
                        className="w-full text-xs font-semibold border border-slate-200 p-2.5 rounded-lg outline-none focus:ring-2 focus:ring-blue-50 bg-slate-50" 
                      />
+                   </div>
+
+                   <div className="space-y-1.5">
+                     <label className="text-[10px] font-bold text-slate-500">Score Type Context</label>
+                     <select
+                       value={selectedScoreType}
+                       onChange={(e) => setSelectedScoreType(e.target.value)}
+                       className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-white outline-none p-2.5 transition focus:ring-2 focus:ring-blue-100"
+                     >
+                       {availableScoreTypes.map(s => <option key={s || 'blank'} value={s}>{s || 'N/A'}</option>)}
+                     </select>
                    </div>
 
                    <div className="space-y-1.5">
@@ -297,8 +340,8 @@ export function ShapExplorerPage() {
 
                       <div className="space-y-2.5">
                          <div className="flex justify-between items-center text-[11px] font-bold">
-                            <span className="text-slate-500 uppercase tracking-tight">Top 30 Cohort</span>
-                            {roadContext.inTop30 ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <span className="text-slate-300">—</span>}
+                            <span className="text-slate-500 uppercase tracking-tight">Top 35 Cohort</span>
+                            {roadContext.inTopK ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <span className="text-slate-300">—</span>}
                          </div>
                          <div className="flex justify-between items-center text-[11px] font-bold">
                             <span className="text-slate-500 uppercase tracking-tight">Observed Target</span>
@@ -306,6 +349,12 @@ export function ShapExplorerPage() {
                          </div>
                       </div>
                    </div>
+                )}
+
+                {!roadContext && rankingContextRows.length === 0 && (
+                  <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-[11px] text-amber-700 font-semibold">
+                    Tidak ada baris ranking untuk kombinasi skenario, model, dan score_type terpilih.
+                  </div>
                 )}
               </div>
 

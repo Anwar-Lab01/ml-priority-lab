@@ -9,6 +9,7 @@ import { ChartCard } from '../components/ui/ChartCard';
 import { MetricCard } from '../components/ui/MetricCard';
 import { DataTable } from '../components/tables/DataTable';
 import { exportToCsv, getRoadKey } from '../../lib/utils';
+import { DEFAULT_TOP_K, TOP_K_OPTIONS } from '../../config/scenarios';
 
 // ============================================
 // Types
@@ -89,10 +90,12 @@ export function RankingTransitionPage() {
   // State: Selectors
   const [scenarioA, setScenarioA] = useState<string>('');
   const [modelA, setModelA] = useState<string>('');
+  const [scoreTypeA, setScoreTypeA] = useState<string>('');
   const [scenarioB, setScenarioB] = useState<string>('');
   const [modelB, setModelB] = useState<string>('');
+  const [scoreTypeB, setScoreTypeB] = useState<string>('');
 
-  const [topK, setTopK] = useState<number>(30);
+  const [topK, setTopK] = useState<number>(DEFAULT_TOP_K);
   
   // State: Filters & View Modes
   const [labelMode, setLabelMode] = useState<'all' | 'changed' | 'extreme' | 'hide'>('changed');
@@ -114,6 +117,29 @@ export function RankingTransitionPage() {
     }
   }, [appData, scenarioA]);
 
+  const getPreferredScoreType = (values: string[]) =>
+    ['pred_prob', 'base_ml', 'rerank'].find(v => values.includes(v)) || values[0] || '';
+
+  const scoreTypesA = useMemo(() => {
+    if (!appData || !scenarioA || !modelA) return [];
+    const rows = (appData.indexes.rankingsByScenario.get(scenarioA) || []).filter(r => r.model === modelA);
+    return Array.from(new Set(rows.map(r => r.score_type || ''))).sort();
+  }, [appData, scenarioA, modelA]);
+
+  const scoreTypesB = useMemo(() => {
+    if (!appData || !scenarioB || !modelB) return [];
+    const rows = (appData.indexes.rankingsByScenario.get(scenarioB) || []).filter(r => r.model === modelB);
+    return Array.from(new Set(rows.map(r => r.score_type || ''))).sort();
+  }, [appData, scenarioB, modelB]);
+
+  useEffect(() => {
+    if (!scoreTypesA.includes(scoreTypeA)) setScoreTypeA(getPreferredScoreType(scoreTypesA));
+  }, [scoreTypesA, scoreTypeA]);
+
+  useEffect(() => {
+    if (!scoreTypesB.includes(scoreTypeB)) setScoreTypeB(getPreferredScoreType(scoreTypesB));
+  }, [scoreTypesB, scoreTypeB]);
+
   useEffect(() => {
     if (!chartWrapperRef.current) return;
     const observer = new ResizeObserver((entries) => {
@@ -131,8 +157,8 @@ export function RankingTransitionPage() {
       return { allRows: [], filteredRows: [], metrics: null };
     }
 
-    const ranksA = (appData.indexes.rankingsByScenario.get(scenarioA) || []).filter(r => r.model === modelA);
-    const ranksB = (appData.indexes.rankingsByScenario.get(scenarioB) || []).filter(r => r.model === modelB);
+    const ranksA = (appData.indexes.rankingsByScenario.get(scenarioA) || []).filter(r => r.model === modelA && ((r.score_type || '') === scoreTypeA));
+    const ranksB = (appData.indexes.rankingsByScenario.get(scenarioB) || []).filter(r => r.model === modelB && ((r.score_type || '') === scoreTypeB));
 
     const mapA = new Map(ranksA.map(r => [getRoadKey(r), r]));
     const mapB = new Map(ranksB.map(r => [getRoadKey(r), r]));
@@ -217,7 +243,7 @@ export function RankingTransitionPage() {
         overlap: cntOverlap
       }
     };
-  }, [appData, scenarioA, modelA, scenarioB, modelB, topK, extremeThreshold, movementFilter, highlightToggle]);
+  }, [appData, scenarioA, modelA, scoreTypeA, scenarioB, modelB, scoreTypeB, topK, extremeThreshold, movementFilter, highlightToggle]);
 
   const handleExport = () => {
     const headers = ['road_name', 'rank_a', 'rank_b', 'delta_rank', 'abs_delta_rank', 'movement_category', 'in_top_k_a', 'in_top_k_b'];
@@ -360,6 +386,9 @@ export function RankingTransitionPage() {
           <select value={modelA} onChange={e => setModelA(e.target.value)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 p-2 outline-none">
             {appData.detectedModels.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
+          <select value={scoreTypeA} onChange={e => setScoreTypeA(e.target.value)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 p-2 outline-none">
+            {scoreTypesA.map(s => <option key={s || 'a-empty'} value={s}>{s || 'N/A'}</option>)}
+          </select>
         </div>
 
         <div className="space-y-2">
@@ -372,17 +401,16 @@ export function RankingTransitionPage() {
           <select value={modelB} onChange={e => setModelB(e.target.value)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 p-2 outline-none">
             {appData.detectedModels.map(m => <option key={m} value={m}>{m}</option>)}
           </select>
+          <select value={scoreTypeB} onChange={e => setScoreTypeB(e.target.value)} className="w-full text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 p-2 outline-none">
+            {scoreTypesB.map(s => <option key={s || 'b-empty'} value={s}>{s || 'N/A'}</option>)}
+          </select>
         </div>
 
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Top-K Selection</label>
             <select value={topK} onChange={e => setTopK(Number(e.target.value))} className="text-xs font-black rounded border border-slate-200 p-1 outline-none">
-              <option value="10">Top 10</option>
-              <option value="20">Top 20</option>
-              <option value="30">Top 30</option>
-              <option value="50">Top 50</option>
-              <option value="100">Top 100</option>
+              {TOP_K_OPTIONS.map(k => <option key={k} value={k}>Top {k}</option>)}
             </select>
           </div>
           

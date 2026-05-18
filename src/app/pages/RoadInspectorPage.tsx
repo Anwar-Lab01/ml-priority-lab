@@ -13,6 +13,7 @@ import { DataTable } from '../components/tables/DataTable';
 import { ScenarioBadge } from '../components/ui/ScenarioBadge';
 import { ModelBadge } from '../components/ui/ModelBadge';
 import { fmt, cn, exportToCsv, getRoadKey, getShapKey, isTargetPositive, isTargetKnown } from '../../lib/utils';
+import { DEFAULT_TOP_K } from '../../config/scenarios';
 
 export function RoadInspectorPage() {
   const { data, status, error } = useAppData();
@@ -22,6 +23,7 @@ export function RoadInspectorPage() {
   
   const [inspectScenario, setInspectScenario] = useState<string>('');
   const [inspectModel, setInspectModel] = useState<string>('');
+  const [inspectScoreType, setInspectScoreType] = useState<string>('');
 
   // 1. All roads
   const allRoads = useMemo(() => {
@@ -34,26 +36,55 @@ export function RoadInspectorPage() {
   // 2. Filter for sidebar
   const filteredRoads = useMemo(() => {
     if (!searchTerm) return allRoads.slice(0, 80);
-    const t = searchTerm.toLowerCase();
-    return allRoads.filter(r => r.name.toLowerCase().includes(t) || r.key.includes(t)).slice(0, 80);
+    const t = (searchTerm || '').toLowerCase();
+    return allRoads.filter(r => (r.name || '').toLowerCase().includes(t) || (r.key || '').includes(t)).slice(0, 80);
   }, [allRoads, searchTerm]);
 
   // 3. Selected Road Rankings
-  const selectedRankings = useMemo(() => {
+  const selectedRankingsAll = useMemo(() => {
     if (!data || !selectedRoadKey) return [];
     const ranks = data.indexes.rankingsByRoadKey.get(selectedRoadKey) || [];
     return [...ranks].sort((a, b) => a.rank - b.rank);
   }, [data, selectedRoadKey]);
 
+  const inspectScoreTypeOptions = useMemo(() => {
+    const rows = selectedRankingsAll.filter(r => r.scenario_id === inspectScenario && r.model === inspectModel);
+    return Array.from(new Set(rows.map(r => r.score_type || ''))).sort();
+  }, [selectedRankingsAll, inspectScenario, inspectModel]);
+
+  const selectedRankings = useMemo(() => {
+    return selectedRankingsAll
+      .filter(
+        r =>
+          r.scenario_id === inspectScenario &&
+          r.model === inspectModel &&
+          (r.score_type || '') === inspectScoreType
+      )
+      .sort((a, b) => a.rank - b.rank);
+  }, [selectedRankingsAll, inspectScenario, inspectModel, inspectScoreType]);
+
   useEffect(() => {
-    if (selectedRankings.length > 0) {
-      setInspectScenario(selectedRankings[0].scenario_id);
-      setInspectModel(selectedRankings[0].model);
+    if (selectedRankingsAll.length > 0) {
+      setInspectScenario(selectedRankingsAll[0].scenario_id);
+      setInspectModel(selectedRankingsAll[0].model);
+      setInspectScoreType(selectedRankingsAll[0].score_type || '');
     } else {
       setInspectScenario('');
       setInspectModel('');
+      setInspectScoreType('');
     }
-  }, [selectedRoadKey, selectedRankings]);
+  }, [selectedRoadKey, selectedRankingsAll]);
+
+  useEffect(() => {
+    if (inspectScoreTypeOptions.length === 0) {
+      setInspectScoreType('');
+      return;
+    }
+    if (!inspectScoreTypeOptions.includes(inspectScoreType)) {
+      const preferred = ['pred_prob', 'base_ml', 'rerank'].find(v => inspectScoreTypeOptions.includes(v)) || inspectScoreTypeOptions[0];
+      setInspectScoreType(preferred);
+    }
+  }, [inspectScoreTypeOptions, inspectScoreType]);
 
   // 4. Inspect Data (Features + SHAP)
   const { selectedFeatures, localShapChartData } = useMemo(() => {
@@ -91,10 +122,11 @@ export function RoadInspectorPage() {
       min, max, spread: max - min,
       avg: avg,
       appearances: ranks.length,
+      crossVariantAppearances: selectedRankingsAll.length,
       top10: ranks.some(r => r <= 10),
-      top30: ranks.some(r => r <= 30)
+      top35: ranks.some(r => r <= DEFAULT_TOP_K)
     };
-  }, [selectedRankings]);
+  }, [selectedRankings, selectedRankingsAll]);
 
   const handleExportRankings = () => {
     if (!selectedRoadKey) return;
@@ -118,7 +150,7 @@ export function RoadInspectorPage() {
       header: 'Scenario',
       cell: (info) => {
         const sid = info.getValue() as string;
-        const family = sid.toLowerCase().includes('normatif') ? 'normatif' : 'historis';
+        const family = (sid || '').toLowerCase().includes('normatif') ? 'normatif' : 'historis';
         return (
           <div className="flex items-center gap-2">
              <ScenarioBadge family={family as any} />
@@ -131,6 +163,11 @@ export function RoadInspectorPage() {
       accessorKey: 'model',
       header: 'Model',
       cell: (info) => <ModelBadge model={info.getValue() as string} />
+    },
+    {
+      accessorKey: 'score_type',
+      header: 'Score Type',
+      cell: (info) => <div className="text-[10px] font-bold text-slate-500">{(info.getValue() as string) || 'N/A'}</div>
     },
     {
       accessorKey: 'rank',
@@ -156,12 +193,12 @@ export function RoadInspectorPage() {
       header: 'Diagnostic',
       cell: (info) => {
         const row = info.row.original;
-        const isSelected = inspectScenario === row.scenario_id && inspectModel === row.model;
+        const isSelected = inspectScenario === row.scenario_id && inspectModel === row.model && ((row.score_type || '') === inspectScoreType);
         if (isSelected) return <span className="text-[10px] font-black uppercase text-blue-600 flex items-center gap-1.5"><Focus className="w-3 h-3"/> Active</span>;
         
         return (
           <button 
-             onClick={() => { setInspectScenario(row.scenario_id); setInspectModel(row.model); }}
+             onClick={() => { setInspectScenario(row.scenario_id); setInspectModel(row.model); setInspectScoreType(row.score_type || ''); }}
              className="text-[10px] bg-slate-50 border border-slate-200 font-bold uppercase hover:bg-slate-900 hover:text-white transition px-2 py-1 rounded text-slate-500"
           >
             Select
@@ -235,16 +272,16 @@ export function RoadInspectorPage() {
                <div className="flex items-center gap-4">
                   <div className="text-[10px] font-black uppercase text-slate-500 bg-slate-100 px-2 py-1 rounded tracking-widest">Cross-Scenario Key</div>
                   {summary?.top10 && <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2 py-1 rounded tracking-widest uppercase">Targeting Elite Cohort</span>}
-                  {summary?.top30 && !summary?.top10 && <span className="bg-blue-100 text-blue-800 text-[10px] font-black px-2 py-1 rounded tracking-widest uppercase">Targeting Priority Cohort</span>}
+                  {summary?.top35 && !summary?.top10 && <span className="bg-blue-100 text-blue-800 text-[10px] font-black px-2 py-1 rounded tracking-widest uppercase">Targeting Top-35 Priority Cohort</span>}
                </div>
             </header>
 
             {summary && (
                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                 <MetricCard label="Scenario Reach" value={summary.appearances} subtitle="Total variant appearances" />
+                 <MetricCard label="Config Appearances" value={summary.appearances} subtitle="Selected scenario + model + score type" />
                  <MetricCard label="Peak Ranking" value={summary.min} trend="up" subtitle={`Average: ${Math.round(summary.avg)}`} />
                  <MetricCard label="Maximum Rank" value={summary.max} trend="down" subtitle="Lowest priority reached" />
-                 <MetricCard label="Rank Volatility" value={summary.spread} subtitle="Subject variance across models" />
+                 <MetricCard label="Rank Volatility" value={summary.spread} subtitle={`Cross-variant appearances: ${summary.crossVariantAppearances}`} />
                </div>
              )}
 
@@ -258,7 +295,13 @@ export function RoadInspectorPage() {
                 </button>
               </div>
               <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <DataTable columns={rankingColumns} data={selectedRankings} pageSize={5} />
+                {selectedRankings.length > 0 ? (
+                  <DataTable columns={rankingColumns} data={selectedRankings} pageSize={5} />
+                ) : (
+                  <div className="p-6">
+                    <EmptyState title="Konfigurasi Ranking Tidak Tersedia" message="Tidak ada baris ranking untuk kombinasi skenario, model, dan score_type yang dipilih." />
+                  </div>
+                )}
               </div>
             </section>
 
@@ -274,6 +317,9 @@ export function RoadInspectorPage() {
                         <p className="text-[10px] text-slate-500 font-bold tracking-widest mt-1">
                           Subject: <span className="text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">{inspectScenario}</span> / <span className="text-slate-800 bg-white border border-slate-200 px-1.5 py-0.5 rounded">{inspectModel}</span>
                         </p>
+                        <select value={inspectScoreType} onChange={e => setInspectScoreType(e.target.value)} className="mt-2 text-[10px] font-bold rounded border border-slate-200 bg-white px-2 py-1 text-slate-700 outline-none">
+                          {inspectScoreTypeOptions.map(s => <option key={s || 'none'} value={s}>{s || 'N/A'}</option>)}
+                        </select>
                      </div>
                   </div>
                </div>
@@ -364,4 +410,3 @@ export function RoadInspectorPage() {
     </div>
   );
 }
-

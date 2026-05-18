@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip,
   ResponsiveContainer
@@ -20,7 +20,7 @@ export function DashboardPage() {
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>('');
 
   // Auto-init selected scenario
-  useMemo(() => {
+  useEffect(() => {
     if (data && !selectedScenarioId && data.detectedScenarios.length > 0) {
       setSelectedScenarioId(data.detectedScenarios[0]);
     }
@@ -89,7 +89,7 @@ export function DashboardPage() {
         model: best.model, 
         pr_auc: best.pr_auc, 
         mcc: best.top30_mcc ?? best.mcc, 
-        threshold: best.top30_mcc != null ? 'Top 30' : 'Global'
+        threshold: best.top30_mcc != null ? 'Legacy Top-30' : 'Global'
       };
     }).filter(Boolean) as any[];
   }, [data]);
@@ -206,11 +206,11 @@ export function DashboardPage() {
       
       {/* 1. Summary Metrics */}
       <section>
-        <h2 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-1">Workspace Summary</h2>
+        <h2 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-1">Workspace Summary (Ringkasan Lintas Score Type)</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard label="Total Roads" value={summary.roads.toLocaleString()} subtitle="Unique segment identifiers" />
           <MetricCard label="Scenarios" value={summary.scenarios} subtitle="Normative & historical variants" />
-          <MetricCard label="Ranking Records" value={summary.rankings.toLocaleString()} subtitle="Model predictions" />
+          <MetricCard label="Ranking Records" value={summary.rankings.toLocaleString()} subtitle="Konfigurasi ranking lintas score type" />
           <MetricCard label="SHAP Records" value={summary.shapLocal.toLocaleString()} subtitle="Segment-level explanations" />
         </div>
       </section>
@@ -244,7 +244,7 @@ export function DashboardPage() {
            <h2 className="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
              <ChevronRight className="w-4 h-4 text-blue-500" /> Scenario Data Inventory
            </h2>
-           <ChartCard title="Inventory Analysis" subtitle="Cross-reference of scenario families and data coverage.">
+           <ChartCard title="Inventory Analysis" subtitle="Inventaris data lintas skenario dan lintas score type.">
              <div className="overflow-x-auto overflow-y-auto max-h-[440px] scrollbar-thin">
                <DataTable columns={overviewColumns} data={overviewData} pageSize={10} />
              </div>
@@ -253,9 +253,9 @@ export function DashboardPage() {
 
         <section>
            <h2 className="text-sm font-bold text-slate-800 mb-4 flex items-center gap-2">
-             <ChevronRight className="w-4 h-4 text-blue-500" /> Best Model Summary
+             <ChevronRight className="w-4 h-4 text-blue-500" /> Best Configuration Summary
            </h2>
-           <ChartCard title="Top Performing Models" subtitle="Preferred models based on PR-AUC and MCC evaluation.">
+           <ChartCard title="Top Performing Configurations (Lintas Score Type)" subtitle="Ringkasan lintas score type berbasis konteks PR-AUC dan MCC (bukan satu konfigurasi tunggal).">
              <div className="overflow-x-auto overflow-y-auto max-h-[440px] scrollbar-thin">
                {bestModelsData.length > 0 ? (
                  <DataTable columns={bestModelColumns} data={bestModelsData} pageSize={10} />

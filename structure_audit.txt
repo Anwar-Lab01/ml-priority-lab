@@ -1,0 +1,236 @@
+﻿=== ASB ROAD TYPE STRUCTURE AUDIT ===
+Total Road Items: 932
+
+--- Tipe A ---
+Count: 25
+Widths: Min 3, Max 5, List: [3, 3.5, 4, 4.5, 5]
+Surface Types: {"HRS-Base":15,"HRS-WC":10}
+Layer Thickness (cm): {"4":10,"5":10,"3.5":5}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp723.000 - Rp1.663.000
+Structural Profiles: {"surface_only":25}
+Samples:
+  - [asb_0001] Jalan Tipe A1 | Lebar = 3 m, HRS-Base = 3,5 cm
+  - [asb_0002] Jalan Tipe A2 | Lebar = 3,5 m, HRS-Base = 3,5 cm
+  - [asb_0003] Jalan Tipe A3 | Lebar = 4 m, HRS-Base = 3,5 cm
+  - [asb_0004] Jalan Tipe A4 | Lebar = 4,5 m, HRS-Base = 3,5 cm
+  - [asb_0005] Jalan Tipe A5 | Lebar = 5 m, HRS-Base = 3,5 cm
+
+--- Tipe B ---
+Count: 60
+Widths: Min 3, Max 5, List: [3, 3.5, 4, 4.5, 5]
+Surface Types: {"HRS-Base":30,"HRS-WC":30}
+Layer Thickness (cm): {"4":30,"5":30}
+LPA Present: 60 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp1.342.000 - Rp3.143.000
+Structural Profiles: {"base_course":60}
+Samples:
+  - [asb_0026] Jalan Tipe B1 | Lebar = 3 m, HRS-Base = 5 cm, LPA = 10 cm
+  - [asb_0027] Jalan Tipe B2 | Lebar = 3 m, HRS-Base = 5 cm, LPA = 15 cm
+  - [asb_0028] Jalan Tipe B3 | Lebar = 3 m, HRS-Base = 5 cm, LPA = 20 cm
+  - [asb_0029] Jalan Tipe B4 | Lebar = 3,5 m, HRS-Base = 5 cm, LPA = 10 cm
+  - [asb_0030] Jalan Tipe B5 | Lebar = 3,5 m, HRS-Base = 5 cm, LPA = 15 cm
+
+--- Tipe C ---
+Count: 120
+Widths: Min 3, Max 5, List: [3, 3.5, 4, 4.5, 5]
+Surface Types: {"HRS-Base":60,"HRS-WC":60}
+Layer Thickness (cm): {"4":60,"5":60}
+LPA Present: 120 items
+LPB Present: 120 items
+Timbunan Present: 0 items
+Prices: Rp1.751.000 - Rp4.370.000
+Structural Profiles: {"base_plus_subbase":120}
+Samples:
+  - [asb_0086] Jalan Tipe C1 | Lebar = 3 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 10 cm
+  - [asb_0087] Jalan Tipe C2 | Lebar = 3 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 15 cm
+  - [asb_0088] Jalan Tipe C3 | Lebar = 3 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 15 cm
+  - [asb_0089] Jalan Tipe C4 | Lebar = 3 m, HRS-Base = 4 cm, LPA = 10 cm, LPB = 20 cm
+  - [asb_0090] Jalan Tipe C5 | Lebar = 3 m, HRS-Base = 4 cm, LPA = 15 cm, LPB = 20 cm
+
+--- Tipe D ---
+Count: 527
+Widths: Min 3, Max 5, List: [3, 3.5, 4, 4.5, 5]
+Surface Types: {"HRS-WC":264,"HRS-Base":263}
+Layer Thickness (cm): {"4":287,"5":240}
+LPA Present: 527 items
+LPB Present: 527 items
+Timbunan Present: 527 items
+Prices: Rp2.412.000 - Rp6.847.000
+Structural Profiles: {"base_subbase_fill":527}
+Samples:
+  - [asb_0206] Jalan Tipe D1 | Lebar = 3 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 10 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+  - [asb_0207] Jalan Tipe D2 | Lebar = 3 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+  - [asb_0208] Jalan Tipe D3 | Lebar = 3 m, HRS-WC = 4 cm, LPA = 10 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+  - [asb_0209] Jalan Tipe D4 | Lebar = 3 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 15 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+  - [asb_0210] Jalan Tipe D5 | Lebar = 3 m, HRS-WC = 4 cm, LPA = 15 cm, LPB = 20 cm, dan Timbunan Pilihan dari Sumber Galian = 20 cm
+
+--- Tipe E ---
+Count: 105
+Widths: Min 3, Max 5, List: [3, 3.5, 4, 4.5, 5]
+Surface Types: {"HRS-Base":55,"HRS-WC":50}
+Layer Thickness (cm): {"4":5,"5":100}
+LPA Present: 90 items
+LPB Present: 60 items
+Timbunan Present: 0 items
+Prices: Rp1.427.000 - Rp4.908.000
+Structural Profiles: {"rigid":105}
+Samples:
+  - [asb_0733] Jalan Tipe E1 | Lebar = 3 m, HRS-Base = 4 cm, Bahu Beton = 1 m
+  - [asb_0734] Jalan Tipe E2 | Lebar = 3,5 m, HRS-Base = 4 cm, Bahu Beton = 1 m
+  - [asb_0735] Jalan Tipe E3 | Lebar = 4 m, HRS-Base = 4 cm, Bahu Beton = 1 m
+  - [asb_0736] Jalan Tipe E4 | Lebar = 4,5 m, HRS-Base = 4 cm, Bahu Beton = 1 m
+  - [asb_0737] Jalan Tipe E5 | Lebar = 5 m, HRS-Base = 4 cm, Bahu Beton = 1 m
+
+--- Tipe F ---
+Count: 8
+Widths: Min 3, Max 4, List: [3, 4]
+Surface Types: {"HRS-Base":4,"HRS-WC":4}
+Layer Thickness (cm): {"5":8}
+LPA Present: 8 items
+LPB Present: 8 items
+Timbunan Present: 8 items
+Prices: Rp4.722.000 - Rp5.776.000
+Structural Profiles: {"drainase":8}
+Samples:
+  - [asb_0838] Jalan Tipe F1 | Lebar = 3 m, HRS-Base = 5 cm, LPA = 15 cm, LPB = 20 cm, Timbunan Pilihan dari Sumber Galian = 30 cm, Pasangan Batu, dan Bahu Beton
+  - [asb_0839] Jalan Tipe F2 | Lebar = 3 m, HRS-Base = 5 cm, LPA = 15 cm, LPB = 20 cm, Timbunan Pilihan dari Sumber Galian = 30 cm, Pasangan Batu, dan Bahu Beton
+  - [asb_0840] Jalan Tipe F3 | Lebar = 3 m, HRS-WC = 5 cm, LPA = 15 cm, LPB = 20 cm, Timbunan Pilihan dari Sumber Galian = 30 cm, Pasangan Batu, dan Bahu Beton
+  - [asb_0841] Jalan Tipe F4 | Lebar = 3 m, HRS-WC = 5 cm, LPA = 15 cm, LPB = 20 cm, Timbunan Pilihan dari Sumber Galian = 30 cm, Pasangan Batu, dan Bahu Beton
+  - [asb_0842] Jalan Tipe F5 | Lebar = 4 m, HRS-Base = 5 cm, LPA = 15 cm, LPB = 20 cm, Timbunan Pilihan dari Sumber Galian = 30 cm, Pasangan Batu, dan Bahu Beton
+
+--- Tipe G ---
+Count: 20
+Widths: Min 1, Max 3, List: [1, 1.5, 2, 2.5, 3]
+Surface Types: {"Rigid":20}
+Layer Thickness (cm): {"15":10,"20":10}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp410.000 - Rp1.640.000
+Structural Profiles: {"rigid":20}
+Samples:
+  - [asb_0846] Jalan Tipe G1 | Jalan Cor Beton Lebar = 1 m, Tebal = 15 cm (fc'15 Mpa)
+  - [asb_0847] Jalan Tipe G2 | Jalan Cor Beton Lebar = 1,5 m, Tebal = 15 cm (fc'15 Mpa)
+  - [asb_0848] Jalan Tipe G3 | Jalan Cor Beton Lebar = 2 m, Tebal = 15 cm (fc'15 Mpa)
+  - [asb_0849] Jalan Tipe G4 | Jalan Cor Beton Lebar = 2,5 m, Tebal = 15 cm (fc'15 Mpa)
+  - [asb_0850] Jalan Tipe G5 | Jalan Cor Beton Lebar = 3 m, Tebal = 15 cm (fc'15 Mpa)
+
+--- Tipe H ---
+Count: 9
+Widths: Min 0, Max 0, List: []
+Surface Types: {"None":9}
+Layer Thickness (cm): {"None":9}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp461.000 - Rp3.624.000
+Structural Profiles: {"drainase":9}
+Samples:
+  - [asb_0866] Jalan Tipe H1 | Siring Pasangan Batu Tinggi 0,3 m s.d 0,5 m
+  - [asb_0867] Jalan Tipe H2 | Siring Pasangan Batu Tinggi 0,3 m s.d 0,5 m dengan Fondasi Cerucuk Galam
+  - [asb_0868] Jalan Tipe H3 | Siring Pasangan Batu Tinggi 0,6 m s.d 1,0 m
+  - [asb_0869] Jalan Tipe H4 | Siring Pasangan Batu Tinggi 0,6 m s.d 1,0 m dengan Fondasi Cerucuk Galam
+  - [asb_0870] Jalan Tipe H5 | Siring Pasangan Batu Tinggi 1,1 m s.d 1,5 m
+
+--- Tipe I ---
+Count: 4
+Widths: Min 0, Max 0, List: []
+Surface Types: {"None":4}
+Layer Thickness (cm): {"None":4}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp11.523.000 - Rp22.154.000
+Structural Profiles: {"unknown":4}
+Samples:
+  - [asb_0875] Jalan Tipe I1 | Bronjong Tinggi 3 m
+  - [asb_0876] Jalan Tipe I2 | Bronjong Tinggi 4 m
+  - [asb_0877] Jalan Tipe I3 | Bronjong Tinggi 5 m
+  - [asb_0878] Jalan Tipe I4 | Bronjong Tinggi 6 m
+
+--- Tipe J ---
+Count: 1
+Widths: Min 0, Max 0, List: []
+Surface Types: {"None":1}
+Layer Thickness (cm): {"None":1}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp17.479.000 - Rp17.479.000
+Structural Profiles: {"unknown":1}
+Samples:
+  - [asb_0879] Jalan Tipe J1 | Slab Culvert Panjang = 1,5 m
+
+--- Tipe K ---
+Count: 25
+Widths: Min 3, Max 5, List: [3, 3.5, 4, 4.5, 5]
+Surface Types: {"None":25}
+Layer Thickness (cm): {"None":25}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp1.154.000 - Rp5.547.000
+Structural Profiles: {"unknown":25}
+Samples:
+  - [asb_0880] Jalan Tipe K1 | Timbunan Pilihan dari Sumber Galian Lebar = 3 m, Tebal = 0,3 m
+  - [asb_0881] Jalan Tipe K2 | Timbunan Pilihan dari Sumber Galian Lebar = 3 m, Tebal = 0,5 m
+  - [asb_0882] Jalan Tipe K3 | Timbunan Pilihan dari Sumber Galian Lebar = 3 m, Tebal = 0,7 m
+  - [asb_0883] Jalan Tipe K4 | Timbunan Pilihan dari Sumber Galian Lebar = 3 m, Tebal = 1 m
+  - [asb_0884] Jalan Tipe K5 | Timbunan Pilihan dari Sumber Galian Lebar = 3 m, Tebal = 1,2 m
+
+--- Tipe L ---
+Count: 10
+Widths: Min 0, Max 0, List: []
+Surface Types: {"None":10}
+Layer Thickness (cm): {"None":10}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp781.000 - Rp1.726.000
+Structural Profiles: {"unknown":10}
+Samples:
+  - [asb_0983] Jalan Tipe L1 | Perbaikan Lapis Fondasi Agregat Kelas A Lebar 3 m
+  - [asb_0984] Jalan Tipe L2 | Perbaikan Lapis Fondasi Agregat Kelas A Lebar 3,5 m
+  - [asb_0985] Jalan Tipe L3 | Perbaikan Lapis Fondasi Agregat Kelas A Lebar 4 m
+  - [asb_0986] Jalan Tipe L4 | Perbaikan Lapis Fondasi Agregat Kelas A Lebar 4,5 m
+  - [asb_0987] Jalan Tipe L5 | Perbaikan Lapis Fondasi Agregat Kelas A Lebar 5 m
+
+--- Tipe M ---
+Count: 10
+Widths: Min 0, Max 0, List: []
+Surface Types: {"Rigid":5,"None":5}
+Layer Thickness (cm): {"None":10}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp1.276.000 - Rp33.187.000
+Structural Profiles: {"rigid":5,"unknown":5}
+Samples:
+  - [asb_0993] Jalan Tipe M1 | Dinding Turap Beton, Penyediaan dan Pemancangan 1 m
+  - [asb_0994] Jalan Tipe M2 | Dinding Turap Beton, Penyediaan dan Pemancangan 6 m
+  - [asb_0995] Jalan Tipe M3 | Dinding Turap Beton, Penyediaan dan Pemancangan 8 m
+  - [asb_0996] Jalan Tipe M4 | Dinding Turap Beton, Penyediaan dan Pemancangan 10 m
+  - [asb_0997] Jalan Tipe M5 | Dinding Turap Beton, Penyediaan dan Pemancangan 12 m
+
+--- Tipe N ---
+Count: 8
+Widths: Min 0, Max 0, List: []
+Surface Types: {"None":8}
+Layer Thickness (cm): {"None":8}
+LPA Present: 0 items
+LPB Present: 0 items
+Timbunan Present: 0 items
+Prices: Rp523.000 - Rp4.135.000
+Structural Profiles: {"unknown":8}
+Samples:
+  - [asb_1003] Jalan Tipe N1 | Timbunan Biasa dari Hasil galian Lebar 5 m, Tebal 0,5 m
+  - [asb_1004] Jalan Tipe N2 | Timbunan Biasa dari Hasil galian Lebar 5 m, Tebal 1 m
+  - [asb_1005] Jalan Tipe N3 | Timbunan Biasa dari Hasil galian Lebar 5 m, Tebal 2 m
+  - [asb_1006] Jalan Tipe N4 | Timbunan Biasa dari Hasil galian Lebar 5 m, Tebal 3 m
+  - [asb_1007] Jalan Tipe N5 | Timbunan Biasa dari Hasil galian Lebar 7 m, Tebal 0,5 m
+
