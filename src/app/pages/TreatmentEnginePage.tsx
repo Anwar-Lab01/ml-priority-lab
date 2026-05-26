@@ -121,7 +121,8 @@ export interface RuleV1Result {
 
 export interface DD2RoadFeatureWithRule extends DD2RoadFeature {
   rule_v1: RuleV1Result;
-  asb_budget?: ASBBudgetResult;
+  asb_budget?: ASBBudgetResult; // auto_estimate
+  final_asb_budget?: ASBBudgetResult; // final_estimate
 }
 
 export interface ASBItem {
@@ -140,8 +141,24 @@ export interface ASBItem {
   layer_thickness_cm: number | null;
 }
 
+export interface ManualASBOverride {
+  override_active: boolean;
+  manual_reason_code: string;
+  manual_reason_text?: string;
+  selected_asb_type: string;
+  structural_profile: string;
+  width_matching: 'auto_round_up' | 'manual_variant';
+  manual_width_m?: number;
+  surface_preference: 'auto' | 'manual';
+  manual_surface_type?: string;
+  costing_mode: 'full_segment_mode' | 'effective_length_mode';
+  effective_length_ratio?: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface ASBBudgetResult {
-  status: 'estimated' | 'no_rule_matched' | 'no_asb_candidate_found' | 'insufficient_data';
+  status: 'estimated' | 'no_major_asb_package' | 'manual_estimated' | 'no_rule_matched' | 'no_asb_candidate_found' | 'insufficient_data' | 'missing_asb_item';
   rule_id?: string;
   rule_label?: string;
   confidence?: 'high' | 'medium' | 'low';
@@ -160,6 +177,16 @@ export interface ASBBudgetResult {
   flags?: string[];
   disclaimer?: string;
   reason?: string;
+  
+  // NEW: Override tracking
+  manual_override_used?: boolean;
+  override_details?: ManualASBOverride;
+  
+  // The final applied budget (which is what the UI should display)
+  final_pagu_indikatif_rp?: number | null;
+  final_asb_type?: string | null;
+  final_asb_id?: string | null;
+  final_costing_mode?: string | null;
 }
 
 export interface DD2DataWithRules {
@@ -180,6 +207,7 @@ export interface DD2DataWithRules {
     estimatedRoads: number;
     noMajorPackage: number;
     manualReviewRequired: number;
+    manualOverridesActive: number;
   };
 }
 
@@ -300,7 +328,7 @@ function estimatePaguIndikatif(road: DD2RoadFeature, rules: any, asbItems: ASBIt
 
   if (!selectedRule || selectedRule.selected_profile === 'no_major_asb_package') {
      return { 
-       status: 'no_rule_matched', 
+       status: !selectedRule ? 'no_rule_matched' : 'no_major_asb_package', 
        rule_id: selectedRule?.rule_id, 
        rule_label: selectedRule?.label, 
        confidence: selectedRule?.confidence,
@@ -368,14 +396,134 @@ function estimatePaguIndikatif(road: DD2RoadFeature, rules: any, asbItems: ASBIt
   };
 }
 
+function applyManualOverride(
+  road: DD2RoadFeature, 
+  autoBudget: ASBBudgetResult, 
+  override: ManualASBOverride | undefined, 
+  asbItems: ASBItem[]
+): ASBBudgetResult {
+  if (!override || !override.override_active) {
+    return {
+      ...autoBudget,
+      manual_override_used: false,
+      final_pagu_indikatif_rp: autoBudget.pagu_indikatif_rp || null,
+      final_asb_type: autoBudget.asb_type || null,
+      final_asb_id: autoBudget.asb_id || null,
+      final_costing_mode: autoBudget.costing_mode || null
+    };
+  }
+
+  let flags: string[] = [];
+  
+  // Find candidates for the selected type
+  const candidates = asbItems.filter(i => {
+    const match = (i.uraian || '').match(/Jalan Tipe ([A-Z])/i);
+    return match && match[1].toUpperCase() === override.selected_asb_type;
+  });
+
+  if (candidates.length === 0) {
+    return {
+      ...autoBudget,
+      status: 'missing_asb_item',
+      manual_override_used: true,
+      override_details: override,
+      reason: 'No ASB candidates found for manually selected Type ' + override.selected_asb_type,
+      flags: ['manual_override_failed_no_candidates']
+    };
+  }
+
+  // Width matching
+  let selectedWidth = road.lebar_ruas_m || 4.5;
+  if (override.width_matching === 'manual_variant' && override.manual_width_m) {
+    selectedWidth = override.manual_width_m;
+  }
+  
+  let matchedWidthCandidates = candidates.filter(i => (i.width_m || 0) >= selectedWidth).sort((a,b) => (a.width_m || 0) - (b.width_m || 0));
+  if (matchedWidthCandidates.length === 0) {
+    matchedWidthCandidates = candidates.sort((a,b) => (b.width_m || 0) - (a.width_m || 0));
+    flags.push('manual_review_width_exceeded_in_override');
+  }
+  
+  const widthToUse = matchedWidthCandidates[0].width_m;
+  const widthCandidates = matchedWidthCandidates.filter(i => i.width_m === widthToUse);
+
+  // Surface matching
+  let surfaceCandidates = widthCandidates;
+  if (override.surface_preference === 'manual' && override.manual_surface_type) {
+    const specificSurfaceCandidates = widthCandidates.filter(i => i.surface_type === override.manual_surface_type);
+    if (specificSurfaceCandidates.length > 0) {
+      surfaceCandidates = specificSurfaceCandidates;
+    } else {
+      flags.push('manual_surface_fallback_used');
+    }
+  }
+
+  const selectedASB = surfaceCandidates[0];
+
+  // Calculate Length and Cost
+  const panjangM = (road.panjang_ruas_km || 0) * 1000;
+  let calculationLengthM = panjangM;
+  if (override.costing_mode === 'effective_length_mode' && override.effective_length_ratio) {
+    calculationLengthM = panjangM * override.effective_length_ratio;
+  }
+  const pagu = selectedASB.harga_rp * calculationLengthM;
+
+  return {
+    status: 'manual_estimated',
+    rule_id: autoBudget.rule_id, // keep auto rule for tracking
+    rule_label: autoBudget.rule_label,
+    confidence: 'high', // user override implies high confidence in the decision
+    structural_profile: override.structural_profile,
+    asb_type: override.selected_asb_type,
+    asb_id: selectedASB.asb_id,
+    asb_uraian: selectedASB.uraian,
+    asb_spesifikasi: selectedASB.spesifikasi,
+    harga_satuan_rp: selectedASB.harga_rp,
+    satuan: selectedASB.satuan,
+    panjang_m: calculationLengthM, // effective length used
+    pagu_indikatif_rp: pagu,
+    width_matched_m: selectedASB.width_m || 0,
+    surface_matched: selectedASB.surface_type || 'Unknown',
+    costing_mode: override.costing_mode,
+    flags: [...(autoBudget.flags || []), ...flags],
+    disclaimer: autoBudget.disclaimer || 'Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis.',
+    reason: override.manual_reason_text || override.manual_reason_code,
+    
+    // Override tracking
+    manual_override_used: true,
+    override_details: override,
+    
+    // Final
+    final_pagu_indikatif_rp: pagu,
+    final_asb_type: override.selected_asb_type,
+    final_asb_id: selectedASB.asb_id,
+    final_costing_mode: override.costing_mode
+  };
+}
+
 // ── Data Loaders ──────────────────────────────────────────────────────────────
 
 function useTreatmentData() {
   const [config, setConfig] = useState<MapConfig | null>(null);
   const [geos, setGeos] = useState<GeoRoad[]>([]);
-  const [dd2Data, setDd2Data] = useState<DD2DataWithRules | null>(null);
+  const [rawData, setRawData] = useState<any>(null);
+  const [asbItems, setAsbItems] = useState<ASBItem[]>([]);
+  const [asbRules, setAsbRules] = useState<any>(null);
   const [segmentData, setSegmentData] = useState<DD2DamageSegmentData | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
+
+  const [manualOverrides, setManualOverridesState] = useState<Record<string, ManualASBOverride>>(() => {
+    try {
+      const stored = localStorage.getItem('ml_priority_lab_asb_overrides_v1');
+      if (stored) return JSON.parse(stored);
+    } catch(e) {}
+    return {};
+  });
+
+  const setManualOverrides = useCallback((newOverrides: Record<string, ManualASBOverride>) => {
+    setManualOverridesState(newOverrides);
+    localStorage.setItem('ml_priority_lab_asb_overrides_v1', JSON.stringify(newOverrides));
+  }, []);
 
   useEffect(() => {
     async function load() {
@@ -395,68 +543,13 @@ function useTreatmentData() {
         setConfig(await resCfg.json());
         setGeos(await resGeo.json());
         
-        const asbItemsData = resAsbItems.ok ? await resAsbItems.json() : null;
-        const asbRulesData = resAsbRules.ok ? await resAsbRules.json() : null;
-        
-        if (resDd2.ok) {
-          const rawData = await resDd2.json();
-          let totalEvaluated = 0, insufficientData = 0, rutin = 0, berkala = 0, rehab = 0, rekon = 0, peningkatan = 0;
-          let estimatedRoads = 0, noMajorPackage = 0, manualReviewRequired = 0;
-          
-          const sourceRoads = Array.isArray(rawData?.roads) ? rawData.roads : [];
-          const roadsWithRules = sourceRoads.map((r: DD2RoadFeature) => {
-            const rule = evaluateTreatmentRuleV1(r);
-            totalEvaluated++;
-            if (rule.treatment_category === 'Data Tidak Cukup') insufficientData++;
-            else if (rule.treatment_category === 'Pemeliharaan Rutin') rutin++;
-            else if (rule.treatment_category === 'Pemeliharaan Berkala') berkala++;
-            else if (rule.treatment_category === 'Rehabilitasi') rehab++;
-            else if (rule.treatment_category === 'Rehabilitasi / Rekonstruksi Indikatif') rekon++;
-            else if (rule.treatment_category === 'Kandidat Peningkatan Permukaan') peningkatan++;
-            
-            let asb_budget;
-            if (asbItemsData && asbRulesData) {
-               asb_budget = estimatePaguIndikatif(r, asbRulesData, asbItemsData.items || []);
-               if (asb_budget.status === 'estimated') estimatedRoads++;
-               else if (asb_budget.status === 'no_rule_matched') noMajorPackage++;
-               
-               if (asb_budget.flags && asb_budget.flags.length > 0) manualReviewRequired++;
-            }
-            
-            return { ...r, rule_v1: rule, asb_budget };
-          });
-          
-          setDd2Data({
-             ...rawData,
-             _metadata: rawData?._metadata ?? { generated_at: '', total_records: sourceRoads.length, matched: 0, unmatched: 0, ambiguous: 0 },
-             roads: roadsWithRules,
-             ruleStats: { totalEvaluated, insufficientData, rutin, berkala, rehab, rekon, peningkatan },
-             asbStats: {
-                totalItemsLoaded: asbItemsData?.items?.length || 0,
-                totalRulesLoaded: asbRulesData?.selection_rules?.length || 0,
-                estimatedRoads,
-                noMajorPackage,
-                manualReviewRequired
-             }
-          });
-
-          // DEV diagnostics global variable
-          (window as any).__ASB_BUDGET_REASONABLENESS_DIAGNOSTICS__ = {
-             rulesLoaded: asbRulesData?.selection_rules?.length || 0,
-             asbItemsLoaded: asbItemsData?.items?.length || 0,
-             totalRoadsEvaluated: totalEvaluated,
-             estimatedRoads,
-             noMajorPackage,
-             missingRules: !asbRulesData,
-             missingItems: !asbItemsData,
-             sampleEstimates: roadsWithRules.slice(0, 10).map((r: any) => ({
-                road_name: r.canonical_road_name,
-                non_mantap_pct: r.non_mantap_pct,
-                asb_budget: r.asb_budget
-             }))
-          };
+        if (resAsbItems.ok) {
+          const asbData = await resAsbItems.json();
+          setAsbItems(asbData.items || []);
         }
-
+        if (resAsbRules.ok) setAsbRules(await resAsbRules.json());
+        
+        if (resDd2.ok) setRawData(await resDd2.json());
         if (resSeg && resSeg.ok) {
           const rawSegments = await resSeg.json();
           setSegmentData({
@@ -474,7 +567,70 @@ function useTreatmentData() {
     load();
   }, []);
 
-  return { config, geos, dd2Data, segmentData, status };
+  const dd2Data = useMemo<DD2DataWithRules | null>(() => {
+    if (!rawData) return null;
+    let totalEvaluated = 0, insufficientData = 0, rutin = 0, berkala = 0, rehab = 0, rekon = 0, peningkatan = 0;
+    let estimatedRoads = 0, noMajorPackage = 0, manualReviewRequired = 0;
+    
+    const sourceRoads = Array.isArray(rawData?.roads) ? rawData.roads : [];
+    const roadsWithRules = sourceRoads.map((r: DD2RoadFeature) => {
+      const rule = evaluateTreatmentRuleV1(r);
+      totalEvaluated++;
+      if (rule.treatment_category === 'Data Tidak Cukup') insufficientData++;
+      else if (rule.treatment_category === 'Pemeliharaan Rutin') rutin++;
+      else if (rule.treatment_category === 'Pemeliharaan Berkala') berkala++;
+      else if (rule.treatment_category === 'Rehabilitasi') rehab++;
+      else if (rule.treatment_category === 'Rehabilitasi / Rekonstruksi Indikatif') rekon++;
+      else if (rule.treatment_category === 'Kandidat Peningkatan Permukaan') peningkatan++;
+      
+      let asb_budget;
+      let final_asb_budget;
+      if (asbItems.length > 0 && asbRules) {
+         asb_budget = estimatePaguIndikatif(r, asbRules, asbItems);
+         final_asb_budget = applyManualOverride(r, asb_budget, manualOverrides[r.road_key], asbItems);
+         
+         if (final_asb_budget.status === 'estimated' || final_asb_budget.status === 'manual_estimated') estimatedRoads++;
+         else if (final_asb_budget.status === 'no_major_asb_package') noMajorPackage++;
+         
+         if (final_asb_budget.flags && final_asb_budget.flags.length > 0) manualReviewRequired++;
+      }
+      
+      return { ...r, rule_v1: rule, asb_budget, final_asb_budget };
+    });
+
+    // DEV diagnostics global variable
+    (window as any).__ASB_BUDGET_REASONABLENESS_DIAGNOSTICS__ = {
+       rulesLoaded: asbRules?.selection_rules?.length || 0,
+       asbItemsLoaded: asbItems.length,
+       totalEvaluated,
+       estimatedRoads,
+       noMajorPackage,
+       missingRules: !asbRules,
+       missingItems: asbItems.length === 0,
+       sampleEstimates: roadsWithRules.slice(0, 10).map((r: any) => ({
+          road_name: r.canonical_road_name,
+          non_mantap_pct: r.non_mantap_pct,
+          final_asb_budget: r.final_asb_budget
+       }))
+    };
+    
+    return {
+       ...rawData,
+       _metadata: rawData?._metadata ?? { generated_at: '', total_records: sourceRoads.length, matched: 0, unmatched: 0, ambiguous: 0 },
+       roads: roadsWithRules,
+       ruleStats: { totalEvaluated, insufficientData, rutin, berkala, rehab, rekon, peningkatan },
+       asbStats: {
+          totalItemsLoaded: asbItems.length,
+          totalRulesLoaded: asbRules?.selection_rules?.length || 0,
+          estimatedRoads,
+          noMajorPackage,
+          manualReviewRequired,
+          manualOverridesActive: Object.keys(manualOverrides).length
+       }
+    };
+  }, [rawData, asbItems, asbRules, manualOverrides]);
+
+  return { config, geos, dd2Data, segmentData, status, manualOverrides, setManualOverrides, asbItems };
 }
 
 // We now use mapExplorerMatching utilities instead of local normalizeRoadIdentity
@@ -678,6 +834,23 @@ const TE_DD2_LOCAL_ALIASES: Record<string, string> = {
   'Simpang Jadi Makmur Ds. Samuda': 'Simpang Jadi Makmur - Ds. Samuda'
 };
 
+const ASB_TYPE_GUIDE: Record<string, { label: string; desc: string; composition: string; use: string; isSupport?: boolean }> = {
+  'A': { label: 'A — Surface only', desc: 'Lapisan permukaan aspal saja', composition: 'Permukaan', use: 'Pemeliharaan / pelapisan ulang permukaan' },
+  'B': { label: 'B — Surface + LPA', desc: 'Permukaan + LPA', composition: 'Permukaan + Lapis Pondasi Atas (LPA)', use: 'Perbaikan dengan pondasi atas' },
+  'C': { label: 'C — Surface + LPA + LPB', desc: 'Permukaan + LPA + LPB', composition: 'Permukaan + LPA + Lapis Pondasi Bawah (LPB)', use: 'Rehabilitasi mayor / pondasi penuh' },
+  'D': { label: 'D — Surface + LPA + LPB + Timbunan', desc: 'Permukaan + LPA + LPB + timbunan pilihan', composition: 'Permukaan + LPA + LPB + Timbunan', use: 'Rekonstruksi dengan peninggian badan jalan' },
+  'E': { label: 'E — Surface + Bahu Beton', desc: 'Permukaan + bahu beton', composition: 'Permukaan + Bahu Jalan Beton', use: 'Peningkatan kapasitas / pelebaran bahu' },
+  'F': { label: 'F — Full package + Drainase + Bahu', desc: 'Permukaan + LPA + LPB + timbunan + drainase + bahu', composition: 'Permukaan + LPA + LPB + Timbunan + Drainase + Bahu', use: 'Rekonstruksi komprehensif' },
+  'G': { label: 'G — Rigid / Beton', desc: 'Jalan cor beton', composition: 'Perkerasan Beton Semen', use: 'Jalan beban berat / daerah genangan' },
+  'H': { label: 'H — Retaining Wall', desc: 'Siring/pasangan batu', composition: 'Pasangan Batu', use: 'Penahan tanah', isSupport: true },
+  'I': { label: 'I — Gabion', desc: 'Bronjong', composition: 'Bronjong kawat', use: 'Pengendali erosi / tebing', isSupport: true },
+  'J': { label: 'J — Culvert', desc: 'Slab culvert', composition: 'Slab Culvert', use: 'Gorong-gorong / saluran melintang', isSupport: true },
+  'K': { label: 'K — Earthwork Select', desc: 'Timbunan pilihan', composition: 'Timbunan Pilihan', use: 'Peninggian badan jalan', isSupport: true },
+  'L': { label: 'L — Base Repair', desc: 'Perbaikan LPA', composition: 'Lapis Pondasi Atas (LPA)', use: 'Perbaikan pondasi lokal', isSupport: true },
+  'M': { label: 'M — Sheet Pile', desc: 'Dinding turap beton', composition: 'Turap Beton', use: 'Penahan tebing kritis', isSupport: true },
+  'N': { label: 'N — Earthwork Common', desc: 'Timbunan biasa', composition: 'Timbunan Biasa', use: 'Pekerjaan tanah standar', isSupport: true }
+};
+
 // Helper component to adjust map viewport to selected geometry
 function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
   const map = useMap();
@@ -692,10 +865,13 @@ function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
 // ── Page component ────────────────────────────────────────────────────────────
 
 export function TreatmentEnginePage() {
-  const { config, geos, dd2Data, segmentData, status: mapStatus } = useTreatmentData();
+  const { config, geos, dd2Data, segmentData, status: mapStatus, manualOverrides, setManualOverrides } = useTreatmentData();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showSegments, setShowSegments] = useState(false);
+  const [isEditingOverride, setIsEditingOverride] = useState(false);
+  const [overrideForm, setOverrideForm] = useState<Partial<ManualASBOverride>>({});
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -703,6 +879,39 @@ export function TreatmentEnginePage() {
 
   // Map Display Mode State
   const [displayMode, setDisplayMode] = useState<MapDisplayMode>('threshold');
+
+  const handleSaveOverride = () => {
+    if (selectedKey && selectedDd2Feature) {
+      const overrides = { ...manualOverrides };
+      overrides[selectedDd2Feature.road_key] = {
+        ...overrideForm,
+        override_active: true,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      } as ManualASBOverride;
+      setManualOverrides(overrides);
+      setIsEditingOverride(false);
+      setOverrideForm({});
+    }
+  };
+
+  const handleClearOverride = () => {
+    if (selectedKey && selectedDd2Feature) {
+      const overrides = { ...manualOverrides };
+      delete overrides[selectedDd2Feature.road_key];
+      setManualOverrides(overrides);
+      setIsEditingOverride(false);
+      setOverrideForm({});
+    }
+  };
+
+  const handleExportOverrides = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(manualOverrides, null, 2));
+    const dlAnchorElem = document.createElement('a');
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", "asb_overrides_export.json");
+    dlAnchorElem.click();
+  };
 
   // Condition Highlighting State
   const [highlightEnabled, setHighlightEnabled] = useState(false);
@@ -1212,7 +1421,7 @@ export function TreatmentEnginePage() {
           </span>
         </div>
         {dd2Data?.asbStats && (
-          <div className="grid grid-cols-2 md:grid-cols-5 divide-x divide-y md:divide-y-0 divide-slate-100">
+          <div className="grid grid-cols-2 md:grid-cols-6 divide-x divide-y md:divide-y-0 divide-slate-100">
              <div className="p-4 text-center bg-slate-50">
                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Roads Estimated</p>
                <p className="mt-1 text-2xl font-black text-slate-800">{dd2Data.asbStats.estimatedRoads}</p>
@@ -1224,6 +1433,15 @@ export function TreatmentEnginePage() {
              <div className="p-4 text-center">
                <p className="text-[10px] font-bold uppercase tracking-wider text-amber-500">Flags / Manual Review</p>
                <p className="mt-1 text-2xl font-black text-amber-600">{dd2Data.asbStats.manualReviewRequired}</p>
+             </div>
+             <div className="p-4 text-center bg-indigo-50/50">
+               <div className="flex justify-between px-2 items-center mb-1">
+                 <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-500">Manual Overrides</p>
+                 <button onClick={handleExportOverrides} title="Export Overrides JSON" className="text-indigo-600 hover:text-indigo-800 transition-colors">
+                   <Database className="h-3 w-3" />
+                 </button>
+               </div>
+               <p className="mt-1 text-2xl font-black text-indigo-700">{dd2Data.asbStats.manualOverridesActive}</p>
              </div>
              <div className="p-4 text-center">
                <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">ASB Items Loaded</p>
@@ -1851,75 +2069,232 @@ export function TreatmentEnginePage() {
                 {selectedDd2Feature && (
                   <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
                     <div className="flex items-center justify-between mb-1">
-                    <div className="flex items-center gap-1.5">
-                      <DollarSign className="h-3.5 w-3.5 text-slate-400" />
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-500">
-                        Pagu Indikatif ASB
-                      </p>
+                      <div className="flex items-center gap-1.5">
+                        <DollarSign className="h-3.5 w-3.5 text-slate-400" />
+                        <p className="text-[9px] font-bold uppercase tracking-widest text-slate-500">
+                          Pagu Indikatif ASB
+                        </p>
+                      </div>
+                      {selectedDd2Feature.final_asb_budget?.status === 'estimated' || selectedDd2Feature.final_asb_budget?.status === 'manual_estimated' ? (
+                         <span className="text-[9px] font-bold px-1.5 py-0.5 rounded border border-indigo-200 bg-indigo-100 text-indigo-700">
+                            {selectedDd2Feature.final_asb_budget.final_costing_mode === 'full_segment_mode' ? 'Full Ruas' : 'Effective Length'}
+                         </span>
+                      ) : null}
                     </div>
-                    {selectedDd2Feature.asb_budget?.status === 'estimated' && (
-                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded border border-indigo-200 bg-indigo-100 text-indigo-700">
-                          {selectedDd2Feature.asb_budget.costing_mode === 'full_segment_mode' ? 'Full Ruas / Pagu Usulan' : selectedDd2Feature.asb_budget.costing_mode}
-                       </span>
+
+                    {!isEditingOverride ? (
+                      <>
+                        {/* Auto Recommendation Box */}
+                        <div className="rounded border border-slate-200 bg-slate-100/50 p-2 text-xs">
+                           <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Auto Recommendation</p>
+                           {selectedDd2Feature.asb_budget?.status === 'estimated' ? (
+                             <div className="flex justify-between text-slate-600">
+                               <span>Tipe {selectedDd2Feature.asb_budget.asb_type}</span>
+                               <span className="font-mono">Rp {(selectedDd2Feature.asb_budget.pagu_indikatif_rp || 0).toLocaleString('id-ID')}</span>
+                             </div>
+                           ) : selectedDd2Feature.asb_budget?.status === 'no_major_asb_package' ? (
+                             <p className="text-slate-500 italic text-[10px]">No major package auto-selected</p>
+                           ) : (
+                             <p className="text-slate-500 italic text-[10px]">{selectedDd2Feature.asb_budget?.reason || 'No package'}</p>
+                           )}
+                        </div>
+
+                        {/* Final Selected Package Box */}
+                        {selectedDd2Feature.final_asb_budget?.status === 'estimated' || selectedDd2Feature.final_asb_budget?.status === 'manual_estimated' ? (
+                           <div className="space-y-2 text-xs mt-1 border-t border-slate-200 pt-2">
+                              <div className="flex items-center justify-between">
+                                <p className="text-[9px] font-bold text-slate-400 uppercase">Final Selected Package</p>
+                                {selectedDd2Feature.final_asb_budget.manual_override_used && (
+                                  <span className="inline-flex items-center rounded bg-amber-100 px-1 py-0.5 text-[8px] font-bold text-amber-700">
+                                    🛠️ Manual Override
+                                  </span>
+                                )}
+                              </div>
+                              <div className="bg-white rounded border border-slate-200 p-2 shadow-sm text-center">
+                                 <p className="text-lg font-black text-indigo-700">
+                                    Rp {(selectedDd2Feature.final_asb_budget.final_pagu_indikatif_rp || 0).toLocaleString('id-ID')}
+                                 </p>
+                              </div>
+                              <div className="space-y-1">
+                                 <div className="flex justify-between border-b border-slate-100 pb-1">
+                                    <span className="text-slate-500">Paket Anggaran:</span>
+                                    <span className="font-semibold text-slate-800">Tipe {selectedDd2Feature.final_asb_budget.final_asb_type} ({selectedDd2Feature.final_asb_budget.structural_profile})</span>
+                                 </div>
+                                 <div className="flex justify-between border-b border-slate-100 pb-1">
+                                    <span className="text-slate-500">Dasar Pemilihan:</span>
+                                    <span className="font-medium text-slate-700 truncate max-w-[150px]" title={selectedDd2Feature.final_asb_budget.reason}>
+                                      {selectedDd2Feature.final_asb_budget.manual_override_used ? selectedDd2Feature.final_asb_budget.reason : selectedDd2Feature.final_asb_budget.rule_id}
+                                    </span>
+                                 </div>
+                                 <div className="flex justify-between border-b border-slate-100 pb-1">
+                                    <span className="text-slate-500">Volume (m):</span>
+                                    <span className="font-mono text-slate-700">{selectedDd2Feature.final_asb_budget.panjang_m?.toLocaleString()} m</span>
+                                 </div>
+                                 <div className="flex justify-between border-b border-slate-100 pb-1">
+                                    <span className="text-slate-500">Harga ASB / m:</span>
+                                    <span className="font-mono text-slate-700">Rp {selectedDd2Feature.final_asb_budget.harga_satuan_rp?.toLocaleString('id-ID')}</span>
+                                 </div>
+                                 <div className="flex justify-between border-b border-slate-100 pb-1">
+                                    <span className="text-slate-500">Match Params:</span>
+                                    <span className="font-mono text-[10px] text-slate-600 bg-slate-100 px-1 rounded">
+                                       {selectedDd2Feature.final_asb_budget.width_matched_m}m | {selectedDd2Feature.final_asb_budget.surface_matched}
+                                    </span>
+                                 </div>
+                              </div>
+                              <p className="text-[9px] text-slate-500 mt-1 leading-tight font-mono">{selectedDd2Feature.final_asb_budget.asb_uraian} — {selectedDd2Feature.final_asb_budget.asb_spesifikasi}</p>
+                              
+                              {selectedDd2Feature.final_asb_budget.flags && selectedDd2Feature.final_asb_budget.flags.length > 0 && (
+                                 <div className="mt-2 flex flex-wrap gap-1">
+                                    {selectedDd2Feature.final_asb_budget.flags.map(f => (
+                                       <span key={f} className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 border border-amber-200 rounded px-1.5 py-0.5 text-[9px] font-bold">
+                                          <AlertTriangle className="h-2.5 w-2.5" />
+                                          {f}
+                                       </span>
+                                    ))}
+                                 </div>
+                              )}
+                              <p className="text-[8px] text-slate-400 italic leading-tight mt-1 pt-1 border-t border-slate-200">
+                                 {selectedDd2Feature.final_asb_budget.disclaimer}
+                              </p>
+                           </div>
+                        ) : selectedDd2Feature.final_asb_budget?.status === 'no_major_asb_package' ? (
+                           <div className="text-center py-2 text-slate-500 text-[11px] italic mt-2 border-t border-slate-200">
+                             Tidak ada paket mayor otomatis
+                           </div>
+                        ) : null}
+
+                        <div className="flex gap-2 mt-3 pt-2 border-t border-slate-200">
+                           <button 
+                             onClick={() => {
+                               const existing = manualOverrides[selectedDd2Feature.road_key];
+                               if (existing) {
+                                  setOverrideForm(existing);
+                               } else {
+                                  setOverrideForm({
+                                    override_active: true,
+                                    selected_asb_type: 'A',
+                                    structural_profile: 'surface_only',
+                                    width_matching: 'auto_round_up',
+                                    surface_preference: 'auto',
+                                    costing_mode: 'full_segment_mode',
+                                    manual_reason_code: 'Preventive maintenance'
+                                  });
+                               }
+                               setIsEditingOverride(true);
+                             }}
+                             className="flex-1 bg-white border border-indigo-200 text-indigo-700 text-[10px] font-bold py-1.5 rounded hover:bg-indigo-50 transition-colors"
+                           >
+                             Edit / Override Package
+                           </button>
+                           {manualOverrides[selectedDd2Feature.road_key] && (
+                             <button onClick={handleClearOverride} className="bg-white border border-red-200 text-red-600 px-2 py-1.5 rounded text-[10px] font-bold hover:bg-red-50">
+                               Clear
+                             </button>
+                           )}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="border border-indigo-200 bg-white rounded p-2 text-xs">
+                        <p className="font-bold text-indigo-700 mb-2">Manual Override Configuration</p>
+                        <div className="space-y-2">
+                           <div>
+                              <label className="block text-[9px] font-bold text-slate-500 uppercase">Reason</label>
+                              <select 
+                                value={overrideForm.manual_reason_code || ''} 
+                                onChange={(e) => setOverrideForm({...overrideForm, manual_reason_code: e.target.value})}
+                                className="w-full mt-0.5 border border-slate-200 rounded p-1"
+                              >
+                                 <option value="Preventive maintenance">Preventive maintenance</option>
+                                 <option value="Surface preservation">Surface preservation</option>
+                                 <option value="Policy / Strategic planning">Policy / Strategic planning</option>
+                                 <option value="Field verification result">Field verification result</option>
+                                 <option value="Other">Other</option>
+                              </select>
+                           </div>
+                           {overrideForm.manual_reason_code === 'Other' && (
+                              <div>
+                                 <input type="text" placeholder="Detail reason..." value={overrideForm.manual_reason_text || ''} onChange={e => setOverrideForm({...overrideForm, manual_reason_text: e.target.value})} className="w-full border border-slate-200 rounded p-1 text-[10px]"/>
+                              </div>
+                           )}
+                           <div>
+                              <div className="flex justify-between items-end">
+                                <label className="block text-[9px] font-bold text-slate-500 uppercase">ASB Type</label>
+                                <button type="button" onClick={() => setIsGuideOpen(true)} className="text-[9px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
+                                  Panduan Tipe ASB
+                                </button>
+                              </div>
+                              <select 
+                                value={overrideForm.selected_asb_type || 'A'} 
+                                onChange={(e) => setOverrideForm({...overrideForm, selected_asb_type: e.target.value})}
+                                className="w-full mt-0.5 border border-slate-200 rounded p-1"
+                              >
+                                 {['A','B','C','D','E','F','G'].map(t => (
+                                    <option key={t} value={t}>{ASB_TYPE_GUIDE[t]?.label || `Tipe ${t}`}</option>
+                                 ))}
+                              </select>
+                              {overrideForm.selected_asb_type && ASB_TYPE_GUIDE[overrideForm.selected_asb_type] && (
+                                <div className="mt-1.5 p-2 bg-indigo-50/50 border border-indigo-100 rounded text-[10px] text-indigo-900 space-y-1">
+                                  <p><span className="font-semibold">Komposisi:</span> {ASB_TYPE_GUIDE[overrideForm.selected_asb_type].composition}</p>
+                                  <p><span className="font-semibold">Kegunaan:</span> {ASB_TYPE_GUIDE[overrideForm.selected_asb_type].use}</p>
+                                </div>
+                              )}
+                           </div>
+                           <div className="grid grid-cols-2 gap-2">
+                              <div>
+                                 <label className="block text-[9px] font-bold text-slate-500 uppercase">Width Match</label>
+                                 <select 
+                                   value={overrideForm.width_matching || 'auto_round_up'} 
+                                   onChange={(e) => setOverrideForm({...overrideForm, width_matching: e.target.value as any})}
+                                   className="w-full mt-0.5 border border-slate-200 rounded p-1"
+                                 >
+                                    <option value="auto_round_up">Auto</option>
+                                    <option value="manual_variant">Manual</option>
+                                 </select>
+                              </div>
+                              {overrideForm.width_matching === 'manual_variant' && (
+                                 <div>
+                                    <label className="block text-[9px] font-bold text-slate-500 uppercase">Manual Width (m)</label>
+                                    <input 
+                                      type="number" step="0.5" 
+                                      value={overrideForm.manual_width_m || ''} 
+                                      onChange={e => setOverrideForm({...overrideForm, manual_width_m: parseFloat(e.target.value)})}
+                                      className="w-full mt-0.5 border border-slate-200 rounded p-1"
+                                    />
+                                 </div>
+                              )}
+                           </div>
+                           <div className="grid grid-cols-2 gap-2">
+                              <div>
+                                 <label className="block text-[9px] font-bold text-slate-500 uppercase">Costing Mode</label>
+                                 <select 
+                                   value={overrideForm.costing_mode || 'full_segment_mode'} 
+                                   onChange={(e) => setOverrideForm({...overrideForm, costing_mode: e.target.value as any})}
+                                   className="w-full mt-0.5 border border-slate-200 rounded p-1"
+                                 >
+                                    <option value="full_segment_mode">Full</option>
+                                    <option value="effective_length_mode">Effective Length</option>
+                                 </select>
+                              </div>
+                              {overrideForm.costing_mode === 'effective_length_mode' && (
+                                 <div>
+                                    <label className="block text-[9px] font-bold text-slate-500 uppercase">Ratio (0-1)</label>
+                                    <input 
+                                      type="number" step="0.1" min="0" max="1"
+                                      value={overrideForm.effective_length_ratio || ''} 
+                                      onChange={e => setOverrideForm({...overrideForm, effective_length_ratio: parseFloat(e.target.value)})}
+                                      className="w-full mt-0.5 border border-slate-200 rounded p-1"
+                                    />
+                                 </div>
+                              )}
+                           </div>
+                           <div className="flex gap-2 mt-3 pt-2 border-t border-slate-100">
+                              <button onClick={handleSaveOverride} className="flex-1 bg-indigo-600 text-white text-[10px] font-bold py-1.5 rounded hover:bg-indigo-700">Save</button>
+                              <button onClick={() => setIsEditingOverride(false)} className="flex-1 bg-slate-100 text-slate-600 text-[10px] font-bold py-1.5 rounded hover:bg-slate-200">Cancel</button>
+                           </div>
+                        </div>
+                      </div>
                     )}
                   </div>
-
-                  {selectedDd2Feature.asb_budget?.status === 'estimated' ? (
-                     <div className="space-y-2 text-xs">
-                        <div className="bg-white rounded border border-slate-100 p-2 shadow-sm text-center">
-                           <p className="text-[9px] font-bold text-slate-400 uppercase">Estimasi Pagu Indikatif</p>
-                           <p className="text-lg font-black text-indigo-700 mt-0.5">
-                              Rp {selectedDd2Feature.asb_budget.pagu_indikatif_rp?.toLocaleString('id-ID')}
-                           </p>
-                        </div>
-                        <div className="space-y-1 mt-2">
-                           <div className="flex justify-between border-b border-slate-100 pb-1">
-                              <span className="text-slate-500">Paket Anggaran:</span>
-                              <span className="font-semibold text-slate-800">Tipe {selectedDd2Feature.asb_budget.asb_type} ({selectedDd2Feature.asb_budget.structural_profile})</span>
-                           </div>
-                           <div className="flex justify-between border-b border-slate-100 pb-1">
-                              <span className="text-slate-500">Dasar Pemilihan:</span>
-                              <span className="font-medium text-slate-700 truncate max-w-[150px]" title={selectedDd2Feature.asb_budget.rule_label}>
-                                {selectedDd2Feature.asb_budget.rule_id} — {selectedDd2Feature.asb_budget.rule_label}
-                              </span>
-                           </div>
-                           <div className="flex justify-between border-b border-slate-100 pb-1">
-                              <span className="text-slate-500">Volume (m):</span>
-                              <span className="font-mono text-slate-700">{selectedDd2Feature.asb_budget.panjang_m?.toLocaleString()} m</span>
-                           </div>
-                           <div className="flex justify-between border-b border-slate-100 pb-1">
-                              <span className="text-slate-500">Harga ASB / m:</span>
-                              <span className="font-mono text-slate-700">Rp {selectedDd2Feature.asb_budget.harga_satuan_rp?.toLocaleString('id-ID')}</span>
-                           </div>
-                           <div className="flex justify-between border-b border-slate-100 pb-1">
-                              <span className="text-slate-500">Match Params:</span>
-                              <span className="font-mono text-[10px] text-slate-600 bg-slate-100 px-1 rounded">
-                                 {selectedDd2Feature.asb_budget.width_matched_m}m | {selectedDd2Feature.asb_budget.surface_matched}
-                              </span>
-                           </div>
-                        </div>
-                        <p className="text-[9px] text-slate-500 mt-1 leading-tight font-mono">{selectedDd2Feature.asb_budget.asb_uraian} — {selectedDd2Feature.asb_budget.asb_spesifikasi}</p>
-                        
-                        {selectedDd2Feature.asb_budget.flags && selectedDd2Feature.asb_budget.flags.length > 0 && (
-                           <div className="mt-2 flex flex-wrap gap-1">
-                              {selectedDd2Feature.asb_budget.flags.map(f => (
-                                 <span key={f} className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 border border-amber-200 rounded px-1.5 py-0.5 text-[9px] font-bold">
-                                    <AlertTriangle className="h-2.5 w-2.5" />
-                                    {f}
-                                 </span>
-                              ))}
-                           </div>
-                        )}
-                        <p className="text-[8px] text-slate-400 italic leading-tight mt-1 pt-1 border-t border-slate-200">
-                           {selectedDd2Feature.asb_budget.disclaimer}
-                        </p>
-                     </div>
-                  ) : (
-                     <p className="mt-0.5 text-[11px] font-medium text-slate-500">
-                        {selectedDd2Feature.asb_budget?.reason || 'Tidak ada estimasi pagu'}
-                     </p>
-                  )}
-                </div>
                 )}
               </div>
             </div>
@@ -2076,11 +2451,20 @@ export function TreatmentEnginePage() {
                     </td>
                     <td className="px-5 py-3">
                       <div className="flex flex-col gap-0.5">
-                         {road.asb_budget?.status === 'estimated' ? (
+                         {road.final_asb_budget?.status === 'estimated' || road.final_asb_budget?.status === 'manual_estimated' ? (
                             <>
-                               <span className="font-bold text-indigo-700 text-[11px]">Tipe {road.asb_budget.asb_type}</span>
-                               <span className="text-[9px] text-slate-500">{road.asb_budget.rule_id}</span>
+                               <div className="flex items-center gap-1.5">
+                                 <span className="font-bold text-indigo-700 text-[11px]">Tipe {road.final_asb_budget.final_asb_type}</span>
+                                 {road.final_asb_budget.manual_override_used ? (
+                                   <span className="inline-flex items-center rounded bg-amber-100 px-1 py-0.5 text-[8px] font-bold text-amber-700" title={`Manual Override: ${road.final_asb_budget.reason}`}>🛠️ Manual</span>
+                                 ) : (
+                                   <span className="inline-flex items-center rounded bg-emerald-100 px-1 py-0.5 text-[8px] font-bold text-emerald-700" title="Auto Recommendation">Auto</span>
+                                 )}
+                               </div>
+                               <span className="text-[9px] text-slate-500">{road.final_asb_budget.rule_id}</span>
                             </>
+                         ) : road.final_asb_budget?.status === 'no_major_asb_package' ? (
+                            <span className="text-[10px] text-slate-400 italic">Tidak ada paket mayor otomatis</span>
                          ) : (
                             <span className="text-[10px] text-slate-400 italic">No package</span>
                          )}
@@ -2088,7 +2472,7 @@ export function TreatmentEnginePage() {
                     </td>
                     <td className="px-5 py-3 text-right">
                        <span className="font-mono text-xs font-semibold text-slate-700">
-                          {road.asb_budget?.status === 'estimated' ? `Rp ${(road.asb_budget.pagu_indikatif_rp || 0).toLocaleString('id-ID')}` : '—'}
+                          {road.final_asb_budget?.status === 'estimated' || road.final_asb_budget?.status === 'manual_estimated' ? `Rp ${(road.final_asb_budget.final_pagu_indikatif_rp || 0).toLocaleString('id-ID')}` : '—'}
                        </span>
                     </td>
                     <td className="px-5 py-3">
@@ -2210,6 +2594,80 @@ export function TreatmentEnginePage() {
           <code className="font-mono text-[10px]">road_id</code> as cross-scenario identity.
         </div>
       </div>
+      {/* ── ASB Type Guide Modal ─────────────────────────────────────────────── */}
+      {isGuideOpen && (
+        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
+            <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4 bg-slate-50/80">
+              <div>
+                <h3 className="text-sm font-bold text-slate-800">Panduan Tipe ASB</h3>
+                <p className="text-[11px] text-slate-500 mt-0.5">Daftar referensi paket standar dan pendukung berdasarkan ASB BM 2027.</p>
+              </div>
+              <button onClick={() => setIsGuideOpen(false)} className="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="overflow-y-auto p-5">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-2 pb-1 border-b border-indigo-100">Paket Utama (Jalan)</h4>
+                  <div className="space-y-2">
+                    {Object.keys(ASB_TYPE_GUIDE).filter(k => !ASB_TYPE_GUIDE[k].isSupport).map(key => (
+                      <div key={key} className="bg-white border border-slate-100 rounded-lg p-3 shadow-sm hover:border-indigo-100 transition-colors">
+                        <div className="flex items-start gap-3">
+                          <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-black text-xs">
+                            {key}
+                          </span>
+                          <div>
+                            <p className="font-bold text-slate-800 text-xs">{ASB_TYPE_GUIDE[key].label}</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 text-[10px]">
+                              <div>
+                                <p className="font-semibold text-slate-500 uppercase text-[8px] tracking-wider">Komposisi</p>
+                                <p className="text-slate-700 mt-0.5">{ASB_TYPE_GUIDE[key].composition}</p>
+                              </div>
+                              <div>
+                                <p className="font-semibold text-slate-500 uppercase text-[8px] tracking-wider">Kegunaan Indikatif</p>
+                                <p className="text-slate-700 mt-0.5">{ASB_TYPE_GUIDE[key].use}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="pt-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-600 mb-2 pb-1 border-b border-amber-100 flex items-center gap-2">
+                    Paket Pendukung / Manual Only
+                    <span className="bg-amber-100 text-amber-700 text-[8px] px-1.5 py-0.5 rounded-full font-bold">Special</span>
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {Object.keys(ASB_TYPE_GUIDE).filter(k => ASB_TYPE_GUIDE[k].isSupport).map(key => (
+                      <div key={key} className="bg-amber-50/30 border border-amber-100/60 rounded-lg p-2.5">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded bg-amber-100 text-amber-700 font-bold text-[10px]">
+                            {key}
+                          </span>
+                          <p className="font-bold text-slate-800 text-[11px] leading-tight">{ASB_TYPE_GUIDE[key].label.replace(/^[A-Z] — /, '')}</p>
+                        </div>
+                        <p className="text-[9px] text-slate-600 pl-7">{ASB_TYPE_GUIDE[key].use}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-slate-100 bg-slate-50 px-5 py-3 text-center">
+              <p className="text-[10px] text-slate-500 italic">
+                <AlertTriangle className="inline h-3 w-3 mr-1 text-amber-500 relative -top-0.5" />
+                Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
