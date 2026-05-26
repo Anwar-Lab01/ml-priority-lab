@@ -439,6 +439,22 @@ function useTreatmentData() {
                 manualReviewRequired
              }
           });
+
+          // DEV diagnostics global variable
+          (window as any).__ASB_BUDGET_REASONABLENESS_DIAGNOSTICS__ = {
+             rulesLoaded: asbRulesData?.selection_rules?.length || 0,
+             asbItemsLoaded: asbItemsData?.items?.length || 0,
+             totalRoadsEvaluated: totalEvaluated,
+             estimatedRoads,
+             noMajorPackage,
+             missingRules: !asbRulesData,
+             missingItems: !asbItemsData,
+             sampleEstimates: roadsWithRules.slice(0, 10).map((r: any) => ({
+                road_name: r.canonical_road_name,
+                non_mantap_pct: r.non_mantap_pct,
+                asb_budget: r.asb_budget
+             }))
+          };
         }
 
         if (resSeg && resSeg.ok) {
