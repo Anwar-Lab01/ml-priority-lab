@@ -1,0 +1,564 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-28T09:29:14.365Z",
+    "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+    "total_profiles": 11,
+    "total_rules": 35
+  },
+  "profiles": [
+    {
+      "profile_id": "profile_asb_a",
+      "asb_type": "A",
+      "structural_profile": "surface_only",
+      "purpose": "Lapis Permukaan Aspal (Overlay) tanpa perbaikan fondasi struktur jalan",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_a_tack_coat",
+          "description": "Lapis Perekat (Tack Coat)",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Lapis Perekat",
+            "Tack Coat"
+          ],
+          "quantity_basis": "volume_liter",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_a_overlay_wc",
+          "description": "Beton Aspal Lapis Aus (AC-WC) / Lataston Lapis Aus (HRS-WC)",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Lapis Aus",
+            "WC"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_a_overlay_bc",
+          "description": "Beton Aspal Lapis Antara (AC-BC) - optional leveling",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Lapis Antara",
+            "BC"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "optional",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_asb_b",
+      "asb_type": "B",
+      "structural_profile": "base_course",
+      "purpose": "Lapis Pondasi Agregat Kelas A / Kelas B dan Lapis Permukaan Aspal Baru",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_b_prime_coat",
+          "description": "Lapis Resap Pengikat (Prime Coat)",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Lapis Resap Pengikat",
+            "Prime Coat"
+          ],
+          "quantity_basis": "volume_liter",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_b_base_a",
+          "description": "Lapis Pondasi Agregat Kelas A",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Lapis Pondasi Agregat Kelas A",
+            "Agregat Kelas A"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_b_base_b",
+          "description": "Lapis Pondasi Agregat Kelas B - optional correction layer",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Lapis Pondasi Agregat Kelas B",
+            "Agregat Kelas B"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "optional",
+          "confidence": "medium"
+        },
+        {
+          "rule_id": "rule_asb_b_asphalt",
+          "description": "Lapis Permukaan Aspal Utama (AC-WC / AC-BC)",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Laston",
+            "Lapis Aus",
+            "Lapis Antara",
+            "HRS-WC",
+            "AC-WC"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "primary",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_asb_c",
+      "asb_type": "C",
+      "structural_profile": "base_plus_subbase",
+      "purpose": "Rekonstruksi Jalan Lentur dengan Lapisan Fondasi Atas (Agregat A) dan Bawah (Agregat B)",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_c_base_a",
+          "description": "Lapis Pondasi Agregat Kelas A",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Agregat Kelas A"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_c_subbase_b",
+          "description": "Lapis Pondasi Agregat Kelas B / Kelas C",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Agregat Kelas B",
+            "Agregat Kelas C"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_c_asphalt",
+          "description": "Lapis Resap Pengikat dan Campuran Aspal Panas",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Lapis Resap Pengikat",
+            "Laston",
+            "AC-WC",
+            "AC-BC",
+            "AC-Base"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "primary",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_asb_d",
+      "asb_type": "D",
+      "structural_profile": "base_subbase_fill",
+      "purpose": "Pekerjaan Struktur Jalan dengan Timbunan/Galian Tambahan serta Fondasi Lapis Tebal",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_d_fill_biasa",
+          "description": "Timbunan Biasa / Pilihan untuk penyiapan badan jalan",
+          "division_code": 3,
+          "item_family": "earthwork_and_geosynthetic",
+          "keywords_in_uraian": [
+            "Timbunan Biasa",
+            "Timbunan Pilihan"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_d_galian",
+          "description": "Galian Biasa / Galian Perkerasan Berbutir",
+          "division_code": 3,
+          "item_family": "earthwork_and_geosynthetic",
+          "keywords_in_uraian": [
+            "Galian Biasa",
+            "Galian Perkerasan"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_d_base_a",
+          "description": "Lapis Pondasi Agregat Kelas A",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Agregat Kelas A"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_d_subbase_b",
+          "description": "Lapis Pondasi Agregat Kelas B",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Agregat Kelas B"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_d_asphalt",
+          "description": "Lapis Permukaan Struktur Jalan Lentur Lengkap",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Laston",
+            "AC-WC",
+            "AC-BC",
+            "AC-Base"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "primary",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_asb_e",
+      "asb_type": "E",
+      "structural_profile": "surface_with_shoulders",
+      "purpose": "Pemeliharaan/Rehabilitasi Lapis Permukaan Utama beserta Perkerasan Bahu Jalan",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_e_shoulder_s",
+          "description": "Lapis Pondasi Agregat Kelas S untuk Bahu Jalan",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Kelas S",
+            "Bahu Jalan"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_e_asphalt",
+          "description": "Lapis Aus / Lapis Perekat pada perkerasan utama",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "Lapis Perekat",
+            "Lapis Aus",
+            "AC-WC",
+            "HRS-WC"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "primary",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_asb_f",
+      "asb_type": "F",
+      "structural_profile": "full_reconstruction_drainage",
+      "purpose": "Pekerjaan Rekonstruksi Total beserta Drainase Samping Selokan dan Pasangan Batu",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_f_drainage_galian",
+          "description": "Galian Selokan Drainase",
+          "division_code": 2,
+          "item_family": "drainage",
+          "keywords_in_uraian": [
+            "Galian untuk Selokan"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_f_drainage_mortar",
+          "description": "Pasangan Batu dengan Mortar",
+          "division_code": 2,
+          "item_family": "drainage",
+          "keywords_in_uraian": [
+            "Pasangan Batu dengan Mortar",
+            "Pasangan Batu"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_f_structural_galian",
+          "description": "Galian Biasa / Pekerjaan Tanah Rekonstruksi",
+          "division_code": 3,
+          "item_family": "earthwork_and_geosynthetic",
+          "keywords_in_uraian": [
+            "Galian Biasa",
+            "Penyiapan Badan Jalan"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_f_base_a",
+          "description": "Lapis Pondasi Agregat Kelas A",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Agregat Kelas A"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_f_asphalt",
+          "description": "Lapis Aus, Antara, dan Fondasi Aspal",
+          "division_code": 6,
+          "item_family": "asphalt_pavement",
+          "keywords_in_uraian": [
+            "AC-WC",
+            "AC-BC",
+            "AC-Base"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "primary",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_asb_g",
+      "asb_type": "G",
+      "structural_profile": "rigid",
+      "purpose": "Perkerasan Beton Semen (Rigid Pavement) dengan Fondasi Lean Concrete",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_asb_g_rigid_concrete",
+          "description": "Perkerasan Beton Semen fs 4.5 Mpa / fs 4.0 Mpa / fc 30",
+          "division_code": 5,
+          "item_family": "concrete_pavement",
+          "keywords_in_uraian": [
+            "Perkerasan Beton Semen",
+            "Beton Semen"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_g_lean_concrete",
+          "description": "Lapis Pondasi Bawah Beton Kurus (Lean Concrete)",
+          "division_code": 5,
+          "item_family": "granular_pavement",
+          "keywords_in_uraian": [
+            "Beton Kurus",
+            "Lean Concrete"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "primary",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_asb_g_dowel",
+          "description": "Pemasangan Ruji / Dowel",
+          "division_code": 4,
+          "item_family": "preventive_maintenance",
+          "keywords_in_uraian": [
+            "Ruji",
+            "Dowel"
+          ],
+          "quantity_basis": "unit_count",
+          "role": "support",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_support_drainage",
+      "asb_type": "support_drainage",
+      "structural_profile": "drainage",
+      "purpose": "Item pendukung saluran samping, gorong-gorong pipa/box precast",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_support_drainage_pipe",
+          "description": "Gorong-gorong Pipa Beton Bertulang / Tanpa Tulangan",
+          "division_code": 2,
+          "item_family": "drainage",
+          "keywords_in_uraian": [
+            "Gorong-gorong Pipa"
+          ],
+          "quantity_basis": "length_m",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_support_drainage_box",
+          "description": "Gorong-gorong Kotak Beton Bertulang (Box Culvert)",
+          "division_code": 2,
+          "item_family": "drainage",
+          "keywords_in_uraian": [
+            "Gorong-gorong Kotak"
+          ],
+          "quantity_basis": "length_m",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_support_drainage_u",
+          "description": "Saluran berbentuk U (U-Ditch precast/tutup)",
+          "division_code": 2,
+          "item_family": "drainage",
+          "keywords_in_uraian": [
+            "Saluran berbentuk U"
+          ],
+          "quantity_basis": "length_m",
+          "role": "support",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_support_structure",
+      "asb_type": "support_structure",
+      "structural_profile": "structure",
+      "purpose": "Pekerjaan dinding penahan tanah, pasang batu, beton struktur jembatan/dinding penahan",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_support_structure_stone",
+          "description": "Pasangan Batu Struktur",
+          "division_code": 7,
+          "item_family": "structure",
+          "keywords_in_uraian": [
+            "Pasangan Batu"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_support_structure_concrete",
+          "description": "Beton Struktur fc 15 / fc 20 / fc 25 / fc 30",
+          "division_code": 7,
+          "item_family": "structure",
+          "keywords_in_uraian": [
+            "Beton struktur",
+            "Beton strukur"
+          ],
+          "quantity_basis": "volume_m3",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_support_structure_steel",
+          "description": "Baja Tulangan U24 / U32 / U39 / U48",
+          "division_code": 7,
+          "item_family": "structure",
+          "keywords_in_uraian": [
+            "Baja Tulangan"
+          ],
+          "quantity_basis": "tonnage_estimate",
+          "role": "support",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_support_road_furniture",
+      "asb_type": "support_road_furniture",
+      "structural_profile": "road_furniture",
+      "purpose": "Rambu jalan, marka termoplastik, kerb beton, patok pengarah",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_support_furniture_marka",
+          "description": "Marka Jalan Termoplastik",
+          "division_code": 9,
+          "item_family": "road_furniture",
+          "keywords_in_uraian": [
+            "Marka Jalan"
+          ],
+          "quantity_basis": "area_m2",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_support_furniture_rambu",
+          "description": "Rambu Jalan",
+          "division_code": 9,
+          "item_family": "road_furniture",
+          "keywords_in_uraian": [
+            "Rambu Jalan",
+            "Patok Pengarah"
+          ],
+          "quantity_basis": "unit_count",
+          "role": "support",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "profile_id": "profile_support_performance_maintenance",
+      "asb_type": "support_performance_maintenance",
+      "structural_profile": "performance_maintenance",
+      "purpose": "Pekerjaan pemeliharaan kinerja jalan, pengendalian tumbuh-tumbuhan, pembersihan drainase",
+      "disclaimer": "HPS/AHSP item profile is indicative and does not replace DED/RAB final.",
+      "suggested_item_rules": [
+        {
+          "rule_id": "rule_support_perf_drainage",
+          "description": "Pemeliharaan Kinerja Selokan/Saluran Air/Kemiringan",
+          "division_code": 10,
+          "item_family": "performance_maintenance",
+          "keywords_in_uraian": [
+            "Pemeliharaan Kinerja Selokan",
+            "Pemeliharaan Kinerja Saluran"
+          ],
+          "quantity_basis": "length_m",
+          "role": "support",
+          "confidence": "high"
+        },
+        {
+          "rule_id": "rule_support_perf_roadway",
+          "description": "Pemeliharaan Kinerja Perkerasan / Tumbuh-tumbuhan",
+          "division_code": 10,
+          "item_family": "performance_maintenance",
+          "keywords_in_uraian": [
+            "Pemeliharaan Kinerja",
+            "Pengendalian Tumbuh-tumbuhan"
+          ],
+          "quantity_basis": "lump_sum",
+          "role": "support",
+          "confidence": "high"
+        }
+      ]
+    }
+  ]
+}

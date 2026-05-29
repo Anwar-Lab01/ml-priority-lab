@@ -1,0 +1,484 @@
+﻿hps_id,source_row,division_code,division_name,payment_code,uraian,original_satuan,satuan,harga_rp,source_reference,item_family,quantity_basis,is_support_item
+hps_0001,12,1,UMUM,1.20.(1),"Pengeboran, termasuk SPT dan Laporan",M1,M1,735878.68,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,length_m,True
+hps_0002,13,1,UMUM,1.20.(2),Sondir termasuk Laporan,M1,M1,463909.01,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,length_m,True
+hps_0003,16,1,UMUM,SKh-1.1.22.(1a),"Pembuatan dokumen SMKK (RKK, RMPK, RKPPL, RMLLP)",Set,Set,550000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0004,17,1,UMUM,SKh-1.1.22.(1b),Pembuatan Prosedur dan Instruksi Kerja,Set,Set,550000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0005,18,1,UMUM,SKh-1.1.22.(1c),Penyusunan pelaporan penerapan SMKK,Set,Set,550000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0006,21,1,UMUM,SKh-1.1.22.(2a),Induksi Keselamatan Konstruksi (Safety Induction),Orang,Orang,100000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0007,22,1,UMUM,SKh-1.1.22.(2b),Pengarahan Keselamatan Konstruksi (Safety Briefing),Orang,Orang,100000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0008,23,1,UMUM,SKh-1.1.22.(2c),Pertemuan keselamatan (Safety Talk dan/atau Tool Box Meeting),Orang,Orang,100000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0009,24,1,UMUM,SKh-1.1.22.(2g),Spanduk (banner),Buah,Buah,350000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0010,25,1,UMUM,SKh-1.1.22.(2h),Poster/leaflet,Lembar,Lembar,175000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0011,26,1,UMUM,SKh-1.1.22.(2i),Papan Informasi Keselamatan konstruksi,Lembar,Lembar,300000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0012,29,1,UMUM,SKh-1.1.22.(3a5),Pembatas area (Restricted Area),Rol,Rol,137000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0013,30,1,UMUM,SKh-1.1.22.(3b1),Topi pelindung (Safety Helmet),Buah,Buah,54300.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0014,31,1,UMUM,SKh-1.1.22.(3b2),"Pelindung mata (Goggles, Spectacles)",Buah,Buah,49500.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0015,32,1,UMUM,SKh-1.1.22.(3b6),"Pelindung pernafasan dan mulut (masker, masker respirator)",Buah,Buah,9400.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0016,33,1,UMUM,SKh-1.1.22.(3b7),Sarung tangan kerja (safety gloves),Pasang,Pasang,3400.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0017,34,1,UMUM,SKh-1.1.22.(3b8),"Sepatu keselamatan (Safety Shoes, rubber safety shoes and toe cap)",Pasang,Pasang,135400.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0018,35,1,UMUM,SKh-1.1.22.(3b11),Rompi keselamatan (Safety Vest),Buah,Buah,39000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0019,41,1,UMUM,SKh-1.1.22.(5b),Ahli K3 konstruksi/ahli keselamatan konstruksi,Orang,Orang,20241026.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0020,42,1,UMUM,SKh-1.1.22.(5c),"Petugas Keselamatan Konstruksi, Petugas K3 Konstruksi",Orang,Orang,3899999.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0021,44,1,UMUM,SKh-1.1.22.(5h),Petugas Pengatur Lalu Lintas,Orang,Orang,3899999.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unknown,True
+hps_0022,47,1,UMUM,SKh-1.1.22.(6a),Peralatan P3K,Set,Set,891000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0023,48,1,UMUM,SKh-1.1.22.(6b),Ruang P3K,Set,Set,3000000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0024,51,1,UMUM,SKh-1.1.22.(7a),Rambu petunjuk,Buah,Buah,375000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0025,52,1,UMUM,SKh-1.1.22.(7b),Rambu larangan,Buah,Buah,375000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0026,53,1,UMUM,SKh-1.1.22.(7c),Rambu peringatan,Buah,Buah,375000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0027,54,1,UMUM,SKh-1.1.22.(7d),Rambu kewajiban,Buah,Buah,375000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0028,55,1,UMUM,SKh-1.1.22.(7e),Rambu informasi,Buah,Buah,375000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0029,56,1,UMUM,SKh-1.1.22.(7f),Rambu pekerjaan sementara,Buah,Buah,375000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0030,57,1,UMUM,SKh-1.1.22.(7h),Kerucut lalu lintas (traffic cone),Buah,Buah,158700.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0031,60,1,UMUM,SKh-1.1.22.(9a1),Alat Pemadam Api Ringan (APAR),Buah,Buah,640000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0032,61,1,UMUM,SKh-1.1.22.(9a4),Bendera K3,Buah,Buah,80500.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0033,62,1,UMUM,SKh-1.1.22.(9a5),Pembuatan Kartu Identitas Pekerja (KIP),Buah,Buah,50000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0034,63,1,UMUM,SKh-1.1.22.(9b),Pengujian Baku Mutu Air Lengkap,Set,Set,848000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0035,64,1,UMUM,SKh-1.1.22.(9c),Pengujian Baku Mutu Udara Ambien Lengkap,Set,Set,1880000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0036,65,1,UMUM,SKh-1.1.22.(9d1),Pengujian Vibrasi Lingkungan untuk Kenyamanan dan Kesehatan,Buah,Buah,115000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0037,66,1,UMUM,SKh-1.1.22.(9d2),Pengujian tingkat getaran kendaraan bermotor,Buah,Buah,115000.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,general_and_smkk,unit_count,True
+hps_0038,73,2,DRAINASE,2.1.(1),Galian untuk Selokan Drainase dan Saluran Air,M3,M3,94958.29,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,volume_m3,True
+hps_0039,74,2,DRAINASE,2.2.(1),Pasangan Batu dengan Mortar,M3,M3,1535683.76,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,volume_m3,True
+hps_0040,75,2,DRAINASE,2.3.(1),Gorong-gorong Pipa Beton Tanpa Tulangan diameter dalam 20 cm,M1,M1,189065.22,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0041,76,2,DRAINASE,2.3.(2),Gorong-gorong Pipa Beton Tanpa Tulangan diameter dalam 25 cm,M1,M1,223875.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0042,77,2,DRAINASE,2.3.(3),Gorong-gorong Pipa Beton Tanpa Tulangan diameter dalam 30 cm,M1,M1,290334.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0043,78,2,DRAINASE,2.3.(4),"Gorong-gorong Pipa Beton Bertulang, diameter dalam 40 cm",M1,M1,671562.52,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0044,79,2,DRAINASE,2.3.(5),"Gorong-gorong Pipa Beton Bertulang, diameter dalam 60 cm",M1,M1,985419.79,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0045,80,2,DRAINASE,2.3.(6),"Gorong-gorong Pipa Beton Bertulang, diameter dalam 80 cm",M1,M1,1868594.61,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0046,81,2,DRAINASE,2.3.(7),"Gorong-gorong Pipa Beton Bertulang, diameter dalam 100 cm",M1,M1,2877965.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0047,82,2,DRAINASE,2.3.(8),"Gorong-gorong Pipa Beton Bertulang, diameter dalam 120 cm",M1,M1,3720540.41,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0048,83,2,DRAINASE,2.3.(9),"Gorong-gorong Pipa Beton Bertulang, diameter dalam 150 cm",M1,M1,4303607.29,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0049,84,2,DRAINASE,2.3.(10),Gorong-gorong Pipa Baja Bergelombang,Ton,Ton,20579043.61,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,mass_ton,True
+hps_0050,85,2,DRAINASE,2.3.(11),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 40 cm x 40 cm",M1,M1,1602159.88,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0051,86,2,DRAINASE,2.3.(12),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 50 cm x 50 cm",M1,M1,1898612.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0052,87,2,DRAINASE,2.3.(12).v2,"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 50 cm x 50 cm (Variasi 2)",M1,M1,3063384.94,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0053,88,2,DRAINASE,2.3.(13),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 60 cm x 60 cm",M1,M1,1959879.32,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0054,89,2,DRAINASE,2.3.(13) v2,"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 60 cm x 60 cm dengan Precast dan Lean Concrete",M1,M1,2071893.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0055,90,2,DRAINASE,2.3.(14),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 80 cm x 80 cm",M1,M1,2512164.32,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0056,91,2,DRAINASE,2.3.(14) v2,"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 80 cm x 80 cm dengan Precast dan Lean Concrete",M1,M1,3120717.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0057,92,2,DRAINASE,2.3.(15),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 100 cm x 100 cm",M1,M1,3569291.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0058,93,2,DRAINASE,2.3.(15) v2,"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 100 cm x 100 cm (Variasi 2)",M1,M1,4778774.56,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0059,94,2,DRAINASE,2.3.(16),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 120 cm x 120 cm",M1,M1,4208723.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0060,95,2,DRAINASE,2.3.(17),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 140 cm x 140 cm",M1,M1,5827769.3,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0061,96,2,DRAINASE,2.3.(18),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 150 cm x 150 cm",M1,M1,6069296.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0062,97,2,DRAINASE,2.3.(18) v2,"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 150 cm x 150 cm dengan Precast dan Lean Concrete",M1,M1,8222243.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0063,98,2,DRAINASE,2.3.(19),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 160 cm x 160 cm",M1,M1,7369290.36,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0064,99,2,DRAINASE,2.3.(20),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 180 cm x 180 cm",M1,M1,8332314.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0065,100,2,DRAINASE,2.3.(21),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 200 cm x 200 cm",M1,M1,9234568.77,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0066,101,2,DRAINASE,2.3.(21) v2,"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 200 cm x 200 cm dengan Precast dan Lean Concrete",M1,M1,17411290.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0067,102,2,DRAINASE,SKh-1.2.3.(21b),"Gorong-gorong Kotak Beton Bertulang, ukuran dalam 300 cm x300 cm",M1,M1,42606516.44,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0068,103,2,DRAINASE,2.3.(22),Saluran berbentuk U Tipe DS 1,M1,M1,832125.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0069,104,2,DRAINASE,2.3.(22) v2,Saluran berbentuk U Tipe DS 1 dengan Precast,M1,M1,910702.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0070,105,2,DRAINASE,2.3.(23),Saluran berbentuk U Tipe DS 1a (dengan tutup),M1,M1,1147780.1,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0071,106,2,DRAINASE,2.3.(24),Saluran berbentuk U Tipe DS 2,M1,M1,968687.7,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0072,107,2,DRAINASE,2.3.(24) v2,Saluran berbentuk U Tipe DS 2 dengan Precast,M1,M1,1061444.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0073,108,2,DRAINASE,2.3.(25),Saluran berbentuk U Tipe DS 2a (dengan tutup),M1,M1,1321964.94,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0074,109,2,DRAINASE,2.3.(26),Saluran berbentuk U Tipe DS 3,M1,M1,1021453.24,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0075,110,2,DRAINASE,2.3.(26) v2,Saluran berbentuk U Tipe DS 3 dengan Precast,M1,M1,2410837.15,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0076,111,2,DRAINASE,2.3.(27),Saluran berbentuk U Tipe DS 3a (dengan tutup),M1,M1,1416390.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0077,112,2,DRAINASE,2.3.(28),Saluran berbentuk U Tipe DS 4,M1,M1,1127548.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0078,113,2,DRAINASE,2.3.(28) v2,Saluran berbentuk U Tipe DS 4 dengan Precast,M1,M1,1741261.27,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0079,114,2,DRAINASE,2.3.(29),Saluran berbentuk U Tipe DS 4a (dengan tutup),M1,M1,1609984.72,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0080,115,2,DRAINASE,2.3.(30),Saluran berbentuk U Tipe DS 5,M1,M1,1233643.28,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0081,116,2,DRAINASE,2.3.(30) v2,Saluran berbentuk U Tipe DS 5 dengan Precast,M1,M1,2282045.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0082,117,2,DRAINASE,2.3.(31),Saluran berbentuk U Tipe DS 5a (dengan tutup),M1,M1,1813110.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0083,118,2,DRAINASE,2.3.(31) v2,Saluran berbentuk U Tipe DS 5a (dengan tutup) Precast,M1,M1,3145219.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0084,119,2,DRAINASE,2.3.(32),Saluran berbentuk U Tipe DS 6,M1,M1,1923043.94,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0085,120,2,DRAINASE,2.3.(33),Saluran berbentuk U Tipe DS 6a (dengan tutup),M1,M1,2588833.72,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0086,121,2,DRAINASE,2.3.(34),Pasangan Batu tanpa Adukan (Aanstamping),M3,M3,2894365.93,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,volume_m3,True
+hps_0087,122,2,DRAINASE,2.4.(1),Bahan Drainase Porous atau Penyaring (Filter),M3,M3,724351.24,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,volume_m3,True
+hps_0088,123,2,DRAINASE,2.4.(2),"Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 4 inch",M1,M1,164986.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0089,124,2,DRAINASE,2.4.(3),"Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 5 inch",M1,M1,158075.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0090,125,2,DRAINASE,2.4.(4),"Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 6 inch",M1,M1,196784.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0091,126,2,DRAINASE,2.4.(5),"Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 8 inch",M1,M1,234906.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,drainage,length_m,True
+hps_0092,133,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(1),Galian Biasa,M3,M3,66704.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0093,134,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(2),Galian Batu Lunak,M3,M3,44597.32,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0094,135,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(3),Galian Batu,M3,M3,252146.76,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0095,136,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(4),Galian Struktur dengan kedalaman 0 - 2 meter,M3,M3,727897.54,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0096,137,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(5),Galian Struktur dengan kedalaman 2 - 4 meter,M3,M3,663507.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0097,138,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(6),Galian Struktur dengan kedalaman 4 - 6 meter,M3,M3,604180.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0098,139,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(7),Galian Perkerasan Beraspal dengan Cold Milling Machine,M3,M3,634306.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0099,140,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(8),Galian Perkerasan Beraspal tanpa Cold Milling Machine,M3,M3,560203.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0100,141,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(8).(v2),Galian Perkerasan Aspal tanpa Cold Milling Machine (Variasi 2),M3,M3,399878.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0101,142,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(9),Galian Perkerasan berbutir,M3,M3,57739.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0102,143,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.1.(10).,Galian Perkerasan Beton,M3,M3,626741.02,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0103,144,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(1a),Timbunan Biasa dari sumber galian,M3,M3,372899.99,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0104,145,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(1b),Timbunan Biasa dari hasil galian,M3,M3,121338.31,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0105,146,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(2a),Timbunan Pilihan dari sumber galian,M3,M3,606597.02,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0106,147,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(2b),Timbunan Pilihan dari galian,M3,M3,130739.07,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0107,148,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(3a),Timbunan Pilihan (diukur diatas bak truk),M3,M3,585557.88,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0108,149,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(3b),Timbunan Pilihan (diukur dengan rod & plate),M3,M3,869790.42,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0109,150,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.2.(4),Penimbunan Kembali Berbutir (Granular Backfill),M3,M3,637730.74,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,volume_m3,True
+hps_0110,151,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.3.(1),Penyiapan Badan Jalan,M2,M2,3682.92,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0111,152,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.4.(1),Pembersihan dan Pengupasan Lahan,M2,M2,11908.68,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0112,153,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.4.(2),Pemotongan Pohon Pilihan diameter 15 – 30 cm,buah,Buah,142308.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,unit_count,True
+hps_0113,154,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.4.(3),Pemotongan Pohon Pilihan diameter > 30 – 50 cm,buah,Buah,191255.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,unit_count,True
+hps_0114,155,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.4.(4),Pemotongan Pohon Pilihan diameter > 50 – 75 cm,buah,Buah,285404.87,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,unit_count,True
+hps_0115,156,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.4.(5),Pemotongan Pohon Pilihan diameter > 75 cm,buah,Buah,460637.05,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,unit_count,True
+hps_0116,157,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.5.(1),Geotekstil Filter untuk Drainage Bawah Permukaan (Kelas 2),M2,M2,102889.87,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0117,158,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.5.(2a),Geotekstil Separator Kelas 1,M2,M2,29934.58,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0118,159,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.5.(2b),Geotekstil Separator Kelas 2,M2,M2,29934.58,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0119,160,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.5.(2c),Geotekstil Separator Kelas 3,M2,M2,29934.58,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0120,161,3,PEKERJAAN TANAH DAN GEOSINTETIK,3.5.(3),Geotekstil Stabilisator (Kelas 1),M2,M2,29043.63,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0121,162,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.8.(1),Geomembran Jenis HDPE halus,M2,M2,130699.18,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0122,163,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.11.(2),Geogrid Uniaxial Tipe 2,M2,M2,25462.77,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0123,164,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.11.(6),Geogrid Biaxial Tipe 1,M2,M2,22897.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0124,165,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.17.(1.a),Selimut Pengendali Erosi Tipe I,M2,M2,453077.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0125,166,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.17.(1.b),Selimut Pengendali Erosi Tipe II,M2,M2,487577.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0126,167,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.17.(2.b),Penanaman Biji Vegetasi dengen Teknik Taplok,M2,M2,52731.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0127,168,3,PEKERJAAN TANAH DAN GEOSINTETIK,SKh.1.3.23.(1),Geocell,M2,M2,431723.77,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,earthwork_and_geosynthetic,area_m2,True
+hps_0128,175,4,PEKERJAAN PREVENTIF,4.1.(1),Pengabutan (Fog Seal) dengan Aspal Emulsi yang Mengikat Lambat (CSS-1h atau SS-1h),Liter,Liter,37266.05,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_liter,False
+hps_0129,176,4,PEKERJAAN PREVENTIF,4.1.(2),Pengabutan (Fog Seal) dengan Aspal Emulsi yang Mengikat Lebih Cepat (CQS-1h atau QS-1h),Liter,Liter,37266.05,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_liter,False
+hps_0130,177,4,PEKERJAAN PREVENTIF,4.1.(3),Pengabutan (Fog Seal) dengan Aspal Emulsi Modifikasi Polymer yang Mengikat Lebih Cepat (PMCQS-1h atau PMQS-1h),Liter,Liter,23906.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_liter,False
+hps_0131,178,4,PEKERJAAN PREVENTIF,4.2.(1),Laburan Aspal (Buras),M2,M2,23750.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0132,179,4,PEKERJAAN PREVENTIF,4.4.(1),"Penghamparan lapis penutup bubur aspal emulsi, tipe 1, CSS-1h SS-1h",M2,M2,37647.06,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0133,180,4,PEKERJAAN PREVENTIF,4.4.(2),"Penghamparan lapis penutup bubur aspal emulsi, tipe 1, CQS-1h QS-1h",M2,M2,38065.57,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0134,181,4,PEKERJAAN PREVENTIF,4.4.(3),"Penghamparan lapis penutup bubur aspal emulsi, tipe 2, CSS-1h SS-1h",M2,M2,43628.21,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0135,182,4,PEKERJAAN PREVENTIF,4.4.(4),"Penghamparan lapis penutup bubur aspal emulsi, tipe 2, CQS-1h QS-1h",M2,M2,43170.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0136,183,4,PEKERJAAN PREVENTIF,4.4.(5),"Penghamparan lapis penutup bubur aspal emulsi, tipe 3, CSS-1h SS-1h",M2,M2,38879.74,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0137,184,4,PEKERJAAN PREVENTIF,4.4.(6),"Penghamparan lapis penutup bubur aspal emulsi, tipe 3, CQS-1h QS-1h",M2,M2,39660.01,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0138,185,4,PEKERJAAN PREVENTIF,4.5.(1),Lapis Permukaan Mikro dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 1,M2,M2,6433.96,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0139,186,4,PEKERJAAN PREVENTIF,4.5.(2),Lapis Permukaan Mikro Perata dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 1,Ton,Ton,1166180.04,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0140,187,4,PEKERJAAN PREVENTIF,4.5.(3),Lapis Permukaan Mikro dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 2,M2,M2,7289.07,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,area_m2,False
+hps_0141,188,4,PEKERJAAN PREVENTIF,4.5.(4),Lapis Permukaan Mikro Perata dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 2,Ton,Ton,1225405.04,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0142,189,4,PEKERJAAN PREVENTIF,4.6.(1),Latasir Kelas A (SS-A),Ton,Ton,2935032.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0143,190,4,PEKERJAAN PREVENTIF,4.6.(2),Latasir Kelas B (SS-B),Ton,Ton,3287946.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0144,193,4,PEKERJAAN PREVENTIF,4.7.(1),Lapis Tipis Beton Aspal - A (LTBA-A),Ton,Ton,2442758.72,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0145,194,4,PEKERJAAN PREVENTIF,4.7.(2),Lapis Tipis Beton Aspal - B Halus (LTBA-B Halus),Ton,Ton,2217011.71,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0146,195,4,PEKERJAAN PREVENTIF,4.7.(3),Lapis Tipis Beton Aspal - B Halus (LTBA-B Kasar),Ton,Ton,1992786.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0147,196,4,PEKERJAAN PREVENTIF,4.7.(4),Lapis Tipis Beton Aspal - B Halus Modifikasi Kasar (LTBA-B Mod Kasar),Ton,Ton,2046899.75,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0148,197,4,PEKERJAAN PREVENTIF,4.7.(5),Stone Matrix Asphalt Tipis (SMA Tipis),Ton,Ton,2260806.1,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0149,198,4,PEKERJAAN PREVENTIF,4.7.(6),Stone Matrix Asphalt Modifikasi Tipis (SMA Mod Tipis),Ton,Ton,2955672.77,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_ton,False
+hps_0150,199,4,PEKERJAAN PREVENTIF,4.8.(1),Tambalan Dangkal dengan Beton Semen Cepat Mengeras untuk Pembbukaan Lalu Lintas Umur Beton < 24 jam,M3,M3,8397185.76,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0151,200,4,PEKERJAAN PREVENTIF,4.8.(2),Tambalan Dangkal dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 1 hari dan kurang dari 3 hari,M3,M3,3993727.81,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0152,201,4,PEKERJAAN PREVENTIF,4.8.(3),Tambahan Dangkal dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 3 hari dan kurang dari 7 hari,M3,M3,3697602.81,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0153,202,4,PEKERJAAN PREVENTIF,4.9.(1),Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton < 24 jam,M3,M3,9854460.96,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0154,203,4,PEKERJAAN PREVENTIF,4.9.(2),Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 1 hari dan kurang dari 3 hari,M3,M3,5710964.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0155,204,4,PEKERJAAN PREVENTIF,4.9.(3),Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 3 hari dan kurang dari 7 hari,M3,M3,5058209.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0156,205,4,PEKERJAAN PREVENTIF,4.9.(3) v.2,Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 3 hari dan kurang dari 7 hari (Variasi 2),M3,M3,2939399.32,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,volume_m3,False
+hps_0157,206,4,PEKERJAAN PREVENTIF,4.9.(4),Pemasangan Ruji (Dowel),Buah,Buah,374225.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,unit_count,False
+hps_0158,207,4,PEKERJAAN PREVENTIF,4.9.(5),Pemasangan Sealant,M1,M1,1182.7,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,length_m,False
+hps_0159,208,4,PEKERJAAN PREVENTIF,4.10.(1),Penambahan dan/atau Penggantian Ruji (Dowel) pada Perkerasan Beton Semen dengan Epoksi,Buah,Buah,484241.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,unit_count,False
+hps_0160,209,4,PEKERJAAN PREVENTIF,4.11.(1),Penjahitan Melintang Tipe 1 (tabel pelat beton = 150 - 175 mm),Buah,Buah,32996.2,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,unit_count,False
+hps_0161,210,4,PEKERJAAN PREVENTIF,4.12.(1),Penutupan Sambungan Melintang (Termoplastik),M1,M1,121281.02,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,length_m,False
+hps_0162,211,4,PEKERJAAN PREVENTIF,4.12.(2),Penutupan Sambungan Melintang (Termoseting),M1,M1,170164.68,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,length_m,False
+hps_0163,212,4,PEKERJAAN PREVENTIF,4.12.(3),Penutupan Sambungan Melintang (Preformed),M1,M1,817869.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,length_m,False
+hps_0164,213,4,PEKERJAAN PREVENTIF,4.12.(7),Penutupan Retak (Termoplastik),M1,M1,108548.19,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,length_m,False
+hps_0165,214,4,PEKERJAAN PREVENTIF,4.13.(1),Pengeboran Lubang,Buah,Buah,6260.58,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,unit_count,False
+hps_0166,215,4,PEKERJAAN PREVENTIF,4.13.(2),Material Injeksi Berbahan Dasar Semen,Kg,Kg,471806.93,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_kg,False
+hps_0167,216,4,PEKERJAAN PREVENTIF,4.13.(3),Material Injeksi Berbahan Dasar Cellular,Kg,Kg,492628.08,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,preventive_maintenance,mass_kg,False
+hps_0168,223,5,PERKERASAN BERBUTIR,,Penyediaan Bahan Olahan Lapis Fondasi Agregat Kelas A,,,549681.64,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,unknown,False
+hps_0169,224,5,PERKERASAN BERBUTIR,5.1.(1),Lapis Pondasi Agregat Kelas A,M3,M3,880275.57,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0170,225,5,PERKERASAN BERBUTIR,5.1.(2),Lapis Pondasi Agregat Kelas B,M3,M3,785952.18,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0171,226,5,PERKERASAN BERBUTIR,5.1.(3a),Lapis Pondasi Agregat Kelas S,M3,M3,790046.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0172,227,5,PERKERASAN BERBUTIR,5.1.(3b),Lapis Pondasi Agregat Kelas C,M3,M3,790943.52,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0173,228,5,PERKERASAN BERBUTIR,5.1.(4),Lapis Drainase,M3,M3,838760.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0174,229,5,PERKERASAN BERBUTIR,"5.2,(1)",Lapis Permukaan Agregat Tanpa Penutup Aspal,M3,M3,725436.75,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0175,230,5,PERKERASAN BERBUTIR,"5.2,(2)",Lapis Pondasi Agregat Tanpa Penutup Aspal,M3,M3,648671.41,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0176,231,5,PERKERASAN BERBUTIR,5.3.(1.a),Perkerasan Beton Semen,M3,M3,2224946.08,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0177,232,5,PERKERASAN BERBUTIR,5.3.(1.a) v.2,Perkerasan Beton Semen (Variasi 2),M3,M3,2839682.25,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0178,233,5,PERKERASAN BERBUTIR,5.3.(1.b),Perkerasan Beton Semen Fast Track 8 Jam,M3,M3,7623463.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0179,234,5,PERKERASAN BERBUTIR,5.3.(1.c),Perkerasan Beton Semen  Fast Track 24 Jam,M3,M3,7150201.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0180,235,5,PERKERASAN BERBUTIR,5.3.(1.d),Perkerasan Beton Semen Untuk Pembukaan Lalu lintas Umur Beton >3hari <7hari,M3,M3,6151853.28,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0181,236,5,PERKERASAN BERBUTIR,5.3.(2.a),Perkerasan Beton Semen dengan Anyaman Tulangan Tunggal,M3,M3,2793751.46,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0182,237,5,PERKERASAN BERBUTIR,5.3.(2.a) v.2,Perkerasan Beton Semen dengan Anyaman Tulangan Tunggal (Variasi 2),M3,M3,2864981.85,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0183,238,5,PERKERASAN BERBUTIR,5.3.(2.b),Perkerasan Beton Semen Fast Track 8 Jam dengan Anyaman Tulangan Tunggal,M3,M3,4419783.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0184,239,5,PERKERASAN BERBUTIR,5.3.(2.c),Perkerasan Beton Semen Fast Track 24 Jam dengan Anyaman Tulangan Tunggal,M3,M3,7598568.31,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0185,240,5,PERKERASAN BERBUTIR,5.3.(3),Lapis Pondasi bawah Beton Kurus,M3,M3,1562691.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0186,241,5,PERKERASAN BERBUTIR,5.3.(3) v.2,Lapis Pondasi bawah Beton Kurus (Variasi 2),M3,M3,2249718.56,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0187,242,5,PERKERASAN BERBUTIR,5.4.(1),Stabilisasi Tanah Dasar dengan Semen,Ton,Ton,385460.3,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,mass_ton,False
+hps_0188,243,5,PERKERASAN BERBUTIR,5.4.(2),Lapis Fondasi Tanah Semen,M3,M3,1034293.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0189,244,5,PERKERASAN BERBUTIR,5.5.(1),Lapis Fondasi Agregat Semen Kelas A (Cement Treated Base = CTB),M3,M3,880873.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0190,245,5,PERKERASAN BERBUTIR,5.5.(2),Lapis Fondasi Agregat Semen Kelas B (Cement Treated Sub-Base = CTSB),M3,M3,821363.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,granular_pavement,volume_m3,False
+hps_0191,246,5,PERKERASAN BERBUTIR,Skh-1.5.24.(1),"Perkerasan Beton Semen fs' 3,5 Mpa",M3,M3,2121513.86,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0192,247,5,PERKERASAN BERBUTIR,Skh-1.5.24.(2),"Perkerasan Beton Semen fs' 3,8 Mpa",M3,M3,2200916.23,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0193,248,5,PERKERASAN BERBUTIR,Skh-1.5.24.(3),"Perkerasan Beton Semen fs' 4,5 Mpa",M3,M3,2214899.16,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,concrete_pavement,volume_m3,False
+hps_0194,255,6,PERKERASAN ASPAL,6.1 (1),Lapis Resap Pengikat - Aspal Cair/Emulsi,Liter,Liter,39379.01,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0195,256,6,PERKERASAN ASPAL,6.1 (2a),Lapis Perekat - Aspal Cair/Emulsi,Liter,Liter,37551.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0196,257,6,PERKERASAN ASPAL,6.1 (2b),Lapis Perekat - Aspal Emulsi Modifikasi Polimer,Liter,Liter,28078.63,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0197,258,6,PERKERASAN ASPAL,6.2 (1),Agregat Penutup BURTU,M2,M2,29765.14,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,area_m2,False
+hps_0198,259,6,PERKERASAN ASPAL,6.2 (2),Agregat Penutup BURDA,M2,M2,13837.51,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,area_m2,False
+hps_0199,260,6,PERKERASAN ASPAL,6.2 (3a),Bahan Aspal Keras untuk Pekerjaan Pelaburan,Liter,Liter,21100.54,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0200,261,6,PERKERASAN ASPAL,6.2 (3b),Bahan Aspal Emulsi Modifikasi untuk Pekerjaan Pelaburan,Liter,Liter,22583.59,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0201,262,6,PERKERASAN ASPAL,6.2 (4a),Aspal Cair untuk Precoated,Liter,Liter,20256.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0202,263,6,PERKERASAN ASPAL,6.2 (4b),Aspal Emulsi untuk Precoated,Liter,Liter,21230.58,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0203,264,6,PERKERASAN ASPAL,6.2 (4c),Aspal Emulsi Modifikasi Polimer untuk Precoated,Liter,Liter,14680.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_liter,False
+hps_0204,265,6,PERKERASAN ASPAL,6.3 (1a),Stone Matrix Asphalt Halus (SMA Halus),Ton,Ton,2240261.18,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0205,266,6,PERKERASAN ASPAL,6.3 (1b),Stone Matrix Asphalt Modifikasi Halus (SMA Mod Halus),Ton,Ton,1932338.29,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0206,267,6,PERKERASAN ASPAL,6.3 (2a),Stone Matrix Asphalt Kasar (SMA Kasar),Ton,Ton,2213626.03,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0207,268,6,PERKERASAN ASPAL,6.3 (2b),Stone Matrix Asphalt Modifikasi Kasar (SMA Mod Kasar),Ton,Ton,1894252.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0208,269,6,PERKERASAN ASPAL,6.3(4a),Lataston Lapis Aus (HRS-WC),Ton,Ton,2381664.28,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0209,270,6,PERKERASAN ASPAL,6.3.(4b),Lataston Lapis Fondasi (HRS-Base),Ton,Ton,2298810.92,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0210,271,6,PERKERASAN ASPAL,6.3(5a),Laston Lapis Aus (AC-WC),Ton,Ton,2171530.28,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0211,272,6,PERKERASAN ASPAL,6.3(5b),Laston Lapis Aus Modifikasi (AC-WC Mod),Ton,Ton,1851260.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0212,273,6,PERKERASAN ASPAL,6.3(6a),Laston Lapis Antara (AC-BC),Ton,Ton,2097668.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0213,274,6,PERKERASAN ASPAL,6.3(6b),Laston Lapis Antara Modifikasi (AC-BC Mod),Ton,Ton,1787508.02,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0214,275,6,PERKERASAN ASPAL,6.3(7a),Laston Lapis Fondasi (AC-Base),Ton,Ton,2032517.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0215,276,6,PERKERASAN ASPAL,6.3(7b),Laston Lapis Fondasi Modifikasi (AC-Base Mod),Ton,Ton,1651465.47,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0216,277,6,PERKERASAN ASPAL,6.3.(8),Bahan anti pengelupasan,Kg,Kg,83634.9,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_kg,False
+hps_0217,278,6,PERKERASAN ASPAL,6.4.(1a),"Laston Hangat Pen.60-70, WMAC Lapis Aus (WMAC-WC) dengan Zeolit",Ton,Ton,2188821.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0218,279,6,PERKERASAN ASPAL,6.4.(1b),"Laston Hangat Pen.60-70, WMAC Lapis Aus (WMAC-WC) dengan Wax",Ton,Ton,2143021.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0219,280,6,PERKERASAN ASPAL,6.4.(2a),"Laston Hangat Pen.60-70, WMAC Lapis Antara (WMAC-BC) dengan Zeolit",Ton,Ton,2076788.65,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0220,281,6,PERKERASAN ASPAL,6.4.(2b),"Laston Hangat Pen.60-70, WMAC Lapis Antara (WMAC-BC) dengan Wax",Ton,Ton,2027175.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0221,282,6,PERKERASAN ASPAL,6.4.(3a),"Laston Hangat Pen.60-70, WMAC Lapis Fondasi (WMAC-Base) dengan Zeolit",Ton,Ton,1912232.75,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0222,283,6,PERKERASAN ASPAL,6.4.(3b),"Laston Hangat Pen.60-70, WMAC Lapis Fondasi (WMAC-Base) dengan Wax",Ton,Ton,1866762.87,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0223,284,6,PERKERASAN ASPAL,6.5.(1a),Laston Lapis Aus Asbuton Pracampur (AC-WC Asb Pracampur),Ton,Ton,1969640.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0224,285,6,PERKERASAN ASPAL,6.5.(1b),Laston Lapis Aus Asbuton Butir (AC-WC Asb butir),Ton,Ton,2115001.93,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0225,286,6,PERKERASAN ASPAL,6.5.(2a),Laston Lapis Antara Asbuton Pracampur (AC-BC Asb Pracampur),Ton,Ton,2075713.22,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0226,287,6,PERKERASAN ASPAL,6.5.(2b),Laston Lapis Antara Asbuton Butir (AC-BC Asb Butir),Ton,Ton,2032830.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0227,288,6,PERKERASAN ASPAL,6.5.(3b),Laston Lapis Fondasi Asbuton Butir (AC-Base Asb Butir),Ton,Ton,1980910.19,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0228,289,6,PERKERASAN ASPAL,6.6.(1),CPHMA Kemasa Kantong,Ton,Ton,1193359.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0229,290,6,PERKERASAN ASPAL,6.7.(1),Lapis Penetrasi Macadam,M3,M3,2887760.99,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_m3,False
+hps_0230,291,6,PERKERASAN ASPAL,6.7.(2),Lapis Penetrasi Macadam Asbuton,M3,M3,2606658.36,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,volume_m3,False
+hps_0231,292,6,PERKERASAN ASPAL,SKh-1.6.25.(1),Campuran Beraspal Panas (Laston) Lapis Aus (AC-WCNR),Ton,Ton,1942139.51,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0232,293,6,PERKERASAN ASPAL,SKh-1.6.29.(1g),Laston Lapis Aus (AC-WC) Asbuton Murni,Ton,Ton,1972707.34,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0233,294,6,PERKERASAN ASPAL,SKh-1.6.29.(1i),Laston Lapis Antara (AC-BC) Asbuton Murni,Ton,Ton,1916420.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0234,295,6,PERKERASAN ASPAL,SKh-1.6.29.(1k),Laston Lapis Fondasi (AC-Base) Asbuton Murni,Ton,Ton,1841117.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,asphalt_pavement,mass_ton,False
+hps_0235,302,7,STRUKTUR,7.1 (1),"Beton struktur, fc’50 MPa",M3,M3,3081533.19,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0236,303,7,STRUKTUR,7.1 (2),"Beton struktur, fc’45 MPa",M3,M3,3026404.1,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0237,304,7,STRUKTUR,7.1 (3),"Beton struktur, fc’40 MPa",M3,M3,23619232.2,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0238,305,7,STRUKTUR,7.1 (4),"Beton struktur, fc’35 MPa",M3,M3,2898360.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0239,306,7,STRUKTUR,7.1 (5a),"Beton struktur, fc’30 MPa",M3,M3,2613592.24,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0240,307,7,STRUKTUR,7.1 (5a) v.2,"Beton struktur, fc’30 Mpa (Variasi 2)",M3,M3,3401198.94,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0241,308,7,STRUKTUR,7.1 (5a) v.3,"Beton struktur, fc’30 Mpa (Variasi 3)",M3,M3,2391451.04,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0242,310,7,STRUKTUR,7.1 (5b),"Beton struktur bervolome besar, fc'30 MPa",M3,M3,2892814.41,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0243,311,7,STRUKTUR,7.1 (5c),"Beton struktur memadat sendiri, fc'30 MPa",M3,M3,2230119.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0244,312,7,STRUKTUR,7.1 (6a),"Beton struktur, fc’25 Mpa",M3,M3,2729241.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0245,313,7,STRUKTUR,7.1 (6b),"Beton struktur bervolume besar, fc’25 Mpa",M3,M3,2836709.45,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0246,314,7,STRUKTUR,7.1 (6c),"Beton struktur memadat sendiri, fc’25 Mpa",M3,M3,2717078.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0247,315,7,STRUKTUR,7.1 (7a),"Beton strukur, fc’20 MPa",M3,M3,2185776.24,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0248,316,7,STRUKTUR,7.1 (7a) v.2,"Beton strukur, fc’20 MPa (Variasi 2)",M3,M3,2228262.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0249,317,7,STRUKTUR,7.1 (7a) v.3,"Beton strukur, fc’20 MPa (Variasi 3)",M3,M3,1588803.37,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0250,318,7,STRUKTUR,7.1 (7b),"Beton strukur bervolume besar, fc’20 MPa",M3,M3,3489806.11,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0251,319,7,STRUKTUR,7.1 (7c),"Beton strukur memadat sendiri, fc’20 MPa",M3,M3,3195442.74,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0252,320,7,STRUKTUR,7.1 (7d),"Beton strukur, fc’20 MPa yang dilaksanakan di air",M3,M3,2845941.79,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0253,321,7,STRUKTUR,7.1 (8),"Beton , fc’15 Mpa",M3,M3,2049894.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0254,322,7,STRUKTUR,7.1 (9),"Beton Siklop, fc’15 Mpa",M3,M3,1401363.92,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0255,323,7,STRUKTUR,7.1 (10),"Beton, fc’10 Mpa",M3,M3,1876839.03,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0256,324,7,STRUKTUR,7.1 (10) v.2,"Beton, fc’10 MPa (Variasi 2)",M3,M3,1529636.3,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0257,325,7,STRUKTUR,7.2 (1a),Penyediaan Unit Pracetak Gelagar Tipe I Bentang 16 meter,Buah,Buah,105656597.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0258,326,7,STRUKTUR,7.2 (1b),Penyediaan Unit Pracetak Gelagar Tipe I Bentang 25 meter,Buah,Buah,184116274.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0259,327,7,STRUKTUR,7.2 (1c).35,Penyediaan Unit Pracetak Gelagar Tipe I Bentang 35 meter,Buah,Buah,315979992.65,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0260,328,7,STRUKTUR,7.2 (1c).40,Penyediaan Unit Pracetak Gelagar Tipe I Bentang 40 meter,Buah,Buah,344906904.21,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0261,329,7,STRUKTUR,7.2 (1c).42,Penyediaan Unit Pracetak Gelagar Tipe I Bentang 42.8 meter,Buah,Buah,400792011.28,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0262,330,7,STRUKTUR,7.2 (1c).45,Penyediaan Unit Pracetak Gelagar Tipe I Bentang 45 meter,Buah,Buah,436846447.24,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0263,331,7,STRUKTUR,7.2 (1c).50,Penyediaan Unit Pracetak Gelagar Tipe I Bentang 50 meter,Buah,Buah,477843617.09,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0264,332,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 16 meter,Buah,Buah,91006398.99,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0265,333,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 25 meter,Buah,Buah,159232204.79,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0266,334,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 35 meter,Buah,Buah,274031422.02,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0267,335,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 40 meter,Buah,Buah,299014202.85,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0268,336,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 42.8 meter,Buah,Buah,347645889.03,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0269,337,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 45 meter,Buah,Buah,378961631.57,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0270,338,7,STRUKTUR,,Pabrikasi Unit Pracetak Gelagar Tipe I bentang 50 meter,Buah,Buah,414611344.49,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0271,339,7,STRUKTUR,7.2 (2a),Pemasangan Unit Pracetak Gelagar Tipe I Bentang 16 meter,Buah,Buah,6514808.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0272,340,7,STRUKTUR,7.2 (2b),Pemasangan Unit Pracetak Gelagar Tipe I Bentang 25 meter,Buah,Buah,15124060.94,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0273,341,7,STRUKTUR,7.2 (2c).35,Pemasangan Unit Pracetak Gelagar Tipe I Bentang 35 meter,Buah,Buah,20695065.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0274,342,7,STRUKTUR,7.2 (2c).42,Pemasangan Unit Pracetak Gelagar Tipe I Bentang 42.8 meter,Buah,Buah,31992947.61,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0275,343,7,STRUKTUR,7.2 (3a),Penyediaan Unit Pracetak Gelagar Tipe U Bentang 16 meter,Buah,Buah,288310918.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0276,344,7,STRUKTUR,7.2 (4a),Pemasangan Unit Pracetak Gelagar Tipe U Bentang 16 meter,Buah,Buah,8873110.47,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0277,345,7,STRUKTUR,7.2.(7),Baja Prategang,Kg,Kg,1068762.79,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0278,346,7,STRUKTUR,7.2.(8),Penyediaan Pelat Berongga (Voided Slab) Pracetak bentang 5 Meter,Buah,Buah,41319611.78,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0279,347,7,STRUKTUR,7.2.(9),Pemasangan Pelat Berongga (Voided Slab) Pracetak bentang 5 Meter,Buah,Buah,5568635.1,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0280,348,7,STRUKTUR,7.2.(10),Beton Pratekan untuk Diafragma fc' 45 MPa termasuk Pekerjaan pasca-tarik (post-tension),M3,M3,2381707.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0281,349,7,STRUKTUR,7.2.(10) v2,Beton Pratekan untuk Diafragma fc' 45 MPa termasuk Pekerjaan pasca-tarik (post-tension) (Varias 2),M3,M3,2547172.44,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0282,350,7,STRUKTUR,7.2.(12a),Penyediaan Panel Full Depth slab,Buah,Buah,2814436.01,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0283,351,7,STRUKTUR,7.2.(12b),Penmasangan Panel Full Depth slab,Buah,Buah,313945.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0284,352,7,STRUKTUR,7.3 (1),Baja Tulangan Polos-BjTP 280,Kg,Kg,18327.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0285,353,7,STRUKTUR,7.3 (2),Baja Tulangan Sirip BjTS 280,Kg,Kg,18453.99,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0286,354,7,STRUKTUR,7.3 (3),Baja Tulangan Sirip BjTS 420A,Kg,Kg,28746.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0287,355,7,STRUKTUR,7.3 (4),Baja Tulangan Sirip BjTS 420B,Kg,Kg,22019.05,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0288,356,7,STRUKTUR,7.3 (5),Baja Tulangan Sirip BjTS 520,Kg,Kg,25249.09,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0289,357,7,STRUKTUR,7.3 (6),Baja Tulangan Sirip BjTS 550,Kg,Kg,26482.15,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0290,358,7,STRUKTUR,7.3 (7),Baja Tulangan Sirip BjTS 700,Kg,Kg,26317.51,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0291,359,7,STRUKTUR,7.3 (8),Anyaman Kawat Yang Dilas (Welded Wire Mesh),Kg,Kg,23045.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0292,360,7,STRUKTUR,7.4 (1a),Penyediaan Baja Struktur Grade 250 (Kuat Leleh 250 MPa),Kg,Kg,29513.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0293,361,7,STRUKTUR,7.4 (1b),Penyediaan Baja Struktur Grade 345 (Kuat Leleh 345 MPa),Kg,Kg,41013.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0294,362,7,STRUKTUR,7.4 (1c),Penyediaan Baja Struktur Grade 485 (Kuat Leleh 485 MPa),Kg,Kg,46763.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0295,363,7,STRUKTUR,7.4 (1d),"Penyediaan Baja Struktur Grade 690 (Kuat Leleh 690 Mpa Untuk Tebal Pelat < 2,5)",Kg,Kg,26063.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0296,364,7,STRUKTUR,7.4 (1e),"Penyediaan Baja Struktur Grade 690 (Kuat Leleh 620 Mpa Untuk Tebal Pelat < 2,5-4,0 inch)",Kg,Kg,22613.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0297,365,7,STRUKTUR,7.4 (2),Pemasangan Baja Struktur,Kg,Kg,3743.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0298,366,7,STRUKTUR,7.4 (2) v2,Pemasangan Baja Struktur (dengan pengelasan),Kg,Kg,4288.02,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0299,367,7,STRUKTUR,7.4 (3),Penyediaan Struktur Jembatan Rangka Baja Standar …… m,Kg,Kg,29513.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0300,368,7,STRUKTUR,7.4 (3).40,Penyediaan Struktur Jembatan Rangka Baja Standar 40 m,Kg,Kg,44126.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0301,369,7,STRUKTUR,7.4 (3).80,Penyediaan Struktur Jembatan Rangka Baja Standar 80 m,Kg,Kg,44126.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0302,370,7,STRUKTUR,7.4 (4),Pemasangan Jembatan Rangka Baja Standar Panjang ….. M,Kg,Kg,3743.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0303,371,7,STRUKTUR,7.4 (4).80,Pemasangan Jembatan Rangka Baja Standar Panjang 80 M,Kg,Kg,12067.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0304,372,7,STRUKTUR,7.4 (5a),Pemasangan Jembatan Rangka Baja yang disediakan Pengguna Jasa,Kg,Kg,3265.52,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0305,373,7,STRUKTUR,7.4 (5b),Pengangkutan Bahan Jembatan yang disediakan Pengguna Jasa,Kg,Kg,655.58,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,mass_kg,True
+hps_0306,374,7,STRUKTUR,7.5.(1),Tiang bor sekan primer diameter 80 cm (fc' > 15 MPa),M1,M1,1768651.95,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0307,375,7,STRUKTUR,7.5.(2),Tiang bor sekan sekunder diameter 80 cm (fc' > 30 MPa),M1,M1,2692182.76,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0308,376,7,STRUKTUR,7.5.(3),Tiang bor sekan primer  diameter 100 cm (fc' > 15MPa),M1,M1,2198739.54,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0309,377,7,STRUKTUR,7.5.(4),Tiang bor sekan sekunder diameter 100 cm (fc' > 30 MPa),M1,M1,3152347.93,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0310,378,7,STRUKTUR,7.5.(5),Tiang bor sekan primer diameter 120 cm (fc' > 15 MPa),M1,M1,2944760.24,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0311,379,7,STRUKTUR,7.5.(6),Tiang bor sekan sekunder diameter 120 cm (fc' > 30 MPa),M1,M1,4303665.26,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0312,380,7,STRUKTUR,7.5.(7),Tiang bor sekan primer diameter 150 cm (fc' > 15 MPa),M1,M1,4298388.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0313,381,7,STRUKTUR,7.5.(8),Tiang bor sekan sekunder diameter 150 cm (fc' > 30 MPa),M1,M1,6403408.09,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0314,382,7,STRUKTUR,7.6 (1),"Fondasi Cerucuk, Penyediaan dan Pemancangan",M1,M1,16583.14,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0315,383,7,STRUKTUR,7.6 (1).v2,"Fondasi Cerucuk, Penyediaan dan Pemancangan (dengan Excavator)",M1,M1,8977.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0316,384,7,STRUKTUR,7.6 (2),"Dinding Turap Kayu Tanpa Pengawetan, Penyediaan dan Pemancangan",M2,M2,198757.78,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0317,385,7,STRUKTUR,7.6.(3),"Dinding Turap Kayu Dengan Pengawetan, Penyediaan dan Pemancangan",M2,M2,263015.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0318,386,7,STRUKTUR,7.6.(4),"Dinding Turap Baja, Penyediaan dan Pemancangan",M2,M2,2965217.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0319,387,7,STRUKTUR,7.6.(5),"Dinding Turap Beton, Penyediaan dan Pemancangan",M2,M2,969416.19,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0320,388,7,STRUKTUR,7.6.(6),Penyediaan Tiang Pancang Kayu Tanpa Pengawetan Ukuran…… mm,M1,M1,140892.07,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0321,389,7,STRUKTUR,7.6.(7),Penyediaan Tiang Pancang Kayu Dengan Pengawetan Ukuran…… mm,M1,M1,144150.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0322,390,7,STRUKTUR,7.6 (8a),Penyediaan Tiang Pancang Baja Diameter 500 mm tebal 10 mm,M1,M1,2751064.83,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0323,391,7,STRUKTUR,7.6 (8c).800.t16,Penyediaan Tiang Pancang Baja Diameter 800 mm tebal 16 mm,M1,M1,5561290.79,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0324,392,7,STRUKTUR,7.6 (8a).1000.t12,Penyediaan Tiang Pancang Baja Diameter 1000 mm tebal 12 mm,M1,M1,6957102.14,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0325,393,7,STRUKTUR,7.6.(9a),Penyediaan Tiang Pancang Baja H Beam Ukuran 300 mm x 300 mm x 10 mm x 15 mm,M1,M1,1604685.64,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0326,394,7,STRUKTUR,7.6.(10a),Penyediaan Tiang Pancang Beton Bertulang Pracetak ukuran 350 mm x 350 mm,M1,M1,3576896.84,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0327,395,7,STRUKTUR,7.6.(10b).250,Penyediaan Tiang Pancang Beton Bertulang Pracetak ukuran 250 mm x 250 mm,M1,M1,1808962.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0328,396,7,STRUKTUR,7.6.(11a),Penyediaan Tiang Pancang Beton Pratekan Pracetak ukuran 400 mm x 400  mm,M1,M1,1049195.9,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0329,397,7,STRUKTUR,7.6.(12a),Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 450 mm,M1,M1,1050694.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0330,398,7,STRUKTUR,7.6.(12b).400,Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 400 mm,M1,M1,863506.46,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0331,399,7,STRUKTUR,7.6.(12b).500,Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 500 mm,M1,M1,1260967.48,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0332,400,7,STRUKTUR,7.6.(12b).600,Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 600 mm,M1,M1,1751665.63,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0333,401,7,STRUKTUR,7.6.(13),Pemancangan Tiang Pancang Kayu Ukuran ….. Mm,M1,M1,382273.48,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0334,402,7,STRUKTUR,7.6.(14a),Pemancangan Tiang Pancang Baja Diameter 500 mm,M1,M1,1057468.21,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0335,403,7,STRUKTUR,7.6.(14b).800,Pemancangan Tiang Pancang Baja Diameter 800 mm,M1,M1,1568853.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0336,404,7,STRUKTUR,7.6.(14b).1000,Pemancangan Tiang Pancang Baja Diameter 1000 mm,M1,M1,2000646.78,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0337,405,7,STRUKTUR,7.6.(15a),Pemancangan Tiang Pancang Baja H beam Ukuran 300 mm x 300 mm x 10 mm x 15 mm,M1,M1,435707.9,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0338,406,7,STRUKTUR,7.6.(16a),Pemancangan Tiang Pancang Beton Bertulang Pracetak ukuran 350 mm x 350 mm,M1,M1,3202127.9,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0339,407,7,STRUKTUR,7.6.(16b).250,Pemancangan Tiang Pancang Beton Bertulang Pracetak ukuran 250 mm x 250 mm,M1,M1,247350.25,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0340,408,7,STRUKTUR,7.6.(17a),Pemancangan Tiang Pancang Beton Pratekan Pracetak ukuran 400 mm x 400 mm,M1,M1,275611.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0341,409,7,STRUKTUR,7.6.(18a),Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 450 mm,M1,M1,1312900.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0342,410,7,STRUKTUR,7.6.(18b).400,Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 400 mm,M1,M1,1088732.32,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0343,411,7,STRUKTUR,7.6.(18b).500,Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 500 mm,M1,M1,1592694.68,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0344,412,7,STRUKTUR,7.6.(18b).600,Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 600 mm,M1,M1,2345671.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0345,413,7,STRUKTUR,7.6.(19a),"Tiang Bor Beton, diameter 800 mm",M1,M1,4663153.39,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0346,414,7,STRUKTUR,7.6.(19a).v2,"Tiang Bor Beton, diameter 800 mm (Variasi 2)",M1,M1,3885411.55,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0347,415,7,STRUKTUR,7.6.(19b).400,"Tiang Bor Beton, diameter 400 mm",M1,M1,4212183.23,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0348,416,7,STRUKTUR,7.6.(19b).500,"Tiang Bor Beton, diameter 500 mm",M1,M1,2011043.37,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0349,417,7,STRUKTUR,7.6.(19b).600,"Tiang Bor Beton, diameter 600 mm",M1,M1,3329588.83,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0350,418,7,STRUKTUR,7.6.(19b).1000,"Tiang Bor Beton, diameter 1000 mm",M1,M1,5560013.42,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0351,421,7,STRUKTUR,7.6 (27a).600,Pengujian Crosshole Sonic Logging (CSL) pada Tiang Bor Beton diameter 600 mm,Buah,Buah,14215082.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0352,422,7,STRUKTUR,7.6 (27a).800,Pengujian Crosshole Sonic Logging (CSL) pada Tiang Bor Beton diameter 800 mm,Buah,Buah,15077582.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0353,423,7,STRUKTUR,7.6 (27a).1200,Pengujian Crosshole Sonic Logging (CSL) pada Tiang Bor Beton diameter 1200 mm,Buah,Buah,17722582.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0354,424,7,STRUKTUR,7.6 (27b).500,Pengujian Pembebanan Dinamis Jenis PDLT (Pile Dynamic Load Testing) pada Tiang ukuran / diameter 500 mm,Buah,Buah,21313498.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0355,425,7,STRUKTUR,7.6 (27b).800,Pengujian Pembebanan Dinamis Jenis PDLT (Pile Dynamic Load Testing) pada Tiang ukuran / diameter 800 mm,Buah,Buah,29675510.03,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0356,426,7,STRUKTUR,7.6 (27b).1200,Pengujian Pembebanan Dinamis Jenis PDLT (Pile Dynamic Load Testing) pada Tiang ukuran / diameter 1200 mm,Buah,Buah,37553010.03,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0357,427,7,STRUKTUR,7.6 (28),Pengujian Keutuhan Tiang dengan Pile Integrated Test (PIT),Buah,Buah,13920510.03,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0358,428,7,STRUKTUR,7.7.(1),"Dinding Sumuran Silinder terpasang, Diameter …………….",M1,M1,11790431.12,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0359,429,7,STRUKTUR,7.9.(1),Pasangan Batu,M3,M3,1437705.84,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0360,430,7,STRUKTUR,7.9.(1).v2,Pasangan Batu (Variasi 2),M3,M3,1441078.29,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0361,431,7,STRUKTUR,7.10.(1),Pasangan Batu Kosong yang Diisi Adukan,M3,M3,1021449.86,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0362,432,7,STRUKTUR,7.10.(2),Pasangan Batu Kosong,M3,M3,905411.62,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0363,433,7,STRUKTUR,7.10.(3a),Bronjong dengan kawat yang dilapisi Galvanis,M3,M3,1378516.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0364,434,7,STRUKTUR,7.10.(3b),Bronjong dengan kawat yang dilapisi PVC,M3,M3,1397554.11,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0365,435,7,STRUKTUR,7.10.(4),Tambahan Biaya  untuk Anyaman Penulangan Tanah dengan Kawat yang Dilapisi PVC,M2,M2,330809.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0366,436,7,STRUKTUR,7.11.(1a),"Sambungan Siar Muai Tipe Asphaltic Plug, Fixed",M1,M1,1587652.04,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0367,437,7,STRUKTUR,7.11.(1b),"Sabungan Siar Muai Tipe Asphaltic Plug, Movable",M1,M1,5213772.75,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0368,438,7,STRUKTUR,7.11.(2),Sambungan Siar Muai Tipe Silicone Seal,M1,M1,1267827.88,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0369,439,7,STRUKTUR,7.11.(3),Sambungan Siar Muai Tipe Strip seal,M1,M1,2365727.19,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0370,440,7,STRUKTUR,7.11.(4),Sambungan Siar Muai Tipe Compression Seal,M1,M1,1491295.54,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0371,441,7,STRUKTUR,7.11.(5),Sambungan Siar Muai Expansion Joint Tipe Modular,M1,M1,10100453.77,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0372,442,7,STRUKTUR,7.11.(6),Sambungan Siar Muai Expansion Joint Tipe Finger Plate,M1,M1,4533303.77,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0373,443,7,STRUKTUR,7.11.(7),Sambungan Siar Muai Expansion Tipe Karet dengan Lebar Celah …….. Cm,M3,M3,2015318.84,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0374,444,7,STRUKTUR,7.11.(8),Joint Filler untuk Sambungan Konstruksi,M3,M3,3631284.85,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0375,445,7,STRUKTUR,7.11.(9),Sambungan Siar Muai Tipe Modular,M3,M3,9709349.22,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0376,446,7,STRUKTUR,7.12.(1a),Landasan Logam Tipe Fixed,Buah,Buah,2367167.18,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0377,447,7,STRUKTUR,7.12.(1b),Landasan Logam Tipe Moveable,Buah,Buah,2397654.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0378,448,7,STRUKTUR,7.12.(2).250,Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 250 mm x 250 mm x 40 mm,Buah,Buah,897951.15,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0379,449,7,STRUKTUR,7.12.(2).350,Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 350 mm x 350 mm x 30 mm,Buah,Buah,1012951.15,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0380,450,7,STRUKTUR,7.12.(2).400,Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 400 mm x 400 mm x 80 mm,Buah,Buah,1127951.15,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0381,451,7,STRUKTUR,7.12.(2).450,Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 450 mm x 400 mm x 45 mm,Buah,Buah,1293071.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0382,452,7,STRUKTUR,7.12.(2).600,Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 600 mm x 600 mm x 80 mm,Buah,Buah,1649571.98,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0383,453,7,STRUKTUR,7.12.(3).200,Landasan Elastomerik Karet Sintetis Berlapis Baja Ukuran 200 mm x 300 mm x 40 mm,Buah,Buah,695654.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0384,454,7,STRUKTUR,7.12.(3).450.45,Landasan Elastomerik Karet Sintetis Berlapis Baja Ukuran 450 mm x 400 mm x 45 mm,Buah,Buah,1061354.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0385,455,7,STRUKTUR,7.12.(3).450.73,Landasan Elastomerik Karet Sintetis Berlapis Baja Ukuran 450 mm x 400 mm x 73 mm,Buah,Buah,13068504.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0386,456,7,STRUKTUR,7.12.(4),Landasan karet Strip,M1,M1,337165.62,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0387,457,7,STRUKTUR,7.12.(5),Landasan Tipe Logam Berongga (Pot Bearing),Buah,Buah,21119806.85,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0388,458,7,STRUKTUR,7.12.(6),Landasan Tipe Logam Jenis Spherical,Buah,Buah,22463444.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0389,459,7,STRUKTUR,7.13.(1),Sandaran (Railing),M1,M1,650871.39,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0390,460,7,STRUKTUR,7.14.(1),Papan Nama Jembatan,M1,M1,616019.1,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0391,461,7,STRUKTUR,7.15.(1),Pembongkaran Pasangan Batu,M3,M3,532485.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0392,462,7,STRUKTUR,7.15.(2),Pembongkaran Beton,M3,M3,294530.87,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0393,463,7,STRUKTUR,7.15.(3),Pembongkaran Beton Pratekan,M3,M3,1072179.67,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0394,464,7,STRUKTUR,7.15.(4),Pembongkaran Bangunan Gedung,M2,M2,473386.41,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0395,465,7,STRUKTUR,7.15.(5),Pembongkaran  Rangka Baja,M2,M2,2328541.57,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0396,466,7,STRUKTUR,7.15.(6),Pembongkaran Balok Baja (Steel Stingers),M1,M1,212191.41,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0397,467,7,STRUKTUR,7.15.(7),Pembongkaran Lantai Jembatan Kayu,M2,M2,207523.13,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0398,468,7,STRUKTUR,7.15.(8),Pembongkaran Jembatan Kayu,M2,M2,57536.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,area_m2,True
+hps_0399,469,7,STRUKTUR,7.16.(1),Dreck drain,Buah,Buah,165729.37,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0400,470,7,STRUKTUR,7.16.(2a),Pipa Drainase Baja diameter 150 mm,M1,M1,273295.23,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0401,471,7,STRUKTUR,7.16.(3a),Pipa Drainase PVC diameter 150 mm,M1,M1,100299.17,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0402,472,7,STRUKTUR,7.16.(4),Pipa Penyalur PVC,M1,M1,113735.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0403,473,7,STRUKTUR,SKh-3.7.18 (a),"Beton semprot dengan perkuatan Wiremesh, tebal = 10 cm",Buah Jembatan,Buah Jembatan,1142470.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,unit_count,True
+hps_0404,474,7,STRUKTUR,SKh-2.7.19.(a),Soil Nailing dengan nail bar BJTS 420A (grade 60) Diameter = 32 mm,M1,M1,1528362.48,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0405,475,7,STRUKTUR,SKh-2.7.19.(c),Soil Nailing dengan nail bar grade 150 Diameter = 32 mm,M1,M1,2213303.9,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0406,476,7,STRUKTUR,SKh-2.7.21.(1),Material Ringan Mortar-Busa UCS 800 kPa,M3,M3,1223082.32,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0407,477,7,STRUKTUR,SKh-2.7.21.(2),Material Ringan Mortar-Busa UCS 2000 kPa,M3,M3,1357926.01,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,volume_m3,True
+hps_0408,478,7,STRUKTUR,SKh-1.7.57.(1),Pipa Penyalur HDPE diameter 150 mm,M1,M1,396232.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,structure,length_m,True
+hps_0409,485,8,REHABILITASI JEMBATAN,8.1 (1),Cairan Perekat (Epoksi resin),Kg,Kg,414549.27,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,mass_kg,True
+hps_0410,486,8,REHABILITASI JEMBATAN,8.1 (1).v2,Cairan Perekat (Epoksi resin) (Variasi 2),Kg,Kg,414549.27,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,mass_kg,True
+hps_0411,487,8,REHABILITASI JEMBATAN,8.1 (2),Bahan Penutup (Sealant),Kg,Kg,870164.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,mass_kg,True
+hps_0412,488,8,REHABILITASI JEMBATAN,8.1 (2).v2,Bahan Penutup (Sealant) (Variasi 2),Kg,Kg,870164.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,mass_kg,True
+hps_0413,489,8,REHABILITASI JEMBATAN,8.1 (3a),"Tabung Penyuntik, penyediaan",Buah,Buah,105505.71,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,unit_count,True
+hps_0414,490,8,REHABILITASI JEMBATAN,8.1 (3b),"Tabung Penyuntik, penggunan",Buah,Buah,147216.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,unit_count,True
+hps_0415,491,8,REHABILITASI JEMBATAN,8.2.(1),Penambahan (Patching),M3,M3,24448449.39,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,volume_m3,True
+hps_0416,492,8,REHABILITASI JEMBATAN,8.2.(1).v2,Penambahan (Patching) (Variasi 2),M3,M3,24448449.39,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,volume_m3,True
+hps_0417,493,8,REHABILITASI JEMBATAN,8.2.(2),Perbaikan Dengan Cara Graut,M3,M3,15064722.87,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,volume_m3,True
+hps_0418,494,8,REHABILITASI JEMBATAN,8.3.(1a),"Pengecetan protektif pada elemen struktur beton, tebal 200µm",M2,M2,105261.53,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0419,495,8,REHABILITASI JEMBATAN,8.3.(2a),"Pengecetan dekoratif pada elemen struktur beton, tebal : 100 µm",M2,M2,102979.36,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0420,503,8,REHABILITASI JEMBATAN,8.5.(1a),Penggantian Baut Mutu Tinggi A325 Tipe 1 diameter M25,Buah,Buah,111070.15,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,unit_count,True
+hps_0421,504,8,REHABILITASI JEMBATAN,8.5.(2a),Penggantian Baut Mutu Tinggi A490 Tipe 1 diameter M25,Buah,Buah,115508.65,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,unit_count,True
+hps_0422,505,8,REHABILITASI JEMBATAN,8.5.(3a),Penggantian Baut Biasa Grade A diameter M25,Buah,Buah,95158.65,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,unit_count,True
+hps_0423,506,8,REHABILITASI JEMBATAN,8.5.(4a),Penggantian Baut Biasa Grade B diameter M25,Buah,Buah,91858.65,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,unit_count,True
+hps_0424,514,8,REHABILITASI JEMBATAN,8.7.(1a),Pengecatan struktur baja pada daerah kering tebal 80 mikron,M2,M2,191498.08,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0425,515,8,REHABILITASI JEMBATAN,8.7.(1b),Pengecatan struktur baja pada daerah kering tebal 240 mikron,M2,M2,292192.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0426,516,8,REHABILITASI JEMBATAN,8.7.(2a),Pengecatan struktur baja pada daerah basah/pasang surut 360 mikron,M2,M2,292698.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0427,517,8,REHABILITASI JEMBATAN,8.7.(2b),Pengecatan struktur baja pada daerah basah/pasang surut 500 mikron,M2,M2,292192.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0428,518,8,REHABILITASI JEMBATAN,8.7.(3a),Pengecatan pada elemen sandaran dan/atau pagar pengaman (gruard rail) 80 mikron,M2,M2,292698.8,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0429,519,8,REHABILITASI JEMBATAN,8.7.(3b),Pengecatan pada elemen sandaran dan/atau pagar pengaman (gruard rail) 160 mikron,M2,M2,331338.2,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,area_m2,True
+hps_0430,521,8,REHABILITASI JEMBATAN,8.8.(2),Penggantian Elemen Struktur Baja Grade 250 (Kuat Leleh 250 Mpa),Kg,Kg,1216964.35,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,mass_kg,True
+hps_0431,522,8,REHABILITASI JEMBATAN,8.8.(3),Penggantian Elemen Struktur Baja Grade 345 (Kuat Leleh 345 Mpa),Kg,Kg,1205069.48,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,mass_kg,True
+hps_0432,538,8,REHABILITASI JEMBATAN,8.10.(14),Pengecatan/Perlindungan Sandaran,M1,M1,122394.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0433,539,8,REHABILITASI JEMBATAN,8.11.(1),Penggantian dan Perbaikan Sambungan Siar Muai Tipe Asphaltic Plug,M1,M1,2777726.63,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0434,540,8,REHABILITASI JEMBATAN,8.11.(2),Penggantian dan Perbaikan Sambungan Siar Muai Tipe Silicone Seal,M1,M1,1223012.3,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0435,541,8,REHABILITASI JEMBATAN,8.11.(3),Penggantian Karet Pengisi Sambungan Siar Muai Tipe Strip Seal,M1,M1,2255154.62,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0436,542,8,REHABILITASI JEMBATAN,8.11.(4),Penggantian Karet Pengisi Sambungan Siar Muai Tipe Compression Seal,M1,M1,1426456.6,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0437,545,8,REHABILITASI JEMBATAN,8.11.(7),Penggantian Sambungan Siar Muai Tipe Dobel Siku dengan Penutup Karet Neoprene,M1,M1,3484819.68,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0438,553,8,REHABILITASI JEMBATAN,8.13.(1),Perbaikan Sandaran Baja,M1,M1,360565.36,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0439,554,8,REHABILITASI JEMBATAN,8.13.(2),Penggantian Sandaran Baja,M1,M1,295338.25,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0440,555,8,REHABILITASI JEMBATAN,8.13.(3),Perbaikan Tembok Sandaran Beton,M1,M1,635005.38,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0441,556,8,REHABILITASI JEMBATAN,8.13.(4),Perbaikan Sandaran Beton-Baja,M1,M1,2811867.57,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0442,557,8,REHABILITASI JEMBATAN,8.13.(5),Penggantian Sandaran Beton-Baja,M1,M1,4402102.27,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0443,559,8,REHABILITASI JEMBATAN,8.14.(2),"Penggantian Pipa Penyalur, Pipa Cucuran PVC diamter 150 mm",M1,M1,551437.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0444,560,8,REHABILITASI JEMBATAN,8.14.(3),"Penggantian Pipa Penyalur, Pipa Cucuran Baja diamter 150 mm",M1,M1,974992.43,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,road_furniture,length_m,True
+hps_0445,568,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(1),Mandor,Jam,Jam,34367.66,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0446,569,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(2),Pekerja Biasa,Jam,Jam,21428.79,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0447,570,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(3),"Tukang Kayu, Tukang Batu, dsb",Jam,Jam,23742.48,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0448,571,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(4) a,"Dump Truck, kapasitas 3 - 4 m³",Jam,Jam,512518.91,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0449,572,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(4) b,"Dump Truck, kapasitas 6 - 8 m³",Jam,Jam,854175.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0450,573,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(5) a,Truk Bak Datar 3 - 4 ton,Jam,Jam,555476.34,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0451,574,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(5) b,Truk Bak Datar 6 - 8 ton,Jam,Jam,555476.34,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0452,575,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(6),Truk Tangki 3000 - 4500 Liter,Jam,Jam,419840.33,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0453,576,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(7),Bulldozer 100 - 150 PK,Jam,Jam,1023161.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0454,577,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(8),Motor Grader min 100 PK,Jam,Jam,494443.36,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0455,578,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(9),Loader Roda Karet 1.0 - 1.6 M3,Jam,Jam,371972.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0456,579,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(10),Loader Roda Berantai 75 - 100 PK,Jam,Jam,522473.89,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0457,580,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(11),Alat Penggali (Excavator) 80 - 140 PK,Jam,Jam,918320.3,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0458,581,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(12),Crane 10 - 15 Ton,Jam,Jam,970492.27,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0459,582,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(13),Penggilas Roda Besi 6 - 9 Ton,Jam,Jam,648636.12,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0460,583,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(14),Penggilas Bervibrasi  5 - 8  Ton,Jam,Jam,505465.71,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0461,584,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(15),Pemadat Bervibrasi 1.5 - 3.0 PK,Jam,Jam,81854.93,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0462,585,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(16),Penggilas Roda Karet 8 - 10 Ton,Jam,Jam,966672.73,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0463,586,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(17),Kompresor 4000 - 6500 Ltr/mnt,Jam,Jam,321679.44,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0464,587,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(18),Mesin Pengaduk beton (Molen) 0.3 - 0.6 M3,Jam,Jam,138873.85,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0465,588,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(19),Pompa Air 70 - 100 mm,Jam,Jam,93339.5,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0466,589,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.1.(20),Jack Hammer,Jam,Jam,78023.1,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unknown,True
+hps_0467,590,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(1),Marka Jalan Termoplastik,M2,M2,293923.74,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,area_m2,True
+hps_0468,591,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(1).v2,Marka Jalan Termoplastik (Variasi 2),M2,M2,284913.08,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,area_m2,True
+hps_0469,598,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(5),Patok Pengarah,Buah,Buah,209079.2,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unit_count,True
+hps_0470,599,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(5a),Patok Pengarah (PE/Plastic),Buah,Buah,212591.4,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unit_count,True
+hps_0471,602,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(7),Rel Pengaman,M1,M1,2952335.56,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,length_m,True
+hps_0472,617,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(12a),Perkerasan Blok Beton pada Trotoar dan Median,M1,M1,205727.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,length_m,True
+hps_0473,620,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(14),"Unit Lampu Penerangan Jalan Lengan Tunggal, Tipe LED",Buah,Buah,25988753.0,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unit_count,True
+hps_0474,621,9,PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN,9.2.(15),"Unit Lampu Penerangan Jalan Lengan Ganda, Tipe LED",Buah,Buah,41939492.69,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,daily_work,unit_count,True
+hps_0475,669,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(1),Galian pada Saluran Air atau Lereng untuk Pemeliharaan,M3,M3,143196.36,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,volume_m3,False
+hps_0476,670,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(2),Timbunan Pilihan pada Lereng Tepi Saluran untuk Pemeliharaan,M3,M3,471523.84,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,volume_m3,False
+hps_0477,671,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(3),Pebaikan Pasangan Batu dengan Mortar,M3,M3,1335534.57,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,volume_m3,False
+hps_0478,672,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(4),Perbaikan Lapis Fondasi Agregat Kelas A,M3,M3,1273937.19,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,volume_m3,False
+hps_0479,674,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(6),Perbaikan Lapis Fondasi Agregat Kelas S,M3,M3,801360.07,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,volume_m3,False
+hps_0480,677,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(9),Perbaikan Campuran Aspal Panas,M3,M3,5461047.78,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,volume_m3,False
+hps_0481,689,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(19.a),Pengecatan Patok,Buah,Buah,47976.04,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,unit_count,False
+hps_0482,693,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(21),Pembersihan Drainase,M,M1,8485.82,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,length_m,False
+hps_0483,694,10,PEKERJAAN PEMELIHARAAN KINERJA,10.1.(22),Pengendalian Tanaman,M2,M2,2921.01,SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga,performance_maintenance,area_m2,False

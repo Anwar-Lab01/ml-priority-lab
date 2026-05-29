@@ -1,0 +1,63 @@
+{
+  "source_file": "staging_hps.csv",
+  "source_original_filename": "stagging_hps.csv",
+  "source_reference": "SE DJBK No. 182/SE/Dk/2025 / AHSP Bina Marga",
+  "status": "staging_reference_cleaned",
+  "currency": "IDR",
+  "delimiter": ";",
+  "encoding": "utf-8-sig",
+  "generated_at": "2026-05-28T09:20:08.699489+00:00",
+  "raw_rows": 698,
+  "valid_item_count": 483,
+  "skipped_rows_by_reason": {
+    "empty_row": 60,
+    "table_header": 6,
+    "division_header": 11,
+    "subheading_no_price": 11,
+    "ref_error": 1,
+    "dash_price": 3,
+    "missing_price": 123
+  },
+  "count_by_division": {
+    "1 - UMUM": 37,
+    "2 - DRAINASE": 54,
+    "3 - PEKERJAAN TANAH DAN GEOSINTETIK": 36,
+    "4 - PEKERJAAN PREVENTIF": 40,
+    "5 - PERKERASAN BERBUTIR": 26,
+    "6 - PERKERASAN ASPAL": 41,
+    "7 - STRUKTUR": 174,
+    "8 - REHABILITASI JEMBATAN": 36,
+    "9 - PEKERJAAN HARIAN & PEKERJAAN LAIN-LAIN": 30,
+    "10 - PEKERJAAN PEMELIHARAAN KINERJA": 9
+  },
+  "count_by_satuan": {
+    "M1": 131,
+    "Set": 7,
+    "Orang": 6,
+    "Buah": 80,
+    "Lembar": 2,
+    "Rol": 1,
+    "Pasang": 2,
+    "M3": 102,
+    "Ton": 40,
+    "M2": 45,
+    "Liter": 11,
+    "Kg": 32,
+    "null": 1,
+    "Buah Jembatan": 1,
+    "Jam": 22
+  },
+  "count_by_item_family": {
+    "general_and_smkk": 37,
+    "drainage": 54,
+    "earthwork_and_geosynthetic": 36,
+    "preventive_maintenance": 40,
+    "granular_pavement": 14,
+    "concrete_pavement": 12,
+    "asphalt_pavement": 41,
+    "structure": 174,
+    "road_furniture": 36,
+    "daily_work": 30,
+    "performance_maintenance": 9
+  }
+}

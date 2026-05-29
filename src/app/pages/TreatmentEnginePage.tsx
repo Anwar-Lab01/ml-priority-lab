@@ -13,15 +13,48 @@ import {
   Clock,
   ArrowRight,
   Map as MapIcon,
-  X,
-  Info,
-  Search
+  Info
 } from 'lucide-react';
 import {
   getMapExplorerRoadKey,
   getMapExplorerRefAliasCandidate,
   getMapExplorerAliasCandidate
 } from '../../lib/mapExplorerMatching';
+
+import type {
+  MapConfig,
+  GeoRoad,
+  DD2DamageSegment,
+  DD2DamageSegmentData,
+  DD2RoadFeature,
+  DD2RoadFeatureWithRule,
+  ManualASBOverride,
+  DD2DataWithRules,
+  MapDisplayMode,
+  DominantCondition,
+  ASBItem,
+  HPSManualOverride
+} from '../../lib/treatmentTypes';
+
+import {
+  evaluateTreatmentRuleV1,
+  estimatePaguIndikatif,
+  applyManualOverride,
+  getDominantCondition,
+  getDisplayRuleCategory,
+  DOMINANT_COLORS,
+  RULE_CATEGORY_COLORS,
+  SEGMENT_CONDITION_COLORS,
+} from '../../lib/treatmentEngine';
+
+import { projectSegment } from '../../lib/projectSegment';
+
+// Import extracted Phase 2 components
+import { ASBTypeGuide } from './treatment-engine/components/ASBTypeGuide';
+import { TreatmentRoadTable } from './treatment-engine/components/TreatmentRoadTable';
+import { TreatmentStatsCards } from './treatment-engine/components/TreatmentStatsCards';
+import { RoadFocusPanel } from './treatment-engine/components/RoadFocusPanel';
+import { TreatmentFiltersPanel } from './treatment-engine/components/TreatmentFiltersPanel';
 
 /* ──────────────────────────────────────────────
    Treatment Engine — Map Shell + Placeholder
@@ -31,475 +64,7 @@ import {
    SAFETY NOTE:
    - Map data reuses existing /data/maps/ files.
    - Now loads verified public/data/dd2_road_features.json
-   - No treatment rules are applied yet.
-   - Map Explorer matcher / scoring NOT used here.
    ────────────────────────────────────────────── */
-
-// ── Types ─────────────────────────────────────────────────────────────────────
-
-interface MapConfig {
-  center: [number, number];
-  zoom: number;
-  minZoom: number;
-  maxZoom: number;
-  showZoomControl?: boolean;
-}
-
-interface GeoRoad {
-  legacy_ref: string | null;
-  road_id: number | null;
-  road_name: string;
-  matched_name: string | null;
-  coordinates: [number, number][];
-}
-
-interface DD2FeatureMetadata {
-  generated_at: string;
-  total_records: number;
-  matched: number;
-  unmatched: number;
-  ambiguous: number;
-}
-
-export interface DD2DamageSegment {
-  road_key: string;
-  canonical_road_name: string;
-  raw_road_name: string;
-  nomor_ruas: string;
-  segment_index: number;
-  sta_start_m: number;
-  sta_end_m: number;
-  panjang_m: number;
-  dominant_condition: string;
-  segment_status: string;
-  jenis_penanganan_norm: string;
-  surface_label: string;
-  lebar_m: number;
-  tahun_survei: number;
-}
-
-export interface DD2DamageSegmentData {
-  metadata: {
-    total_segments: number;
-    unique_roads: number;
-    generated_at: string;
-  };
-  segments: DD2DamageSegment[];
-}
-
-interface DD2RoadFeature {
-  road_key: string;
-  nama_ruas_norm: string;
-  canonical_road_name: string;
-  dd2_road_name_raw: string;
-  dd2_row_index: number;
-  identity_match_method: string;
-  kecamatan_dilalui: string | null;
-  no_ruas: string | null;
-  panjang_ruas_km: number | null;
-  lebar_ruas_m: number | null;
-  perkerasan_hotmix_km: number | null;
-  perkerasan_lapen_makadam_km: number | null;
-  perkerasan_beton_km: number | null;
-  perkerasan_telford_kerikil_km: number | null;
-  perkerasan_tanah_belum_tembus_km: number | null;
-  kondisi_baik_pct: number | null;
-  kondisi_sedang_pct: number | null;
-  kondisi_rusak_ringan_pct: number | null;
-  kondisi_rusak_berat_pct: number | null;
-  non_mantap_pct: number | null;
-}
-
-export interface RuleV1Result {
-  treatment_category: string;
-  rule_reason: string;
-  rule_confidence: 'High' | 'Medium' | 'Low';
-  fields_used: string[];
-  rule_basis?: string;
-  pkrms_alignment?: string;
-}
-
-export interface DD2RoadFeatureWithRule extends DD2RoadFeature {
-  rule_v1: RuleV1Result;
-  asb_budget?: ASBBudgetResult; // auto_estimate
-  final_asb_budget?: ASBBudgetResult; // final_estimate
-}
-
-export interface ASBItem {
-  asb_id: string;
-  no: number;
-  kelompok_barang: string;
-  kode_barang: string;
-  uraian: string;
-  spesifikasi: string;
-  satuan: string;
-  harga_rp: number;
-  kelompok_belanja: string;
-  treatment_family: string | null;
-  surface_type: string | null;
-  width_m: number | null;
-  layer_thickness_cm: number | null;
-}
-
-export interface ManualASBOverride {
-  override_active: boolean;
-  manual_reason_code: string;
-  manual_reason_text?: string;
-  selected_asb_type: string;
-  structural_profile: string;
-  width_matching: 'auto_round_up' | 'manual_variant';
-  manual_width_m?: number;
-  surface_preference: 'auto' | 'manual';
-  manual_surface_type?: string;
-  costing_mode: 'full_segment_mode' | 'effective_length_mode';
-  effective_length_ratio?: number;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface ASBBudgetResult {
-  status: 'estimated' | 'no_major_asb_package' | 'manual_estimated' | 'no_rule_matched' | 'no_asb_candidate_found' | 'insufficient_data' | 'missing_asb_item';
-  rule_id?: string;
-  rule_label?: string;
-  confidence?: 'high' | 'medium' | 'low';
-  structural_profile?: string;
-  asb_type?: string;
-  asb_id?: string;
-  asb_uraian?: string;
-  asb_spesifikasi?: string;
-  harga_satuan_rp?: number;
-  satuan?: string;
-  panjang_m?: number;
-  pagu_indikatif_rp?: number;
-  width_matched_m?: number;
-  surface_matched?: string;
-  costing_mode?: string;
-  flags?: string[];
-  disclaimer?: string;
-  reason?: string;
-  
-  // NEW: Override tracking
-  manual_override_used?: boolean;
-  override_details?: ManualASBOverride;
-  
-  // The final applied budget (which is what the UI should display)
-  final_pagu_indikatif_rp?: number | null;
-  final_asb_type?: string | null;
-  final_asb_id?: string | null;
-  final_costing_mode?: string | null;
-}
-
-export interface DD2DataWithRules {
-  _metadata: DD2FeatureMetadata;
-  roads: DD2RoadFeatureWithRule[];
-  ruleStats?: {
-    totalEvaluated: number;
-    insufficientData: number;
-    rutin: number;
-    berkala: number;
-    rehab: number;
-    rekon: number;
-    peningkatan: number;
-  };
-  asbStats?: {
-    totalItemsLoaded: number;
-    totalRulesLoaded: number;
-    estimatedRoads: number;
-    noMajorPackage: number;
-    manualReviewRequired: number;
-    manualOverridesActive: number;
-  };
-}
-
-function evaluateTreatmentRuleV1(road: DD2RoadFeature): RuleV1Result {
-  const baseResult = {
-    rule_basis: "proxy_dd2_aggregate",
-    pkrms_alignment: "inspired_by_pkrms_not_tti"
-  };
-
-  if (!road.panjang_ruas_km || road.panjang_ruas_km <= 0) {
-    return {
-      ...baseResult,
-      treatment_category: 'Data Tidak Cukup',
-      rule_reason: 'Panjang ruas tidak valid atau 0 km.',
-      rule_confidence: 'High',
-      fields_used: ['panjang_ruas_km']
-    };
-  }
-
-  const sumCondition = (road.kondisi_baik_pct || 0) + (road.kondisi_sedang_pct || 0) + (road.kondisi_rusak_ringan_pct || 0) + (road.kondisi_rusak_berat_pct || 0);
-  if (sumCondition < 90) {
-    return {
-      ...baseResult,
-      treatment_category: 'Data Tidak Cukup',
-      rule_reason: 'Total persentase kondisi tidak mencapai 100%.',
-      rule_confidence: 'High',
-      fields_used: ['kondisi_baik_pct', 'kondisi_sedang_pct', 'kondisi_rusak_ringan_pct', 'kondisi_rusak_berat_pct']
-    };
-  }
-
-  const unpavedKm = (road.perkerasan_tanah_belum_tembus_km || 0) + (road.perkerasan_telford_kerikil_km || 0);
-  const unpavedPct = (unpavedKm / road.panjang_ruas_km) * 100;
-  if (unpavedPct > 50) {
-    return {
-      ...baseResult,
-      treatment_category: 'Kandidat Peningkatan Permukaan',
-      rule_reason: `Lebih dari 50% (${unpavedPct.toFixed(1)}%) permukaan berupa tanah/kerikil/belum tembus; secara indikatif diklasifikasikan sebagai kandidat peningkatan permukaan.`,
-      rule_confidence: 'High',
-      fields_used: ['panjang_ruas_km', 'perkerasan_tanah_belum_tembus_km', 'perkerasan_telford_kerikil_km']
-    };
-  }
-
-  const rb = road.kondisi_rusak_berat_pct || 0;
-  const rr = road.kondisi_rusak_ringan_pct || 0;
-  const sd = road.kondisi_sedang_pct || 0;
-  const bk = road.kondisi_baik_pct || 0;
-  const nonMantap = (road.non_mantap_pct !== null && road.non_mantap_pct !== undefined) ? road.non_mantap_pct : (rb + rr);
-
-  if (rb >= 30) {
-    return {
-      ...baseResult,
-      treatment_category: 'Rehabilitasi / Rekonstruksi Indikatif',
-      rule_reason: `Rusak berat merupakan kondisi dominan pada agregasi DD2 ruas ini sebesar ${rb.toFixed(1)}%; secara indikatif mengarah pada kebutuhan rehabilitasi/rekonstruksi.`,
-      rule_confidence: 'Medium',
-      fields_used: ['kondisi_rusak_berat_pct']
-    };
-  }
-
-  if (nonMantap >= 15) {
-    return {
-      ...baseResult,
-      treatment_category: 'Rehabilitasi / Rekonstruksi Indikatif',
-      rule_reason: `Kondisi Non-Mantap (Rusak Ringan + Berat) mencapai ${nonMantap.toFixed(1)}%.`,
-      rule_confidence: 'Medium',
-      fields_used: ['non_mantap_pct', 'kondisi_rusak_ringan_pct', 'kondisi_rusak_berat_pct']
-    };
-  }
-
-  if (sd > 50) {
-    return {
-      ...baseResult,
-      treatment_category: 'Pemeliharaan Berkala',
-      rule_reason: `Kondisi Sedang mendominasi sebesar ${sd.toFixed(1)}%.`,
-      rule_confidence: 'Low',
-      fields_used: ['kondisi_sedang_pct', 'non_mantap_pct']
-    };
-  }
-
-  return {
-    ...baseResult,
-    treatment_category: 'Pemeliharaan Rutin',
-    rule_reason: `Kondisi Baik (${bk.toFixed(1)}%) dan Sedang (${sd.toFixed(1)}%) dominan (Jalan Mantap).`,
-    rule_confidence: 'Low',
-    fields_used: ['kondisi_baik_pct', 'kondisi_sedang_pct', 'non_mantap_pct']
-  };
-}
-
-function estimatePaguIndikatif(road: DD2RoadFeature, rules: any, asbItems: ASBItem[]): ASBBudgetResult {
-  if (!road.panjang_ruas_km) {
-     return { status: 'insufficient_data', flags: ['missing_length'], reason: 'Panjang ruas tidak tersedia.' };
-  }
-
-  let selectedRule = null;
-  const unpaved_pct = ((road.perkerasan_tanah_belum_tembus_km || 0) + (road.perkerasan_telford_kerikil_km || 0)) / road.panjang_ruas_km * 100;
-  const non_mantap_pct = road.non_mantap_pct ?? ((road.kondisi_rusak_ringan_pct || 0) + (road.kondisi_rusak_berat_pct || 0));
-  const rusak_berat_pct = road.kondisi_rusak_berat_pct ?? 0;
-
-  for (const r of rules.selection_rules) {
-     let match = false;
-     if (r.rule_id === 'R01') {
-        match = unpaved_pct >= 50 || (non_mantap_pct >= 40 && rusak_berat_pct >= 20);
-     } else if (r.rule_id === 'R02') {
-        match = non_mantap_pct >= 40;
-     } else if (r.rule_id === 'R03') {
-        match = non_mantap_pct >= 25 && rusak_berat_pct >= 10;
-     } else if (r.rule_id === 'R04') {
-        match = non_mantap_pct >= 25 && rusak_berat_pct < 10;
-     } else if (r.rule_id === 'R05') {
-        match = non_mantap_pct >= 10 && non_mantap_pct < 25;
-     } else if (r.rule_id === 'R06') {
-        match = non_mantap_pct < 10;
-     }
-     if (match) {
-        selectedRule = r;
-        break;
-     }
-  }
-
-  if (!selectedRule || selectedRule.selected_profile === 'no_major_asb_package') {
-     return { 
-       status: !selectedRule ? 'no_rule_matched' : 'no_major_asb_package', 
-       rule_id: selectedRule?.rule_id, 
-       rule_label: selectedRule?.label, 
-       confidence: selectedRule?.confidence,
-       reason: 'Kondisi mantap, tidak memerlukan paket ASB struktural besar.'
-     };
-  }
-
-  const profileKey = selectedRule.selected_profile;
-  const asbType = rules.structural_profiles[profileKey].asb_type;
-
-  const candidates = asbItems.filter(i => {
-      const match = (i.uraian || '').match(/Jalan Tipe ([A-Z])/i);
-      return match && match[1].toUpperCase() === asbType;
-  });
-
-  if (candidates.length === 0) return { status: 'no_asb_candidate_found', reason: 'No ASB candidates found for Type ' + asbType };
-
-  let flags: string[] = [];
-  let roadWidth = road.lebar_ruas_m;
-  if (!roadWidth || roadWidth <= 0) {
-     roadWidth = rules.heuristics.width_matching.default_width_m || 4.5;
-     flags.push('width_assumption_used');
-  }
-
-  let matchedWidth = candidates.filter(i => (i.width_m || 0) >= (roadWidth as number)).sort((a,b) => (a.width_m || 0) - (b.width_m || 0));
-  if (matchedWidth.length === 0) {
-      matchedWidth = candidates.sort((a,b) => (b.width_m || 0) - (a.width_m || 0));
-      flags.push('manual_review_width_exceeded');
-  }
-
-  const selectedWidth = matchedWidth[0].width_m;
-  const widthCandidates = matchedWidth.filter(i => i.width_m === selectedWidth);
-
-  let prefSurface = asbType === 'A' ? rules.heuristics.surface_preference.Tipe_A : rules.heuristics.surface_preference.Tipe_BCD;
-  let surfaceCandidates = widthCandidates.filter(i => i.surface_type === prefSurface);
-
-  if (surfaceCandidates.length === 0) {
-      surfaceCandidates = widthCandidates;
-      flags.push('surface_fallback_used');
-  }
-
-  const selectedASB = surfaceCandidates[0];
-  const panjangM = road.panjang_ruas_km * 1000;
-  const pagu = selectedASB.harga_rp * panjangM;
-
-  return {
-    status: 'estimated',
-    rule_id: selectedRule.rule_id,
-    rule_label: selectedRule.label,
-    confidence: selectedRule.confidence,
-    structural_profile: profileKey,
-    asb_type: asbType,
-    asb_id: selectedASB.asb_id,
-    asb_uraian: selectedASB.uraian,
-    asb_spesifikasi: selectedASB.spesifikasi,
-    harga_satuan_rp: selectedASB.harga_rp,
-    satuan: selectedASB.satuan,
-    panjang_m: panjangM,
-    pagu_indikatif_rp: pagu,
-    width_matched_m: selectedASB.width_m || 0,
-    surface_matched: selectedASB.surface_type || 'Unknown',
-    costing_mode: rules.heuristics.costing_mode_defaults.v0_1,
-    flags,
-    disclaimer: rules.metadata.disclaimer
-  };
-}
-
-function applyManualOverride(
-  road: DD2RoadFeature, 
-  autoBudget: ASBBudgetResult, 
-  override: ManualASBOverride | undefined, 
-  asbItems: ASBItem[]
-): ASBBudgetResult {
-  if (!override || !override.override_active) {
-    return {
-      ...autoBudget,
-      manual_override_used: false,
-      final_pagu_indikatif_rp: autoBudget.pagu_indikatif_rp || null,
-      final_asb_type: autoBudget.asb_type || null,
-      final_asb_id: autoBudget.asb_id || null,
-      final_costing_mode: autoBudget.costing_mode || null
-    };
-  }
-
-  let flags: string[] = [];
-  
-  // Find candidates for the selected type
-  const candidates = asbItems.filter(i => {
-    const match = (i.uraian || '').match(/Jalan Tipe ([A-Z])/i);
-    return match && match[1].toUpperCase() === override.selected_asb_type;
-  });
-
-  if (candidates.length === 0) {
-    return {
-      ...autoBudget,
-      status: 'missing_asb_item',
-      manual_override_used: true,
-      override_details: override,
-      reason: 'No ASB candidates found for manually selected Type ' + override.selected_asb_type,
-      flags: ['manual_override_failed_no_candidates']
-    };
-  }
-
-  // Width matching
-  let selectedWidth = road.lebar_ruas_m || 4.5;
-  if (override.width_matching === 'manual_variant' && override.manual_width_m) {
-    selectedWidth = override.manual_width_m;
-  }
-  
-  let matchedWidthCandidates = candidates.filter(i => (i.width_m || 0) >= selectedWidth).sort((a,b) => (a.width_m || 0) - (b.width_m || 0));
-  if (matchedWidthCandidates.length === 0) {
-    matchedWidthCandidates = candidates.sort((a,b) => (b.width_m || 0) - (a.width_m || 0));
-    flags.push('manual_review_width_exceeded_in_override');
-  }
-  
-  const widthToUse = matchedWidthCandidates[0].width_m;
-  const widthCandidates = matchedWidthCandidates.filter(i => i.width_m === widthToUse);
-
-  // Surface matching
-  let surfaceCandidates = widthCandidates;
-  if (override.surface_preference === 'manual' && override.manual_surface_type) {
-    const specificSurfaceCandidates = widthCandidates.filter(i => i.surface_type === override.manual_surface_type);
-    if (specificSurfaceCandidates.length > 0) {
-      surfaceCandidates = specificSurfaceCandidates;
-    } else {
-      flags.push('manual_surface_fallback_used');
-    }
-  }
-
-  const selectedASB = surfaceCandidates[0];
-
-  // Calculate Length and Cost
-  const panjangM = (road.panjang_ruas_km || 0) * 1000;
-  let calculationLengthM = panjangM;
-  if (override.costing_mode === 'effective_length_mode' && override.effective_length_ratio) {
-    calculationLengthM = panjangM * override.effective_length_ratio;
-  }
-  const pagu = selectedASB.harga_rp * calculationLengthM;
-
-  return {
-    status: 'manual_estimated',
-    rule_id: autoBudget.rule_id, // keep auto rule for tracking
-    rule_label: autoBudget.rule_label,
-    confidence: 'high', // user override implies high confidence in the decision
-    structural_profile: override.structural_profile,
-    asb_type: override.selected_asb_type,
-    asb_id: selectedASB.asb_id,
-    asb_uraian: selectedASB.uraian,
-    asb_spesifikasi: selectedASB.spesifikasi,
-    harga_satuan_rp: selectedASB.harga_rp,
-    satuan: selectedASB.satuan,
-    panjang_m: calculationLengthM, // effective length used
-    pagu_indikatif_rp: pagu,
-    width_matched_m: selectedASB.width_m || 0,
-    surface_matched: selectedASB.surface_type || 'Unknown',
-    costing_mode: override.costing_mode,
-    flags: [...(autoBudget.flags || []), ...flags],
-    disclaimer: autoBudget.disclaimer || 'Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis.',
-    reason: override.manual_reason_text || override.manual_reason_code,
-    
-    // Override tracking
-    manual_override_used: true,
-    override_details: override,
-    
-    // Final
-    final_pagu_indikatif_rp: pagu,
-    final_asb_type: override.selected_asb_type,
-    final_asb_id: selectedASB.asb_id,
-    final_costing_mode: override.costing_mode
-  };
-}
 
 // ── Data Loaders ──────────────────────────────────────────────────────────────
 
@@ -523,6 +88,36 @@ function useTreatmentData() {
   const setManualOverrides = useCallback((newOverrides: Record<string, ManualASBOverride>) => {
     setManualOverridesState(newOverrides);
     localStorage.setItem('ml_priority_lab_asb_overrides_v1', JSON.stringify(newOverrides));
+  }, []);
+
+  const [hpsOverrides, setHpsOverridesState] = useState<Record<string, HPSManualOverride>>(() => {
+    try {
+      const stored = localStorage.getItem('ml_priority_lab_hps_overrides_v1');
+      if (stored) return JSON.parse(stored);
+    } catch(e) {}
+    return {};
+  });
+
+  const setHpsOverrides = useCallback((newOverrides: Record<string, HPSManualOverride>) => {
+    setHpsOverridesState(newOverrides);
+    localStorage.setItem('ml_priority_lab_hps_overrides_v1', JSON.stringify(newOverrides));
+  }, []);
+
+  const clearHPSOverrideForRoad = useCallback((road_key: string) => {
+    setHpsOverridesState(prev => {
+      const next = { ...prev };
+      delete next[road_key];
+      localStorage.setItem('ml_priority_lab_hps_overrides_v1', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const setHpsOverrideForRoad = useCallback((road_key: string, override: HPSManualOverride) => {
+    setHpsOverridesState(prev => {
+      const next = { ...prev, [road_key]: override };
+      localStorage.setItem('ml_priority_lab_hps_overrides_v1', JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   useEffect(() => {
@@ -630,10 +225,8 @@ function useTreatmentData() {
     };
   }, [rawData, asbItems, asbRules, manualOverrides]);
 
-  return { config, geos, dd2Data, segmentData, status, manualOverrides, setManualOverrides, asbItems };
+  return { config, geos, dd2Data, segmentData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad };
 }
-
-// We now use mapExplorerMatching utilities instead of local normalizeRoadIdentity
 
 // ── Roadmap step data ─────────────────────────────────────────────────────────
 
@@ -681,124 +274,6 @@ const STATUS_STYLES = {
   done:        { dot: 'bg-emerald-500', badge: 'bg-emerald-50 text-emerald-700', label: 'Done' },
 };
 
-// ── Constants & Helpers for Map Modes ──────────────────────────────────────────
-
-type MapDisplayMode = 'threshold' | 'dominant' | 'rule';
-type DominantCondition = 'Baik' | 'Sedang' | 'Rusak Ringan' | 'Rusak Berat' | 'N/A';
-
-function getDominantCondition(r: DD2RoadFeatureWithRule): DominantCondition {
-  const c = {
-    'Baik': r.kondisi_baik_pct ?? 0,
-    'Sedang': r.kondisi_sedang_pct ?? 0,
-    'Rusak Ringan': r.kondisi_rusak_ringan_pct ?? 0,
-    'Rusak Berat': r.kondisi_rusak_berat_pct ?? 0,
-  };
-  const maxVal = Math.max(c['Baik'], c['Sedang'], c['Rusak Ringan'], c['Rusak Berat']);
-  if (maxVal === 0 && 
-      r.kondisi_baik_pct == null && 
-      r.kondisi_sedang_pct == null && 
-      r.kondisi_rusak_ringan_pct == null && 
-      r.kondisi_rusak_berat_pct == null) {
-    return 'N/A';
-  }
-  if (c['Rusak Berat'] === maxVal) return 'Rusak Berat';
-  if (c['Rusak Ringan'] === maxVal) return 'Rusak Ringan';
-  if (c['Sedang'] === maxVal) return 'Sedang';
-  if (c['Baik'] === maxVal) return 'Baik';
-  return 'N/A';
-}
-
-const DOMINANT_COLORS: Record<DominantCondition, string> = {
-  'Baik': '#10b981',
-  'Sedang': '#3b82f6',
-  'Rusak Ringan': '#f59e0b',
-  'Rusak Berat': '#ef4444',
-  'N/A': '#94a3b8',
-};
-
-const RULE_CATEGORY_COLORS: Record<string, string> = {
-  'Pemeliharaan Rutin': '#10b981',
-  'Pemeliharaan Berkala': '#3b82f6',
-  'Rehabilitasi / Rekonstruksi Indikatif': '#ea580c',
-  'Kandidat Peningkatan Permukaan': '#8b5cf6',
-  'Data Tidak Cukup': '#f43f5e',
-};
-
-function getDisplayRuleCategory(cat: string | undefined): string {
-  if (!cat) return '—';
-  if (cat === 'Rehabilitasi') return 'Rehabilitasi / Rekonstruksi Indikatif';
-  return cat;
-}
-
-const SEGMENT_CONDITION_COLORS: Record<string, string> = {
-  'baik': '#10b981',        
-  'sedang': '#eab308',      
-  'rusak_ringan': '#f97316', 
-  'rusak_berat': '#ef4444',  
-  'default': '#94a3b8'       
-};
-
-/**
- * Extract exact partial subset of original polyline between specific STA meter range 
- */
-function projectSegment(coords: [number, number][], startM: number, endM: number, totalLengthM: number): [number, number][] {
-  if (!coords || coords.length < 2 || totalLengthM <= 0) return [];
-  const startFraction = Math.max(0, Math.min(1, startM / totalLengthM));
-  const endFraction = Math.max(startFraction, Math.min(1, endM / totalLengthM));
-  if (startFraction === endFraction) return [];
-
-  const cumulative: number[] = [0];
-  let runningDist = 0;
-  for (let i = 1; i < coords.length; i++) {
-    runningDist += Math.sqrt(Math.pow(coords[i][0] - coords[i-1][0], 2) + Math.pow(coords[i][1] - coords[i-1][1], 2));
-    cumulative.push(runningDist);
-  }
-  
-  const totalMapDist = runningDist;
-  if (totalMapDist === 0) return coords;
-
-  const targetStart = startFraction * totalMapDist;
-  const targetEnd = endFraction * totalMapDist;
-  const result: [number, number][] = [];
-
-  // 1. Interpolate dynamic head point
-  for (let i = 0; i < coords.length - 1; i++) {
-    if (targetStart >= cumulative[i] && targetStart <= cumulative[i+1]) {
-       const distInSeg = targetStart - cumulative[i];
-       const segLen = cumulative[i+1] - cumulative[i];
-       const f = segLen === 0 ? 0 : distInSeg / segLen;
-       result.push([
-         coords[i][0] + f * (coords[i+1][0] - coords[i][0]),
-         coords[i][1] + f * (coords[i+1][1] - coords[i][1])
-       ]);
-       break;
-    }
-  }
-
-  // 2. Attach rigid central nodes
-  for (let i = 0; i < coords.length; i++) {
-    if (cumulative[i] > targetStart && cumulative[i] < targetEnd) {
-      result.push(coords[i]);
-    }
-  }
-
-  // 3. Interpolate dynamic tail point
-  for (let i = 0; i < coords.length - 1; i++) {
-    if (targetEnd >= cumulative[i] && targetEnd <= cumulative[i+1]) {
-       const distInSeg = targetEnd - cumulative[i];
-       const segLen = cumulative[i+1] - cumulative[i];
-       const f = segLen === 0 ? 0 : distInSeg / segLen;
-       result.push([
-         coords[i][0] + f * (coords[i+1][0] - coords[i][0]),
-         coords[i][1] + f * (coords[i+1][1] - coords[i][1])
-       ]);
-       break;
-    }
-  }
-  
-  return result;
-}
-
 const TE_DD2_LOCAL_ALIASES: Record<string, string> = {
   'Taal Batang Kulur - SP.3 Muara Paring Agung': 'Taal Batang Kulur - Sp. 3 Muara Prg Agung',
   'Batulaki - Muara Pipii': 'Batu Laki - Muara Pipii',
@@ -834,23 +309,6 @@ const TE_DD2_LOCAL_ALIASES: Record<string, string> = {
   'Simpang Jadi Makmur Ds. Samuda': 'Simpang Jadi Makmur - Ds. Samuda'
 };
 
-const ASB_TYPE_GUIDE: Record<string, { label: string; desc: string; composition: string; use: string; isSupport?: boolean }> = {
-  'A': { label: 'A — Surface only', desc: 'Lapisan permukaan aspal saja', composition: 'Permukaan', use: 'Pemeliharaan / pelapisan ulang permukaan' },
-  'B': { label: 'B — Surface + LPA', desc: 'Permukaan + LPA', composition: 'Permukaan + Lapis Pondasi Atas (LPA)', use: 'Perbaikan dengan pondasi atas' },
-  'C': { label: 'C — Surface + LPA + LPB', desc: 'Permukaan + LPA + LPB', composition: 'Permukaan + LPA + Lapis Pondasi Bawah (LPB)', use: 'Rehabilitasi mayor / pondasi penuh' },
-  'D': { label: 'D — Surface + LPA + LPB + Timbunan', desc: 'Permukaan + LPA + LPB + timbunan pilihan', composition: 'Permukaan + LPA + LPB + Timbunan', use: 'Rekonstruksi dengan peninggian badan jalan' },
-  'E': { label: 'E — Surface + Bahu Beton', desc: 'Permukaan + bahu beton', composition: 'Permukaan + Bahu Jalan Beton', use: 'Peningkatan kapasitas / pelebaran bahu' },
-  'F': { label: 'F — Full package + Drainase + Bahu', desc: 'Permukaan + LPA + LPB + timbunan + drainase + bahu', composition: 'Permukaan + LPA + LPB + Timbunan + Drainase + Bahu', use: 'Rekonstruksi komprehensif' },
-  'G': { label: 'G — Rigid / Beton', desc: 'Jalan cor beton', composition: 'Perkerasan Beton Semen', use: 'Jalan beban berat / daerah genangan' },
-  'H': { label: 'H — Retaining Wall', desc: 'Siring/pasangan batu', composition: 'Pasangan Batu', use: 'Penahan tanah', isSupport: true },
-  'I': { label: 'I — Gabion', desc: 'Bronjong', composition: 'Bronjong kawat', use: 'Pengendali erosi / tebing', isSupport: true },
-  'J': { label: 'J — Culvert', desc: 'Slab culvert', composition: 'Slab Culvert', use: 'Gorong-gorong / saluran melintang', isSupport: true },
-  'K': { label: 'K — Earthwork Select', desc: 'Timbunan pilihan', composition: 'Timbunan Pilihan', use: 'Peninggian badan jalan', isSupport: true },
-  'L': { label: 'L — Base Repair', desc: 'Perbaikan LPA', composition: 'Lapis Pondasi Atas (LPA)', use: 'Perbaikan pondasi lokal', isSupport: true },
-  'M': { label: 'M — Sheet Pile', desc: 'Dinding turap beton', composition: 'Turap Beton', use: 'Penahan tebing kritis', isSupport: true },
-  'N': { label: 'N — Earthwork Common', desc: 'Timbunan biasa', composition: 'Timbunan Biasa', use: 'Pekerjaan tanah standar', isSupport: true }
-};
-
 // Helper component to adjust map viewport to selected geometry
 function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
   const map = useMap();
@@ -865,13 +323,19 @@ function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
 // ── Page component ────────────────────────────────────────────────────────────
 
 export function TreatmentEnginePage() {
-  const { config, geos, dd2Data, segmentData, status: mapStatus, manualOverrides, setManualOverrides } = useTreatmentData();
+  const { config, geos, dd2Data, segmentData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad } = useTreatmentData();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showSegments, setShowSegments] = useState(false);
   const [isEditingOverride, setIsEditingOverride] = useState(false);
   const [overrideForm, setOverrideForm] = useState<Partial<ManualASBOverride>>({});
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+
+  // Category Filters
+  const [filterAsbType, setFilterAsbType] = useState('All');
+  const [filterRuleId, setFilterRuleId] = useState('All');
+  const [filterStatus, setFilterStatus] = useState('All');
+  const [filterNonMantap, setFilterNonMantap] = useState('All');
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -939,21 +403,16 @@ export function TreatmentEnginePage() {
     (g) => `te-${g.legacy_ref ?? g.road_id ?? g.road_name}` === selectedKey,
   );
 
-  // Build DD2 lookup map — indexed by BOTH the DD2 native road_key
-  // AND the Map Explorer–derived key from canonical_road_name.
-  // This bridges the sungai→sei normalization gap in the DD2 pipeline.
+  // Build DD2 lookup map
   const dd2Map = useMemo(() => {
     const map = new Map<string, DD2RoadFeatureWithRule[]>();
     if (!dd2Data) return map;
     for (const r of dd2Data.roads) {
-      // Primary key: DD2's own road_key (may use "sei" abbreviation)
       const k = r.road_key;
       const bucket = map.get(k) || [];
       bucket.push(r);
       map.set(k, bucket);
 
-      // Secondary key: derived from canonical_road_name via Map Explorer normalizer
-      // This produces the key the popup resolver will look up (uses full "sungai")
       const mapKey = getMapExplorerRoadKey(r.canonical_road_name);
       if (mapKey && mapKey !== k) {
         const altBucket = map.get(mapKey) || [];
@@ -961,7 +420,6 @@ export function TreatmentEnginePage() {
         map.set(mapKey, altBucket);
       }
 
-      // Tertiary key: Map Explorer-derived key from raw_dd2_name
       const rawKey = getMapExplorerRoadKey(r.dd2_road_name_raw);
       if (rawKey && rawKey !== k && rawKey !== mapKey) {
         const rawBucket = map.get(rawKey) || [];
@@ -1029,8 +487,8 @@ export function TreatmentEnginePage() {
     geos.forEach(geo => {
        const res = resolveGeoToFeature(geo);
        if (res && res.feature) {
-         const lookupKey = `te-${geo.legacy_ref ?? geo.road_id ?? geo.road_name}`;
-         map.set(res.feature.road_key, lookupKey);
+          const lookupKey = `te-${geo.legacy_ref ?? geo.road_id ?? geo.road_name}`;
+          map.set(res.feature.road_key, lookupKey);
        }
     });
     return map;
@@ -1059,7 +517,6 @@ export function TreatmentEnginePage() {
     const treatmentCounts = new Map<string, number>();
     const surfaceCounts = new Map<string, number>();
 
-    // Sequence them by ascending chainage for intuitive left-to-right visualization
     const sortedSegments = [...segments].sort((a, b) => a.sta_start_m - b.sta_start_m);
 
     sortedSegments.forEach(seg => {
@@ -1083,7 +540,6 @@ export function TreatmentEnginePage() {
     const nonMantapM = lenRingan + lenBerat;
     const nonMantapPct = totalLenM > 0 ? (nonMantapM / totalLenM) * 100 : 0;
 
-    // Resolve dominant condition by cumulative spatial magnitude
     const conditionPool = [
        { label: 'Baik', len: lenBaik },
        { label: 'Sedang', len: lenSedang },
@@ -1093,7 +549,6 @@ export function TreatmentEnginePage() {
     conditionPool.sort((a,b) => b.len - a.len);
     const dominantCondition = conditionPool[0].len > 0 ? conditionPool[0].label : 'N/A';
 
-    // Top distribution indicators
     let topTreatment = 'N/A';
     let topTreatLen = 0;
     treatmentCounts.forEach((len, name) => {
@@ -1129,7 +584,7 @@ export function TreatmentEnginePage() {
     };
   }, [selectedDd2Feature, segmentsByRoadKey]);
 
-  // Verified Segment diagnostic telemetry — synchronous simulation logic
+  // Verified Segment diagnostic telemetry
   const segmentDiagStats = useMemo(() => {
      if (!segmentData || !geos.length) return null;
 
@@ -1150,17 +605,15 @@ export function TreatmentEnginePage() {
      let segmentsProjectable = 0;
      let segmentsProjectionFailed = 0;
      
-     // Find maximum STA references per road just as the renderer does
      const roadMaxSta = new Map<string, number>();
      segmentData.segments.forEach(s => {
         const cur = roadMaxSta.get(s.road_key) || 0;
         if (s.sta_end_m > cur) roadMaxSta.set(s.road_key, s.sta_end_m);
      });
 
-     // Dry-run simulate the projection logic per loaded segment record
      segmentData.segments.forEach(seg => {
         const coords = roadGeometriesMap.get(seg.road_key);
-        if (!coords) return; // Orphaned segment missing geometry container
+        if (!coords) return; 
         
         segmentsLinkedToGeometry++;
         
@@ -1198,14 +651,52 @@ export function TreatmentEnginePage() {
   // Filtered table data
   const filteredTableData = useMemo(() => {
     if (!dd2Data) return [];
-    if (!searchTerm) return dd2Data.roads;
-    const term = (searchTerm || '').toLowerCase();
-    return dd2Data.roads.filter(r => 
-      (r.canonical_road_name || '').toLowerCase().includes(term) ||
-      (r.dd2_road_name_raw || '').toLowerCase().includes(term) ||
-      ((r.kecamatan_dilalui || '').toLowerCase().includes(term))
-    );
-  }, [dd2Data, searchTerm]);
+    let data = dd2Data.roads;
+
+    if (filterAsbType !== 'All') {
+       if (filterAsbType === 'No Major Package') {
+          data = data.filter(r => r.final_asb_budget?.status === 'no_major_asb_package');
+       } else if (filterAsbType === 'Manual Override') {
+          data = data.filter(r => r.final_asb_budget?.manual_override_used);
+       } else {
+          data = data.filter(r => r.final_asb_budget?.final_asb_type === filterAsbType);
+       }
+    }
+
+    if (filterRuleId !== 'All') {
+       data = data.filter(r => r.rule_v1.treatment_category === filterRuleId);
+    }
+
+    if (filterStatus !== 'All') {
+       if (filterStatus === 'Manual Override') {
+          data = data.filter(r => r.final_asb_budget?.manual_override_used);
+       } else if (filterStatus === 'Review Flag') {
+          data = data.filter(r => r.final_asb_budget?.flags && r.final_asb_budget.flags.length > 0);
+       } else if (filterStatus === 'No Major Package') {
+          data = data.filter(r => r.final_asb_budget?.status === 'no_major_asb_package');
+       }
+    }
+
+    if (filterNonMantap !== 'All') {
+       const threshold = parseInt(filterNonMantap.replace(/[^0-9]/g, ''));
+       if (!isNaN(threshold)) {
+          data = data.filter(r => (r.non_mantap_pct ?? 0) >= threshold);
+       }
+    }
+
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      data = data.filter(r => 
+        (r.canonical_road_name || '').toLowerCase().includes(term) ||
+        (r.dd2_road_name_raw || '').toLowerCase().includes(term) ||
+        ((r.kecamatan_dilalui || '').toLowerCase().includes(term))
+      );
+    }
+    
+    return data;
+  }, [dd2Data, searchTerm, filterAsbType, filterRuleId, filterStatus, filterNonMantap]);
+
+  const filteredRoadKeys = useMemo(() => new Set(filteredTableData.map(r => r.road_key)), [filteredTableData]);
 
   // Paginated data
   const paginatedTableData = useMemo(() => {
@@ -1213,7 +704,7 @@ export function TreatmentEnginePage() {
     return filteredTableData.slice(start, start + pageSize);
   }, [filteredTableData, currentPage, pageSize]);
 
-  // Automatic Paging Sync: when map selects a road, scroll table to the correct page
+  // Automatic Paging Sync
   useEffect(() => {
     if (!selectedDd2Feature || !filteredTableData.length) return;
     const idx = filteredTableData.findIndex(r => r.road_key === selectedDd2Feature.road_key);
@@ -1345,115 +836,11 @@ export function TreatmentEnginePage() {
         </div>
       </div>
 
-      {/* ── Rule v0.1 Indicative Classification ─────────────────────────────────── */}
-      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
-        <div className="border-b border-slate-100 px-5 py-3.5 flex justify-between items-center bg-indigo-50/50">
-          <div className="flex items-center gap-2.5">
-            <Calculator className="h-4 w-4 text-indigo-500" />
-            <h3 className="text-sm font-semibold text-slate-800">Rule v0.1 Indicative Classification</h3>
-          </div>
-          <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-100 px-2.5 py-1 text-[10px] font-bold text-indigo-700">
-            Read-Only Preview
-          </span>
-        </div>
-        <div className="px-5 py-3 border-b border-slate-100 bg-slate-50">
-           <p className="text-xs text-slate-500 flex items-center gap-2">
-             <Info className="h-4 w-4 shrink-0 text-slate-400" />
-             Rule v0.1 bersifat indikatif berbasis agregasi DD2 per ruas. PKRMS resmi menggunakan Treatment Trigger Index (TTI) per segmen survei untuk menentukan kebutuhan penanganan.
-           </p>
-        </div>
-        {dd2Data?.ruleStats && (
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 divide-x divide-y md:divide-y-0 divide-slate-100">
-             <div className="p-4 text-center bg-slate-50">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Evaluated</p>
-               <p className="mt-1 text-2xl font-black text-slate-800">{dd2Data.ruleStats.totalEvaluated}</p>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Rutin</p>
-               <p className="mt-1 text-2xl font-black text-emerald-700">{dd2Data.ruleStats.rutin}</p>
-               <div className="mt-2 h-1 w-16 mx-auto rounded-full bg-slate-100 overflow-hidden">
-                 <div className="h-full bg-emerald-500" style={{ width: `${(dd2Data.ruleStats.rutin / dd2Data.ruleStats.totalEvaluated) * 100}%` }} />
-               </div>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-blue-600">Berkala</p>
-               <p className="mt-1 text-2xl font-black text-blue-700">{dd2Data.ruleStats.berkala}</p>
-               <div className="mt-2 h-1 w-16 mx-auto rounded-full bg-slate-100 overflow-hidden">
-                 <div className="h-full bg-blue-500" style={{ width: `${(dd2Data.ruleStats.berkala / dd2Data.ruleStats.totalEvaluated) * 100}%` }} />
-               </div>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-orange-600">Rehabilitasi / Rekonstruksi</p>
-               <p className="mt-1 text-2xl font-black text-orange-700">
-                 {(dd2Data.ruleStats.rehab || 0) + (dd2Data.ruleStats.rekon || 0)}
-               </p>
-               <div className="mt-2 h-1 w-16 mx-auto rounded-full bg-slate-100 overflow-hidden">
-                 <div className="h-full bg-orange-500" style={{ width: `${(((dd2Data.ruleStats.rehab || 0) + (dd2Data.ruleStats.rekon || 0)) / dd2Data.ruleStats.totalEvaluated) * 100}%` }} />
-               </div>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-purple-600">Peningkatan Permukaan</p>
-               <p className="mt-1 text-2xl font-black text-purple-700">{dd2Data.ruleStats.peningkatan}</p>
-               <div className="mt-2 h-1 w-16 mx-auto rounded-full bg-slate-100 overflow-hidden">
-                 <div className="h-full bg-purple-500" style={{ width: `${(dd2Data.ruleStats.peningkatan / dd2Data.ruleStats.totalEvaluated) * 100}%` }} />
-               </div>
-             </div>
-             <div className="p-4 text-center bg-rose-50">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-rose-500">Tidak Cukup</p>
-               <p className="mt-1 text-2xl font-black text-rose-600">{dd2Data.ruleStats.insufficientData}</p>
-               <div className="mt-2 h-1 w-16 mx-auto rounded-full bg-rose-100/50 overflow-hidden">
-                 <div className="h-full bg-rose-500" style={{ width: `${(dd2Data.ruleStats.insufficientData / dd2Data.ruleStats.totalEvaluated) * 100}%` }} />
-               </div>
-             </div>
-          </div>
-        )}
-      </div>
-      
-      {/* ── ASB Budget Estimator Overview ───────────────────────────────────────── */}
-      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
-        <div className="border-b border-slate-100 px-5 py-3.5 flex justify-between items-center bg-indigo-50/50">
-          <div className="flex items-center gap-2.5">
-            <DollarSign className="h-4 w-4 text-indigo-500" />
-            <h3 className="text-sm font-semibold text-slate-800">Estimasi Kewajaran Anggaran (ASB)</h3>
-          </div>
-          <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-100 px-2.5 py-1 text-[10px] font-bold text-indigo-700">
-            Read-Only Preview
-          </span>
-        </div>
-        {dd2Data?.asbStats && (
-          <div className="grid grid-cols-2 md:grid-cols-6 divide-x divide-y md:divide-y-0 divide-slate-100">
-             <div className="p-4 text-center bg-slate-50">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Roads Estimated</p>
-               <p className="mt-1 text-2xl font-black text-slate-800">{dd2Data.asbStats.estimatedRoads}</p>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Mantap (No Major Pkg)</p>
-               <p className="mt-1 text-2xl font-black text-slate-600">{dd2Data.asbStats.noMajorPackage}</p>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-amber-500">Flags / Manual Review</p>
-               <p className="mt-1 text-2xl font-black text-amber-600">{dd2Data.asbStats.manualReviewRequired}</p>
-             </div>
-             <div className="p-4 text-center bg-indigo-50/50">
-               <div className="flex justify-between px-2 items-center mb-1">
-                 <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-500">Manual Overrides</p>
-                 <button onClick={handleExportOverrides} title="Export Overrides JSON" className="text-indigo-600 hover:text-indigo-800 transition-colors">
-                   <Database className="h-3 w-3" />
-                 </button>
-               </div>
-               <p className="mt-1 text-2xl font-black text-indigo-700">{dd2Data.asbStats.manualOverridesActive}</p>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">ASB Items Loaded</p>
-               <p className="mt-1 text-xl font-bold text-indigo-600">{dd2Data.asbStats.totalItemsLoaded}</p>
-             </div>
-             <div className="p-4 text-center">
-               <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">Rules Loaded</p>
-               <p className="mt-1 text-xl font-bold text-indigo-600">{dd2Data.asbStats.totalRulesLoaded}</p>
-             </div>
-          </div>
-        )}
-      </div>
+      {/* ── Extracted Stats Cards (Indicative Rule + Budget Estimator Overview) ── */}
+      <TreatmentStatsCards 
+        dd2Data={dd2Data}
+        onExportOverrides={handleExportOverrides}
+      />
 
       {/* ── Spatial Treatment Context ─────────────────────────────────────────── */}
       <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
@@ -1568,7 +955,7 @@ export function TreatmentEnginePage() {
            </div>
         )}
 
-                 {/* Diagnostics summary for segments if enabled */}
+         {/* Diagnostics summary for segments if enabled */}
          {showSegments && segmentDiagStats && (
             <div className="border-b border-slate-100 bg-indigo-50/30 px-5 py-2 flex flex-wrap items-center gap-y-1 gap-x-3.5 text-[10px]">
                <div className="flex items-center gap-1 font-medium text-slate-500">
@@ -1617,8 +1004,9 @@ export function TreatmentEnginePage() {
           </p>
         </div>
 
-        {/* Map area */}
-        <div className="relative h-[480px] lg:h-[560px]">
+        {/* Map & Focus Panel Workspace */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px]">
+          <div className="relative h-[480px] lg:h-[560px] bg-slate-50">
           {/* Loading overlay */}
           {mapStatus === 'loading' && (
             <div className="absolute inset-0 z-10 flex items-center justify-center bg-slate-50">
@@ -1666,6 +1054,11 @@ export function TreatmentEnginePage() {
                 // Use DRY central resolver
                 const resolution = resolveGeoToFeature(geo);
                 const f = resolution?.feature ?? null;
+
+                const isFilteredOut = f ? !filteredRoadKeys.has(f.road_key) : false;
+                if (isFilteredOut && !isSelected) {
+                   return null;
+                }
 
                 // Styling logic
                 let color = '#6366f1';
@@ -1716,589 +1109,129 @@ export function TreatmentEnginePage() {
                    ? Math.max(...roadSegments.map(s => s.sta_end_m)) 
                    : (f ? (f.panjang_ruas_km || 0) * 1000 : 0);
 
-                 return (
-                   <Fragment key={layerKey}>
-                     {/* Underlying Baseline */}
-                     <Polyline
-                       positions={geo.coordinates as any}
-                       pathOptions={{ 
-                          color: showSegments ? '#cbd5e1' : color, 
-                          weight: showSegments ? 2 : weight, 
-                          opacity: showSegments ? 0.35 : opacity 
-                       }}
-                       eventHandlers={{
-                         click: () => setSelectedKey(isSelected ? null : lookupKey),
-                       }}
-                     >
-                       {!showSegments && (
-                          <Tooltip sticky>
-                            <span className="font-mono text-[11px] font-bold text-slate-700 block">
-                              {geo.road_name}
-                              {geo.legacy_ref && (
-                                <span className="ml-1 font-normal text-slate-400">
-                                  [{geo.legacy_ref}]
-                                </span>
-                              )}
-                            </span>
-                            {f && (
-                              <span className="block mt-1 text-[10px] font-medium text-indigo-600">
-                                {getDisplayRuleCategory(f.rule_v1.treatment_category)}
-                              </span>
-                            )}
-                            {highlightEnabled && f && (
-                               <div className="mt-1.5 pt-1.5 border-t border-slate-200">
-                                  <span className="block text-[9px] text-slate-500 mb-0.5">
-                                    {highlightField}: <strong className="text-slate-700">{(f[highlightField] as number) ?? 'N/A'}%</strong>
-                                  </span>
-                                  <span className={`inline-block rounded px-1.5 py-0.5 text-[9px] font-bold ${isHighlighted ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-500'}`}>
-                                    {isHighlighted ? 'PASSES THRESHOLD' : 'DOES NOT PASS'}
-                                  </span>
-                               </div>
-                            )}
-                          </Tooltip>
-                       )}
-                     </Polyline>
+                  return (
+                    <Fragment key={layerKey}>
+                      {/* Underlying Baseline */}
+                      <Polyline
+                        positions={geo.coordinates as any}
+                        pathOptions={{ 
+                           color: showSegments ? '#cbd5e1' : color, 
+                           weight: showSegments ? 2 : weight, 
+                           opacity: showSegments ? 0.35 : opacity 
+                        }}
+                        eventHandlers={{
+                          click: () => setSelectedKey(isSelected ? null : lookupKey),
+                        }}
+                      >
+                        {!showSegments && (
+                           <Tooltip sticky>
+                             <span className="font-mono text-[11px] font-bold text-slate-700 block">
+                               {geo.road_name}
+                               {geo.legacy_ref && (
+                                 <span className="ml-1 font-normal text-slate-400">
+                                   [{geo.legacy_ref}]
+                                 </span>
+                               )}
+                             </span>
+                             {f && (
+                               <span className="block mt-1 text-[10px] font-medium text-indigo-600">
+                                 {getDisplayRuleCategory(f.rule_v1.treatment_category)}
+                               </span>
+                             )}
+                             {highlightEnabled && f && (
+                                <div className="mt-1.5 pt-1.5 border-t border-slate-200">
+                                   <span className="block text-[9px] text-slate-500 mb-0.5">
+                                     {highlightField}: <strong className="text-slate-700">{(f[highlightField] as number) ?? 'N/A'}%</strong>
+                                   </span>
+                                   <span className={`inline-block rounded px-1.5 py-0.5 text-[9px] font-bold ${isHighlighted ? 'bg-red-100 text-red-600' : 'bg-slate-100 text-slate-500'}`}>
+                                     {isHighlighted ? 'PASSES THRESHOLD' : 'DOES NOT PASS'}
+                                   </span>
+                                </div>
+                             )}
+                           </Tooltip>
+                        )}
+                      </Polyline>
 
-                     {/* Projected Overlay Segments */}
-                     {showSegments && roadSegments.map((seg, sIdx) => {
-                        const sCoords = projectSegment(geo.coordinates, seg.sta_start_m, seg.sta_end_m, totalLenM);
-                        if (sCoords.length < 2) return null;
+                      {/* Projected Overlay Segments */}
+                      {showSegments && roadSegments.map((seg, sIdx) => {
+                         const sCoords = projectSegment(geo.coordinates, seg.sta_start_m, seg.sta_end_m, totalLenM);
+                         if (sCoords.length < 2) return null;
 
-                        const normalized = (seg.dominant_condition || '').toLowerCase().replace(/\s+/g, '_');
-                        const sColor = SEGMENT_CONDITION_COLORS[normalized] || SEGMENT_CONDITION_COLORS['default'];
-                        
-                        // Visual tuning
-                        const sWeight = isSelected ? 7 : 4.5;
-                        const sOpacity = isSelected ? 1 : 0.9;
+                         const normalized = (seg.dominant_condition || '').toLowerCase().replace(/\s+/g, '_');
+                         const sColor = SEGMENT_CONDITION_COLORS[normalized] || SEGMENT_CONDITION_COLORS['default'];
+                         
+                         const sWeight = isSelected ? 7 : 4.5;
+                         const sOpacity = isSelected ? 1 : 0.9;
 
-                        return (
-                           <Polyline
-                              key={`${layerKey}-seg-${sIdx}`}
-                              positions={sCoords as any}
-                              pathOptions={{ color: sColor, weight: sWeight, opacity: sOpacity }}
-                              eventHandlers={{
-                                 click: () => setSelectedKey(isSelected ? null : lookupKey),
-                              }}
-                           >
-                              <Tooltip sticky>
-                                 <div className="flex flex-col gap-0.5 text-[10px]">
-                                    <span className="font-bold text-slate-700">{geo.road_name}</span>
-                                    <span className="text-[9px] text-slate-400 font-mono">STA {seg.sta_start_m} - {seg.sta_end_m}</span>
-                                    <span className="mt-0.5 font-bold text-indigo-600 uppercase">{seg.dominant_condition}</span>
-                                 </div>
-                              </Tooltip>
-                              <Popup>
-                                 <div className="w-56 text-[11px]">
-                                    <div className="mb-1.5 pb-1 border-b border-slate-100">
-                                       <h5 className="font-black uppercase tracking-wider text-slate-400 text-[9px]">Segment Details</h5>
-                                       <p className="font-bold leading-tight mt-0.5">{seg.canonical_road_name || geo.road_name}</p>
-                                       <p className="text-[9px] font-mono text-slate-500">Raw: {seg.raw_road_name}</p>
-                                    </div>
-                                    <div className="space-y-1 text-slate-600">
-                                       <div className="flex justify-between"><span className="font-medium">Stationing:</span> <span className="font-mono font-semibold">KM {seg.sta_start_m/1000} - {seg.sta_end_m/1000}</span></div>
-                                       <div className="flex justify-between"><span>Panjang:</span> <strong>{seg.panjang_m} m</strong></div>
-                                       <div className="flex justify-between"><span>Lebar:</span> <strong>{seg.lebar_m} m</strong></div>
-                                       <div className="flex justify-between"><span>Kondisi:</span> <strong style={{ color: sColor }} className="uppercase">{seg.dominant_condition}</strong></div>
-                                       <div className="flex justify-between"><span>Status:</span> <strong>{seg.segment_status}</strong></div>
-                                       <div className="flex justify-between"><span>Treatment:</span> <strong>{seg.jenis_penanganan_norm}</strong></div>
-                                       <div className="flex justify-between"><span>Surface:</span> <strong>{seg.surface_label}</strong></div>
-                                       <div className="flex justify-between"><span>Thn Survei:</span> <strong>{seg.tahun_survei}</strong></div>
-                                    </div>
-                                    <div className="mt-2 pt-1 border-t border-slate-100 flex items-center gap-1 text-[8px] text-slate-400 italic leading-tight">
-                                       <Info className="h-2.5 w-2.5 shrink-0" />
-                                       Segment projected via STA proportion along road polyline.
-                                    </div>
-                                 </div>
-                              </Popup>
-                           </Polyline>
-                        );
-                     })}
-                   </Fragment>
-                 );
+                         return (
+                            <Polyline
+                               key={`${layerKey}-seg-${sIdx}`}
+                               positions={sCoords as any}
+                               pathOptions={{ color: sColor, weight: sWeight, opacity: sOpacity }}
+                               eventHandlers={{
+                                  click: () => setSelectedKey(isSelected ? null : lookupKey),
+                               }}
+                            >
+                               <Tooltip sticky>
+                                  <div className="flex flex-col gap-0.5 text-[10px]">
+                                     <span className="font-bold text-slate-700">{geo.road_name}</span>
+                                     <span className="text-[9px] text-slate-400 font-mono">STA {seg.sta_start_m} - {seg.sta_end_m}</span>
+                                     <span className="mt-0.5 font-bold text-indigo-600 uppercase">{seg.dominant_condition}</span>
+                                  </div>
+                               </Tooltip>
+                               <Popup>
+                                  <div className="w-56 text-[11px]">
+                                     <div className="mb-1.5 pb-1 border-b border-slate-100">
+                                        <h5 className="font-black uppercase tracking-wider text-slate-400 text-[9px]">Segment Details</h5>
+                                        <p className="font-bold leading-tight mt-0.5">{seg.canonical_road_name || geo.road_name}</p>
+                                        <p className="text-[9px] font-mono text-slate-500">Raw: {seg.raw_road_name}</p>
+                                     </div>
+                                     <div className="space-y-1 text-slate-600">
+                                        <div className="flex justify-between"><span className="font-medium">Stationing:</span> <span className="font-mono font-semibold">KM {seg.sta_start_m/1000} - {seg.sta_end_m/1000}</span></div>
+                                        <div className="flex justify-between"><span>Panjang:</span> <strong>{seg.panjang_m} m</strong></div>
+                                        <div className="flex justify-between"><span>Lebar:</span> <strong>{seg.lebar_m} m</strong></div>
+                                        <div className="flex justify-between"><span>Kondisi:</span> <strong style={{ color: sColor }} className="uppercase">{seg.dominant_condition}</strong></div>
+                                        <div className="flex justify-between"><span>Status:</span> <strong>{seg.segment_status}</strong></div>
+                                        <div className="flex justify-between"><span>Treatment:</span> <strong>{seg.jenis_penanganan_norm}</strong></div>
+                                        <div className="flex justify-between"><span>Surface:</span> <strong>{seg.surface_label}</strong></div>
+                                        <div className="flex justify-between"><span>Thn Survei:</span> <strong>{seg.tahun_survei}</strong></div>
+                                     </div>
+                                     <div className="mt-2 pt-1 border-t border-slate-100 flex items-center gap-1 text-[8px] text-slate-400 italic leading-tight">
+                                        <Info className="h-2.5 w-2.5 shrink-0" />
+                                        Segment projected via STA proportion along road polyline.
+                                     </div>
+                                  </div>
+                               </Popup>
+                            </Polyline>
+                         );
+                      })}
+                    </Fragment>
+                  );
               })}
             </MapContainer>
           )}
 
-          {/* Road detail popup */}
-          {selectedGeo && (
-            <div className="absolute right-3 top-3 z-[1000] w-80 overflow-hidden rounded-xl border border-slate-200 bg-white/95 shadow-xl backdrop-blur-sm">
-              {/* Header */}
-              <div className="flex items-start justify-between border-b border-slate-100 p-3.5">
-                <div className="pr-2">
-                  <p className="text-[11px] font-black uppercase tracking-widest text-slate-400">
-                    Road Segment
-                  </p>
-                  <h4 className="mt-0.5 text-sm font-bold leading-snug text-slate-800">
-                    {selectedGeo.road_name}
-                  </h4>
-                </div>
-                <button
-                  onClick={() => setSelectedKey(null)}
-                  className="shrink-0 rounded-lg p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700"
-                  aria-label="Close"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
+          </div>
 
-              {/* Fields */}
-              <div className="max-h-96 overflow-y-auto p-3.5 space-y-3">
-                {selectedDd2Feature ? (
-                  <>
-                    <div className="rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
-                      <p className="text-[9px] font-bold uppercase tracking-widest text-emerald-600">
-                        Canonical Match
-                      </p>
-                      <p className="mt-0.5 text-xs font-semibold text-emerald-800">
-                        {selectedDd2Feature.canonical_road_name}
-                      </p>
-                      <p className="mt-0.5 font-mono text-[10px] text-emerald-600">
-                        Key: {selectedDd2Feature.road_key}
-                      </p>
-                    </div>
-
-                    {/* DD2 treatment status */}
-                <div className="flex flex-col gap-2 rounded-lg border border-indigo-100 bg-indigo-50/50 px-3 py-2.5">
-                  <div className="flex items-center gap-2">
-                    <Calculator className="h-3.5 w-3.5 text-indigo-500" />
-                    <p className="text-[9px] font-bold uppercase tracking-widest text-indigo-500">
-                      Rule v0.1 Category
-                    </p>
-                  </div>
-                  <p className="text-xs font-bold text-indigo-900">
-                    {getDisplayRuleCategory(selectedDd2Feature.rule_v1.treatment_category)}
-                  </p>
-                  <p className="text-[10px] leading-relaxed text-indigo-700/80 italic">
-                    "{selectedDd2Feature.rule_v1.rule_reason}"
-                  </p>
-                  <div className="mt-1 flex gap-1.5">
-                     <span className="text-[9px] font-mono font-medium rounded border border-indigo-200 bg-indigo-100 px-1.5 py-0.5 text-indigo-600">
-                        Confidence: {selectedDd2Feature.rule_v1.rule_confidence}
-                     </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-2">
-                      <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                        <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Length</p>
-                        <p className="mt-0.5 font-mono text-xs font-semibold text-slate-700">
-                          {selectedDd2Feature.panjang_ruas_km !== null ? `${selectedDd2Feature.panjang_ruas_km} km` : '—'}
-                        </p>
-                      </div>
-                      <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                        <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Width</p>
-                        <p className="mt-0.5 font-mono text-xs font-semibold text-slate-700">
-                          {selectedDd2Feature.lebar_ruas_m !== null ? `${selectedDd2Feature.lebar_ruas_m} m` : '—'}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="rounded-lg border border-slate-100 bg-white px-3 py-2">
-                      <div className="flex items-center justify-between mb-1.5">
-                        <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Surface Condition</p>
-                        <span className="inline-flex items-center rounded bg-indigo-50 px-1.5 py-0.5 text-[9px] font-bold text-indigo-600">
-                          Dom: {getDominantCondition(selectedDd2Feature)}
-                        </span>
-                      </div>
-                      <div className="space-y-1">
-                        <div className="flex justify-between items-center">
-                          <span className="text-[10px] text-slate-500">Baik</span>
-                          <span className="font-mono text-[10px] font-medium text-emerald-600">
-                            {selectedDd2Feature.kondisi_baik_pct !== null ? `${selectedDd2Feature.kondisi_baik_pct}%` : '—'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-[10px] text-slate-500">Sedang</span>
-                          <span className="font-mono text-[10px] font-medium text-blue-600">
-                            {selectedDd2Feature.kondisi_sedang_pct !== null ? `${selectedDd2Feature.kondisi_sedang_pct}%` : '—'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-[10px] text-slate-500">Rusak Ringan</span>
-                          <span className="font-mono text-[10px] font-medium text-amber-600">
-                            {selectedDd2Feature.kondisi_rusak_ringan_pct !== null ? `${selectedDd2Feature.kondisi_rusak_ringan_pct}%` : '—'}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-[10px] text-slate-500">Rusak Berat</span>
-                          <span className="font-mono text-[10px] font-medium text-red-600">
-                            {selectedDd2Feature.kondisi_rusak_berat_pct !== null ? `${selectedDd2Feature.kondisi_rusak_berat_pct}%` : '—'}
-                          </span>
-                        </div>
-                        <div className="mt-1.5 pt-1.5 border-t border-slate-100 flex justify-between items-center">
-                          <span className="text-[10px] font-bold text-slate-600">Non-Mantap</span>
-                          <span className="font-mono text-[11px] font-bold text-amber-600">
-                            {selectedDd2Feature.non_mantap_pct !== null ? `${selectedDd2Feature.non_mantap_pct}%` : '—'}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Segment Strip Visualization Section */}
-                    <div className="rounded-lg border border-slate-100 bg-white overflow-hidden">
-                       <div className="bg-slate-50 px-3 py-2 flex justify-between items-center border-b border-slate-100">
-                          <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Segment Profile</p>
-                          {selectedSegmentSummary ? (
-                             <span className="text-[9px] font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">
-                                {selectedSegmentSummary.count} Segments
-                             </span>
-                          ) : null}
-                       </div>
-
-                       <div className="p-3 space-y-3">
-                          {!selectedSegmentSummary ? (
-                             <div className="py-2 flex items-center gap-2 text-slate-400">
-                                <Info className="h-3.5 w-3.5" />
-                                <span className="text-[10px] italic font-medium">No segment-level DD2 data available for this road.</span>
-                             </div>
-                          ) : (
-                             <>
-                                {/* Proportional Strip */}
-                                <div className="flex h-4 w-full rounded-md overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
-                                   {selectedSegmentSummary.segments.map((seg, idx) => {
-                                      const wPct = ( (seg.panjang_m || (seg.sta_end_m - seg.sta_start_m)) / selectedSegmentSummary.totalLenM) * 100;
-                                      const cond = (seg.dominant_condition || '').toLowerCase();
-                                      
-                                      const baseColor = cond.includes('baik') ? '#10b981' :
-                                                        cond.includes('sedang') ? '#3b82f6' :
-                                                        cond.includes('ringan') ? '#f59e0b' :
-                                                        cond.includes('berat') ? '#ef4444' : '#94a3b8';
-
-                                      return (
-                                         <div 
-                                            key={idx}
-                                            style={{ width: `${wPct}%`, backgroundColor: baseColor }}
-                                            className="h-full border-r border-white/20 last:border-r-0 transition-opacity hover:opacity-80 cursor-help"
-                                            title={`STA ${seg.sta_start_m}-${seg.sta_end_m} | ${seg.dominant_condition} | ${seg.panjang_m}m | ${seg.jenis_penanganan_norm || ''}`}
-                                         />
-                                      );
-                                   })}
-                                </div>
-
-                                {/* Mini Legend Row */}
-                                <div className="flex justify-between text-[8px] font-bold text-slate-400 uppercase px-0.5">
-                                   <div className="flex items-center gap-0.5"><span className="h-1.5 w-1.5 rounded-full bg-[#10b981]" /> B</div>
-                                   <div className="flex items-center gap-0.5"><span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6]" /> S</div>
-                                   <div className="flex items-center gap-0.5"><span className="h-1.5 w-1.5 rounded-full bg-[#f59e0b]" /> RR</div>
-                                   <div className="flex items-center gap-0.5"><span className="h-1.5 w-1.5 rounded-full bg-[#ef4444]" /> RB</div>
-                                </div>
-
-                                {/* Comparison Statistics */}
-                                <div className="space-y-2 text-[10px] pt-1 border-t border-slate-100 mt-1">
-                                   <div className="flex justify-between text-slate-500 font-medium">
-                                      <span>Segmented Length:</span>
-                                      <span className="text-slate-800 font-mono">{(selectedSegmentSummary.totalLenM / 1000).toFixed(3)} km</span>
-                                   </div>
-                                   
-                                   <div className="pt-1.5 border-t border-dashed border-slate-200">
-                                      <div className="flex justify-between items-center">
-                                         <span className="text-slate-500">Derived Non-Mantap:</span>
-                                         <span className="font-mono font-bold text-indigo-700">{selectedSegmentSummary.nonMantapPct.toFixed(1)}%</span>
-                                      </div>
-                                      
-                                      {/* Comparison logic */}
-                                      {selectedDd2Feature.non_mantap_pct !== null && (
-                                         <div className="mt-1 flex items-center justify-between rounded bg-slate-50 px-2 py-1 border border-slate-100/50">
-                                            <span className="text-[9px] text-slate-400">vs Agg ({selectedDd2Feature.non_mantap_pct}%)</span>
-                                            {(() => {
-                                               const diff = Math.abs(selectedSegmentSummary.nonMantapPct - selectedDd2Feature.non_mantap_pct);
-                                               const isAligned = diff <= 5;
-                                               return (
-                                                  <span className={`flex items-center gap-0.5 text-[9px] font-bold uppercase ${isAligned ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                                     {isAligned ? <CheckCircle className="h-2.5 w-2.5" /> : <AlertTriangle className="h-2.5 w-2.5" />}
-                                                     {isAligned ? 'Aligned' : `Check ${diff.toFixed(1)}%`}
-                                                  </span>
-                                               );
-                                            })()}
-                                         </div>
-                                      )}
-                                   </div>
-                                   
-                                   <div className="pt-1.5 border-t border-slate-100 grid grid-cols-2 gap-x-3 gap-y-1 text-[9px]">
-                                      <div>
-                                         <p className="text-slate-400">Top Surface</p>
-                                         <p className="font-bold truncate text-slate-700 leading-tight" title={selectedSegmentSummary.topSurface}>{selectedSegmentSummary.topSurface}</p>
-                                      </div>
-                                      <div>
-                                         <p className="text-slate-400">Primary Treatment</p>
-                                         <p className="font-bold truncate text-slate-700 leading-tight" title={selectedSegmentSummary.topTreatment}>{selectedSegmentSummary.topTreatment}</p>
-                                      </div>
-                                   </div>
-                                </div>
-                             </>
-                          )}
-                       </div>
-                    </div>
-
-                    <div className="rounded-lg border border-slate-100 bg-white px-3 py-2">
-                       <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Temporary Diagnostics</p>
-                       <div className="space-y-1">
-                          <div className="flex justify-between items-center text-[10px] text-slate-500">
-                             <span>Map road_name:</span>
-                             <span className="font-mono text-slate-700">{selectedGeo.road_name}</span>
-                          </div>
-                          <div className="flex justify-between items-center text-[10px] text-slate-500">
-                             <span>Map ref:</span>
-                             <span className="font-mono text-slate-700">{selectedGeo.legacy_ref || selectedGeo.road_id || 'null'}</span>
-                          </div>
-                          <div className="flex justify-between items-center text-[10px] text-slate-500">
-                             <span>Canonical Key:</span>
-                             <span className="font-mono text-blue-600">{diagnosticKey}</span>
-                          </div>
-                          <div className="flex justify-between items-center text-[10px] text-slate-500">
-                             <span>Lookup Result:</span>
-                             <span className={`font-mono font-bold ${selectedDd2Feature ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                {selectedDd2Feature ? 'FOUND' : 'NOT FOUND'}
-                             </span>
-                          </div>
-                          <div className="flex justify-between items-center text-[10px] text-slate-500">
-                             <span>Match Method:</span>
-                             <span className="font-mono text-slate-700">{matchMethod}</span>
-                          </div>
-                       </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="rounded-lg border border-amber-100 bg-amber-50 px-3 py-4 text-center">
-                    <p className="text-[11px] font-medium text-amber-700">No DD2 feature data matched</p>
-                    <p className="mt-1 text-[10px] text-amber-600">Check map identity rules</p>
-                  </div>
-                )}
-                
-                {/* DD2 treatment status */}
-                {selectedDd2Feature && (
-                  <div className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5">
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-1.5">
-                        <DollarSign className="h-3.5 w-3.5 text-slate-400" />
-                        <p className="text-[9px] font-bold uppercase tracking-widest text-slate-500">
-                          Pagu Indikatif ASB
-                        </p>
-                      </div>
-                      {selectedDd2Feature.final_asb_budget?.status === 'estimated' || selectedDd2Feature.final_asb_budget?.status === 'manual_estimated' ? (
-                         <span className="text-[9px] font-bold px-1.5 py-0.5 rounded border border-indigo-200 bg-indigo-100 text-indigo-700">
-                            {selectedDd2Feature.final_asb_budget.final_costing_mode === 'full_segment_mode' ? 'Full Ruas' : 'Effective Length'}
-                         </span>
-                      ) : null}
-                    </div>
-
-                    {!isEditingOverride ? (
-                      <>
-                        {/* Auto Recommendation Box */}
-                        <div className="rounded border border-slate-200 bg-slate-100/50 p-2 text-xs">
-                           <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Auto Recommendation</p>
-                           {selectedDd2Feature.asb_budget?.status === 'estimated' ? (
-                             <div className="flex justify-between text-slate-600">
-                               <span>Tipe {selectedDd2Feature.asb_budget.asb_type}</span>
-                               <span className="font-mono">Rp {(selectedDd2Feature.asb_budget.pagu_indikatif_rp || 0).toLocaleString('id-ID')}</span>
-                             </div>
-                           ) : selectedDd2Feature.asb_budget?.status === 'no_major_asb_package' ? (
-                             <p className="text-slate-500 italic text-[10px]">No major package auto-selected</p>
-                           ) : (
-                             <p className="text-slate-500 italic text-[10px]">{selectedDd2Feature.asb_budget?.reason || 'No package'}</p>
-                           )}
-                        </div>
-
-                        {/* Final Selected Package Box */}
-                        {selectedDd2Feature.final_asb_budget?.status === 'estimated' || selectedDd2Feature.final_asb_budget?.status === 'manual_estimated' ? (
-                           <div className="space-y-2 text-xs mt-1 border-t border-slate-200 pt-2">
-                              <div className="flex items-center justify-between">
-                                <p className="text-[9px] font-bold text-slate-400 uppercase">Final Selected Package</p>
-                                {selectedDd2Feature.final_asb_budget.manual_override_used && (
-                                  <span className="inline-flex items-center rounded bg-amber-100 px-1 py-0.5 text-[8px] font-bold text-amber-700">
-                                    🛠️ Manual Override
-                                  </span>
-                                )}
-                              </div>
-                              <div className="bg-white rounded border border-slate-200 p-2 shadow-sm text-center">
-                                 <p className="text-lg font-black text-indigo-700">
-                                    Rp {(selectedDd2Feature.final_asb_budget.final_pagu_indikatif_rp || 0).toLocaleString('id-ID')}
-                                 </p>
-                              </div>
-                              <div className="space-y-1">
-                                 <div className="flex justify-between border-b border-slate-100 pb-1">
-                                    <span className="text-slate-500">Paket Anggaran:</span>
-                                    <span className="font-semibold text-slate-800">Tipe {selectedDd2Feature.final_asb_budget.final_asb_type} ({selectedDd2Feature.final_asb_budget.structural_profile})</span>
-                                 </div>
-                                 <div className="flex justify-between border-b border-slate-100 pb-1">
-                                    <span className="text-slate-500">Dasar Pemilihan:</span>
-                                    <span className="font-medium text-slate-700 truncate max-w-[150px]" title={selectedDd2Feature.final_asb_budget.reason}>
-                                      {selectedDd2Feature.final_asb_budget.manual_override_used ? selectedDd2Feature.final_asb_budget.reason : selectedDd2Feature.final_asb_budget.rule_id}
-                                    </span>
-                                 </div>
-                                 <div className="flex justify-between border-b border-slate-100 pb-1">
-                                    <span className="text-slate-500">Volume (m):</span>
-                                    <span className="font-mono text-slate-700">{selectedDd2Feature.final_asb_budget.panjang_m?.toLocaleString()} m</span>
-                                 </div>
-                                 <div className="flex justify-between border-b border-slate-100 pb-1">
-                                    <span className="text-slate-500">Harga ASB / m:</span>
-                                    <span className="font-mono text-slate-700">Rp {selectedDd2Feature.final_asb_budget.harga_satuan_rp?.toLocaleString('id-ID')}</span>
-                                 </div>
-                                 <div className="flex justify-between border-b border-slate-100 pb-1">
-                                    <span className="text-slate-500">Match Params:</span>
-                                    <span className="font-mono text-[10px] text-slate-600 bg-slate-100 px-1 rounded">
-                                       {selectedDd2Feature.final_asb_budget.width_matched_m}m | {selectedDd2Feature.final_asb_budget.surface_matched}
-                                    </span>
-                                 </div>
-                              </div>
-                              <p className="text-[9px] text-slate-500 mt-1 leading-tight font-mono">{selectedDd2Feature.final_asb_budget.asb_uraian} — {selectedDd2Feature.final_asb_budget.asb_spesifikasi}</p>
-                              
-                              {selectedDd2Feature.final_asb_budget.flags && selectedDd2Feature.final_asb_budget.flags.length > 0 && (
-                                 <div className="mt-2 flex flex-wrap gap-1">
-                                    {selectedDd2Feature.final_asb_budget.flags.map(f => (
-                                       <span key={f} className="inline-flex items-center gap-1 bg-amber-100 text-amber-700 border border-amber-200 rounded px-1.5 py-0.5 text-[9px] font-bold">
-                                          <AlertTriangle className="h-2.5 w-2.5" />
-                                          {f}
-                                       </span>
-                                    ))}
-                                 </div>
-                              )}
-                              <p className="text-[8px] text-slate-400 italic leading-tight mt-1 pt-1 border-t border-slate-200">
-                                 {selectedDd2Feature.final_asb_budget.disclaimer}
-                              </p>
-                           </div>
-                        ) : selectedDd2Feature.final_asb_budget?.status === 'no_major_asb_package' ? (
-                           <div className="text-center py-2 text-slate-500 text-[11px] italic mt-2 border-t border-slate-200">
-                             Tidak ada paket mayor otomatis
-                           </div>
-                        ) : null}
-
-                        <div className="flex gap-2 mt-3 pt-2 border-t border-slate-200">
-                           <button 
-                             onClick={() => {
-                               const existing = manualOverrides[selectedDd2Feature.road_key];
-                               if (existing) {
-                                  setOverrideForm(existing);
-                               } else {
-                                  setOverrideForm({
-                                    override_active: true,
-                                    selected_asb_type: 'A',
-                                    structural_profile: 'surface_only',
-                                    width_matching: 'auto_round_up',
-                                    surface_preference: 'auto',
-                                    costing_mode: 'full_segment_mode',
-                                    manual_reason_code: 'Preventive maintenance'
-                                  });
-                               }
-                               setIsEditingOverride(true);
-                             }}
-                             className="flex-1 bg-white border border-indigo-200 text-indigo-700 text-[10px] font-bold py-1.5 rounded hover:bg-indigo-50 transition-colors"
-                           >
-                             Edit / Override Package
-                           </button>
-                           {manualOverrides[selectedDd2Feature.road_key] && (
-                             <button onClick={handleClearOverride} className="bg-white border border-red-200 text-red-600 px-2 py-1.5 rounded text-[10px] font-bold hover:bg-red-50">
-                               Clear
-                             </button>
-                           )}
-                        </div>
-                      </>
-                    ) : (
-                      <div className="border border-indigo-200 bg-white rounded p-2 text-xs">
-                        <p className="font-bold text-indigo-700 mb-2">Manual Override Configuration</p>
-                        <div className="space-y-2">
-                           <div>
-                              <label className="block text-[9px] font-bold text-slate-500 uppercase">Reason</label>
-                              <select 
-                                value={overrideForm.manual_reason_code || ''} 
-                                onChange={(e) => setOverrideForm({...overrideForm, manual_reason_code: e.target.value})}
-                                className="w-full mt-0.5 border border-slate-200 rounded p-1"
-                              >
-                                 <option value="Preventive maintenance">Preventive maintenance</option>
-                                 <option value="Surface preservation">Surface preservation</option>
-                                 <option value="Policy / Strategic planning">Policy / Strategic planning</option>
-                                 <option value="Field verification result">Field verification result</option>
-                                 <option value="Other">Other</option>
-                              </select>
-                           </div>
-                           {overrideForm.manual_reason_code === 'Other' && (
-                              <div>
-                                 <input type="text" placeholder="Detail reason..." value={overrideForm.manual_reason_text || ''} onChange={e => setOverrideForm({...overrideForm, manual_reason_text: e.target.value})} className="w-full border border-slate-200 rounded p-1 text-[10px]"/>
-                              </div>
-                           )}
-                           <div>
-                              <div className="flex justify-between items-end">
-                                <label className="block text-[9px] font-bold text-slate-500 uppercase">ASB Type</label>
-                                <button type="button" onClick={() => setIsGuideOpen(true)} className="text-[9px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
-                                  Panduan Tipe ASB
-                                </button>
-                              </div>
-                              <select 
-                                value={overrideForm.selected_asb_type || 'A'} 
-                                onChange={(e) => setOverrideForm({...overrideForm, selected_asb_type: e.target.value})}
-                                className="w-full mt-0.5 border border-slate-200 rounded p-1"
-                              >
-                                 {['A','B','C','D','E','F','G'].map(t => (
-                                    <option key={t} value={t}>{ASB_TYPE_GUIDE[t]?.label || `Tipe ${t}`}</option>
-                                 ))}
-                              </select>
-                              {overrideForm.selected_asb_type && ASB_TYPE_GUIDE[overrideForm.selected_asb_type] && (
-                                <div className="mt-1.5 p-2 bg-indigo-50/50 border border-indigo-100 rounded text-[10px] text-indigo-900 space-y-1">
-                                  <p><span className="font-semibold">Komposisi:</span> {ASB_TYPE_GUIDE[overrideForm.selected_asb_type].composition}</p>
-                                  <p><span className="font-semibold">Kegunaan:</span> {ASB_TYPE_GUIDE[overrideForm.selected_asb_type].use}</p>
-                                </div>
-                              )}
-                           </div>
-                           <div className="grid grid-cols-2 gap-2">
-                              <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 uppercase">Width Match</label>
-                                 <select 
-                                   value={overrideForm.width_matching || 'auto_round_up'} 
-                                   onChange={(e) => setOverrideForm({...overrideForm, width_matching: e.target.value as any})}
-                                   className="w-full mt-0.5 border border-slate-200 rounded p-1"
-                                 >
-                                    <option value="auto_round_up">Auto</option>
-                                    <option value="manual_variant">Manual</option>
-                                 </select>
-                              </div>
-                              {overrideForm.width_matching === 'manual_variant' && (
-                                 <div>
-                                    <label className="block text-[9px] font-bold text-slate-500 uppercase">Manual Width (m)</label>
-                                    <input 
-                                      type="number" step="0.5" 
-                                      value={overrideForm.manual_width_m || ''} 
-                                      onChange={e => setOverrideForm({...overrideForm, manual_width_m: parseFloat(e.target.value)})}
-                                      className="w-full mt-0.5 border border-slate-200 rounded p-1"
-                                    />
-                                 </div>
-                              )}
-                           </div>
-                           <div className="grid grid-cols-2 gap-2">
-                              <div>
-                                 <label className="block text-[9px] font-bold text-slate-500 uppercase">Costing Mode</label>
-                                 <select 
-                                   value={overrideForm.costing_mode || 'full_segment_mode'} 
-                                   onChange={(e) => setOverrideForm({...overrideForm, costing_mode: e.target.value as any})}
-                                   className="w-full mt-0.5 border border-slate-200 rounded p-1"
-                                 >
-                                    <option value="full_segment_mode">Full</option>
-                                    <option value="effective_length_mode">Effective Length</option>
-                                 </select>
-                              </div>
-                              {overrideForm.costing_mode === 'effective_length_mode' && (
-                                 <div>
-                                    <label className="block text-[9px] font-bold text-slate-500 uppercase">Ratio (0-1)</label>
-                                    <input 
-                                      type="number" step="0.1" min="0" max="1"
-                                      value={overrideForm.effective_length_ratio || ''} 
-                                      onChange={e => setOverrideForm({...overrideForm, effective_length_ratio: parseFloat(e.target.value)})}
-                                      className="w-full mt-0.5 border border-slate-200 rounded p-1"
-                                    />
-                                 </div>
-                              )}
-                           </div>
-                           <div className="flex gap-2 mt-3 pt-2 border-t border-slate-100">
-                              <button onClick={handleSaveOverride} className="flex-1 bg-indigo-600 text-white text-[10px] font-bold py-1.5 rounded hover:bg-indigo-700">Save</button>
-                              <button onClick={() => setIsEditingOverride(false)} className="flex-1 bg-slate-100 text-slate-600 text-[10px] font-bold py-1.5 rounded hover:bg-slate-200">Cancel</button>
-                           </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
+          <RoadFocusPanel
+            selectedGeo={selectedGeo || null}
+            selectedDd2Feature={selectedDd2Feature}
+            selectedSegmentSummary={selectedSegmentSummary}
+            diagnosticKey={diagnosticKey}
+            matchMethod={matchMethod}
+            manualOverrides={manualOverrides}
+            overrideForm={overrideForm}
+            isEditingOverride={isEditingOverride}
+            setOverrideForm={setOverrideForm}
+            setIsEditingOverride={setIsEditingOverride}
+            handleSaveOverride={handleSaveOverride}
+            handleClearOverride={handleClearOverride}
+            setIsGuideOpen={setIsGuideOpen}
+            onClose={() => setSelectedKey(null)}
+            hpsOverrides={hpsOverrides}
+            clearHPSOverrideForRoad={clearHPSOverrideForRoad}
+            setHpsOverrideForRoad={setHpsOverrideForRoad}
+          />
         </div>
 
         {/* Dynamic Map Legend */}
@@ -2361,181 +1294,46 @@ export function TreatmentEnginePage() {
         </div>
       </div>
 
-      {/* ── Read-only DD2 Table ──────────────────────────────────────────────── */}
-      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden flex flex-col">
-        <div className="border-b border-slate-100 px-5 py-3.5 flex items-center justify-between flex-wrap gap-y-3">
-          <h3 className="text-sm font-semibold text-slate-800">DD2 Features (Read-Only)</h3>
-          
-          <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
-             {isSelectedRoadFilteredOut && (
-                <div className="flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[10px] font-medium text-amber-700 animate-pulse">
-                   <AlertTriangle className="h-3 w-3" />
-                   Target hidden by search filter
-                </div>
-             )}
-
-             {selectedKey && (
-                <button 
-                  onClick={() => setSelectedKey(null)}
-                  className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[10px] font-semibold text-slate-600 hover:bg-slate-50 hover:text-red-600 transition-colors shadow-sm"
-                >
-                  <X className="h-3 w-3" />
-                  Clear Selection
-                </button>
-             )}
-
-             <div className="relative">
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search roads..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-9 pr-8 py-1.5 text-xs border border-slate-200 rounded-md bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors w-56 md:w-64"
-                />
-                {searchTerm && (
-                   <button 
-                      onClick={() => setSearchTerm('')}
-                      title="Clear search"
-                      className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-red-500 transition-colors"
-                   >
-                      <X className="h-3.5 w-3.5" />
-                   </button>
-                )}
-             </div>
-          </div>
-        </div>
-        
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs whitespace-nowrap">
-            <thead className="bg-slate-50 text-slate-500">
-              <tr>
-                <th className="px-5 py-3 font-medium">Canonical Name</th>
-                <th className="px-5 py-3 font-medium">Raw DD2 Name</th>
-                <th className="px-5 py-3 font-medium text-right">Length (km)</th>
-                <th className="px-5 py-3 font-medium text-right">Non-Mantap %</th>
-                <th className="px-5 py-3 font-medium">ASB Package</th>
-                <th className="px-5 py-3 font-medium text-right">Pagu Indikatif</th>
-                <th className="px-5 py-3 font-medium">Match Method</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {paginatedTableData.length > 0 ? (
-                paginatedTableData.map((road) => (
-                  <tr 
-                    key={`${road.road_key}-${road.dd2_row_index}`} 
-                    className={`cursor-pointer transition-all duration-150 border-l-4 group ${
-                       selectedDd2Feature?.road_key === road.road_key 
-                       ? 'bg-indigo-50/70 border-indigo-500 shadow-sm z-10' 
-                       : 'border-transparent hover:border-indigo-200 hover:bg-slate-50'
-                    }`}
-                    onClick={() => {
-                       const targetGeoKey = roadKeyToGeoKeyMap.get(road.road_key);
-                       if (targetGeoKey) {
-                          setSelectedKey(targetGeoKey);
-                       }
-                    }}
-                  >
-                    <td className="px-5 py-3 font-medium text-slate-800">{road.canonical_road_name}</td>
-                    <td className="px-5 py-3 text-slate-500 font-mono text-[10px]">{road.dd2_road_name_raw}</td>
-                    <td className="px-5 py-3 text-right font-mono text-slate-600">{road.panjang_ruas_km ?? '—'}</td>
-                    <td className="px-5 py-3 text-right">
-                      <span className={`inline-flex px-2 py-0.5 rounded-full font-mono text-[10px] font-medium ${
-                        road.non_mantap_pct === null ? 'bg-slate-100 text-slate-500' :
-                        road.non_mantap_pct > 40 ? 'bg-rose-100 text-rose-700' :
-                        road.non_mantap_pct > 20 ? 'bg-amber-100 text-amber-700' : 
-                        'bg-emerald-100 text-emerald-700'
-                      }`}>
-                        {road.non_mantap_pct !== null ? `${road.non_mantap_pct}%` : '—'}
-                      </span>
-                    </td>
-                    <td className="px-5 py-3">
-                      <div className="flex flex-col gap-0.5">
-                         {road.final_asb_budget?.status === 'estimated' || road.final_asb_budget?.status === 'manual_estimated' ? (
-                            <>
-                               <div className="flex items-center gap-1.5">
-                                 <span className="font-bold text-indigo-700 text-[11px]">Tipe {road.final_asb_budget.final_asb_type}</span>
-                                 {road.final_asb_budget.manual_override_used ? (
-                                   <span className="inline-flex items-center rounded bg-amber-100 px-1 py-0.5 text-[8px] font-bold text-amber-700" title={`Manual Override: ${road.final_asb_budget.reason}`}>🛠️ Manual</span>
-                                 ) : (
-                                   <span className="inline-flex items-center rounded bg-emerald-100 px-1 py-0.5 text-[8px] font-bold text-emerald-700" title="Auto Recommendation">Auto</span>
-                                 )}
-                               </div>
-                               <span className="text-[9px] text-slate-500">{road.final_asb_budget.rule_id}</span>
-                            </>
-                         ) : road.final_asb_budget?.status === 'no_major_asb_package' ? (
-                            <span className="text-[10px] text-slate-400 italic">Tidak ada paket mayor otomatis</span>
-                         ) : (
-                            <span className="text-[10px] text-slate-400 italic">No package</span>
-                         )}
-                      </div>
-                    </td>
-                    <td className="px-5 py-3 text-right">
-                       <span className="font-mono text-xs font-semibold text-slate-700">
-                          {road.final_asb_budget?.status === 'estimated' || road.final_asb_budget?.status === 'manual_estimated' ? `Rp ${(road.final_asb_budget.final_pagu_indikatif_rp || 0).toLocaleString('id-ID')}` : '—'}
-                       </span>
-                    </td>
-                    <td className="px-5 py-3">
-                      <span className="inline-flex items-center rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[9px] text-slate-500">
-                        {road.identity_match_method}
-                      </span>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan={6} className="px-5 py-8 text-center text-slate-500">
-                    {dd2Data ? 'No matching roads found.' : 'Loading DD2 data...'}
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-          <div className="border-t border-slate-100 bg-slate-50 px-5 py-3 flex items-center justify-between text-xs text-slate-500">
-            <div className="flex items-center gap-2">
-              <span>Show</span>
-              <select
-                 value={pageSize}
-                 onChange={(e) => {
-                   setPageSize(Number(e.target.value));
-                   setCurrentPage(1);
-                 }}
-                 className="border border-slate-200 rounded p-1 bg-white focus:ring-1 focus:ring-indigo-500"
-              >
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-                <option value={350}>350</option>
-              </select>
-              <span>records</span>
-            </div>
-
-            <div>
-               Showing {filteredTableData.length > 0 ? (currentPage - 1) * pageSize + 1 : 0} to {Math.min(currentPage * pageSize, filteredTableData.length)} of {filteredTableData.length} records
-            </div>
-
-            <div className="flex items-center gap-1">
-               <button
-                 disabled={currentPage === 1}
-                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                 className="px-2.5 py-1.5 rounded border border-slate-200 bg-white text-slate-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-100 transition-colors font-medium"
-               >
-                 Prev
-               </button>
-               <span className="px-3 py-1.5 font-medium text-slate-700">
-                 Page {currentPage} of {Math.ceil(filteredTableData.length / pageSize) || 1}
-               </span>
-               <button
-                 disabled={currentPage >= Math.ceil(filteredTableData.length / pageSize)}
-                 onClick={() => setCurrentPage(p => p + 1)}
-                 className="px-2.5 py-1.5 rounded border border-slate-200 bg-white text-slate-600 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-100 transition-colors font-medium"
-               >
-                 Next
-               </button>
-            </div>
-          </div>
-        </div>
+      {/* ── Extracted Read-only DD2 Table ────────────────────────────────────── */}
+      <div className="mb-4">
+        <TreatmentFiltersPanel
+          filterAsbType={filterAsbType}
+          setFilterAsbType={setFilterAsbType}
+          filterRuleId={filterRuleId}
+          setFilterRuleId={setFilterRuleId}
+          filterStatus={filterStatus}
+          setFilterStatus={setFilterStatus}
+          filterNonMantap={filterNonMantap}
+          setFilterNonMantap={setFilterNonMantap}
+          onClearAll={() => {
+            setFilterAsbType('All');
+            setFilterRuleId('All');
+            setFilterStatus('All');
+            setFilterNonMantap('All');
+            setSearchTerm('');
+          }}
+          isFiltered={filterAsbType !== 'All' || filterRuleId !== 'All' || filterStatus !== 'All' || filterNonMantap !== 'All' || searchTerm !== ''}
+          totalFiltered={filteredTableData.length}
+          totalRoads={dd2Data?.roads.length || 0}
+        />
       </div>
+
+      <TreatmentRoadTable
+        dd2Data={dd2Data}
+        filteredTableData={filteredTableData}
+        paginatedTableData={paginatedTableData}
+        selectedDd2Feature={selectedDd2Feature}
+        selectedKey={selectedKey}
+        setSelectedKey={setSelectedKey}
+        roadKeyToGeoKeyMap={roadKeyToGeoKeyMap}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        pageSize={pageSize}
+        setPageSize={setPageSize}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        isSelectedRoadFilteredOut={isSelectedRoadFilteredOut}
+      />
 
       {/* ── Implementation roadmap ────────────────────────────────────────────── */}
       <div className="rounded-xl border border-slate-200 bg-white">
@@ -2594,79 +1392,12 @@ export function TreatmentEnginePage() {
           <code className="font-mono text-[10px]">road_id</code> as cross-scenario identity.
         </div>
       </div>
-      {/* ── ASB Type Guide Modal ─────────────────────────────────────────────── */}
-      {isGuideOpen && (
-        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
-            <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4 bg-slate-50/80">
-              <div>
-                <h3 className="text-sm font-bold text-slate-800">Panduan Tipe ASB</h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">Daftar referensi paket standar dan pendukung berdasarkan ASB BM 2027.</p>
-              </div>
-              <button onClick={() => setIsGuideOpen(false)} className="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors">
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="overflow-y-auto p-5">
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-2 pb-1 border-b border-indigo-100">Paket Utama (Jalan)</h4>
-                  <div className="space-y-2">
-                    {Object.keys(ASB_TYPE_GUIDE).filter(k => !ASB_TYPE_GUIDE[k].isSupport).map(key => (
-                      <div key={key} className="bg-white border border-slate-100 rounded-lg p-3 shadow-sm hover:border-indigo-100 transition-colors">
-                        <div className="flex items-start gap-3">
-                          <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-md bg-indigo-100 text-indigo-700 font-black text-xs">
-                            {key}
-                          </span>
-                          <div>
-                            <p className="font-bold text-slate-800 text-xs">{ASB_TYPE_GUIDE[key].label}</p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 text-[10px]">
-                              <div>
-                                <p className="font-semibold text-slate-500 uppercase text-[8px] tracking-wider">Komposisi</p>
-                                <p className="text-slate-700 mt-0.5">{ASB_TYPE_GUIDE[key].composition}</p>
-                              </div>
-                              <div>
-                                <p className="font-semibold text-slate-500 uppercase text-[8px] tracking-wider">Kegunaan Indikatif</p>
-                                <p className="text-slate-700 mt-0.5">{ASB_TYPE_GUIDE[key].use}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="pt-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-600 mb-2 pb-1 border-b border-amber-100 flex items-center gap-2">
-                    Paket Pendukung / Manual Only
-                    <span className="bg-amber-100 text-amber-700 text-[8px] px-1.5 py-0.5 rounded-full font-bold">Special</span>
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {Object.keys(ASB_TYPE_GUIDE).filter(k => ASB_TYPE_GUIDE[k].isSupport).map(key => (
-                      <div key={key} className="bg-amber-50/30 border border-amber-100/60 rounded-lg p-2.5">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="flex-shrink-0 flex items-center justify-center w-5 h-5 rounded bg-amber-100 text-amber-700 font-bold text-[10px]">
-                            {key}
-                          </span>
-                          <p className="font-bold text-slate-800 text-[11px] leading-tight">{ASB_TYPE_GUIDE[key].label.replace(/^[A-Z] — /, '')}</p>
-                        </div>
-                        <p className="text-[9px] text-slate-600 pl-7">{ASB_TYPE_GUIDE[key].use}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="border-t border-slate-100 bg-slate-50 px-5 py-3 text-center">
-              <p className="text-[10px] text-slate-500 italic">
-                <AlertTriangle className="inline h-3 w-3 mr-1 text-amber-500 relative -top-0.5" />
-                Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+      
+      {/* ── Extracted ASB Type Guide Modal Component ─────────────────────────── */}
+      <ASBTypeGuide 
+        isOpen={isGuideOpen}
+        onClose={() => setIsGuideOpen(false)}
+      />
 
     </div>
   );

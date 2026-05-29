@@ -1,0 +1,698 @@
+﻿;;  ;
+No. Mata;Uraian;Satuan; Harga 
+Pembayaran;;; Satuan 
+;;; (Rupiah) 
+A;b;c; e 
+;;;
+;DIVISI 1. UMUM;;
+1.2;Mobilisasi;;
+1.2;Mobilisasi;LS;#REF!
+;;;
+1.20;Pengujian Tanah;;
+1.20.(1);Pengeboran, termasuk SPT dan Laporan ;M1; 735.878,68 
+1.20.(2);Sondir termasuk Laporan;M1; 463.909,01 
+;;;
+1;Penyiapan dokumen penerapan SMKK:;;
+SKh-1.1.22.(1a);Pembuatan dokumen SMKK (RKK, RMPK, RKPPL, RMLLP);Set; 550.000,00 
+SKh-1.1.22.(1b);Pembuatan Prosedur dan Instruksi Kerja;Set; 550.000,00 
+SKh-1.1.22.(1c) ;Penyusunan pelaporan penerapan SMKK;Set; 550.000,00 
+;;;
+2;Sosialisasi, Promosi, dan Pelatihan:;;
+SKh-1.1.22.(2a);Induksi Keselamatan Konstruksi (Safety Induction);Orang; 100.000,00 
+SKh-1.1.22.(2b);Pengarahan Keselamatan Konstruksi (Safety Briefing) ;Orang; 100.000,00 
+SKh-1.1.22.(2c);Pertemuan keselamatan (Safety Talk dan/atau Tool Box Meeting);Orang; 100.000,00 
+SKh-1.1.22.(2g);Spanduk (banner) ;Buah; 350.000,00 
+SKh-1.1.22.(2h);Poster/leaflet;Lembar; 175.000,00 
+SKh-1.1.22.(2i);Papan Informasi Keselamatan konstruksi;Lembar; 300.000,00 
+;;;
+3;Alat Pelindung Kerja dan Alat Pelindung Diri:;;
+SKh-1.1.22.(3a5);Pembatas area (Restricted Area) ;Rol; 137.000,00 
+SKh-1.1.22.(3b1);Topi pelindung (Safety Helmet);Buah; 54.300,00 
+SKh-1.1.22.(3b2);Pelindung mata (Goggles, Spectacles);Buah; 49.500,00 
+SKh-1.1.22.(3b6);Pelindung pernafasan dan mulut (masker, masker respirator);Buah; 9.400,00 
+SKh-1.1.22.(3b7);Sarung tangan kerja (safety gloves);Pasang; 3.400,00 
+SKh-1.1.22.(3b8);Sepatu keselamatan (Safety Shoes, rubber safety shoes and toe cap);Pasang; 135.400,00 
+SKh-1.1.22.(3b11);Rompi keselamatan (Safety Vest);Buah; 39.000,00 
+;;;
+4;Asuransi:;;
+SKh-1.1.22.(4a);Asuransi (Construction All Risk/CAR);Paket; -   
+;;;
+5;Personel Keselamatan Konstruksi:;;
+SKh-1.1.22.(5b);Ahli K3 konstruksi/ahli keselamatan konstruksi;Orang; 20.241.026,67 
+SKh-1.1.22.(5c);Petugas Keselamatan Konstruksi, Petugas K3 Konstruksi;Orang; 3.899.999,95 
+SKh-1.1.22.(5f);Petugas P3K;Orang;
+SKh-1.1.22.(5h);Petugas Pengatur Lalu Lintas;Orang; 3.899.999,95 
+;;;
+6;Fasilitas Sarana, Prasarana, dan Alat Kesehatan;;
+SKh-1.1.22.(6a);Peralatan P3K;Set; 891.000,00 
+SKh-1.1.22.(6b);Ruang P3K;Set; 3.000.000,00 
+;;;
+7;Rambu dan Perlengkapan Lalu Lintas:;;
+SKh-1.1.22.(7a);Rambu petunjuk;Buah; 375.000,00 
+SKh-1.1.22.(7b);Rambu larangan;Buah; 375.000,00 
+SKh-1.1.22.(7c);Rambu peringatan;Buah; 375.000,00 
+SKh-1.1.22.(7d);Rambu kewajiban;Buah; 375.000,00 
+SKh-1.1.22.(7e);Rambu informasi;Buah; 375.000,00 
+SKh-1.1.22.(7f);Rambu pekerjaan sementara;Buah; 375.000,00 
+SKh-1.1.22.(7h);Kerucut lalu lintas (traffic cone);Buah; 158.700,00 
+;;;
+9;Kegiatan dan Peralatan Terkait Pengendalian Risiko Keselamatan Konstruksi:;;
+SKh-1.1.22.(9a1);Alat Pemadam Api Ringan (APAR);Buah; 640.000,00 
+SKh-1.1.22.(9a4);Bendera K3;Buah; 80.500,00 
+SKh-1.1.22.(9a5);Pembuatan Kartu Identitas Pekerja (KIP);Buah; 50.000,00 
+SKh-1.1.22.(9b);Pengujian Baku Mutu Air Lengkap;Set; 848.000,00 
+SKh-1.1.22.(9c);Pengujian Baku Mutu Udara Ambien Lengkap;Set; 1.880.000,00 
+SKh-1.1.22.(9d1);Pengujian Vibrasi Lingkungan untuk Kenyamanan dan Kesehatan;Buah; 115.000,00 
+SKh-1.1.22.(9d2);Pengujian tingkat getaran kendaraan bermotor;Buah; 115.000,00 
+;;;
+;;;
+;Jumlah Harga Pekerjaan DIVISI 1  (masuk pada Rekapitulasi Perkiraan Harga Pekerjaan);;
+;;;
+;;;
+B;DIVISI 2. DRAINASE;;
+2.1.(1);Galian untuk Selokan Drainase dan Saluran Air;M3; 94.958,29 
+2.2.(1);Pasangan Batu dengan Mortar;M3; 1.535.683,76 
+2.3.(1);Gorong-gorong Pipa Beton Tanpa Tulangan diameter dalam 20 cm;M1; 189.065,22 
+2.3.(2);Gorong-gorong Pipa Beton Tanpa Tulangan diameter dalam 25 cm;M1; 223.875,67 
+2.3.(3);Gorong-gorong Pipa Beton Tanpa Tulangan diameter dalam 30 cm;M1; 290.334,43 
+2.3.(4);Gorong-gorong Pipa Beton Bertulang, diameter dalam 40 cm;M1; 671.562,52 
+2.3.(5);Gorong-gorong Pipa Beton Bertulang, diameter dalam 60 cm;M1; 985.419,79 
+2.3.(6);Gorong-gorong Pipa Beton Bertulang, diameter dalam 80 cm;M1; 1.868.594,61 
+2.3.(7);Gorong-gorong Pipa Beton Bertulang, diameter dalam 100 cm;M1; 2.877.965,40 
+2.3.(8);Gorong-gorong Pipa Beton Bertulang, diameter dalam 120 cm;M1; 3.720.540,41 
+2.3.(9);Gorong-gorong Pipa Beton Bertulang, diameter dalam 150 cm;M1; 4.303.607,29 
+2.3.(10);Gorong-gorong Pipa Baja Bergelombang;Ton; 20.579.043,61 
+2.3.(11);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 40 cm x 40 cm;M1; 1.602.159,88 
+2.3.(12);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 50 cm x 50 cm;M1; 1.898.612,43 
+2.3.(12).v2;Gorong-gorong Kotak Beton Bertulang, ukuran dalam 50 cm x 50 cm (Variasi 2);M1; 3.063.384,94 
+2.3.(13);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 60 cm x 60 cm;M1; 1.959.879,32 
+2.3.(13) v2;Gorong-gorong Kotak Beton Bertulang, ukuran dalam 60 cm x 60 cm dengan Precast dan Lean Concrete;M1; 2.071.893,73 
+2.3.(14);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 80 cm x 80 cm;M1; 2.512.164,32 
+2.3.(14) v2;Gorong-gorong Kotak Beton Bertulang, ukuran dalam 80 cm x 80 cm dengan Precast dan Lean Concrete;M1; 3.120.717,55 
+2.3.(15);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 100 cm x 100 cm;M1; 3.569.291,89 
+2.3.(15) v2;Gorong-gorong Kotak Beton Bertulang, ukuran dalam 100 cm x 100 cm (Variasi 2);M1; 4.778.774,56 
+2.3.(16);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 120 cm x 120 cm;M1; 4.208.723,73 
+2.3.(17);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 140 cm x 140 cm;M1; 5.827.769,30 
+2.3.(18);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 150 cm x 150 cm;M1; 6.069.296,66 
+2.3.(18) v2;Gorong-gorong Kotak Beton Bertulang, ukuran dalam 150 cm x 150 cm dengan Precast dan Lean Concrete;M1; 8.222.243,95 
+2.3.(19);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 160 cm x 160 cm;M1; 7.369.290,36 
+2.3.(20);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 180 cm x 180 cm;M1; 8.332.314,26 
+2.3.(21);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 200 cm x 200 cm;M1; 9.234.568,77 
+2.3.(21) v2;Gorong-gorong Kotak Beton Bertulang, ukuran dalam 200 cm x 200 cm dengan Precast dan Lean Concrete;M1; 17.411.290,43 
+SKh-1.2.3.(21b);Gorong-gorong Kotak Beton Bertulang, ukuran dalam 300 cm x300 cm;M1; 42.606.516,44 
+2.3.(22);Saluran berbentuk U Tipe DS 1;M1; 832.125,73 
+2.3.(22) v2;Saluran berbentuk U Tipe DS 1 dengan Precast;M1; 910.702,33 
+2.3.(23);Saluran berbentuk U Tipe DS 1a (dengan tutup);M1; 1.147.780,10 
+2.3.(24);Saluran berbentuk U Tipe DS 2;M1; 968.687,70 
+2.3.(24) v2;Saluran berbentuk U Tipe DS 2 dengan Precast;M1; 1.061.444,66 
+2.3.(25);Saluran berbentuk U Tipe DS 2a (dengan tutup);M1; 1.321.964,94 
+2.3.(26);Saluran berbentuk U Tipe DS 3;M1; 1.021.453,24 
+2.3.(26) v2;Saluran berbentuk U Tipe DS 3 dengan Precast;M1; 2.410.837,15 
+2.3.(27);Saluran berbentuk U Tipe DS 3a (dengan tutup);M1; 1.416.390,60 
+2.3.(28);Saluran berbentuk U Tipe DS 4;M1; 1.127.548,26 
+2.3.(28) v2;Saluran berbentuk U Tipe DS 4 dengan Precast;M1; 1.741.261,27 
+2.3.(29);Saluran berbentuk U Tipe DS 4a (dengan tutup);M1; 1.609.984,72 
+2.3.(30);Saluran berbentuk U Tipe DS 5;M1; 1.233.643,28 
+2.3.(30) v2;Saluran berbentuk U Tipe DS 5 dengan Precast;M1; 2.282.045,26 
+2.3.(31);Saluran berbentuk U Tipe DS 5a (dengan tutup);M1; 1.813.110,40 
+2.3.(31) v2;Saluran berbentuk U Tipe DS 5a (dengan tutup) Precast;M1; 3.145.219,60 
+2.3.(32);Saluran berbentuk U Tipe DS 6;M1; 1.923.043,94 
+2.3.(33);Saluran berbentuk U Tipe DS 6a (dengan tutup);M1; 2.588.833,72 
+2.3.(34);Pasangan Batu tanpa Adukan (Aanstamping) ;M3; 2.894.365,93 
+2.4.(1);Bahan Drainase Porous atau Penyaring (Filter);M3; 724.351,24 
+2.4.(2);Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 4 inch;M1; 164.986,67 
+2.4.(3);Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 5 inch;M1; 158.075,17 
+2.4.(4);Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 6 inch;M1; 196.784,17 
+2.4.(5);Pipa Berlubang Banyak (Perforated Pipe) untuk Pekerjaan Drainase Bawah Permukaan, diameter 8 inch;M1; 234.906,67 
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  3.  PEKERJAAN  TANAH DAN GEOSINTETIK;;
+3.1.(1);Galian Biasa;M3; 66.704,00 
+3.1.(2);Galian Batu Lunak;M3; 44.597,32 
+3.1.(3);Galian Batu;M3; 252.146,76 
+3.1.(4);Galian Struktur dengan kedalaman 0 - 2 meter;M3; 727.897,54 
+3.1.(5);Galian Struktur dengan kedalaman 2 - 4 meter;M3; 663.507,80 
+3.1.(6);Galian Struktur dengan kedalaman 4 - 6 meter;M3; 604.180,98 
+3.1.(7);Galian Perkerasan Beraspal dengan Cold Milling Machine;M3; 634.306,82 
+3.1.(8);Galian Perkerasan Beraspal tanpa Cold Milling Machine;M3; 560.203,95 
+3.1.(8).(v2);Galian Perkerasan Aspal tanpa Cold Milling Machine (Variasi 2) ;M3; 399.878,80 
+3.1.(9);Galian Perkerasan berbutir;M3; 57.739,98 
+3.1.(10).;Galian Perkerasan Beton;M3; 626.741,02 
+3.2.(1a);Timbunan Biasa dari sumber galian;M3; 372.899,99 
+3.2.(1b);Timbunan Biasa dari hasil galian;M3; 121.338,31 
+3.2.(2a);Timbunan Pilihan dari sumber galian;M3; 606.597,02 
+3.2.(2b);Timbunan Pilihan dari galian;M3; 130.739,07 
+3.2.(3a);Timbunan Pilihan (diukur diatas bak truk);M3; 585.557,88 
+3.2.(3b);Timbunan Pilihan (diukur dengan rod & plate);M3; 869.790,42 
+3.2.(4);Penimbunan Kembali Berbutir (Granular Backfill);M3; 637.730,74 
+3.3.(1);Penyiapan Badan Jalan;M2; 3.682,92 
+3.4.(1);Pembersihan dan Pengupasan Lahan ;M2; 11.908,68 
+3.4.(2);Pemotongan Pohon Pilihan diameter 15 – 30 cm;buah; 142.308,82 
+3.4.(3);Pemotongan Pohon Pilihan diameter > 30 – 50 cm;buah; 191.255,67 
+3.4.(4);Pemotongan Pohon Pilihan diameter > 50 – 75 cm;buah; 285.404,87 
+3.4.(5);Pemotongan Pohon Pilihan diameter > 75 cm;buah; 460.637,05 
+3.5.(1);Geotekstil Filter untuk Drainage Bawah Permukaan (Kelas 2);M2; 102.889,87 
+3.5.(2a);Geotekstil Separator Kelas 1;M2; 29.934,58 
+3.5.(2b);Geotekstil Separator Kelas 2;M2; 29.934,58 
+3.5.(2c);Geotekstil Separator Kelas 3;M2; 29.934,58 
+3.5.(3);Geotekstil Stabilisator (Kelas 1);M2; 29.043,63 
+SKh.1.3.8.(1);Geomembran Jenis HDPE halus;M2; 130.699,18 
+SKh.1.3.11.(2);Geogrid Uniaxial Tipe 2;M2; 25.462,77 
+SKh.1.3.11.(6);Geogrid Biaxial Tipe 1;M2; 22.897,50 
+SKh.1.3.17.(1.a);Selimut Pengendali Erosi Tipe I;M2; 453.077,26 
+SKh.1.3.17.(1.b);Selimut Pengendali Erosi Tipe II;M2; 487.577,26 
+SKh.1.3.17.(2.b);Penanaman Biji Vegetasi dengen Teknik Taplok;M2; 52.731,33 
+SKh.1.3.23.(1);Geocell;M2; 431.723,77 
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  4.  PEKERJAAN PREVENTIF;;
+4.1.(1);Pengabutan (Fog Seal) dengan Aspal Emulsi yang Mengikat Lambat (CSS-1h atau SS-1h);Liter; 37.266,05 
+4.1.(2);Pengabutan (Fog Seal) dengan Aspal Emulsi yang Mengikat Lebih Cepat (CQS-1h atau QS-1h);Liter; 37.266,05 
+4.1.(3);Pengabutan (Fog Seal) dengan Aspal Emulsi Modifikasi Polymer yang Mengikat Lebih Cepat (PMCQS-1h atau PMQS-1h);Liter; 23.906,33 
+4.2.(1);Laburan Aspal (Buras);M2; 23.750,89 
+4.4.(1);Penghamparan lapis penutup bubur aspal emulsi, tipe 1, CSS-1h SS-1h;M2; 37.647,06 
+4.4.(2);Penghamparan lapis penutup bubur aspal emulsi, tipe 1, CQS-1h QS-1h;M2; 38.065,57 
+4.4.(3);Penghamparan lapis penutup bubur aspal emulsi, tipe 2, CSS-1h SS-1h;M2; 43.628,21 
+4.4.(4);Penghamparan lapis penutup bubur aspal emulsi, tipe 2, CQS-1h QS-1h;M2; 43.170,73 
+4.4.(5);Penghamparan lapis penutup bubur aspal emulsi, tipe 3, CSS-1h SS-1h;M2; 38.879,74 
+4.4.(6);Penghamparan lapis penutup bubur aspal emulsi, tipe 3, CQS-1h QS-1h;M2; 39.660,01 
+4.5.(1);Lapis Permukaan Mikro dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 1;M2; 6.433,96 
+4.5.(2);Lapis Permukaan Mikro Perata dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 1;Ton; 1.166.180,04 
+4.5.(3);Lapis Permukaan Mikro dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 2;M2; 7.289,07 
+4.5.(4);Lapis Permukaan Mikro Perata dengan aspal emulsi modifikasi  polymer  PMCQS-1h atau PMCQS-1h untuk Tipe 2;Ton; 1.225.405,04 
+4.6.(1);Latasir Kelas A (SS-A);Ton; 2.935.032,95 
+4.6.(2);Latasir Kelas B (SS-B);Ton; 3.287.946,80 
+4.6.(3);Latasir Kelas A Modifikasi (SS-A Mod);Ton; - 
+4.6.(4);Latasir Kelas B Modifikasi (SS-B Mod);Ton; - 
+4.7.(1);Lapis Tipis Beton Aspal - A (LTBA-A);Ton; 2.442.758,72 
+4.7.(2);Lapis Tipis Beton Aspal - B Halus (LTBA-B Halus);Ton; 2.217.011,71 
+4.7.(3);Lapis Tipis Beton Aspal - B Halus (LTBA-B Kasar);Ton; 1.992.786,43 
+4.7.(4);Lapis Tipis Beton Aspal - B Halus Modifikasi Kasar (LTBA-B Mod Kasar);Ton; 2.046.899,75 
+4.7.(5);Stone Matrix Asphalt Tipis (SMA Tipis);Ton; 2.260.806,10 
+4.7.(6);Stone Matrix Asphalt Modifikasi Tipis (SMA Mod Tipis);Ton; 2.955.672,77 
+4.8.(1);Tambalan Dangkal dengan Beton Semen Cepat Mengeras untuk Pembbukaan Lalu Lintas Umur Beton < 24 jam;M3; 8.397.185,76 
+4.8.(2);Tambalan Dangkal dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 1 hari dan kurang dari 3 hari;M3; 3.993.727,81 
+4.8.(3);Tambahan Dangkal dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 3 hari dan kurang dari 7 hari;M3; 3.697.602,81 
+4.9.(1);Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton < 24 jam;M3; 9.854.460,96 
+4.9.(2);Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 1 hari dan kurang dari 3 hari;M3; 5.710.964,55 
+4.9.(3);Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 3 hari dan kurang dari 7 hari;M3; 5.058.209,60 
+4.9.(3) v.2;Tambalan Penuh dengan Beton Semen Cepat Mengeras untuk Pembukaan Lalu Lintas Umur Beton lebih dari 3 hari dan kurang dari 7 hari (Variasi 2);M3; 2.939.399,32 
+4.9.(4);Pemasangan Ruji (Dowel);Buah; 374.225,33 
+4.9.(5);Pemasangan Sealant;M1; 1.182,70 
+4.10.(1);Penambahan dan/atau Penggantian Ruji (Dowel) pada Perkerasan Beton Semen dengan Epoksi;Buah; 484.241,50 
+4.11.(1);Penjahitan Melintang Tipe 1 (tabel pelat beton = 150 - 175 mm);Buah; 32.996,20 
+4.12.(1);Penutupan Sambungan Melintang (Termoplastik);M1; 121.281,02 
+4.12.(2);Penutupan Sambungan Melintang (Termoseting);M1; 170.164,68 
+4.12.(3);Penutupan Sambungan Melintang (Preformed);M1; 817.869,67 
+4.12.(7);Penutupan Retak (Termoplastik);M1; 108.548,19 
+4.13.(1);Pengeboran Lubang ;Buah; 6.260,58 
+4.13.(2);Material Injeksi Berbahan Dasar Semen;Kg; 471.806,93 
+4.13.(3);Material Injeksi Berbahan Dasar Cellular ;Kg; 492.628,08 
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  5.  PERKERASAN  BERBUTIR;;
+;Penyediaan Bahan Olahan Lapis Fondasi Agregat Kelas A;; 549.681,64 
+5.1.(1);Lapis Pondasi Agregat Kelas A;M3; 880.275,57 
+5.1.(2);Lapis Pondasi Agregat Kelas B;M3; 785.952,18 
+5.1.(3a);Lapis Pondasi Agregat Kelas S;M3; 790.046,98 
+5.1.(3b);Lapis Pondasi Agregat Kelas C;M3; 790.943,52 
+5.1.(4);Lapis Drainase;M3; 838.760,33 
+5.2,(1);Lapis Permukaan Agregat Tanpa Penutup Aspal;M3; 725.436,75 
+5.2,(2);Lapis Pondasi Agregat Tanpa Penutup Aspal;M3; 648.671,41 
+5.3.(1.a);Perkerasan Beton Semen;M3; 2.224.946,08 
+5.3.(1.a) v.2;Perkerasan Beton Semen (Variasi 2);M3; 2.839.682,25 
+5.3.(1.b);Perkerasan Beton Semen Fast Track 8 Jam ;M3; 7.623.463,40 
+5.3.(1.c);Perkerasan Beton Semen  Fast Track 24 Jam;M3; 7.150.201,89 
+5.3.(1.d);Perkerasan Beton Semen Untuk Pembukaan Lalu lintas Umur Beton >3hari <7hari;M3; 6.151.853,28 
+5.3.(2.a);Perkerasan Beton Semen dengan Anyaman Tulangan Tunggal ;M3; 2.793.751,46 
+5.3.(2.a) v.2;Perkerasan Beton Semen dengan Anyaman Tulangan Tunggal (Variasi 2);M3; 2.864.981,85 
+5.3.(2.b);Perkerasan Beton Semen Fast Track 8 Jam dengan Anyaman Tulangan Tunggal ;M3; 4.419.783,82 
+5.3.(2.c);Perkerasan Beton Semen Fast Track 24 Jam dengan Anyaman Tulangan Tunggal ;M3; 7.598.568,31 
+5.3.(3);Lapis Pondasi bawah Beton Kurus;M3; 1.562.691,55 
+5.3.(3) v.2;Lapis Pondasi bawah Beton Kurus (Variasi 2);M3; 2.249.718,56 
+5.4.(1);Stabilisasi Tanah Dasar dengan Semen;Ton; 385.460,30 
+5.4.(2);Lapis Fondasi Tanah Semen;M3; 1.034.293,43 
+5.5.(1);Lapis Fondasi Agregat Semen Kelas A (Cement Treated Base = CTB);M3; 880.873,35 
+5.5.(2);Lapis Fondasi Agregat Semen Kelas B (Cement Treated Sub-Base = CTSB);M3; 821.363,73 
+Skh-1.5.24.(1);Perkerasan Beton Semen fs' 3,5 Mpa;M3; 2.121.513,86 
+Skh-1.5.24.(2);Perkerasan Beton Semen fs' 3,8 Mpa;M3; 2.200.916,23 
+Skh-1.5.24.(3);Perkerasan Beton Semen fs' 4,5 Mpa;M3; 2.214.899,16 
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  6.  PERKERASAN  ASPAL;;
+6.1 (1);Lapis Resap Pengikat - Aspal Cair/Emulsi;Liter; 39.379,01 
+6.1 (2a);Lapis Perekat - Aspal Cair/Emulsi;Liter; 37.551,95 
+6.1 (2b);Lapis Perekat - Aspal Emulsi Modifikasi Polimer;Liter; 28.078,63 
+6.2 (1);Agregat Penutup BURTU;M2; 29.765,14 
+6.2 (2);Agregat Penutup BURDA;M2; 13.837,51 
+6.2 (3a);Bahan Aspal Keras untuk Pekerjaan Pelaburan;Liter; 21.100,54 
+6.2 (3b);Bahan Aspal Emulsi Modifikasi untuk Pekerjaan Pelaburan;Liter; 22.583,59 
+6.2 (4a);Aspal Cair untuk Precoated;Liter; 20.256,89 
+6.2 (4b);Aspal Emulsi untuk Precoated;Liter; 21.230,58 
+6.2 (4c);Aspal Emulsi Modifikasi Polimer untuk Precoated;Liter; 14.680,80 
+6.3 (1a);Stone Matrix Asphalt Halus (SMA Halus);Ton; 2.240.261,18 
+6.3 (1b);Stone Matrix Asphalt Modifikasi Halus (SMA Mod Halus);Ton; 1.932.338,29 
+6.3 (2a);Stone Matrix Asphalt Kasar (SMA Kasar);Ton; 2.213.626,03 
+6.3 (2b);Stone Matrix Asphalt Modifikasi Kasar (SMA Mod Kasar);Ton; 1.894.252,40 
+6.3(4a);Lataston Lapis Aus (HRS-WC) ;Ton; 2.381.664,28 
+6.3.(4b);Lataston Lapis Fondasi (HRS-Base) ;Ton; 2.298.810,92 
+6.3(5a);Laston Lapis Aus (AC-WC);Ton; 2.171.530,28 
+6.3(5b);Laston Lapis Aus Modifikasi (AC-WC Mod);Ton; 1.851.260,66 
+6.3(6a);Laston Lapis Antara (AC-BC);Ton; 2.097.668,69 
+6.3(6b);Laston Lapis Antara Modifikasi (AC-BC Mod);Ton; 1.787.508,02 
+6.3(7a);Laston Lapis Fondasi (AC-Base);Ton; 2.032.517,53 
+6.3(7b);Laston Lapis Fondasi Modifikasi (AC-Base Mod);Ton; 1.651.465,47 
+6.3.(8);Bahan anti pengelupasan;Kg; 83.634,90 
+6.4.(1a);Laston Hangat Pen.60-70, WMAC Lapis Aus (WMAC-WC) dengan Zeolit;Ton; 2.188.821,60 
+6.4.(1b);Laston Hangat Pen.60-70, WMAC Lapis Aus (WMAC-WC) dengan Wax;Ton; 2.143.021,26 
+6.4.(2a);Laston Hangat Pen.60-70, WMAC Lapis Antara (WMAC-BC) dengan Zeolit;Ton; 2.076.788,65 
+6.4.(2b);Laston Hangat Pen.60-70, WMAC Lapis Antara (WMAC-BC) dengan Wax;Ton; 2.027.175,91 
+6.4.(3a);Laston Hangat Pen.60-70, WMAC Lapis Fondasi (WMAC-Base) dengan Zeolit;Ton; 1.912.232,75 
+6.4.(3b);Laston Hangat Pen.60-70, WMAC Lapis Fondasi (WMAC-Base) dengan Wax;Ton; 1.866.762,87 
+6.5.(1a);Laston Lapis Aus Asbuton Pracampur (AC-WC Asb Pracampur);Ton; 1.969.640,66 
+6.5.(1b);Laston Lapis Aus Asbuton Butir (AC-WC Asb butir);Ton; 2.115.001,93 
+6.5.(2a);Laston Lapis Antara Asbuton Pracampur (AC-BC Asb Pracampur);Ton; 2.075.713,22 
+6.5.(2b);Laston Lapis Antara Asbuton Butir (AC-BC Asb Butir);Ton; 2.032.830,60 
+6.5.(3b);Laston Lapis Fondasi Asbuton Butir (AC-Base Asb Butir);Ton; 1.980.910,19 
+6.6.(1);CPHMA Kemasa Kantong;Ton; 1.193.359,35 
+6.7.(1);Lapis Penetrasi Macadam;M3; 2.887.760,99 
+6.7.(2);Lapis Penetrasi Macadam Asbuton;M3; 2.606.658,36 
+SKh-1.6.25.(1);Campuran Beraspal Panas (Laston) Lapis Aus (AC-WCNR);Ton; 1.942.139,51 
+SKh-1.6.29.(1g);Laston Lapis Aus (AC-WC) Asbuton Murni;Ton; 1.972.707,34 
+SKh-1.6.29.(1i);Laston Lapis Antara (AC-BC) Asbuton Murni;Ton; 1.916.420,53 
+SKh-1.6.29.(1k);Laston Lapis Fondasi (AC-Base) Asbuton Murni;Ton; 1.841.117,69 
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  7.  STRUKTUR;;
+7.1 (1);Beton struktur, fc’50 MPa;M3; 3.081.533,19 
+7.1 (2);Beton struktur, fc’45 MPa;M3; 3.026.404,10 
+7.1 (3) ;Beton struktur, fc’40 MPa ;M3; 23.619.232,20 
+7.1 (4);Beton struktur, fc’35 MPa;M3; 2.898.360,55 
+7.1 (5a);Beton struktur, fc’30 MPa;M3; 2.613.592,24 
+7.1 (5a) v.2;Beton struktur, fc’30 Mpa (Variasi 2);M3; 3.401.198,94 
+7.1 (5a) v.3;Beton struktur, fc’30 Mpa (Variasi 3);M3; 2.391.451,04 
+7.1 (5a) v.4;Beton struktur fc’ 30 MPa (Pekerjaan Pelat Lantai);M3;
+7.1 (5b);Beton struktur bervolome besar, fc'30 MPa;M3; 2.892.814,41 
+7.1 (5c);Beton struktur memadat sendiri, fc'30 MPa;M3; 2.230.119,91 
+7.1 (6a);Beton struktur, fc’25 Mpa;M3; 2.729.241,80 
+7.1 (6b);Beton struktur bervolume besar, fc’25 Mpa;M3; 2.836.709,45 
+7.1 (6c);Beton struktur memadat sendiri, fc’25 Mpa;M3; 2.717.078,55 
+7.1 (7a);Beton strukur, fc’20 MPa ;M3; 2.185.776,24 
+7.1 (7a) v.2;Beton strukur, fc’20 MPa (Variasi 2);M3; 2.228.262,53 
+7.1 (7a) v.3;Beton strukur, fc’20 MPa (Variasi 3);M3; 1.588.803,37 
+7.1 (7b);Beton strukur bervolume besar, fc’20 MPa ;M3; 3.489.806,11 
+7.1 (7c);Beton strukur memadat sendiri, fc’20 MPa ;M3; 3.195.442,74 
+7.1 (7d);Beton strukur, fc’20 MPa yang dilaksanakan di air;M3; 2.845.941,79 
+7.1 (8);Beton , fc’15 Mpa;M3; 2.049.894,95 
+7.1 (9);Beton Siklop, fc’15 Mpa;M3; 1.401.363,92 
+7.1 (10);Beton, fc’10 Mpa;M3; 1.876.839,03 
+7.1 (10) v.2;Beton, fc’10 MPa (Variasi 2);M3; 1.529.636,30 
+7.2 (1a);Penyediaan Unit Pracetak Gelagar Tipe I Bentang 16 meter;Buah; 105.656.597,73 
+7.2 (1b);Penyediaan Unit Pracetak Gelagar Tipe I Bentang 25 meter;Buah; 184.116.274,40 
+7.2 (1c).35;Penyediaan Unit Pracetak Gelagar Tipe I Bentang 35 meter;Buah; 315.979.992,65 
+7.2 (1c).40;Penyediaan Unit Pracetak Gelagar Tipe I Bentang 40 meter;Buah; 344.906.904,21 
+7.2 (1c).42;Penyediaan Unit Pracetak Gelagar Tipe I Bentang 42.8 meter;Buah; 400.792.011,28 
+7.2 (1c).45;Penyediaan Unit Pracetak Gelagar Tipe I Bentang 45 meter;Buah; 436.846.447,24 
+7.2 (1c).50;Penyediaan Unit Pracetak Gelagar Tipe I Bentang 50 meter;Buah; 477.843.617,09 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 16 meter;Buah; 91.006.398,99 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 25 meter;Buah; 159.232.204,79 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 35 meter;Buah; 274.031.422,02 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 40 meter;Buah; 299.014.202,85 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 42.8 meter;Buah; 347.645.889,03 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 45 meter;Buah; 378.961.631,57 
+;Pabrikasi Unit Pracetak Gelagar Tipe I bentang 50 meter;Buah; 414.611.344,49 
+7.2 (2a);Pemasangan Unit Pracetak Gelagar Tipe I Bentang 16 meter;Buah; 6.514.808,69 
+7.2 (2b);Pemasangan Unit Pracetak Gelagar Tipe I Bentang 25 meter;Buah; 15.124.060,94 
+7.2 (2c).35;Pemasangan Unit Pracetak Gelagar Tipe I Bentang 35 meter;Buah; 20.695.065,33 
+7.2 (2c).42;Pemasangan Unit Pracetak Gelagar Tipe I Bentang 42.8 meter;Buah; 31.992.947,61 
+7.2 (3a);Penyediaan Unit Pracetak Gelagar Tipe U Bentang 16 meter ;Buah; 288.310.918,40 
+7.2 (4a);Pemasangan Unit Pracetak Gelagar Tipe U Bentang 16 meter;Buah; 8.873.110,47 
+7.2.(7);Baja Prategang ;Kg; 1.068.762,79 
+7.2.(8);Penyediaan Pelat Berongga (Voided Slab) Pracetak bentang 5 Meter;Buah; 41.319.611,78 
+7.2.(9);Pemasangan Pelat Berongga (Voided Slab) Pracetak bentang 5 Meter;Buah; 5.568.635,10 
+7.2.(10);Beton Pratekan untuk Diafragma fc' 45 MPa termasuk Pekerjaan pasca-tarik (post-tension);M3; 2.381.707,60 
+7.2.(10) v2;Beton Pratekan untuk Diafragma fc' 45 MPa termasuk Pekerjaan pasca-tarik (post-tension) (Varias 2);M3; 2.547.172,44 
+7.2.(12a);Penyediaan Panel Full Depth slab ;Buah; 2.814.436,01 
+7.2.(12b);Penmasangan Panel Full Depth slab;Buah; 313.945,40 
+7.3 (1);Baja Tulangan Polos-BjTP 280;Kg; 18.327,40 
+7.3 (2);Baja Tulangan Sirip BjTS 280;Kg; 18.453,99 
+7.3 (3);Baja Tulangan Sirip BjTS 420A;Kg; 28.746,55 
+7.3 (4);Baja Tulangan Sirip BjTS 420B;Kg; 22.019,05 
+7.3 (5);Baja Tulangan Sirip BjTS 520;Kg; 25.249,09 
+7.3 (6);Baja Tulangan Sirip BjTS 550;Kg; 26.482,15 
+7.3 (7);Baja Tulangan Sirip BjTS 700;Kg; 26.317,51 
+7.3 (8);Anyaman Kawat Yang Dilas (Welded Wire Mesh);Kg; 23.045,89 
+7.4 (1a);Penyediaan Baja Struktur Grade 250 (Kuat Leleh 250 MPa);Kg; 29.513,91 
+7.4 (1b);Penyediaan Baja Struktur Grade 345 (Kuat Leleh 345 MPa);Kg; 41.013,91 
+7.4 (1c);Penyediaan Baja Struktur Grade 485 (Kuat Leleh 485 MPa);Kg; 46.763,91 
+7.4 (1d);Penyediaan Baja Struktur Grade 690 (Kuat Leleh 690 Mpa Untuk Tebal Pelat < 2,5);Kg; 26.063,91 
+7.4 (1e);Penyediaan Baja Struktur Grade 690 (Kuat Leleh 620 Mpa Untuk Tebal Pelat < 2,5-4,0 inch);Kg; 22.613,91 
+7.4 (2);Pemasangan Baja Struktur ;Kg; 3.743,82 
+7.4 (2) v2;Pemasangan Baja Struktur (dengan pengelasan);Kg; 4.288,02 
+7.4 (3);Penyediaan Struktur Jembatan Rangka Baja Standar …… m;Kg; 29.513,91 
+7.4 (3).40;Penyediaan Struktur Jembatan Rangka Baja Standar 40 m;Kg; 44.126,98 
+7.4 (3).80;Penyediaan Struktur Jembatan Rangka Baja Standar 80 m;Kg; 44.126,98 
+7.4 (4);Pemasangan Jembatan Rangka Baja Standar Panjang ….. M;Kg; 3.743,82 
+7.4 (4).80;Pemasangan Jembatan Rangka Baja Standar Panjang 80 M;Kg; 12.067,43 
+7.4 (5a);Pemasangan Jembatan Rangka Baja yang disediakan Pengguna Jasa;Kg; 3.265,52 
+7.4 (5b);Pengangkutan Bahan Jembatan yang disediakan Pengguna Jasa;Kg; 655,58 
+7.5.(1);Tiang bor sekan primer diameter 80 cm (fc' > 15 MPa);M1; 1.768.651,95 
+7.5.(2);Tiang bor sekan sekunder diameter 80 cm (fc' > 30 MPa);M1; 2.692.182,76 
+7.5.(3);Tiang bor sekan primer  diameter 100 cm (fc' > 15MPa);M1; 2.198.739,54 
+7.5.(4);Tiang bor sekan sekunder diameter 100 cm (fc' > 30 MPa);M1; 3.152.347,93 
+7.5.(5);Tiang bor sekan primer diameter 120 cm (fc' > 15 MPa);M1; 2.944.760,24 
+7.5.(6);Tiang bor sekan sekunder diameter 120 cm (fc' > 30 MPa);M1; 4.303.665,26 
+7.5.(7);Tiang bor sekan primer diameter 150 cm (fc' > 15 MPa);M1; 4.298.388,80 
+7.5.(8);Tiang bor sekan sekunder diameter 150 cm (fc' > 30 MPa);M1; 6.403.408,09 
+7.6 (1);Fondasi Cerucuk, Penyediaan dan Pemancangan;M1; 16.583,14 
+7.6 (1).v2;Fondasi Cerucuk, Penyediaan dan Pemancangan (dengan Excavator);M1; 8.977,89 
+7.6 (2);Dinding Turap Kayu Tanpa Pengawetan, Penyediaan dan Pemancangan;M2; 198.757,78 
+7.6.(3);Dinding Turap Kayu Dengan Pengawetan, Penyediaan dan Pemancangan;M2; 263.015,82 
+7.6.(4);Dinding Turap Baja, Penyediaan dan Pemancangan;M2; 2.965.217,35 
+7.6.(5);Dinding Turap Beton, Penyediaan dan Pemancangan;M2; 969.416,19 
+7.6.(6);Penyediaan Tiang Pancang Kayu Tanpa Pengawetan Ukuran…… mm;M1; 140.892,07 
+7.6.(7);Penyediaan Tiang Pancang Kayu Dengan Pengawetan Ukuran…… mm;M1; 144.150,00 
+7.6 (8a);Penyediaan Tiang Pancang Baja Diameter 500 mm tebal 10 mm;M1; 2.751.064,83 
+7.6 (8c).800.t16;Penyediaan Tiang Pancang Baja Diameter 800 mm tebal 16 mm;M1; 5.561.290,79 
+7.6 (8a).1000.t12;Penyediaan Tiang Pancang Baja Diameter 1000 mm tebal 12 mm;M1; 6.957.102,14 
+7.6.(9a);Penyediaan Tiang Pancang Baja H Beam Ukuran 300 mm x 300 mm x 10 mm x 15 mm;M1; 1.604.685,64 
+7.6.(10a);Penyediaan Tiang Pancang Beton Bertulang Pracetak ukuran 350 mm x 350 mm;M1; 3.576.896,84 
+7.6.(10b).250;Penyediaan Tiang Pancang Beton Bertulang Pracetak ukuran 250 mm x 250 mm;M1; 1.808.962,73 
+7.6.(11a);Penyediaan Tiang Pancang Beton Pratekan Pracetak ukuran 400 mm x 400  mm;M1; 1.049.195,90 
+7.6.(12a);Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 450 mm;M1; 1.050.694,35 
+7.6.(12b).400;Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 400 mm;M1; 863.506,46 
+7.6.(12b).500;Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 500 mm;M1; 1.260.967,48 
+7.6.(12b).600;Penyediaan Tiang Pancang Beton Pratekan Pracetak diameter 600 mm;M1; 1.751.665,63 
+7.6.(13);Pemancangan Tiang Pancang Kayu Ukuran ….. Mm;M1; 382.273,48 
+7.6.(14a);Pemancangan Tiang Pancang Baja Diameter 500 mm ;M1; 1.057.468,21 
+7.6.(14b).800;Pemancangan Tiang Pancang Baja Diameter 800 mm ;M1; 1.568.853,35 
+7.6.(14b).1000;Pemancangan Tiang Pancang Baja Diameter 1000 mm ;M1; 2.000.646,78 
+7.6.(15a);Pemancangan Tiang Pancang Baja H beam Ukuran 300 mm x 300 mm x 10 mm x 15 mm;M1; 435.707,90 
+7.6.(16a);Pemancangan Tiang Pancang Beton Bertulang Pracetak ukuran 350 mm x 350 mm ;M1; 3.202.127,90 
+7.6.(16b).250;Pemancangan Tiang Pancang Beton Bertulang Pracetak ukuran 250 mm x 250 mm ;M1; 247.350,25 
+7.6.(17a);Pemancangan Tiang Pancang Beton Pratekan Pracetak ukuran 400 mm x 400 mm;M1; 275.611,80 
+7.6.(18a);Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 450 mm;M1; 1.312.900,53 
+7.6.(18b).400;Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 400 mm;M1; 1.088.732,32 
+7.6.(18b).500;Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 500 mm;M1; 1.592.694,68 
+7.6.(18b).600;Pemancangan Tiang Pancang Beton Pratekan Pracetak diameter 600 mm;M1; 2.345.671,66 
+7.6.(19a);Tiang Bor Beton, diameter 800 mm;M1; 4.663.153,39 
+7.6.(19a).v2;Tiang Bor Beton, diameter 800 mm (Variasi 2);M1; 3.885.411,55 
+7.6.(19b).400;Tiang Bor Beton, diameter 400 mm;M1; 4.212.183,23 
+7.6.(19b).500;Tiang Bor Beton, diameter 500 mm;M1; 2.011.043,37 
+7.6.(19b).600;Tiang Bor Beton, diameter 600 mm;M1; 3.329.588,83 
+7.6.(19b).1000;Tiang Bor Beton, diameter 1000 mm;M1; 5.560.013,42 
+7.6.(20);Tambahan Biaya untuk Nomor Mata Pembayaran 7.6.(13)s/d 7.6.(18) bila Tiang Pancang dikerjakan di tempat Yang Berair;M1; 184.132,58 
+7.6.(21);Tambahan Biaya untuk Nomor Mata Pembayaran 7.6.(19) Bila Tiang Bor Beton dikerjakan ditempat Yang Berair;M1; 860.759,46 
+7.6 (27a).600;Pengujian Crosshole Sonic Logging (CSL) pada Tiang Bor Beton diameter 600 mm;Buah; 14.215.082,53 
+7.6 (27a).800;Pengujian Crosshole Sonic Logging (CSL) pada Tiang Bor Beton diameter 800 mm;Buah; 15.077.582,53 
+7.6 (27a).1200;Pengujian Crosshole Sonic Logging (CSL) pada Tiang Bor Beton diameter 1200 mm;Buah; 17.722.582,53 
+7.6 (27b).500;Pengujian Pembebanan Dinamis Jenis PDLT (Pile Dynamic Load Testing) pada Tiang ukuran / diameter 500 mm;Buah; 21.313.498,43 
+7.6 (27b).800;Pengujian Pembebanan Dinamis Jenis PDLT (Pile Dynamic Load Testing) pada Tiang ukuran / diameter 800 mm;Buah; 29.675.510,03 
+7.6 (27b).1200;Pengujian Pembebanan Dinamis Jenis PDLT (Pile Dynamic Load Testing) pada Tiang ukuran / diameter 1200 mm;Buah; 37.553.010,03 
+7.6 (28);Pengujian Keutuhan Tiang dengan Pile Integrated Test (PIT);Buah; 13.920.510,03 
+7.7.(1);Dinding Sumuran Silinder terpasang, Diameter …………….;M1; 11.790.431,12 
+7.9.(1);Pasangan Batu;M3; 1.437.705,84 
+7.9.(1).v2;Pasangan Batu (Variasi 2);M3; 1.441.078,29 
+7.10.(1);Pasangan Batu Kosong yang Diisi Adukan;M3; 1.021.449,86 
+7.10.(2);Pasangan Batu Kosong;M3; 905.411,62 
+7.10.(3a);Bronjong dengan kawat yang dilapisi Galvanis;M3; 1.378.516,50 
+7.10.(3b);Bronjong dengan kawat yang dilapisi PVC;M3; 1.397.554,11 
+7.10.(4);Tambahan Biaya  untuk Anyaman Penulangan Tanah dengan Kawat yang Dilapisi PVC;M2; 330.809,00 
+7.11.(1a);Sambungan Siar Muai Tipe Asphaltic Plug, Fixed;M1; 1.587.652,04 
+7.11.(1b);Sabungan Siar Muai Tipe Asphaltic Plug, Movable;M1; 5.213.772,75 
+7.11.(2);Sambungan Siar Muai Tipe Silicone Seal;M1; 1.267.827,88 
+7.11.(3);Sambungan Siar Muai Tipe Strip seal;M1; 2.365.727,19 
+7.11.(4);Sambungan Siar Muai Tipe Compression Seal;M1; 1.491.295,54 
+7.11.(5);Sambungan Siar Muai Expansion Joint Tipe Modular;M1; 10.100.453,77 
+7.11.(6);Sambungan Siar Muai Expansion Joint Tipe Finger Plate;M1; 4.533.303,77 
+7.11.(7);Sambungan Siar Muai Expansion Tipe Karet dengan Lebar Celah …….. Cm;M3; 2.015.318,84 
+7.11.(8);Joint Filler untuk Sambungan Konstruksi;M3; 3.631.284,85 
+7.11.(9);Sambungan Siar Muai Tipe Modular;M3; 9.709.349,22 
+7.12.(1a);Landasan Logam Tipe Fixed;Buah; 2.367.167,18 
+7.12.(1b);Landasan Logam Tipe Moveable;Buah; 2.397.654,17 
+7.12.(2).250;Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 250 mm x 250 mm x 40 mm;Buah; 897.951,15 
+7.12.(2).350;Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 350 mm x 350 mm x 30 mm;Buah; 1.012.951,15 
+7.12.(2).400;Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 400 mm x 400 mm x 80 mm;Buah; 1.127.951,15 
+7.12.(2).450;Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 450 mm x 400 mm x 45 mm;Buah; 1.293.071,98 
+7.12.(2).600;Landasan Elastomerik Karet Alam Berlapis Baja Ukuran 600 mm x 600 mm x 80 mm;Buah; 1.649.571,98 
+7.12.(3).200;Landasan Elastomerik Karet Sintetis Berlapis Baja Ukuran 200 mm x 300 mm x 40 mm;Buah; 695.654,17 
+7.12.(3).450.45;Landasan Elastomerik Karet Sintetis Berlapis Baja Ukuran 450 mm x 400 mm x 45 mm;Buah; 1.061.354,17 
+7.12.(3).450.73;Landasan Elastomerik Karet Sintetis Berlapis Baja Ukuran 450 mm x 400 mm x 73 mm;Buah; 13.068.504,17 
+7.12.(4);Landasan karet Strip;M1; 337.165,62 
+7.12.(5);Landasan Tipe Logam Berongga (Pot Bearing);Buah; 21.119.806,85 
+7.12.(6);Landasan Tipe Logam Jenis Spherical;Buah; 22.463.444,69 
+7.13.(1);Sandaran (Railing);M1; 650.871,39 
+7.14.(1);Papan Nama Jembatan;M1; 616.019,10 
+7.15.(1);Pembongkaran Pasangan Batu;M3; 532.485,69 
+7.15.(2);Pembongkaran Beton;M3; 294.530,87 
+7.15.(3);Pembongkaran Beton Pratekan;M3; 1.072.179,67 
+7.15.(4);Pembongkaran Bangunan Gedung;M2; 473.386,41 
+7.15.(5);Pembongkaran  Rangka Baja;M2; 2.328.541,57 
+7.15.(6);Pembongkaran Balok Baja (Steel Stingers);M1; 212.191,41 
+7.15.(7);Pembongkaran Lantai Jembatan Kayu;M2; 207.523,13 
+7.15.(8);Pembongkaran Jembatan Kayu;M2; 57.536,69 
+7.16.(1);Dreck drain;Buah; 165.729,37 
+7.16.(2a);Pipa Drainase Baja diameter 150 mm;M1; 273.295,23 
+7.16.(3a);Pipa Drainase PVC diameter 150 mm;M1; 100.299,17 
+7.16.(4);Pipa Penyalur PVC;M1; 113.735,00 
+SKh-3.7.18 (a);Beton semprot dengan perkuatan Wiremesh, tebal = 10 cm;Buah Jembatan; 1.142.470,50 
+SKh-2.7.19.(a);Soil Nailing dengan nail bar BJTS 420A (grade 60) Diameter = 32 mm;M1; 1.528.362,48 
+SKh-2.7.19.(c);Soil Nailing dengan nail bar grade 150 Diameter = 32 mm;M1; 2.213.303,90 
+SKh-2.7.21.(1);Material Ringan Mortar-Busa UCS 800 kPa;M3; 1.223.082,32 
+SKh-2.7.21.(2);Material Ringan Mortar-Busa UCS 2000 kPa;M3; 1.357.926,01 
+SKh-1.7.57.(1);Pipa Penyalur HDPE diameter 150 mm;M1; 396.232,50 
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  8.  REHABILITASI JEMBATAN;;
+8.1 (1);Cairan Perekat (Epoksi resin);Kg; 414.549,27 
+8.1 (1).v2;Cairan Perekat (Epoksi resin) (Variasi 2);Kg; 414.549,27 
+8.1 (2);Bahan Penutup (Sealant);Kg; 870.164,66 
+8.1 (2).v2;Bahan Penutup (Sealant) (Variasi 2);Kg; 870.164,66 
+8.1 (3a);Tabung Penyuntik, penyediaan;Buah; 105.505,71 
+8.1 (3b);Tabung Penyuntik, penggunan;Buah; 147.216,60 
+8.2.(1);Penambahan (Patching);M3; 24.448.449,39 
+8.2.(1).v2;Penambahan (Patching) (Variasi 2);M3; 24.448.449,39 
+8.2.(2);Perbaikan Dengan Cara Graut;M3; 15.064.722,87 
+8.3.(1a);Pengecetan protektif pada elemen struktur beton, tebal 200µm;M2; 105.261,53 
+8.3.(2a);Pengecetan dekoratif pada elemen struktur beton, tebal : 100 µm;M2; 102.979,36 
+8.4.(1) ;Perkuatan struktur dengan bahan FRP jenis e- glass per lapis pada daerah kering;M2;
+8.4.(2) ;Perkuatan Struktur dengan bahan FRP jenis e- glass-per lapis pada daerah basah;M2;
+8.4.(3) ;Perkuatan Struktur dengan bahan FRP Laminasi jenis glass pada daerah kering;M2;
+8.4.(4) ;Perkuatan Struktur dengan bahan FRP Jenis carbon per lapis pada daerah kering;M2;
+8.4.(5) ;Perkuatan struktur dengan bahan FRP jenis carbon per lapis pada daerah basah;M2;
+8.4.(7);Pemasangan Perkuatan Pelat Lantai dengan Steel Plate Bonding;Kg;
+8.4.(8);Perkuatan external stressing jembatan beton bentang 30 m;Buah;
+8.5.(1a);Penggantian Baut Mutu Tinggi A325 Tipe 1 diameter M25;Buah; 111.070,15 
+8.5.(2a);Penggantian Baut Mutu Tinggi A490 Tipe 1 diameter M25;Buah; 115.508,65 
+8.5.(3a);Penggantian Baut Biasa Grade A diameter M25;Buah; 95.158,65 
+8.5.(4a);Penggantian Baut Biasa Grade B diameter M25;Buah; 91.858,65 
+8.5.(5a);Penggantian Baut Biasa Grade C untuk anchor bolts diameter M25;Buah;
+8.5.(6a);Pengencangan Baut Biasa Grade A diameter M25;Buah;
+8.5.(7a);Pengencangan Baut Biasa Grade B diameter M25;Buah;
+8.6.(1a);Pengelasan SMAW pada baja Grade 30;M1;
+8.6.(2a);Pengelasan SAW pada baja Grade 30;M1;
+8.6.(3a);Pengelasan GMAW pada baja Grade 30;M1;
+8.6.(4a);Pengelasan FCAW pada baja Grade 30;M1;
+8.7.(1a);Pengecatan struktur baja pada daerah kering tebal 80 mikron;M2; 191.498,08 
+8.7.(1b);Pengecatan struktur baja pada daerah kering tebal 240 mikron;M2; 292.192,35 
+8.7.(2a);Pengecatan struktur baja pada daerah basah/pasang surut 360 mikron;M2; 292.698,80 
+8.7.(2b);Pengecatan struktur baja pada daerah basah/pasang surut 500 mikron;M2; 292.192,35 
+8.7.(3a);Pengecatan pada elemen sandaran dan/atau pagar pengaman (gruard rail) 80 mikron;M2; 292.698,80 
+8.7.(3b);Pengecatan pada elemen sandaran dan/atau pagar pengaman (gruard rail) 160 mikron;M2; 331.338,20 
+8.8.(1);Perbaikan Elemen Struktur Baja dengan Cara Pelurusan ;LS;
+8.8.(2);Penggantian Elemen Struktur Baja Grade 250 (Kuat Leleh 250 Mpa);Kg; 1.216.964,35 
+8.8.(3);Penggantian Elemen Struktur Baja Grade 345 (Kuat Leleh 345 Mpa);Kg; 1.205.069,48 
+8.8.(4);Penggantian Elemen Struktur Baja Grade 485 (Kuat Leleh 485 Mpa);Kg;
+8.9.(1);Pekuatan dengan external stressing untuk jembatan baja dengan bentang 30 m;Buah;
+8.10.(1);Penggantian Lantai Kayu;M3;
+8.10.(2);Perbaikan Lantai Kayu;M3;
+8.10.(3);Penggantian Gelegar Kayu;M3;
+8.10.(4);Perbaikan Gelegar Kayu;M3;
+8.10.(5);Penggantian Balok Kepala Tiang;M3;
+8.10.(6);Perbaikan Papan Lajur Kendaraan;M3;
+8.10.(7);Pengantian Papan Lajur Kendaraan ;M3;
+8.10.(8);Perbaikan dan/atau Penggantian kerb kayu;M3;
+8.10.(9);Perbaikan dan/atau Penggantian sandaran Kayu;M3;
+8.10.(10);Pengecatan/Perlindungan Gelegar;M2;
+8.10.(11);Pengecatan/Perlindungan Lantai Kayu;M2;
+8.10.(12);Pengecatan/Perlindungan Tiang Pancang Kayu;M2;
+8.10.(13);Pengecatan/Perlindungan Balok Kepala Kayu;M2;
+8.10.(14);Pengecatan/Perlindungan Sandaran;M1; 122.394,89 
+8.11.(1);Penggantian dan Perbaikan Sambungan Siar Muai Tipe Asphaltic Plug;M1; 2.777.726,63 
+8.11.(2);Penggantian dan Perbaikan Sambungan Siar Muai Tipe Silicone Seal;M1; 1.223.012,30 
+8.11.(3);Penggantian Karet Pengisi Sambungan Siar Muai Tipe Strip Seal;M1; 2.255.154,62 
+8.11.(4);Penggantian Karet Pengisi Sambungan Siar Muai Tipe Compression Seal;M1; 1.426.456,60 
+8.11.(5);Penggantian Sambungan Siar Muai Tipe Modular, lebar 200 mm;M1;
+8.11.(6);Penggantian Sambungan Siar Muai Tipe Finger Plate, lebar 200 mm;M1;
+8.11.(7);Penggantian Sambungan Siar Muai Tipe Dobel Siku dengan Penutup Karet Neoprene;M1; 3.484.819,68 
+8.12.(2);Penggantian Landasan Elastomer Karet Alam Berlapis Baja Ukuruan 500 mm x 500 mm x 100 mm;Buah;
+8.12.(2).v2;Penggantian Landasan Elastomer Karet Alam Berlapis Baja Ukuruan 800 mm x 800 mm x 600 mm;Buah;
+8.12.(3);Penggantian Landasan Elastomer Sintetis Berlapis Baja Ukuran 500 mm x 500 mm x 100 mm;Buah;
+8.12.(4);Penggantian Landasan Karet Strip tebal 100 mm;M1;
+8.12.(5);Penggantian Landasan Logam Berongga (Pot Bearing);Buah;
+8.12.(6);Penggantian Landasan Logam Jenis Spherical;Buah;
+8.12.(7);Penggantian Stopper Lateral dan Horisontal;Buah;
+8.13.(1);Perbaikan Sandaran Baja;M1; 360.565,36 
+8.13.(2);Penggantian Sandaran Baja;M1; 295.338,25 
+8.13.(3);Perbaikan Tembok Sandaran Beton;M1; 635.005,38 
+8.13.(4);Perbaikan Sandaran Beton-Baja;M1; 2.811.867,57 
+8.13.(5);Penggantian Sandaran Beton-Baja;M1; 4.402.102,27 
+8.14.(1);Penggantian Deck Drain;Buah;
+8.14.(2);Penggantian Pipa Penyalur, Pipa Cucuran PVC diamter 150 mm;M1; 551.437,43 
+8.14.(3);Penggantian Pipa Penyalur, Pipa Cucuran Baja diamter 150 mm;M1; 974.992,43 
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  9.  PEKERJAAN  HARIAN & PEKERJAAN LAIN-LAIN;;
+9.1.(1);Mandor;Jam; 34.367,66 
+9.1.(2);Pekerja Biasa;Jam; 21.428,79 
+9.1.(3);Tukang Kayu, Tukang Batu, dsb;Jam; 23.742,48 
+9.1.(4) a;Dump Truck, kapasitas 3 - 4 m³;Jam; 512.518,91 
+9.1.(4) b;Dump Truck, kapasitas 6 - 8 m³;Jam; 854.175,33 
+9.1.(5) a;Truk Bak Datar 3 - 4 ton;Jam; 555.476,34 
+9.1.(5) b;Truk Bak Datar 6 - 8 ton;Jam; 555.476,34 
+9.1.(6);Truk Tangki 3000 - 4500 Liter;Jam; 419.840,33 
+9.1.(7);Bulldozer 100 - 150 PK;Jam; 1.023.161,69 
+9.1.(8);Motor Grader min 100 PK;Jam; 494.443,36 
+9.1.(9);Loader Roda Karet 1.0 - 1.6 M3;Jam; 371.972,50 
+9.1.(10);Loader Roda Berantai 75 - 100 PK;Jam; 522.473,89 
+9.1.(11);Alat Penggali (Excavator) 80 - 140 PK;Jam; 918.320,30 
+9.1.(12);Crane 10 - 15 Ton;Jam; 970.492,27 
+9.1.(13);Penggilas Roda Besi 6 - 9 Ton;Jam; 648.636,12 
+9.1.(14);Penggilas Bervibrasi  5 - 8  Ton;Jam; 505.465,71 
+9.1.(15);Pemadat Bervibrasi 1.5 - 3.0 PK;Jam; 81.854,93 
+9.1.(16);Penggilas Roda Karet 8 - 10 Ton;Jam; 966.672,73 
+9.1.(17);Kompresor 4000 - 6500 Ltr/mnt;Jam; 321.679,44 
+9.1.(18);Mesin Pengaduk beton (Molen) 0.3 - 0.6 M3;Jam; 138.873,85 
+9.1.(19);Pompa Air 70 - 100 mm;Jam; 93.339,50 
+9.1.(20);Jack Hammer;Jam; 78.023,10 
+9.2.(1);Marka Jalan Termoplastik;M2; 293.923,74 
+9.2.(1).v2;Marka Jalan Termoplastik (Variasi 2);M2; 284.913,08 
+9.2.(1a);Penghapusan Marka Jalan;;
+9.2.(2);Marka Jalan Bukan Termoplastik;M2;
+9.2.(3a);Rambu Jalan Tunggal dengan Permukaan Pemantul Engineering Grade;Buah;
+9.2.(3b);Rambu Jalan Ganda dengan Permukaan Pemantul Engineering Grade;Buah;
+9.2.(4a);Rambu Jalan Tunggal dengan Pemantul High Intensity Grade;Buah;
+9.2.(4b);Rambu Jalan Ganda dengan Pemantul High Intensity Grade;Buah;
+9.2.(5);Patok Pengarah;Buah; 209.079,20 
+9.2.(5a);Patok Pengarah (PE/Plastic);Buah; 212.591,40 
+9.2.(6a);Patok Kilometer;Buah;
+9.2.(6b);Patok Hektometer;Buah;
+9.2.(7);Rel Pengaman;M1; 2.952.335,56 
+9.2.(8);Paku Jalan Tidak Memantul;Buah;
+9.2.(9a);Paku Jalan Memantul Bujur Sangkar;Buah;
+9.2.(9b);Paku Jalan Memantul Persegi panjang;Buah;
+9.2.(9c);Paku Jalan Memantul Bulat;Buah;
+9.2(10a);Kerb Pracetak Jenis 1 (Peninggi/Mountable);M1;
+9.2.(10b);Kereb Pracetak Jenis 2 (Penghalang/Barrier);M1;
+9.2.(10c);Kereb Pracetak Jenis 3 (Kereb Berparit/Gutter);M1;
+9.2.(10d);Kereb Pracetak Jenis 4 (Penghalang Berparit / Barrier Gutter) t = 20 cm;M1;
+9.2.(10e);Kereb Pracetak Jenis 5 (Penghalang Berparit / Barrier Gutter) t = 30 cm;M1;
+9.2.(10f);Kereb Pracetak Jenis 6 (Kereb dengan Bukaan);Buah;
+9.2.(10g);Kereb Pracetak Jenis 7 (Kereb pada Pelandaian Trotoar);Buah;
+9.2.(10h);Kereb Pracetak Jenis 8 (Kereb pada Pelandaian Trotoar);Buah;
+9.2.(10i);Kereb Pracetak Jenis 9 (Kereb pada Pelandaian Trotoar);Buah;
+9.2.(11);Kereb yang digunakan kembali;M1;
+9.2.(12a);Perkerasan Blok Beton pada Trotoar dan Median;M1; 205.727,00 
+9.2.(12b);Pembengkokan Ubin Eksisting atau Perkerasan Blok Beton Eksisting pada Trotoar atau Median;M1;
+9.2.(13);Beton Pemisah Jalur (Concrete Barrier);M1;
+9.2.(14);Unit Lampu Penerangan Jalan Lengan Tunggal, Tipe LED;Buah; 25.988.753,00 
+9.2.(15);Unit Lampu Penerangan Jalan Lengan Ganda, Tipe LED;Buah; 41.939.492,69 
+9.2.(16);Unit Lampu Penerangan Jalan Lengan Tunggal, Tipe Merkuri 250 Watt;Buah;
+9.2.(17);Unit Lampu Penerangan Jalan Lengan Ganda, Tipe Merkuri 250 Watt ;Buah;
+9.2.(18);Unit Lampu Penerangan Jalan Lengan Tunggal, Tipe Merkuri 400 Watt;Buah;
+9.2.(19);Unit Lampu Penerangan Jalan Lengan Ganda, Tipe Merkuri 400 Watt;Buah;
+9.2.(20);Pagar Pemisah Pedestrian Carbon Steel;M';
+9.2.(21);Pagar Pemisah Pedestrian Galvanised;M';
+9.2.(22a);Stabilisasi dengan Tanaman;M2;
+9.2.(22b);Stabilisasi dengan Tanaman VS;M2;
+9.2.(23);Semak / Perdu;M2;
+9.2.(24);Pohon Jenis;Buah;
+9.2.(24).a;Pohon Jenis Mahoni;Buah;
+Skh-1.9.7.(1);Unit Lampu Penerangan Jalan Tenaga Surya (PJU-TS) Lengan Tunggal;Buah;
+SKh-1.9.3(10);Unit Drain Grate Besi Cor (cast iron);Buah;
+SKh-3.9.3(11b);Unit Lampu Sorot Outdoor Tipe LED Waterproof 100 watt;Buah;
+SKh-6.9.3.(2b);Perkerasan pada Trotoar dan Median Tipe Guiding Block Go Difabel Stainless Steel Landasan Andesit Bintik Bakar Ukuran 30 cm x 30 cm Tebal 3 cm;M2;
+SKh-6.9.3(1b);Perkerasan pada Trotoar dan Median Tipe Andesit Bintik Bakar Ukuran 30 x 30 cm tebal 3 cm;M2;
+SKh-6.9.3(1c));Perkerasan pada Trotoar dan Median Tipe Andesit Bintik Bakar Ukuran 30x30 cm tebal 5 cm;M2;
+SKh-6.9.3( 3d);Unit Manhole cover untuk Drainase Kotak Ukuran ..100 x 100 cm;Buah;
+SKh-6.9.3(4a));Unit Kisi Pohon (Tree grate) Diameter 60cm;Buah;
+SKh-6.9.3(6a));Unit Tempat Sampah yang digalvanisasi (Galvanized);Buah;
+SKh-6.9.3(7a);Unit Bangku/Kursi beton;Buah;
+SKh-6.9.3(10b);Unit Lampu Penerangan Pedestrian Tipe LED 18 watt;Buah;
+SKh-6.9.3(10f));Unit Lampu Penerangan Jalan gandeng Pedestrian Lengan Ganda Tipe LED 100 Watt;Buah;
+SKh-6.9.3(11c);Unit Lampu Outdoor Tipe Strip LED 8 watt;Buah;
+SKh-6.9.3(11d);Unit Lampu Lantai (Uplight) LED Tanam Waterprroof 13 Watt;Buah;
+SKh-6.9.3(12a);Pengaman Trotoar (Bollard Jalan) Dengan Lampu;Buah;
+SKh-6.9.3(15c));Ornamen Jembatan Pelengkung;M2;
+SKh-6.9.3(16a);Papan Petunjuk Arah Lalu Lintas;Buah;
+SKh-6.9.3(16b);Papan Informasi Digital (Digital Signage);Buah;
+SKh-6.9.3(25);Pagar Dekoratif Tinggi 2 meter;M';
+SKh-6.9.3(28);Tangga Inspeksi;Buah;
+SKh-1.9.20.(13);Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 50 mm²;M1;
+SKh-1.9.20.(23);Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 70 mm²;M1;
+SKh-1.9.20.(24);Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 95 mm²;M1;
+SKh-1.9.20.(25);Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 2,5 mm²;M1;
+SKh-1.9.20.(28) a;Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 4 mm²;M1;
+SKh-1.9.20.(28) b;Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 6 mm²;M1;
+SKh-1.9.20.(28) c;Kabel Elektrikal Tipe NYFGBY Ukuran 4 × 16 mm²;M1;
+SKh-1.9.20.(48);Cable Ladder (Tray 200 x 100 mm);M1;
+SKh-1.9.20.(49) b;Kabel Penerangan Tipe NYM Ukuran 3 × 2,5 mm;M1;
+SKh-1.9.20.(74);Slotted Drainage;Buah;
+;;;
+;;;
+;;;
+;;;
+;;;
+;DIVISI  10.  PEKERJAAN PEMELIHARAAN KINERJA;;
+10.1.(1);Galian pada Saluran Air atau Lereng untuk Pemeliharaan;M3; 143.196,36 
+10.1.(2);Timbunan Pilihan pada Lereng Tepi Saluran untuk Pemeliharaan;M3; 471.523,84 
+10.1.(3);Pebaikan Pasangan Batu dengan Mortar;M3; 1.335.534,57 
+10.1.(4);Perbaikan Lapis Fondasi Agregat Kelas A ;M3; 1.273.937,19 
+10.1.(5);Perbaikan Lapis Fondasi Agregat Kelas B;M3;
+10.1.(6);Perbaikan Lapis Fondasi Agregat Kelas S ;M3; 801.360,07 
+10.1.(7);Perbaikan dan Perataan Permukaan JalanTanah;M2;
+10.1.(8);Perbaikan dan Perataan Permukan Perkerasan Berbutir Tanpa Penutup Aspal;M3;
+10.1.(9);Perbaikan Campuran Aspal Panas;M3; 5.461.047,78 
+10.1.(9a);Perbaikan Campuran Aspal Panas (dengan HRS);M3;
+10.1.(10);Perbaikan Campuran Aspal Panas dengan Asbuton;M3;
+10.1.(10.a);Perbaikan Campuran Aspal Panas dengan Asbuton B 50/30;M3;
+10.1.(11);Perbaikan Asbuton Campuran Panas Hampar Dingin;M3;
+10.1.(12);Perbaikan Lapis Penetrasi Macadam tanpa atau dengan Asbuton;Liter;
+10.1.(13);Residu Bitumen untuk Pemeliharaan;M3;
+10.1.(14);Perbaikan Perkerasan Beton Semen ;M3;
+10.1.(15);Perbaikan Lapis Fondasi Bawah Beton Kurus ;M3;
+10.1.(16);Perbaikan Pasangan Batu;M2;
+10.1.(17);Pengecatan Kereb pada Trotoar atau Median;M1;
+10.1.(18);Perbaikan Rel Pengaman ;M1;
+10.1.(19.a);Pengecatan Patok;Buah; 47.976,04 
+10.1.(19.b);Pembersihan Patok;Buah;
+10.1.(20.a);Pengecatan  Rambu;Buah;
+10.1.(20);Pembersihan Rambu;Buah;
+10.1.(21);Pembersihan Drainase;M; 8.485,82 
+10.1.(22);Pengendalian Tanaman;M2; 2.921,01 
+;;;
+;;;
+;;;
+;;;
