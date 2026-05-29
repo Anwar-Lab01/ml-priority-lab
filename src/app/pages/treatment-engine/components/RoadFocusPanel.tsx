@@ -1,11 +1,95 @@
-import { X, Calculator, Info } from 'lucide-react';
-import type { GeoRoad, DD2RoadFeatureWithRule, ManualASBOverride } from '../../../../lib/treatmentTypes';
+import { X, Calculator, Info, Save, Trash2, Check } from 'lucide-react';
+import type { GeoRoad, DD2RoadFeatureWithRule, ManualASBOverride, CandidateBasketItem, CandidateStatus, PlanningNote } from '../../../../lib/treatmentTypes';
 import { getDominantCondition, getDisplayRuleCategory } from '../../../../lib/treatmentEngine';
 import { SegmentStripCard } from './SegmentStripCard';
 import { ASBBudgetPanel } from './ASBBudgetPanel';
 import { ASBOverrideForm } from './ASBOverrideForm';
 import { HPSItemProfilePanel } from './HPSItemProfilePanel';
-import { DollarSign } from 'lucide-react';
+import { DollarSign, ClipboardList, PlusCircle, MinusCircle, CheckCircle2, XCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+// ── Planning Note Editor Sub-component ────────────────────────────────────────
+
+function PlanningNoteEditor({ roadKey, initialNote, onSave }: { roadKey: string, initialNote: string, onSave: (note: string) => void }) {
+  const [draft, setDraft] = useState(initialNote);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    setDraft(initialNote);
+    setIsSaved(false);
+  }, [roadKey, initialNote]);
+
+  const hasUnsavedChanges = draft !== initialNote;
+
+  const handleSave = () => {
+    onSave(draft);
+    setIsSaved(true);
+    setTimeout(() => setIsSaved(false), 2000);
+  };
+
+  const handleClear = () => {
+    setDraft('');
+    onSave('');
+    setIsSaved(true);
+    setTimeout(() => setIsSaved(false), 2000);
+  };
+
+  return (
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between">
+        <label className="block text-[9px] font-bold uppercase tracking-widest text-slate-500">
+          Planning Notes
+        </label>
+        {hasUnsavedChanges && !isSaved && (
+          <span className="text-[9px] font-bold text-amber-500">Unsaved changes</span>
+        )}
+        {isSaved && (
+          <span className="text-[9px] font-bold text-emerald-500 flex items-center gap-1"><Check className="h-3 w-3" /> Saved</span>
+        )}
+      </div>
+      <textarea
+        rows={3}
+        maxLength={500}
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        onBlur={(e) => {
+          // Keep save-on-blur if there are unsaved changes
+          if (hasUnsavedChanges) {
+             onSave(e.target.value);
+             setIsSaved(true);
+             setTimeout(() => setIsSaved(false), 2000);
+          }
+        }}
+        placeholder="Add planning notes for this road..."
+        className="w-full resize-none rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[11px] text-slate-700 placeholder:text-slate-400 focus:border-violet-400 focus:outline-none focus:ring-1 focus:ring-violet-300 transition-colors"
+      />
+      <div className="flex items-center justify-between">
+        <p className="text-[9px] text-slate-400">Max 500 chars</p>
+        <div className="flex items-center gap-2">
+          {initialNote && (
+            <button
+              onClick={handleClear}
+              className="flex items-center gap-1 text-[9px] font-bold text-red-500 hover:text-red-700 transition-colors"
+            >
+              <Trash2 className="h-3 w-3" /> Clear
+            </button>
+          )}
+          <button
+            onClick={handleSave}
+            disabled={!hasUnsavedChanges}
+            className={`flex items-center gap-1 rounded px-2 py-1 text-[10px] font-bold transition-colors ${
+              hasUnsavedChanges 
+                ? 'bg-violet-100 text-violet-700 hover:bg-violet-200' 
+                : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+            }`}
+          >
+            <Save className="h-3 w-3" /> Save Note
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface RoadFocusPanelProps {
   selectedGeo: GeoRoad | null;
@@ -25,6 +109,13 @@ interface RoadFocusPanelProps {
   hpsOverrides: Record<string, any>;
   clearHPSOverrideForRoad: (road_key: string) => void;
   setHpsOverrideForRoad: (road_key: string, override: any) => void;
+  // Phase 5: Planning Scenario
+  candidateBasket: Record<string, CandidateBasketItem>;
+  planningNotes: Record<string, PlanningNote>;
+  addToCandidateBasket: (road: DD2RoadFeatureWithRule) => void;
+  removeFromCandidateBasket: (road_key: string) => void;
+  setCandidateStatus: (road_key: string, status: CandidateStatus) => void;
+  savePlanningNoteForRoad: (road_key: string, note: string) => void;
 }
 
 export function RoadFocusPanel({
@@ -45,6 +136,13 @@ export function RoadFocusPanel({
   hpsOverrides,
   clearHPSOverrideForRoad,
   setHpsOverrideForRoad,
+  // Phase 5
+  candidateBasket,
+  planningNotes,
+  addToCandidateBasket,
+  removeFromCandidateBasket,
+  setCandidateStatus,
+  savePlanningNoteForRoad,
 }: RoadFocusPanelProps) {
   if (!selectedGeo) {
     return (
@@ -213,7 +311,94 @@ export function RoadFocusPanel({
               onSaveOverride={(override) => setHpsOverrideForRoad(selectedDd2Feature.road_key, override)}
             />
 
-            
+            {/* ── Phase 5: Planning Scenario Section ─────────────────────── */}
+            {(() => {
+              const rk = selectedDd2Feature.road_key;
+              const inBasket = !!candidateBasket[rk];
+              const item = candidateBasket[rk];
+              const existingNote = planningNotes[rk]?.note ?? '';
+
+              const STATUS_META: Record<CandidateStatus, { label: string; color: string; bg: string; border: string }> = {
+                included:      { label: 'Included',      color: 'text-indigo-700', bg: 'bg-indigo-50',  border: 'border-indigo-200' },
+                force_include: { label: 'Force Include', color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200' },
+                force_exclude: { label: 'Force Exclude', color: 'text-red-700',     bg: 'bg-red-50',    border: 'border-red-200' },
+                deferred:      { label: 'Deferred',      color: 'text-slate-600',   bg: 'bg-slate-50',  border: 'border-slate-200' },
+              };
+
+              return (
+                <div className="rounded-lg border border-violet-100 bg-violet-50/50 px-3 py-2.5 mt-2 space-y-2.5">
+                  {/* Header */}
+                  <div className="flex items-center gap-1.5">
+                    <ClipboardList className="h-3.5 w-3.5 text-violet-500" />
+                    <p className="text-[9px] font-bold uppercase tracking-widest text-violet-600">Planning Scenario</p>
+                    {inBasket && item && (
+                      <span className={`ml-auto inline-flex items-center rounded-full px-2 py-0.5 text-[9px] font-bold border ${STATUS_META[item.status].border} ${STATUS_META[item.status].bg} ${STATUS_META[item.status].color}`}>
+                        {STATUS_META[item.status].label}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Add / Remove */}
+                  {!inBasket ? (
+                    <button
+                      id={`scenario-add-${rk}`}
+                      onClick={() => addToCandidateBasket(selectedDd2Feature)}
+                      className="flex w-full items-center justify-center gap-1.5 rounded-md border border-violet-200 bg-violet-100 py-1.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-200 transition-colors"
+                    >
+                      <PlusCircle className="h-3.5 w-3.5" />
+                      Add to Scenario
+                    </button>
+                  ) : (
+                    <button
+                      id={`scenario-remove-${rk}`}
+                      onClick={() => removeFromCandidateBasket(rk)}
+                      className="flex w-full items-center justify-center gap-1.5 rounded-md border border-red-200 bg-red-50 py-1.5 text-[11px] font-semibold text-red-600 hover:bg-red-100 transition-colors"
+                    >
+                      <MinusCircle className="h-3.5 w-3.5" />
+                      Remove from Scenario
+                    </button>
+                  )}
+
+                  {/* Force Include / Force Exclude (only when in basket) */}
+                  {inBasket && item && (
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <button
+                        id={`scenario-force-include-${rk}`}
+                        onClick={() => setCandidateStatus(rk, item.status === 'force_include' ? 'included' : 'force_include')}
+                        className={`flex items-center justify-center gap-1 rounded-md border py-1.5 text-[10px] font-semibold transition-colors ${
+                          item.status === 'force_include'
+                            ? 'border-emerald-300 bg-emerald-100 text-emerald-700'
+                            : 'border-slate-200 bg-white text-slate-600 hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700'
+                        }`}
+                      >
+                        <CheckCircle2 className="h-3 w-3" />
+                        Force Include
+                      </button>
+                      <button
+                        id={`scenario-force-exclude-${rk}`}
+                        onClick={() => setCandidateStatus(rk, item.status === 'force_exclude' ? 'included' : 'force_exclude')}
+                        className={`flex items-center justify-center gap-1 rounded-md border py-1.5 text-[10px] font-semibold transition-colors ${
+                          item.status === 'force_exclude'
+                            ? 'border-red-300 bg-red-100 text-red-700'
+                            : 'border-slate-200 bg-white text-slate-600 hover:border-red-200 hover:bg-red-50 hover:text-red-700'
+                        }`}
+                      >
+                        <XCircle className="h-3 w-3" />
+                        Force Exclude
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Planning Notes Editor */}
+                  <PlanningNoteEditor 
+                    roadKey={rk}
+                    initialNote={existingNote}
+                    onSave={(note) => savePlanningNoteForRoad(rk, note)}
+                  />
+                </div>
+              );
+            })()}
+
             <div className="rounded-lg border border-slate-100 bg-white px-3 py-2 mt-4">
               <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Diagnostics</p>
               <div className="space-y-1">

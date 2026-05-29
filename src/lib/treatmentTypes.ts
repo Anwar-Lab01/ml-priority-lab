@@ -268,3 +268,27 @@ export interface HPSCatalogItem {
   quantity_basis: string;
   is_support_item: boolean;
 }
+
+// ── Phase 5: Planning Scenario Types ─────────────────────────────────────────
+
+export type CandidateStatus = 'included' | 'force_include' | 'force_exclude' | 'deferred';
+
+export interface PlanningNote {
+  road_key: string;
+  note: string;
+  updated_at: string;
+}
+
+export interface CandidateBasketItem {
+  road_key: string;
+  canonical_road_name: string;
+  status: CandidateStatus;
+  /** Snapshot from final_asb_budget.final_pagu_indikatif_rp at time of adding */
+  pagu_indikatif_rp: number | null;
+  /** Snapshot from final_asb_budget.final_asb_type at time of adding */
+  asb_type: string | null;
+  /** Snapshot from rule_v1.treatment_category at time of adding */
+  treatment_category: string | null;
+  added_at: string;
+  updated_at: string;
+}

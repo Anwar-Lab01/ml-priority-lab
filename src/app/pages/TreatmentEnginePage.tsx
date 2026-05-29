@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, Fragment } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef, Fragment } from 'react';
 import { MapContainer, TileLayer, Polyline, Tooltip, useMap, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import {
@@ -33,7 +33,10 @@ import type {
   MapDisplayMode,
   DominantCondition,
   ASBItem,
-  HPSManualOverride
+  HPSManualOverride,
+  PlanningNote,
+  CandidateBasketItem,
+  CandidateStatus,
 } from '../../lib/treatmentTypes';
 
 import {
@@ -55,6 +58,7 @@ import { TreatmentRoadTable } from './treatment-engine/components/TreatmentRoadT
 import { TreatmentStatsCards } from './treatment-engine/components/TreatmentStatsCards';
 import { RoadFocusPanel } from './treatment-engine/components/RoadFocusPanel';
 import { TreatmentFiltersPanel } from './treatment-engine/components/TreatmentFiltersPanel';
+import { ScenarioPanel } from './treatment-engine/components/ScenarioPanel';
 
 /* ──────────────────────────────────────────────
    Treatment Engine — Map Shell + Placeholder
@@ -117,6 +121,128 @@ function useTreatmentData() {
       const next = { ...prev, [road_key]: override };
       localStorage.setItem('ml_priority_lab_hps_overrides_v1', JSON.stringify(next));
       return next;
+    });
+  }, []);
+
+  // ── Phase 5: Planning Notes state ───────────────────────────────────────────
+  const [planningNotes, setPlanningNotesState] = useState<Record<string, PlanningNote>>(() => {
+    try {
+      const stored = localStorage.getItem('ml_priority_lab_planning_notes_v1');
+      if (stored) return JSON.parse(stored);
+    } catch(e) {}
+    return {};
+  });
+
+  const savePlanningNoteForRoad = useCallback((road_key: string, note: string) => {
+    setPlanningNotesState(prev => {
+      const next = { ...prev };
+      if (!note.trim()) {
+        delete next[road_key];
+      } else {
+        next[road_key] = { road_key, note: note.trim(), updated_at: new Date().toISOString() };
+      }
+      localStorage.setItem('ml_priority_lab_planning_notes_v1', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  // ── Phase 5: Candidate Basket state ─────────────────────────────────────────
+  const [candidateBasket, setCandidateBasketState] = useState<Record<string, CandidateBasketItem>>(() => {
+    try {
+      const stored = localStorage.getItem('ml_priority_lab_candidate_basket_v1');
+      if (stored) return JSON.parse(stored);
+    } catch(e) {}
+    return {};
+  });
+
+  const addToCandidateBasket = useCallback((road: DD2RoadFeatureWithRule) => {
+    setCandidateBasketState(prev => {
+      if (prev[road.road_key]) return prev; // already in basket — no-op
+      const now = new Date().toISOString();
+      const next: Record<string, CandidateBasketItem> = {
+        ...prev,
+        [road.road_key]: {
+          road_key: road.road_key,
+          canonical_road_name: road.canonical_road_name,
+          status: 'included',
+          pagu_indikatif_rp: road.final_asb_budget?.final_pagu_indikatif_rp ?? null,
+          asb_type: road.final_asb_budget?.final_asb_type ?? null,
+          treatment_category: road.rule_v1.treatment_category,
+          added_at: now,
+          updated_at: now,
+        },
+      };
+      localStorage.setItem('ml_priority_lab_candidate_basket_v1', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const removeFromCandidateBasket = useCallback((road_key: string) => {
+    setCandidateBasketState(prev => {
+      const next = { ...prev };
+      delete next[road_key];
+      localStorage.setItem('ml_priority_lab_candidate_basket_v1', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  const setCandidateStatus = useCallback((road_key: string, status: CandidateStatus) => {
+    setCandidateBasketState(prev => {
+      if (!prev[road_key]) return prev;
+      const next = {
+        ...prev,
+        [road_key]: { ...prev[road_key], status, updated_at: new Date().toISOString() },
+      };
+      localStorage.setItem('ml_priority_lab_candidate_basket_v1', JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
+  // ── Phase 5C: Additional Helpers ─────────────────────────────────────────────
+  
+  const clearCandidateBasket = useCallback(() => {
+    setCandidateBasketState({});
+    localStorage.setItem('ml_priority_lab_candidate_basket_v1', JSON.stringify({}));
+  }, []);
+
+  const clearAllPlanningNotes = useCallback(() => {
+    setPlanningNotesState({});
+    localStorage.setItem('ml_priority_lab_planning_notes_v1', JSON.stringify({}));
+  }, []);
+
+  const syncCandidateBasketWithCurrentASB = useCallback((currentDd2Roads: DD2RoadFeatureWithRule[]) => {
+    setCandidateBasketState(prev => {
+      const next = { ...prev };
+      let changed = false;
+      const now = new Date().toISOString();
+
+      const roadMap = new Map(currentDd2Roads.map(r => [r.road_key, r]));
+
+      for (const [key, item] of Object.entries(next)) {
+        const currentRoad = roadMap.get(key);
+        if (currentRoad) {
+          const pagu = currentRoad.final_asb_budget?.final_pagu_indikatif_rp ?? null;
+          const asbType = currentRoad.final_asb_budget?.final_asb_type ?? null;
+          const category = currentRoad.rule_v1?.treatment_category ?? null;
+
+          if (item.pagu_indikatif_rp !== pagu || item.asb_type !== asbType || item.treatment_category !== category) {
+            next[key] = {
+              ...item,
+              pagu_indikatif_rp: pagu,
+              asb_type: asbType,
+              treatment_category: category,
+              updated_at: now
+            };
+            changed = true;
+          }
+        }
+      }
+
+      if (changed) {
+        localStorage.setItem('ml_priority_lab_candidate_basket_v1', JSON.stringify(next));
+        return next;
+      }
+      return prev;
     });
   }, []);
 
@@ -225,7 +351,7 @@ function useTreatmentData() {
     };
   }, [rawData, asbItems, asbRules, manualOverrides]);
 
-  return { config, geos, dd2Data, segmentData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad };
+  return { config, geos, dd2Data, segmentData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, clearAllPlanningNotes, syncCandidateBasketWithCurrentASB };
 }
 
 // ── Roadmap step data ─────────────────────────────────────────────────────────
@@ -323,7 +449,7 @@ function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
 // ── Page component ────────────────────────────────────────────────────────────
 
 export function TreatmentEnginePage() {
-  const { config, geos, dd2Data, segmentData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad } = useTreatmentData();
+  const { config, geos, dd2Data, segmentData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, syncCandidateBasketWithCurrentASB } = useTreatmentData();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showSegments, setShowSegments] = useState(false);
@@ -376,6 +502,8 @@ export function TreatmentEnginePage() {
     dlAnchorElem.setAttribute("download", "asb_overrides_export.json");
     dlAnchorElem.click();
   };
+
+  const mapSectionRef = useRef<HTMLDivElement | null>(null);
 
   // Condition Highlighting State
   const [highlightEnabled, setHighlightEnabled] = useState(false);
@@ -493,6 +621,27 @@ export function TreatmentEnginePage() {
     });
     return map;
   }, [dd2Data, geos, resolveGeoToFeature]);
+
+  // Phase 5B: Select road from scenario panel
+  const selectRoadFromScenario = useCallback((road_key: string) => {
+    const geoKey = roadKeyToGeoKeyMap.get(road_key);
+    if (geoKey) {
+      setSelectedKey(geoKey);
+      requestAnimationFrame(() => {
+        mapSectionRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    }
+  }, [roadKeyToGeoKeyMap]);
+
+  // Phase 5C: Bound sync function
+  const handleSyncScenario = useCallback(() => {
+    if (dd2Data?.roads) {
+      syncCandidateBasketWithCurrentASB(dd2Data.roads);
+    }
+  }, [dd2Data, syncCandidateBasketWithCurrentASB]);
 
   // Lookup segments by key
   const segmentsByRoadKey = useMemo(() => {
@@ -843,7 +992,7 @@ export function TreatmentEnginePage() {
       />
 
       {/* ── Spatial Treatment Context ─────────────────────────────────────────── */}
-      <div className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+      <div ref={mapSectionRef} className="rounded-xl border border-slate-200 bg-white overflow-hidden">
         {/* Section header */}
         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3.5">
           <div className="flex items-center gap-2.5">
@@ -1231,6 +1380,12 @@ export function TreatmentEnginePage() {
             hpsOverrides={hpsOverrides}
             clearHPSOverrideForRoad={clearHPSOverrideForRoad}
             setHpsOverrideForRoad={setHpsOverrideForRoad}
+            candidateBasket={candidateBasket}
+            planningNotes={planningNotes}
+            addToCandidateBasket={addToCandidateBasket}
+            removeFromCandidateBasket={removeFromCandidateBasket}
+            setCandidateStatus={setCandidateStatus}
+            savePlanningNoteForRoad={savePlanningNoteForRoad}
           />
         </div>
 
@@ -1317,6 +1472,17 @@ export function TreatmentEnginePage() {
           totalRoads={dd2Data?.roads.length || 0}
         />
       </div>
+
+      {/* ── Phase 5: Scenario Panel ──────────────────────────────────────────── */}
+      <ScenarioPanel
+        candidateBasket={candidateBasket}
+        planningNotes={planningNotes}
+        removeFromCandidateBasket={removeFromCandidateBasket}
+        setCandidateStatus={setCandidateStatus}
+        onSelectRoad={selectRoadFromScenario}
+        onClearScenario={clearCandidateBasket}
+        onSyncScenario={handleSyncScenario}
+      />
 
       <TreatmentRoadTable
         dd2Data={dd2Data}
