@@ -15,7 +15,7 @@ export function ASBTypeGuide({ isOpen, onClose }: ASBTypeGuideProps) {
         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4 bg-slate-50/80">
           <div>
             <h3 className="text-sm font-bold text-slate-800">Panduan Tipe ASB</h3>
-            <p className="text-[11px] text-slate-500 mt-0.5">Daftar referensi paket standar dan pendukung berdasarkan ASB BM 2027.</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Daftar referensi paket standar dan pendukung untuk penjelasan akademik dan override manual.</p>
           </div>
           <button onClick={onClose} className="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors">
             <X className="h-5 w-5" />
@@ -75,7 +75,7 @@ export function ASBTypeGuide({ isOpen, onClose }: ASBTypeGuideProps) {
         <div className="border-t border-slate-100 bg-slate-50 px-5 py-3 text-center">
           <p className="text-[10px] text-slate-500 italic">
             <AlertTriangle className="inline h-3 w-3 mr-1 text-amber-500 relative -top-0.5" />
-            Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis.
+            Estimasi kewajaran anggaran indikatif berdasarkan ASB BM 2027. Bukan RAB final atau DED teknis. NONE = Tidak ada paket mayor otomatis.
           </p>
         </div>
       </div>

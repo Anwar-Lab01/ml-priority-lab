@@ -463,7 +463,7 @@ export function ScenarioPanel({
               <button
                 onClick={handleSync}
                 className="flex items-center gap-1.5 rounded border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-800 transition-colors"
-                title="Sync basket values with latest ASB pagu"
+                title="Utility feature: sync basket values with latest ASB pagu"
               >
                 {isSyncing ? (
                   <>
@@ -482,10 +482,11 @@ export function ScenarioPanel({
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <button
-                onClick={handleExportJson}
-                className="flex items-center gap-1.5 rounded border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-800 transition-colors"
-              >
+                <button
+                  onClick={handleExportJson}
+                  className="flex items-center gap-1.5 rounded border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-800 transition-colors"
+                  title="Utility feature: export scenario JSON"
+                >
                 <Download className="h-3.5 w-3.5 text-slate-400" />
                 Export Scenario JSON
               </button>
@@ -613,7 +614,7 @@ export function ScenarioPanel({
           {/* ── Footer disclaimer ──────────────────────────────────────────── */}
           <div className="border-t border-slate-100 bg-slate-50/60 px-5 py-2">
             <p className="text-[9px] text-slate-400 leading-relaxed">
-              Scenario ini berbasis Pagu Indikatif ASB. Estimasi HPS/AHSP tetap hanya sebagai pembanding.
+              Scenario ini berbasis Pagu Indikatif ASB. HPS/AHSP tetap hanya comparison/detail, dan utilitas Sync ASB Snapshot / Export Scenario JSON berada di luar flow akademik.
               Nilai budget bersumber dari <code className="font-mono text-[9px] bg-slate-200 px-1 rounded">final_asb_budget.final_pagu_indikatif_rp</code>.
             </p>
           </div>

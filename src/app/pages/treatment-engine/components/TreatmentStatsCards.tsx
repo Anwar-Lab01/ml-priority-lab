@@ -23,7 +23,7 @@ export function TreatmentStatsCards({ dd2Data, onExportOverrides }: TreatmentSta
         <div className="px-5 py-3 border-b border-slate-100 bg-slate-50">
           <p className="text-xs text-slate-500 flex items-center gap-2">
             <Info className="h-4 w-4 shrink-0 text-slate-400" />
-            Rule v0.1 bersifat indikatif berbasis agregasi DD2 per ruas. PKRMS resmi menggunakan Treatment Trigger Index (TTI) per segmen survei untuk menentukan kebutuhan penanganan.
+            Rule v0.1 bersifat indikatif berbasis agregasi kondisi jalan DD1 / FormDD1 per ruas. ML Priority Score masih berada di modul/page lain dan belum terintegrasi ke Treatment Engine.
           </p>
         </div>
         {dd2Data?.ruleStats && (
@@ -110,6 +110,9 @@ export function TreatmentStatsCards({ dd2Data, onExportOverrides }: TreatmentSta
           <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-100 px-2.5 py-1 text-[10px] font-bold text-indigo-700">
             Read-Only Preview
           </span>
+        </div>
+        <div className="px-5 pt-2 text-[10px] text-slate-500">
+          ASB pagu indikatif remains the canonical budget source for this engine. HPS/AHSP is only a comparison/detail layer.
         </div>
         {dd2Data?.asbStats && (
           <div className="grid grid-cols-2 md:grid-cols-6 divide-x divide-y md:divide-y-0 divide-slate-100">

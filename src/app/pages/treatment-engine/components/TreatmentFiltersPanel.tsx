@@ -62,7 +62,7 @@ export function TreatmentFiltersPanel({
             <option value="B">Type B</option>
             <option value="C">Type C</option>
             <option value="D">Type D</option>
-            <option value="No Major Package">No Major Package</option>
+            <option value="No Major Package">NONE</option>
             <option value="Manual Override">Manual Override</option>
           </select>
         </label>
@@ -94,7 +94,7 @@ export function TreatmentFiltersPanel({
             <option value="All">All Statuses</option>
             <option value="Manual Override">Manual Override</option>
             <option value="Review Flag">Review Flag</option>
-            <option value="No Major Package">No Major Package</option>
+            <option value="No Major Package">NONE</option>
           </select>
         </label>
 

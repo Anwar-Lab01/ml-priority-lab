@@ -32,6 +32,9 @@ export function ASBBudgetPanel({
           </span>
         ) : null}
       </div>
+      <p className="text-[9px] text-slate-500 leading-tight">
+        ASB pagu indikatif remains the canonical budget source. HPS/AHSP is comparison/detail only.
+      </p>
 
       {/* Auto Recommendation Box */}
       <div className="rounded border border-slate-200 bg-slate-100/50 p-2 text-xs">
@@ -42,7 +45,7 @@ export function ASBBudgetPanel({
             <span className="font-mono">Rp {(autoBudget.pagu_indikatif_rp || 0).toLocaleString('id-ID')}</span>
           </div>
         ) : autoBudget?.status === 'no_major_asb_package' ? (
-          <p className="text-slate-500 italic text-[10px]">No major package auto-selected</p>
+          <p className="text-slate-500 italic text-[10px]">NONE auto-selected</p>
         ) : (
           <p className="text-slate-500 italic text-[10px]">{autoBudget?.reason || 'No package'}</p>
         )}

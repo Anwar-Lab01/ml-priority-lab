@@ -52,7 +52,7 @@ export const HPSItemProfilePanel: React.FC<HPSItemProfilePanelProps> = ({ road, 
   }, []);
 
   if (loading) {
-    return <div className="p-4 text-sm text-slate-500">Memuat profil HPS/AHSP...</div>;
+    return <div className="p-4 text-sm text-slate-500">Memuat profil HPS/AHSP untuk comparison/detail...</div>;
   }
 
   // Handle No Major Package
@@ -61,7 +61,7 @@ export const HPSItemProfilePanel: React.FC<HPSItemProfilePanelProps> = ({ road, 
       <div className="bg-slate-50 rounded-xl border border-slate-200 p-5 mt-4">
         <h3 className="font-semibold text-slate-800 mb-2">HPS/AHSP Item Profile</h3>
         <p className="text-sm text-slate-600">
-          Tidak ada paket ASB mayor otomatis. Profil HPS dapat dipilih nanti melalui override/manual planning.
+          Tidak ada paket ASB mayor otomatis. HPS/AHSP tetap hanya pembanding/detail; ASB pagu indikatif tetap menjadi sumber budget.
         </p>
       </div>
     );
@@ -75,7 +75,7 @@ export const HPSItemProfilePanel: React.FC<HPSItemProfilePanelProps> = ({ road, 
       <div className="bg-slate-50 rounded-xl border border-slate-200 p-5 mt-4">
         <h3 className="font-semibold text-slate-800 mb-2">HPS/AHSP Item Profile</h3>
         <p className="text-sm text-slate-600">
-          Profil HPS/AHSP untuk ASB Tipe {asbType} belum tersedia.
+          Profil HPS/AHSP untuk ASB Tipe {asbType} belum tersedia sebagai layer comparison/detail.
         </p>
       </div>
     );
@@ -181,7 +181,7 @@ export const HPSItemProfilePanel: React.FC<HPSItemProfilePanelProps> = ({ road, 
             <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Profil item HPS/AHSP bersifat indikatif dan tidak menggantikan DED/RAB final.
+            Profil item HPS/AHSP bersifat indikatif, hanya untuk perbandingan/detail, dan tidak menggantikan ASB pagu indikatif, DED, atau RAB final.
           </p>
         </div>
         

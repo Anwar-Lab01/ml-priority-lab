@@ -84,7 +84,7 @@ export function ASBOverrideForm({
                 {ASB_TYPE_GUIDE[t]?.label || `Tipe ${t}`}
               </option>
             ))}
-            <option value="NONE">None — Tidak Ada Paket Mayor</option>
+            <option value="NONE">NONE — Tidak ada paket mayor otomatis</option>
           </select>
           {overrideForm.selected_asb_type && ASB_TYPE_GUIDE[overrideForm.selected_asb_type] && (
             <div className="mt-1.5 p-2 bg-indigo-50/50 border border-indigo-100 rounded text-[10px] text-indigo-900 space-y-1">

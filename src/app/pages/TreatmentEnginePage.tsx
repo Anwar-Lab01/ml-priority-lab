@@ -63,7 +63,7 @@ import { ScenarioPanel } from './treatment-engine/components/ScenarioPanel';
 /* ──────────────────────────────────────────────
    Treatment Engine — Map Shell + Placeholder
    Rule-based treatment indication & indicative
-   budgeting from DD2 / ASB data.
+   budgeting from DD1 / FormDD1 road-condition data and ASB.
 
    SAFETY NOTE:
    - Map data reuses existing /data/maps/ files.
@@ -359,36 +359,64 @@ function useTreatmentData() {
 const NEXT_STEPS = [
   {
     step: 1,
-    label: 'Ingest DD2 CSV',
-    description: 'Load dd2_roads_2025_clean.csv from staging-source/dd2/processed/',
+    label: 'Input DD1 / FormDD1 road-condition data',
+    description: 'Bring in the road-condition source used for the academic consultation flow',
     icon: Database,
     status: 'done' as const,
   },
   {
     step: 2,
-    label: 'Resolve road identity',
-    description: 'Map DD2 road names to the canonical 350-road universe via nama_ruas_norm / road_key',
+    label: 'Load and validate data',
+    description: 'Check structural completeness and prepare the road-level records for treatment analysis',
     icon: Route,
     status: 'done' as const,
   },
   {
     step: 3,
-    label: 'Generate dd2_road_features.json',
-    description: 'Produce verified runtime JSON for public/data/ after identity audit',
+    label: 'Analyze road condition per road',
+    description: 'Use unpaved_pct, non_mantap_pct, and rusak_berat_pct as the active condition fields',
     icon: FileJson,
     status: 'done' as const,
   },
   {
     step: 4,
-    label: 'Connect ASB price table & Rules',
-    description: 'Integrate ASB unit-price reference and structural mapping rules',
+    label: 'Classify treatment package Type A/B/C/D/NONE',
+    description: 'Apply the rule-based package classification for each road',
     icon: DollarSign,
     status: 'done' as const,
   },
   {
     step: 5,
-    label: 'Estimate Pagu Indikatif',
-    description: 'Read-only ASB package selection to preview indicative budget reasonableness',
+    label: 'Select ASB package',
+    description: 'Choose the matching ASB package for the classified treatment type',
+    icon: Calculator,
+    status: 'done' as const,
+  },
+  {
+    step: 6,
+    label: 'Calculate pagu indikatif',
+    description: 'Derive the indicative budget using ASB unit prices as the canonical budget source',
+    icon: Calculator,
+    status: 'done' as const,
+  },
+  {
+    step: 7,
+    label: 'Compare/detail with HPS/AHSP',
+    description: 'Use HPS/AHSP only as a comparison and detail layer, not as the budget source',
+    icon: DollarSign,
+    status: 'done' as const,
+  },
+  {
+    step: 8,
+    label: 'Add selected road to planning scenario',
+    description: 'Move the road into the candidate basket for planning and notes',
+    icon: Route,
+    status: 'done' as const,
+  },
+  {
+    step: 9,
+    label: 'Preview funded/deferred based on budget cap',
+    description: 'Review funded, deferred, and force-included roads against the cap preview',
     icon: Calculator,
     status: 'done' as const,
   },
@@ -912,9 +940,11 @@ export function TreatmentEnginePage() {
           <div className="flex-1">
             <h2 className="text-xl font-bold text-slate-900">Treatment Engine</h2>
             <p className="mt-1 text-sm leading-relaxed text-slate-600">
-              Rule-based treatment indication and indicative budgeting from DD2&nbsp;/&nbsp;ASB.
-              This module will apply road-condition rules from FormDD data to recommend
-              treatment types and estimate budget allocations using ASB unit prices.
+              Rule-based treatment indication and indicative budgeting from DD1&nbsp;/&nbsp;FormDD1 road-condition data and ASB.
+              This module applies road-condition rules from DD1&nbsp;/&nbsp;FormDD1 to recommend treatment types and estimate budget allocations using ASB unit prices.
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-slate-500">
+              ML Priority Score remains in the separate ranking module/page and is not integrated into Treatment Engine yet.
             </p>
           </div>
         </div>
@@ -928,7 +958,7 @@ export function TreatmentEnginePage() {
           </div>
           <div className="grid gap-px bg-slate-100 grid-rows-3 flex-1">
             {[
-              { label: 'Raw Source',        value: 'FormDD1-2025.xlsx', sub: 'staging-source/dd2/raw/',       icon: Database,    color: 'text-blue-600 bg-blue-50' },
+              { label: 'DD1 / FormDD1 Source', value: 'FormDD1-2025.xlsx', sub: 'staging-source/dd2/raw/',       icon: Database,    color: 'text-blue-600 bg-blue-50' },
               { label: 'Processed Staging', value: '2 CSV files',       sub: 'staging-source/dd2/processed/', icon: FileJson,    color: 'text-emerald-600 bg-emerald-50' },
               { label: 'Extraction Audit',  value: '350 rows confirmed', sub: 'staging-source/dd2/audit/',    icon: CheckCircle, color: 'text-violet-600 bg-violet-50' },
             ].map((item) => (
@@ -948,7 +978,7 @@ export function TreatmentEnginePage() {
 
         <div className="rounded-xl border border-slate-200 bg-white flex flex-col">
           <div className="border-b border-slate-100 px-5 py-3.5 flex justify-between items-center">
-            <h3 className="text-sm font-semibold text-slate-800">DD2 Identity Audit Status</h3>
+            <h3 className="text-sm font-semibold text-slate-800">Identity Audit Status</h3>
             {dd2Data && (
               <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold text-emerald-700">
                 <CheckCircle className="h-3 w-3" />
@@ -960,7 +990,7 @@ export function TreatmentEnginePage() {
             {dd2Data ? (
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-lg border border-slate-100 bg-slate-50 p-4 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">DD2 Roads Loaded</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Roads Loaded</p>
                   <p className="mt-1 text-3xl font-bold text-slate-800">{dd2Data._metadata.total_records}</p>
                 </div>
                 <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-center">
@@ -1002,7 +1032,7 @@ export function TreatmentEnginePage() {
           {/* Status chip */}
           <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-100 bg-indigo-50 px-2.5 py-1 text-[10px] font-semibold text-indigo-700">
             <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-            DD2 Verified Data Loaded
+            Verified Data Loaded
           </span>
         </div>
 
@@ -1148,7 +1178,7 @@ export function TreatmentEnginePage() {
           <p className="text-[11px] leading-relaxed text-slate-500">
             {showSegments 
                ? "Segment damage view enabled. Road geometries are projected using fractional STA positions from source DD2 data."
-               : "This map displays road geometries and their loaded DD2 attributes. Treatment logic and ASB costing will be implemented in subsequent phases."
+               : "This map displays road geometries and their loaded runtime road-condition attributes. Treatment logic and ASB costing follow the current Treatment Engine flow, while ML Priority Score, Kecamatan linkage, spatial equity, historical treatment, and constrained optimization remain roadmap items."
             }
           </p>
         </div>
@@ -1504,8 +1534,8 @@ export function TreatmentEnginePage() {
       {/* ── Implementation roadmap ────────────────────────────────────────────── */}
       <div className="rounded-xl border border-slate-200 bg-white">
         <div className="border-b border-slate-100 px-5 py-3.5">
-          <h3 className="text-sm font-semibold text-slate-800">Implementation Roadmap</h3>
-          <p className="mt-0.5 text-xs text-slate-500">Steps required before this module is operational</p>
+          <h3 className="text-sm font-semibold text-slate-800">Conceptual Flow</h3>
+          <p className="mt-0.5 text-xs text-slate-500">Current academic consultation flow for the Treatment Engine</p>
         </div>
         <div className="divide-y divide-slate-50">
           {NEXT_STEPS.map((item, idx) => {
@@ -1544,6 +1574,13 @@ export function TreatmentEnginePage() {
       </div>
 
       {/* ── Identity rules reminder ───────────────────────────────────────────── */}
+      <div className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-xs text-slate-500">
+        Utility features: <span className="font-medium text-slate-700">Sync ASB Snapshot</span> and <span className="font-medium text-slate-700">Export Scenario JSON</span> are available in the scenario panel, but they are not part of the academic flowchart.
+        <div className="mt-2">
+          Future roadmap only: Kecamatan linkage, spatial equity/distribution analysis, historical treatment layer, and constrained multi-objective optimization.
+        </div>
+      </div>
+
       <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
         <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
         <div className="text-xs leading-relaxed text-blue-700">

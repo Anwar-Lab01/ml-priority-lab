@@ -388,10 +388,10 @@ export const SEGMENT_CONDITION_COLORS: Record<string, string> = {
 // ── ASB Type Guide Reference ─────────────────────────────────────────────────
 
 export const ASB_TYPE_GUIDE: Record<string, { label: string; desc: string; composition: string; use: string; isSupport?: boolean }> = {
-  'A': { label: 'A — Surface only', desc: 'Lapisan permukaan aspal saja', composition: 'Permukaan', use: 'Pemeliharaan / pelapisan ulang permukaan' },
-  'B': { label: 'B — Surface + LPA', desc: 'Permukaan + LPA', composition: 'Permukaan + Lapis Pondasi Atas (LPA)', use: 'Perbaikan dengan pondasi atas' },
-  'C': { label: 'C — Surface + LPA + LPB', desc: 'Permukaan + LPA + LPB', composition: 'Permukaan + LPA + Lapis Pondasi Bawah (LPB)', use: 'Rehabilitasi mayor / pondasi penuh' },
-  'D': { label: 'D — Surface + LPA + LPB + Timbunan', desc: 'Permukaan + LPA + LPB + timbunan pilihan', composition: 'Permukaan + LPA + LPB + Timbunan', use: 'Rekonstruksi dengan peninggian badan jalan' },
+  'A': { label: 'A — Permukaan saja', desc: 'Permukaan saja', composition: 'Permukaan', use: 'Penanganan permukaan saja' },
+  'B': { label: 'B — Permukaan + LPA', desc: 'Permukaan + LPA', composition: 'Permukaan + Lapis Pondasi Atas (LPA)', use: 'Permukaan + LPA' },
+  'C': { label: 'C — Permukaan + LPA + LPB', desc: 'Permukaan + LPA + LPB', composition: 'Permukaan + LPA + Lapis Pondasi Bawah (LPB)', use: 'Permukaan + LPA + LPB' },
+  'D': { label: 'D — Permukaan + LPA + LPB + Timbunan', desc: 'Permukaan + LPA + LPB + Timbunan', composition: 'Permukaan + LPA + LPB + Timbunan', use: 'Permukaan + LPA + LPB + Timbunan' },
   'E': { label: 'E — Surface + Bahu Beton', desc: 'Permukaan + bahu beton', composition: 'Permukaan + Bahu Jalan Beton', use: 'Peningkatan kapasitas / pelebaran bahu' },
   'F': { label: 'F — Full package + Drainase + Bahu', desc: 'Permukaan + LPA + LPB + timbunan + drainase + bahu', composition: 'Permukaan + LPA + LPB + Timbunan + Drainase + Bahu', use: 'Rekonstruksi komprehensif' },
   'G': { label: 'G — Rigid / Beton', desc: 'Jalan cor beton', composition: 'Perkerasan Beton Semen', use: 'Jalan beban berat / daerah genangan' },

@@ -200,6 +200,9 @@ export function RoadFocusPanel({
               <p className="mt-0.5 font-mono text-[10px] text-emerald-600">
                 Kecamatan: {selectedDd2Feature.kecamatan_dilalui || '—'}
               </p>
+              <p className="mt-1 text-[9px] text-emerald-700/80">
+                Kecamatan metadata is read-only here and remains a future roadmap item for linkage and analysis.
+              </p>
             </div>
 
             {/* DD2 treatment status */}
@@ -310,6 +313,9 @@ export function RoadFocusPanel({
               onClearOverride={() => clearHPSOverrideForRoad(selectedDd2Feature.road_key)}
               onSaveOverride={(override) => setHpsOverrideForRoad(selectedDd2Feature.road_key, override)}
             />
+            <p className="text-[10px] text-slate-500 leading-relaxed">
+              HPS/AHSP is a comparison/detail layer only. ASB pagu indikatif remains the canonical budget source.
+            </p>
 
             {/* ── Phase 5: Planning Scenario Section ─────────────────────── */}
             {(() => {
