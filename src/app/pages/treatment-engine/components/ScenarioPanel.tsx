@@ -14,11 +14,23 @@ import {
 } from 'lucide-react';
 import type { CandidateBasketItem, CandidateStatus, PlanningNote } from '../../../../lib/treatmentTypes';
 
+type ScenarioKecamatanSummaryItem = {
+  kecamatan: string;
+  road_count: number;
+  total_pagu_indikatif_rp: number;
+  included_count: number;
+  force_include_count: number;
+  deferred_count: number;
+  force_exclude_count: number;
+};
+
 // ── Types ────────────────────────────────────────────────────────────────────
 
 interface ScenarioPanelProps {
   candidateBasket: Record<string, CandidateBasketItem>;
   planningNotes: Record<string, PlanningNote>;
+  scenarioKecamatanSummary: ScenarioKecamatanSummaryItem[];
+  scenarioKecamatanSummaryHasMultiKecamatanRoads: boolean;
   removeFromCandidateBasket: (road_key: string) => void;
   setCandidateStatus: (road_key: string, status: CandidateStatus) => void;
   onSelectRoad?: (road_key: string) => void;
@@ -227,6 +239,8 @@ function CandidateRow({ item, note, isFunded, isForceExcluded, onRemove, onSetSt
 export function ScenarioPanel({
   candidateBasket,
   planningNotes,
+  scenarioKecamatanSummary,
+  scenarioKecamatanSummaryHasMultiKecamatanRoads,
   removeFromCandidateBasket,
   setCandidateStatus,
   onSelectRoad,
@@ -458,6 +472,62 @@ export function ScenarioPanel({
           </div>
 
           {/* ── Toolbar Actions ──────────────────────────────────────────────── */}
+          <div className="border-b border-slate-100 bg-white px-4 py-3">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                  Scenario Kecamatan Summary
+                </p>
+                <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Read-only metadata summary based on kecamatan_dilalui. This is not an editable prioritization input.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">
+                  {items.length} candidate road{items.length !== 1 ? 's' : ''}
+                </span>
+                <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-1 text-indigo-700">
+                  {scenarioKecamatanSummary.length} kecamatan
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-3 grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+              {scenarioKecamatanSummary.map(item => (
+                <div key={item.kecamatan} className="rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-2">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-xs font-semibold text-slate-800 leading-tight">{item.kecamatan}</p>
+                    <span className="shrink-0 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold text-slate-600">
+                      {item.road_count} road{item.road_count !== 1 ? 's' : ''}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-[10px] text-slate-500">
+                    ASB pagu: <span className="font-semibold text-slate-700">{formatRp(item.total_pagu_indikatif_rp)}</span>
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[9px] font-bold text-indigo-700">
+                      Included {item.included_count}
+                    </span>
+                    <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[9px] font-bold text-emerald-700">
+                      Force Include {item.force_include_count}
+                    </span>
+                    <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[9px] font-bold text-slate-700">
+                      Deferred {item.deferred_count}
+                    </span>
+                    <span className="rounded-full bg-red-100 px-2 py-0.5 text-[9px] font-bold text-red-700">
+                      Force Exclude {item.force_exclude_count}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {scenarioKecamatanSummaryHasMultiKecamatanRoads && (
+              <p className="mt-2 text-[10px] leading-relaxed text-slate-500">
+                Roads with multiple kecamatan values are counted in each matching kecamatan. Budget is not divided for this read-only summary.
+              </p>
+            )}
+          </div>
           <div className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-2">
             <div className="flex items-center gap-2">
               <button

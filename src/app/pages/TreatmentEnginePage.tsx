@@ -60,6 +60,21 @@ import { RoadFocusPanel } from './treatment-engine/components/RoadFocusPanel';
 import { TreatmentFiltersPanel } from './treatment-engine/components/TreatmentFiltersPanel';
 import { ScenarioPanel } from './treatment-engine/components/ScenarioPanel';
 
+type ScenarioKecamatanSummaryItem = {
+  kecamatan: string;
+  road_count: number;
+  total_pagu_indikatif_rp: number;
+  included_count: number;
+  force_include_count: number;
+  deferred_count: number;
+  force_exclude_count: number;
+};
+
+type ScenarioKecamatanSummaryResult = {
+  items: ScenarioKecamatanSummaryItem[];
+  hasMultiKecamatanRoads: boolean;
+};
+
 /* ──────────────────────────────────────────────
    Treatment Engine — Map Shell + Placeholder
    Rule-based treatment indication & indicative
@@ -760,6 +775,62 @@ export function TreatmentEnginePage() {
        topSurface
     };
   }, [selectedDd2Feature, segmentsByRoadKey]);
+
+  const roadKeyToKecamatanMap = useMemo(() => {
+    const map = new Map<string, string>();
+    if (!dd2Data) return map;
+
+    dd2Data.roads.forEach(road => {
+      map.set(road.road_key, road.kecamatan_dilalui ?? '');
+    });
+
+    return map;
+  }, [dd2Data]);
+
+  const scenarioKecamatanSummary = useMemo<ScenarioKecamatanSummaryResult>(() => {
+    const aggregate = new Map<string, ScenarioKecamatanSummaryItem>();
+    let hasMultiKecamatanRoads = false;
+
+    Object.values(candidateBasket).forEach(item => {
+      const rawKecamatan = roadKeyToKecamatanMap.get(item.road_key) ?? '';
+      const resolvedKecamatan = rawKecamatan
+        .split(/[,;]+/)
+        .map(value => value.trim())
+        .filter(Boolean);
+
+      const kecamatanList = resolvedKecamatan.length > 0 ? resolvedKecamatan : ['Tidak Terdata'];
+      if (kecamatanList.length > 1) hasMultiKecamatanRoads = true;
+
+      kecamatanList.forEach(kecamatan => {
+        const current = aggregate.get(kecamatan) ?? {
+          kecamatan,
+          road_count: 0,
+          total_pagu_indikatif_rp: 0,
+          included_count: 0,
+          force_include_count: 0,
+          deferred_count: 0,
+          force_exclude_count: 0,
+        };
+
+        current.road_count += 1;
+        current.total_pagu_indikatif_rp += item.pagu_indikatif_rp ?? 0;
+
+        if (item.status === 'included') current.included_count += 1;
+        else if (item.status === 'force_include') current.force_include_count += 1;
+        else if (item.status === 'deferred') current.deferred_count += 1;
+        else if (item.status === 'force_exclude') current.force_exclude_count += 1;
+
+        aggregate.set(kecamatan, current);
+      });
+    });
+
+    const items = [...aggregate.values()].sort((a, b) => {
+      if (b.road_count !== a.road_count) return b.road_count - a.road_count;
+      return a.kecamatan.localeCompare(b.kecamatan, 'id');
+    });
+
+    return { items, hasMultiKecamatanRoads };
+  }, [candidateBasket, roadKeyToKecamatanMap]);
 
   // Verified Segment diagnostic telemetry
   const segmentDiagStats = useMemo(() => {
@@ -1507,6 +1578,8 @@ export function TreatmentEnginePage() {
       <ScenarioPanel
         candidateBasket={candidateBasket}
         planningNotes={planningNotes}
+        scenarioKecamatanSummary={scenarioKecamatanSummary.items}
+        scenarioKecamatanSummaryHasMultiKecamatanRoads={scenarioKecamatanSummary.hasMultiKecamatanRoads}
         removeFromCandidateBasket={removeFromCandidateBasket}
         setCandidateStatus={setCandidateStatus}
         onSelectRoad={selectRoadFromScenario}
