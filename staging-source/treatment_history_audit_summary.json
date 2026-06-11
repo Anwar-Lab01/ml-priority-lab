@@ -1,0 +1,106 @@
+{
+  "workbook": "data_historis_skenario15April_ready_for_ML_new_features_FINAL (1).xlsx",
+  "sheet_names": [
+    "clean_historis",
+    "model_2023_2024",
+    "model_2024_2025",
+    "model_2025_2026"
+  ],
+  "sheet_ranges_from_artifact_tool": {},
+  "clean_historis": {
+    "rows_including_header": 351,
+    "data_rows": 350,
+    "columns": 96,
+    "has_350_road_rows": true,
+    "has_road_key_column": false,
+    "identity_column": "nama_ruas_norm",
+    "derived_road_key_unique_count": 350,
+    "duplicate_road_keys": {},
+    "missing_road_key_count": 0,
+    "historical_columns": [
+      "handled_any_2021",
+      "handled_any_2022",
+      "handled_any_2023",
+      "handled_any_2024",
+      "handled_any_2025",
+      "handled_pl_2021",
+      "handled_pl_2022",
+      "handled_pl_2023",
+      "handled_pl_2024",
+      "handled_pl_2025",
+      "handled_tender_2021",
+      "handled_tender_2022",
+      "handled_tender_2023",
+      "handled_tender_2024",
+      "handled_tender_2025"
+    ],
+    "prior_history_columns": [
+      "prior_handled_any_pre2024",
+      "prior_handled_count_pre2024",
+      "prior_handled_last_year_pre2024",
+      "years_since_last_handled_pre2024",
+      "prior_handled_any_pre2025",
+      "prior_handled_count_pre2025",
+      "prior_handled_last_year_pre2025",
+      "years_since_last_handled_pre2025",
+      "prior_handled_any_pre2026",
+      "prior_handled_count_pre2026",
+      "prior_handled_last_year_pre2026",
+      "years_since_last_handled_pre2026"
+    ],
+    "planned_target_columns": [
+      "planned_any_2026",
+      "planned_any_2027",
+      "planned_pl_2026",
+      "planned_pl_2027",
+      "planned_tender_2026",
+      "planned_tender_2027"
+    ],
+    "handled_counts": {
+      "any": {
+        "2021": 45,
+        "2022": 48,
+        "2023": 114,
+        "2024": 76,
+        "2025": 46
+      },
+      "pl": {
+        "2021": 32,
+        "2022": 35,
+        "2023": 89,
+        "2024": 33,
+        "2025": 21
+      },
+      "tender": {
+        "2021": 13,
+        "2022": 13,
+        "2023": 28,
+        "2024": 44,
+        "2025": 25
+      }
+    },
+    "planned_counts": {
+      "2026": {
+        "any": 28,
+        "pl": 9,
+        "tender": 19
+      },
+      "2027": {
+        "any": 34,
+        "pl": 11,
+        "tender": 33
+      }
+    }
+  },
+  "recommendation": {
+    "proceed": true,
+    "safe_runtime_json": "treatment_history_by_road_key.json",
+    "guardrails": [
+      "Do not load XLSX directly in React runtime.",
+      "Validate derived road_key against public/data/dd2_road_features.json in repo before integration.",
+      "Use road_key only, not road_id.",
+      "Keep planned_* fields separate from historical handled_* fields.",
+      "Do not describe planned_2026/2027 as historical realization."
+    ]
+  }
+}

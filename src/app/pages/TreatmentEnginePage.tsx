@@ -75,6 +75,41 @@ type ScenarioKecamatanSummaryResult = {
   hasMultiKecamatanRoads: boolean;
 };
 
+type HistoricalTreatmentYearSummary = {
+  any: number | null;
+  pl: number | null;
+  tender: number | null;
+};
+
+type HistoricalTreatmentRecord = {
+  road_key: string;
+  source_identity?: {
+    nomor_ruas?: string | null;
+    nama_ruas?: string | null;
+    nama_ruas_norm?: string | null;
+  };
+  handled?: Record<string, HistoricalTreatmentYearSummary>;
+  prior_history_pre2026?: {
+    any?: number | null;
+    count?: number | null;
+    last_year?: number | null;
+    years_since_last?: number | null;
+  };
+  planned_targets?: Record<string, HistoricalTreatmentYearSummary>;
+  administrative_context?: {
+    desa_yang_dilalui?: string | null;
+    kecamatan_yang_dilalui?: string | null;
+    jumlah_desa_yang_dilalui?: number | null;
+    jumlah_kecamatan_yang_dilalui?: number | null;
+    jumlah_penduduk_dilayani?: number | null;
+  };
+  road_condition_snapshot?: Record<string, number | null>;
+};
+
+type HistoricalTreatmentData = {
+  roads: HistoricalTreatmentRecord[];
+};
+
 /* ──────────────────────────────────────────────
    Treatment Engine — Map Shell + Placeholder
    Rule-based treatment indication & indicative
@@ -94,6 +129,7 @@ function useTreatmentData() {
   const [asbItems, setAsbItems] = useState<ASBItem[]>([]);
   const [asbRules, setAsbRules] = useState<any>(null);
   const [segmentData, setSegmentData] = useState<DD2DamageSegmentData | null>(null);
+  const [historicalTreatmentData, setHistoricalTreatmentData] = useState<HistoricalTreatmentData | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
 
   const [manualOverrides, setManualOverridesState] = useState<Record<string, ManualASBOverride>>(() => {
@@ -265,13 +301,14 @@ function useTreatmentData() {
     async function load() {
       setStatus('loading');
       try {
-        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules] = await Promise.all([
+        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules, resHistory] = await Promise.all([
           fetch('/data/maps/map-config.json'),
           fetch('/data/maps/road-geometries.json'),
           fetch('/data/dd2_road_features.json'),
           fetch('/data/dd2_damage_segments.json'),
           fetch('/data/asb_unit_prices.json'),
-          fetch('/data/asb_budget_package_rules.json')
+          fetch('/data/asb_budget_package_rules.json'),
+          fetch('/data/treatment_history_by_road_key.json')
         ]);
         
         if (!resCfg.ok || !resGeo.ok) throw new Error('Failed to load map data');
@@ -284,6 +321,8 @@ function useTreatmentData() {
           setAsbItems(asbData.items || []);
         }
         if (resAsbRules.ok) setAsbRules(await resAsbRules.json());
+        if (resHistory.ok) setHistoricalTreatmentData(await resHistory.json());
+        else setHistoricalTreatmentData(null);
         
         if (resDd2.ok) setRawData(await resDd2.json());
         if (resSeg && resSeg.ok) {
@@ -366,7 +405,7 @@ function useTreatmentData() {
     };
   }, [rawData, asbItems, asbRules, manualOverrides]);
 
-  return { config, geos, dd2Data, segmentData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, clearAllPlanningNotes, syncCandidateBasketWithCurrentASB };
+  return { config, geos, dd2Data, segmentData, historicalTreatmentData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, clearAllPlanningNotes, syncCandidateBasketWithCurrentASB };
 }
 
 // ── Roadmap step data ─────────────────────────────────────────────────────────
@@ -492,7 +531,7 @@ function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
 // ── Page component ────────────────────────────────────────────────────────────
 
 export function TreatmentEnginePage() {
-  const { config, geos, dd2Data, segmentData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, syncCandidateBasketWithCurrentASB } = useTreatmentData();
+  const { config, geos, dd2Data, segmentData, historicalTreatmentData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, syncCandidateBasketWithCurrentASB } = useTreatmentData();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showSegments, setShowSegments] = useState(false);
@@ -775,6 +814,22 @@ export function TreatmentEnginePage() {
        topSurface
     };
   }, [selectedDd2Feature, segmentsByRoadKey]);
+
+  const historicalTreatmentByRoadKey = useMemo(() => {
+    const map = new Map<string, HistoricalTreatmentRecord>();
+    if (!historicalTreatmentData?.roads?.length) return map;
+
+    historicalTreatmentData.roads.forEach((record) => {
+      if (record?.road_key) map.set(record.road_key, record);
+    });
+
+    return map;
+  }, [historicalTreatmentData]);
+
+  const selectedHistoricalTreatmentRecord = useMemo(() => {
+    if (!selectedDd2Feature) return null;
+    return historicalTreatmentByRoadKey.get(selectedDd2Feature.road_key) ?? null;
+  }, [selectedDd2Feature, historicalTreatmentByRoadKey]);
 
   const roadKeyToKecamatanMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -1249,7 +1304,7 @@ export function TreatmentEnginePage() {
           <p className="text-[11px] leading-relaxed text-slate-500">
             {showSegments 
                ? "Segment damage view enabled. Road geometries are projected using fractional STA positions from source DD2 data."
-               : "This map displays road geometries and their loaded runtime road-condition attributes. Treatment logic and ASB costing follow the current Treatment Engine flow, while ML Priority Score, Kecamatan linkage, spatial equity, historical treatment, and constrained optimization remain roadmap items."
+               : "This map displays road geometries and their loaded runtime road-condition attributes. Treatment logic and ASB costing follow the current Treatment Engine flow, while ML Priority Score, Kecamatan linkage, spatial equity, and constrained optimization remain roadmap items."
             }
           </p>
         </div>
@@ -1467,6 +1522,7 @@ export function TreatmentEnginePage() {
             selectedGeo={selectedGeo || null}
             selectedDd2Feature={selectedDd2Feature}
             selectedSegmentSummary={selectedSegmentSummary}
+            selectedHistoricalTreatmentRecord={selectedHistoricalTreatmentRecord}
             diagnosticKey={diagnosticKey}
             matchMethod={matchMethod}
             manualOverrides={manualOverrides}
@@ -1650,7 +1706,7 @@ export function TreatmentEnginePage() {
       <div className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-xs text-slate-500">
         Utility features: <span className="font-medium text-slate-700">Sync ASB Snapshot</span> and <span className="font-medium text-slate-700">Export Scenario JSON</span> are available in the scenario panel, but they are not part of the academic flowchart.
         <div className="mt-2">
-          Future roadmap only: Kecamatan linkage, spatial equity/distribution analysis, historical treatment layer, and constrained multi-objective optimization.
+          Future roadmap only: Kecamatan linkage, spatial equity/distribution analysis, and constrained multi-objective optimization.
         </div>
       </div>
 

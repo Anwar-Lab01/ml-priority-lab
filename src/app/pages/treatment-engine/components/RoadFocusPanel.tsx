@@ -8,6 +8,29 @@ import { HPSItemProfilePanel } from './HPSItemProfilePanel';
 import { DollarSign, ClipboardList, PlusCircle, MinusCircle, CheckCircle2, XCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+type HistoricalTreatmentYearSummary = {
+  any: number | null;
+  pl: number | null;
+  tender: number | null;
+};
+
+type HistoricalTreatmentRecord = {
+  road_key: string;
+  source_identity?: {
+    nomor_ruas?: string | null;
+    nama_ruas?: string | null;
+    nama_ruas_norm?: string | null;
+  };
+  handled?: Record<string, HistoricalTreatmentYearSummary>;
+  prior_history_pre2026?: {
+    any?: number | null;
+    count?: number | null;
+    last_year?: number | null;
+    years_since_last?: number | null;
+  };
+  planned_targets?: Record<string, HistoricalTreatmentYearSummary>;
+};
+
 // ── Planning Note Editor Sub-component ────────────────────────────────────────
 
 function PlanningNoteEditor({ roadKey, initialNote, onSave }: { roadKey: string, initialNote: string, onSave: (note: string) => void }) {
@@ -109,6 +132,7 @@ interface RoadFocusPanelProps {
   hpsOverrides: Record<string, any>;
   clearHPSOverrideForRoad: (road_key: string) => void;
   setHpsOverrideForRoad: (road_key: string, override: any) => void;
+  selectedHistoricalTreatmentRecord: HistoricalTreatmentRecord | null;
   // Phase 5: Planning Scenario
   candidateBasket: Record<string, CandidateBasketItem>;
   planningNotes: Record<string, PlanningNote>;
@@ -136,6 +160,7 @@ export function RoadFocusPanel({
   hpsOverrides,
   clearHPSOverrideForRoad,
   setHpsOverrideForRoad,
+  selectedHistoricalTreatmentRecord,
   // Phase 5
   candidateBasket,
   planningNotes,
@@ -143,7 +168,39 @@ export function RoadFocusPanel({
   removeFromCandidateBasket,
   setCandidateStatus,
   savePlanningNoteForRoad,
-}: RoadFocusPanelProps) {
+  }: RoadFocusPanelProps) {
+  const historicalYears = ['2021', '2022', '2023', '2024', '2025'] as const;
+
+  const getYearSummary = (record: HistoricalTreatmentRecord | null, year: string): HistoricalTreatmentYearSummary => {
+    const yearBlock = record?.handled?.[year];
+    if (yearBlock) return yearBlock;
+
+    const anyValue = (record as any)?.[`handled_any_${year}`] ?? (record as any)?.[`handled_any_year_${year}`] ?? null;
+    const plValue = (record as any)?.[`handled_pl_${year}`] ?? (record as any)?.[`handled_pl_year_${year}`] ?? null;
+    const tenderValue = (record as any)?.[`handled_tender_${year}`] ?? (record as any)?.[`handled_tender_year_${year}`] ?? null;
+
+    return {
+      any: anyValue,
+      pl: plValue,
+      tender: tenderValue,
+    };
+  };
+
+  const handledAnyTotal = historicalYears.reduce((sum, year) => {
+    const yearSummary = getYearSummary(selectedHistoricalTreatmentRecord, year);
+    return sum + (yearSummary.any ?? 0);
+  }, 0);
+
+  const lastHandledYear = selectedHistoricalTreatmentRecord?.prior_history_pre2026?.last_year
+    ?? historicalYears
+      .filter((year) => (getYearSummary(selectedHistoricalTreatmentRecord, year).any ?? 0) === 1)
+      .map((year) => Number(year))
+      .sort((a, b) => b - a)[0]
+    ?? null;
+
+  const yearsSinceLastHandled = selectedHistoricalTreatmentRecord?.prior_history_pre2026?.years_since_last
+    ?? (lastHandledYear ? 2026 - lastHandledYear : null);
+
   if (!selectedGeo) {
     return (
       <div className="flex h-full min-h-[400px] flex-col items-center justify-center bg-slate-50 p-6 text-center">
@@ -200,10 +257,10 @@ export function RoadFocusPanel({
               <p className="mt-0.5 font-mono text-[10px] text-emerald-600">
                 Kecamatan: {selectedDd2Feature.kecamatan_dilalui || '—'}
               </p>
-              <p className="mt-1 text-[9px] text-emerald-700/80">
-                Kecamatan metadata is read-only here and remains a future roadmap item for linkage and analysis.
-              </p>
-            </div>
+            <p className="mt-1 text-[9px] text-emerald-700/80">
+              Kecamatan metadata is read-only here and remains a future roadmap item for linkage and analysis.
+            </p>
+          </div>
 
             {/* DD2 treatment status */}
             <div className="flex flex-col gap-2 rounded-lg border border-indigo-100 bg-indigo-50/50 px-3 py-2.5">
@@ -316,6 +373,76 @@ export function RoadFocusPanel({
             <p className="text-[10px] text-slate-500 leading-relaxed">
               HPS/AHSP is a comparison/detail layer only. ASB pagu indikatif remains the canonical budget source.
             </p>
+
+            <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2.5 space-y-2">
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-widest text-slate-500">
+                  Historical Treatment Context
+                </p>
+                <p className="mt-0.5 text-[10px] leading-relaxed text-slate-500">
+                  Read-only 2021–2025 handled indicators joined by road_key. Planned 2026/2027 fields are not treated as historical realization.
+                </p>
+              </div>
+
+              {selectedHistoricalTreatmentRecord ? (
+                <>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="rounded-md border border-white bg-white px-2.5 py-2">
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Handled Any Total</p>
+                      <p className="mt-0.5 text-sm font-bold text-slate-800">
+                        {handledAnyTotal}
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-white bg-white px-2.5 py-2">
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Last Handled</p>
+                      <p className="mt-0.5 text-sm font-bold text-slate-800">
+                        {lastHandledYear ?? '—'}
+                      </p>
+                      <p className="mt-0.5 text-[9px] text-slate-500">
+                        Years since last: {yearsSinceLastHandled ?? '—'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {handledAnyTotal === 0 && (
+                    <p className="rounded-md border border-amber-100 bg-amber-50 px-2.5 py-2 text-[10px] text-amber-700">
+                      No handled indicator recorded in 2021–2025.
+                    </p>
+                  )}
+
+                  <div className="space-y-1.5">
+                    {historicalYears.map((year) => {
+                      const summary = getYearSummary(selectedHistoricalTreatmentRecord, year);
+                      const anyOn = (summary.any ?? 0) === 1;
+                      const plOn = (summary.pl ?? 0) === 1;
+                      const tenderOn = (summary.tender ?? 0) === 1;
+
+                      return (
+                        <div key={year} className="rounded-md border border-white bg-white px-2.5 py-2">
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-[10px] font-bold text-slate-700">{year}</p>
+                            <div className="flex flex-wrap items-center gap-1">
+                              <span className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold ${anyOn ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-400'}`}>Any</span>
+                              <span className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold ${plOn ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-slate-400'}`}>PL</span>
+                              <span className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[8px] font-bold ${tenderOn ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-400'}`}>Tender</span>
+                            </div>
+                          </div>
+                          <div className="mt-1 grid grid-cols-3 gap-1 text-[9px] text-slate-500">
+                            <span>handled_any: {anyOn ? '1' : '0'}</span>
+                            <span>handled_pl: {plOn ? '1' : '0'}</span>
+                            <span>handled_tender: {tenderOn ? '1' : '0'}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              ) : (
+                <div className="rounded-md border border-amber-100 bg-amber-50 px-2.5 py-2 text-[10px] text-amber-700">
+                  Historical treatment record not available for this road.
+                </div>
+              )}
+            </div>
 
             {/* ── Phase 5: Planning Scenario Section ─────────────────────── */}
             {(() => {

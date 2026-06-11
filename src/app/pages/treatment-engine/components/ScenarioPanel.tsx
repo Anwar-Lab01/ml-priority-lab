@@ -479,7 +479,7 @@ export function ScenarioPanel({
                   Scenario Kecamatan Summary
                 </p>
                 <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
-                  Read-only metadata summary based on kecamatan_dilalui. This is not an editable prioritization input.
+                  Ringkasan metadata read-only berdasarkan kecamatan_dilalui. Ruas yang melintasi lebih dari satu kecamatan dapat tampil sebagai satu kelompok lintasan. Ini bukan input prioritas yang dapat diedit.
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold">
@@ -487,7 +487,7 @@ export function ScenarioPanel({
                   {items.length} candidate road{items.length !== 1 ? 's' : ''}
                 </span>
                 <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2 py-1 text-indigo-700">
-                  {scenarioKecamatanSummary.length} kecamatan
+                  {scenarioKecamatanSummary.length} kelompok kecamatan
                 </span>
               </div>
             </div>

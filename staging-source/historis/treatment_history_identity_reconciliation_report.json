@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-06-11T05:17:26.843Z",
+  "source_files": {
+    "runtime_history": "staging-source/treatment_history_by_road_key.json",
+    "dd2_runtime": "public/data/dd2_road_features.json"
+  },
+  "validation": {
+    "dd2_runtime_road_count": 350,
+    "history_record_count": 350,
+    "matched_road_key_count": 350,
+    "missing_in_history": 0,
+    "extra_in_history": 0,
+    "duplicate_road_key_count": 0
+  },
+  "identity_resolution": {
+    "exact_matches": 76,
+    "normalized_bridge_matches": 274,
+    "unmatched": 0,
+    "ambiguous": 0
+  },
+  "bridged_records_sample": [
+    {
+      "historical_road_key": "air miris desa wasah hilir",
+      "source_name": "Air Miris - Ds. Wasah Hilir",
+      "normalized_history_key": "air miris - desa wasah hilir",
+      "canonical_road_key": "air miris - desa wasah hilir"
+    },
+    {
+      "historical_road_key": "al ikhlas desa baluti",
+      "source_name": "Al - Ikhlas - Ds. Baluti",
+      "normalized_history_key": "al - ikhlas - desa baluti",
+      "canonical_road_key": "al - ikhlas - desa baluti"
+    },
+    {
+      "historical_road_key": "amawang kanan wasah hulu",
+      "source_name": "Amawang Kanan - Wasah Hulu",
+      "normalized_history_key": "amawang kanan - wasah hulu",
+      "canonical_road_key": "amawang kanan - wasah hulu"
+    },
+    {
+      "historical_road_key": "amawang muka getek",
+      "source_name": "Amawang Muka - Getek",
+      "normalized_history_key": "amawang muka - getek",
+      "canonical_road_key": "amawang muka - getek"
+    },
+    {
+      "historical_road_key": "ambarai madang",
+      "source_name": "Ambarai - Madang",
+      "normalized_history_key": "ambarai - madang",
+      "canonical_road_key": "ambarai - madang"
+    },
+    {
+      "historical_road_key": "amd desa lok binuang",
+      "source_name": "AMD - Ds. Lok Binuang",
+      "normalized_history_key": "amd - desa lok binuang",
+      "canonical_road_key": "amd - desa lok binuang"
+    },
+    {
+      "historical_road_key": "amparaya karangan hanau",
+      "source_name": "Amparaya - Karangan - Hanau",
+      "normalized_history_key": "amparaya - karangan - hanau",
+      "canonical_road_key": "amparaya - karangan - hanau"
+    },
+    {
+      "historical_road_key": "angkakai desa amawang kiri",
+      "source_name": "Angkakai - Ds. Amawang Kiri",
+      "normalized_history_key": "angkakai - desa amawang kiri",
+      "canonical_road_key": "angkakai - desa amawang kiri"
+    },
+    {
+      "historical_road_key": "angkinang kayu abang panggang hijau",
+      "source_name": "Angkinang - Kayu Abang - Panggang Hijau",
+      "normalized_history_key": "angkinang - kayu abang - panggang hijau",
+      "canonical_road_key": "angkinang - kayu abang - panggang hijau"
+    },
+    {
+      "historical_road_key": "angkinang telaga langsat",
+      "source_name": "Angkinang - Telaga Langsat",
+      "normalized_history_key": "angkinang - telaga langsat",
+      "canonical_road_key": "angkinang - telaga langsat"
+    },
+    {
+      "historical_road_key": "angkinang selatan tawia wawaran",
+      "source_name": "Angkinang Selatan - Tawia - Wawaran",
+      "normalized_history_key": "angkinang selatan - tawia - wawaran",
+      "canonical_road_key": "angkinang selatan - tawia - wawaran"
+    },
+    {
+      "historical_road_key": "anjiran rantauan desa taniran tengah",
+      "source_name": "Anjiran Rantauan - Ds. Taniran Tengah",
+      "normalized_history_key": "anjiran rantauan - desa taniran tengah",
+      "canonical_road_key": "anjiran rantauan - desa taniran tengah"
+    },
+    {
+      "historical_road_key": "asam cangkuk telaga bidadari",
+      "source_name": "Asam Cangkuk - Telaga Bidadari",
+      "normalized_history_key": "asam cangkuk - telaga bidadari",
+      "canonical_road_key": "asam cangkuk - telaga bidadari"
+    },
+    {
+      "historical_road_key": "asam duhat desa pantai ulin",
+      "source_name": "Asam Duhat - Ds. Pantai Ulin",
+      "normalized_history_key": "asam duhat - desa pantai ulin",
+      "canonical_road_key": "asam duhat - desa pantai ulin"
+    },
+    {
+      "historical_road_key": "asam seranggan asam tamiyang",
+      "source_name": "Asam Seranggan - Asam Tamiyang",
+      "normalized_history_key": "asam seranggan - asam tamiyang",
+      "canonical_road_key": "asam seranggan - asam tamiyang"
+    },
+    {
+      "historical_road_key": "at taubah desa kapuh",
+      "source_name": "At-Taubah - Ds. Kapuh",
+      "normalized_history_key": "at - taubah - desa kapuh",
+      "canonical_road_key": "at - taubah - desa kapuh"
+    },
+    {
+      "historical_road_key": "badaun desa bjayau lama",
+      "source_name": "Badaun - Ds. Bjayau Lama",
+      "normalized_history_key": "badaun - desa bjayau lama",
+      "canonical_road_key": "badaun - desa bjayau lama"
+    },
+    {
+      "historical_road_key": "bago tanggul katilang teratai",
+      "source_name": "Bago Tanggul - Katilang - Teratai",
+      "normalized_history_key": "bago tanggul - katilang - teratai",
+      "canonical_road_key": "bago tanggul - katilang - teratai"
+    },
+    {
+      "historical_road_key": "bajayau desa bajayau tengah",
+      "source_name": "Bajayau - Ds. Bajayau Tengah",
+      "normalized_history_key": "bajayau - desa bajayau tengah",
+      "canonical_road_key": "bajayau - desa bajayau tengah"
+    },
+    {
+      "historical_road_key": "bakarung rantauan",
+      "source_name": "Bakarung - Rantauan",
+      "normalized_history_key": "bakarung - rantauan",
+      "canonical_road_key": "bakarung - rantauan"
+    }
+  ],
+  "unmatched": [],
+  "ambiguous": []
+}
