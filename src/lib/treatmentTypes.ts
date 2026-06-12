@@ -194,10 +194,17 @@ export interface MLPriorityScore {
 
 export interface MLPriorityMetadata {
   source?: string;
+  source_scenario_id?: string;
   scenario?: string;
+  target?: string;
+  model?: string;
+  score_type?: string;
   model_family?: string;
   generated_at?: string;
   identity?: 'road_key' | string;
+  total_ml_records?: number;
+  dd2_road_key_matches?: number;
+  treatment_engine_total_roads?: number;
 }
 
 export interface MLPriorityScoresByRoadKey {

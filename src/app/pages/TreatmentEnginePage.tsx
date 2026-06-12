@@ -52,7 +52,7 @@ import {
 } from '../../lib/treatmentEngine';
 
 import { projectSegment } from '../../lib/projectSegment';
-import type { HistoricalTreatmentContext, OptimizationRoadInput } from '../../lib/treatmentOptimization';
+import type { HistoricalTreatmentContext, OptimizationRoadInput, ScenarioOptimizationPreviewResult } from '../../lib/treatmentOptimization';
 
 // Import extracted Phase 2 components
 import { ASBTypeGuide } from './treatment-engine/components/ASBTypeGuide';
@@ -111,6 +111,24 @@ type HistoricalTreatmentRecord = {
 type HistoricalTreatmentData = {
   roads: HistoricalTreatmentRecord[];
 };
+
+type MLPriorityOverlayFilter = 'all' | 'top35' | 'top70' | 'top105' | 'optimization_selected' | 'ml_high_deferred';
+
+type MLPriorityOverlayTier = 'top35' | 'top70' | 'top105' | 'neutral';
+
+const ML_PRIORITY_OVERLAY_STYLES: Record<MLPriorityOverlayTier, { color: string; weight: number; opacity: number }> = {
+  top35: { color: '#dc2626', weight: 6, opacity: 0.95 },
+  top70: { color: '#f97316', weight: 5, opacity: 0.9 },
+  top105: { color: '#2563eb', weight: 4, opacity: 0.78 },
+  neutral: { color: '#cbd5e1', weight: 2, opacity: 0.35 },
+};
+
+function formatCompactRp(value: number | null | undefined): string {
+  if (value == null || !Number.isFinite(value)) return '—';
+  if (value >= 1_000_000_000) return `Rp ${(value / 1_000_000_000).toFixed(2)} M`;
+  if (value >= 1_000_000) return `Rp ${(value / 1_000_000).toFixed(1)} jt`;
+  return `Rp ${value.toLocaleString('id-ID')}`;
+}
 
 /* ──────────────────────────────────────────────
    Treatment Engine — Map Shell + Placeholder
@@ -557,6 +575,13 @@ export function TreatmentEnginePage() {
 
   // Map Display Mode State
   const [displayMode, setDisplayMode] = useState<MapDisplayMode>('threshold');
+  const [mlOverlayEnabled, setMlOverlayEnabled] = useState(false);
+  const [mlOverlayFilter, setMlOverlayFilter] = useState<MLPriorityOverlayFilter>('all');
+  const [scenarioOptimizationPreview, setScenarioOptimizationPreview] = useState<ScenarioOptimizationPreviewResult | null>(null);
+
+  const handleScenarioOptimizationPreviewChange = useCallback((preview: ScenarioOptimizationPreviewResult) => {
+    setScenarioOptimizationPreview(preview);
+  }, []);
 
   const handleSaveOverride = () => {
     if (selectedKey && selectedDd2Feature) {
@@ -868,6 +893,53 @@ export function TreatmentEnginePage() {
     return map;
   }, [historicalTreatmentByRoadKey]);
 
+  const optimizationSelectedRoadKeys = useMemo(() => {
+    return new Set((scenarioOptimizationPreview?.optimizedSelected ?? []).map(candidate => candidate.item.road_key));
+  }, [scenarioOptimizationPreview]);
+
+  const optimizationDeferredRoadKeys = useMemo(() => {
+    return new Set((scenarioOptimizationPreview?.optimizedDeferred ?? []).map(candidate => candidate.item.road_key));
+  }, [scenarioOptimizationPreview]);
+
+  const mlHighDeferredRoadKeys = useMemo(() => {
+    const keys = new Set<string>();
+    const scores = mlPriorityData?.scores ?? {};
+    optimizationDeferredRoadKeys.forEach(roadKey => {
+      const score = scores[roadKey];
+      if (score?.top35 === true || score?.top70 === true) keys.add(roadKey);
+    });
+    return keys;
+  }, [mlPriorityData, optimizationDeferredRoadKeys]);
+
+  const getMlPriorityTier = useCallback((roadKey: string | null | undefined): MLPriorityOverlayTier => {
+    if (!roadKey) return 'neutral';
+    const score = mlPriorityData?.scores?.[roadKey];
+    if (score?.top35 === true) return 'top35';
+    if (score?.top70 === true) return 'top70';
+    if (score?.top105 === true) return 'top105';
+    return 'neutral';
+  }, [mlPriorityData]);
+
+  const matchesMlOverlayFilter = useCallback((roadKey: string | null | undefined): boolean => {
+    if (!roadKey) return mlOverlayFilter === 'all';
+    const score = mlPriorityData?.scores?.[roadKey];
+
+    if (mlOverlayFilter === 'all') return true;
+    if (mlOverlayFilter === 'top35') return score?.top35 === true;
+    if (mlOverlayFilter === 'top70') return score?.top70 === true;
+    if (mlOverlayFilter === 'top105') return score?.top105 === true;
+    if (mlOverlayFilter === 'optimization_selected') return optimizationSelectedRoadKeys.has(roadKey);
+    if (mlOverlayFilter === 'ml_high_deferred') return mlHighDeferredRoadKeys.has(roadKey);
+    return true;
+  }, [mlOverlayFilter, mlPriorityData, optimizationSelectedRoadKeys, mlHighDeferredRoadKeys]);
+
+  const getOptimizationPreviewStatus = useCallback((roadKey: string | null | undefined): string => {
+    if (!roadKey || !scenarioOptimizationPreview) return 'Not available';
+    if (optimizationSelectedRoadKeys.has(roadKey)) return 'Optimization selected';
+    if (optimizationDeferredRoadKeys.has(roadKey)) return 'Optimization deferred';
+    return 'Not in current scenario preview';
+  }, [scenarioOptimizationPreview, optimizationSelectedRoadKeys, optimizationDeferredRoadKeys]);
+
   const roadKeyToKecamatanMap = useMemo(() => {
     const map = new Map<string, string>();
     if (!dd2Data) return map;
@@ -1089,6 +1161,24 @@ export function TreatmentEnginePage() {
     };
   }, [highlightedRoadKeys, dd2Data]);
 
+  const mlOverlaySummary = useMemo(() => {
+    const roads = dd2Data?.roads ?? [];
+    const scores = mlPriorityData?.scores ?? {};
+    const visibleRoads = mlOverlayEnabled
+      ? roads.filter(road => matchesMlOverlayFilter(road.road_key)).length
+      : roads.length;
+
+    return {
+      visibleRoads,
+      roadsWithMlData: roads.filter(road => Boolean(scores[road.road_key])).length,
+      top35: roads.filter(road => scores[road.road_key]?.top35 === true).length,
+      top70: roads.filter(road => scores[road.road_key]?.top70 === true).length,
+      top105: roads.filter(road => scores[road.road_key]?.top105 === true).length,
+      optimizationSelected: optimizationSelectedRoadKeys.size,
+      mlHighDeferred: mlHighDeferredRoadKeys.size,
+    };
+  }, [dd2Data, mlPriorityData, mlOverlayEnabled, matchesMlOverlayFilter, optimizationSelectedRoadKeys, mlHighDeferredRoadKeys]);
+
   return (
     <div id="treatment-engine-page" className="space-y-6">
 
@@ -1107,7 +1197,7 @@ export function TreatmentEnginePage() {
               This module applies road-condition rules from DD1&nbsp;/&nbsp;FormDD1 to recommend treatment types and estimate budget allocations using ASB unit prices.
             </p>
             <p className="mt-2 text-xs leading-relaxed text-slate-500">
-              ML Priority Score remains in the separate ranking module/page and is not integrated into Treatment Engine yet.
+              ML Priority Score is available only as a read-only context layer and is not used in treatment rules, ASB costing, or optimization scoring.
             </p>
           </div>
         </div>
@@ -1297,6 +1387,59 @@ export function TreatmentEnginePage() {
            </div>
         )}
 
+        <div className="border-b border-slate-100 bg-sky-50/40 px-5 py-2.5">
+          <div className="flex flex-wrap items-center gap-3">
+            <label className="flex cursor-pointer items-center gap-1.5 text-xs font-semibold text-slate-700">
+              <input
+                type="checkbox"
+                checked={mlOverlayEnabled}
+                onChange={(event) => setMlOverlayEnabled(event.target.checked)}
+                className="rounded border-slate-300 text-sky-600 focus:ring-sky-500"
+                disabled={!mlPriorityData}
+              />
+              ML Spatial Overlay
+            </label>
+
+            <div className={`flex flex-wrap items-center gap-1.5 transition-opacity ${mlOverlayEnabled ? 'opacity-100' : 'opacity-50'}`}>
+              {[
+                ['all', 'Show all'],
+                ['top35', 'Top-35'],
+                ['top70', 'Top-70'],
+                ['top105', 'Top-105'],
+                ['optimization_selected', 'Optimization selected'],
+                ['ml_high_deferred', 'ML high but budget deferred'],
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  disabled={!mlOverlayEnabled}
+                  onClick={() => setMlOverlayFilter(value as MLPriorityOverlayFilter)}
+                  className={`rounded-full border px-2.5 py-1 text-[10px] font-bold transition-colors ${
+                    mlOverlayFilter === value
+                      ? 'border-sky-300 bg-sky-100 text-sky-800'
+                      : 'border-slate-200 bg-white text-slate-500 hover:border-sky-200 hover:text-sky-700'
+                  } disabled:cursor-not-allowed`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            <div className="ml-auto flex flex-wrap items-center gap-1.5 text-[9px] font-bold">
+              <span className="rounded-full bg-white px-2 py-1 text-slate-600">Visible {mlOverlaySummary.visibleRoads}</span>
+              <span className="rounded-full bg-white px-2 py-1 text-sky-700">ML data {mlOverlaySummary.roadsWithMlData}</span>
+              <span className="rounded-full bg-red-50 px-2 py-1 text-red-700">Top-35 {mlOverlaySummary.top35}</span>
+              <span className="rounded-full bg-orange-50 px-2 py-1 text-orange-700">Top-70 {mlOverlaySummary.top70}</span>
+              <span className="rounded-full bg-blue-50 px-2 py-1 text-blue-700">Top-105 {mlOverlaySummary.top105}</span>
+              <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">Opt selected {mlOverlaySummary.optimizationSelected}</span>
+              <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">ML-high deferred {mlOverlaySummary.mlHighDeferred}</span>
+            </div>
+          </div>
+          <p className="mt-1.5 text-[10px] leading-relaxed text-sky-700/80">
+            Read-only overlay from fixed runtime ML configuration: refined_recall_max_any2026 / planned_any_2026 / RandomForest / rerank_medium. Matching uses Treatment Engine road_key only.
+          </p>
+        </div>
+
          {/* Diagnostics summary for segments if enabled */}
          {showSegments && segmentDiagStats && (
             <div className="border-b border-slate-100 bg-indigo-50/30 px-5 py-2 flex flex-wrap items-center gap-y-1 gap-x-3.5 text-[10px]">
@@ -1406,11 +1549,28 @@ export function TreatmentEnginePage() {
                 let color = '#6366f1';
                 let weight = 3;
                 let opacity = 0.65;
+                const mlScore = f ? mlPriorityData?.scores?.[f.road_key] ?? null : null;
+                const mlTier = f ? getMlPriorityTier(f.road_key) : 'neutral';
+                const mlOverlayMatches = f ? matchesMlOverlayFilter(f.road_key) : mlOverlayFilter === 'all';
+                const mlTopStatus = mlScore
+                  ? [
+                      mlScore.top35 === true ? 'Top-35' : null,
+                      mlScore.top70 === true ? 'Top-70' : null,
+                      mlScore.top105 === true ? 'Top-105' : null,
+                    ].filter(Boolean).join(' / ') || 'Outside Top-105'
+                  : 'No ML data';
 
                 if (isSelected) {
                    color = '#f59e0b';
                    weight = 7;
                    opacity = 1;
+                } else if (mlOverlayEnabled) {
+                   const style = mlOverlayMatches
+                     ? ML_PRIORITY_OVERLAY_STYLES[mlTier]
+                     : { color: '#e2e8f0', weight: 1.5, opacity: 0.18 };
+                   color = style.color;
+                   weight = style.weight;
+                   opacity = style.opacity;
                 } else if (displayMode === 'threshold') {
                    if (highlightEnabled && f && highlightedRoadKeys.has(f.road_key)) {
                       color = '#ef4444'; 
@@ -1457,9 +1617,9 @@ export function TreatmentEnginePage() {
                       <Polyline
                         positions={geo.coordinates as any}
                         pathOptions={{ 
-                           color: showSegments ? '#cbd5e1' : color, 
-                           weight: showSegments ? 2 : weight, 
-                           opacity: showSegments ? 0.35 : opacity 
+                           color: showSegments && !mlOverlayEnabled ? '#cbd5e1' : color, 
+                           weight: showSegments && !mlOverlayEnabled ? 2 : weight, 
+                           opacity: showSegments && !mlOverlayEnabled ? 0.35 : opacity 
                         }}
                         eventHandlers={{
                           click: () => setSelectedKey(isSelected ? null : lookupKey),
@@ -1479,6 +1639,27 @@ export function TreatmentEnginePage() {
                                <span className="block mt-1 text-[10px] font-medium text-indigo-600">
                                  {getDisplayRuleCategory(f.rule_v1.treatment_category)}
                                </span>
+                             )}
+                             {mlOverlayEnabled && f && (
+                                <div className="mt-1.5 border-t border-slate-200 pt-1.5 text-[9px] leading-relaxed text-slate-500">
+                                  <span className="block">
+                                    ML rank: <strong className="font-mono text-slate-700">{mlScore?.rank ?? '—'}</strong>
+                                    <span className="mx-1 text-slate-300">|</span>
+                                    score: <strong className="font-mono text-slate-700">{mlScore?.score != null ? mlScore.score.toFixed(4) : '—'}</strong>
+                                  </span>
+                                  <span className="block">
+                                    Status: <strong className="text-slate-700">{mlTopStatus}</strong>
+                                  </span>
+                                  <span className="block">
+                                    Model/scenario: <strong className="text-slate-700">{mlScore?.model || mlPriorityData?.metadata?.model || '—'} / {mlPriorityData?.metadata?.source_scenario_id || mlPriorityData?.metadata?.scenario || '—'}</strong>
+                                  </span>
+                                  <span className="block">
+                                    Optimization: <strong className="text-slate-700">{getOptimizationPreviewStatus(f.road_key)}</strong>
+                                  </span>
+                                  <span className="block">
+                                    ASB pagu: <strong className="text-slate-700">{formatCompactRp(f.final_asb_budget?.final_pagu_indikatif_rp)}</strong>
+                                  </span>
+                                </div>
                              )}
                              {highlightEnabled && f && (
                                 <div className="mt-1.5 pt-1.5 border-t border-slate-200">
@@ -1684,6 +1865,7 @@ export function TreatmentEnginePage() {
         onSelectRoad={selectRoadFromScenario}
         onClearScenario={clearCandidateBasket}
         onSyncScenario={handleSyncScenario}
+        onOptimizationPreviewChange={handleScenarioOptimizationPreviewChange}
       />
 
       <TreatmentRoadTable

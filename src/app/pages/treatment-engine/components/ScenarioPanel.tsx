@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   ClipboardList,
   Trash2,
@@ -18,6 +18,7 @@ import {
   type HistoricalTreatmentContext,
   type OptimizationRoadInput,
   type ScenarioOptimizationCandidate,
+  type ScenarioOptimizationPreviewResult,
 } from '../../../../lib/treatmentOptimization';
 
 type ScenarioKecamatanSummaryItem = {
@@ -61,6 +62,7 @@ interface ScenarioPanelProps {
   onSelectRoad?: (road_key: string) => void;
   onClearScenario?: () => void;
   onSyncScenario?: () => void;
+  onOptimizationPreviewChange?: (preview: ScenarioOptimizationPreviewResult) => void;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -330,6 +332,7 @@ export function ScenarioPanel({
   onSelectRoad,
   onClearScenario,
   onSyncScenario,
+  onOptimizationPreviewChange,
 }: ScenarioPanelProps) {
   const [budgetCapInput, setBudgetCapInput] = useState('');
   const [isOpen, setIsOpen] = useState(true);
@@ -364,6 +367,10 @@ export function ScenarioPanel({
     }),
     [items, optimizationRoadLookup, optimizationHistoryLookup, budgetCapRp],
   );
+
+  useEffect(() => {
+    onOptimizationPreviewChange?.(optimizationPreview);
+  }, [optimizationPreview, onOptimizationPreviewChange]);
 
   const missingHistoryCount = useMemo(
     () => items.filter(item => !optimizationHistoryLookup.get(item.road_key)).length,
