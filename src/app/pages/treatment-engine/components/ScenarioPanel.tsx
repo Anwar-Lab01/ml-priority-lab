@@ -12,7 +12,7 @@ import {
   Download,
   RefreshCw,
 } from 'lucide-react';
-import type { CandidateBasketItem, CandidateStatus, PlanningNote } from '../../../../lib/treatmentTypes';
+import type { CandidateBasketItem, CandidateStatus, PlanningNote, MLPriorityMetadata, MLPriorityScore } from '../../../../lib/treatmentTypes';
 import {
   runScenarioOptimizationPreview,
   type HistoricalTreatmentContext,
@@ -39,6 +39,8 @@ interface ScenarioPanelProps {
   scenarioKecamatanSummaryHasMultiKecamatanRoads: boolean;
   optimizationRoadLookup: Map<string, OptimizationRoadInput>;
   optimizationHistoryLookup: Map<string, HistoricalTreatmentContext>;
+  mlPriorityScores: Record<string, MLPriorityScore> | null;
+  mlPriorityMetadata: MLPriorityMetadata | null;
   removeFromCandidateBasket: (road_key: string) => void;
   setCandidateStatus: (road_key: string, status: CandidateStatus) => void;
   onSelectRoad?: (road_key: string) => void;
@@ -259,6 +261,8 @@ export function ScenarioPanel({
   scenarioKecamatanSummaryHasMultiKecamatanRoads,
   optimizationRoadLookup,
   optimizationHistoryLookup,
+  mlPriorityScores,
+  mlPriorityMetadata,
   removeFromCandidateBasket,
   setCandidateStatus,
   onSelectRoad,
@@ -303,6 +307,25 @@ export function ScenarioPanel({
     () => items.filter(item => !optimizationHistoryLookup.get(item.road_key)).length,
     [items, optimizationHistoryLookup],
   );
+
+  const mlScenarioSummary = useMemo(() => {
+    const scores = mlPriorityScores ?? {};
+    const candidateScores = items
+      .map(item => scores[item.road_key])
+      .filter((score): score is MLPriorityScore => Boolean(score));
+    const ranks = candidateScores
+      .map(score => score.rank)
+      .filter((rank): rank is number => typeof rank === 'number' && Number.isFinite(rank));
+
+    return {
+      hasRuntimeData: Object.keys(scores).length > 0,
+      withData: candidateScores.length,
+      top35: candidateScores.filter(score => score.top35 === true).length,
+      top70: candidateScores.filter(score => score.top70 === true).length,
+      top105: candidateScores.filter(score => score.top105 === true).length,
+      averageRank: ranks.length > 0 ? ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length : null,
+    };
+  }, [items, mlPriorityScores]);
 
   const optimizationWarnings = useMemo(() => {
     const warnings = [...optimizationPreview.warnings];
@@ -569,6 +592,45 @@ export function ScenarioPanel({
             )}
           </div>
 
+          <div className="border-b border-slate-100 bg-sky-50/40 px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-widest text-sky-600">
+                  ML Priority Context
+                </p>
+                <p className="mt-1 text-[10px] leading-relaxed text-sky-700/80">
+                  ML context only — not used by Optimization Preview yet.
+                </p>
+              </div>
+              {mlScenarioSummary.hasRuntimeData ? (
+                <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
+                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
+                    {mlScenarioSummary.withData}/{items.length} with ML data
+                  </span>
+                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
+                    Top-35 {mlScenarioSummary.top35}
+                  </span>
+                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
+                    Top-70 {mlScenarioSummary.top70}
+                  </span>
+                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
+                    Top-105 {mlScenarioSummary.top105}
+                  </span>
+                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
+                    Avg rank {mlScenarioSummary.averageRank == null ? '—' : mlScenarioSummary.averageRank.toFixed(1)}
+                  </span>
+                  <span className="rounded-full bg-white px-2 py-1 text-slate-500">
+                    {mlPriorityMetadata?.scenario ?? 'scenario n/a'}
+                  </span>
+                </div>
+              ) : (
+                <p className="rounded-md border border-slate-100 bg-white px-2.5 py-2 text-[10px] font-semibold text-slate-500">
+                  ML Priority Score data is not loaded yet.
+                </p>
+              )}
+            </div>
+          </div>
+
           <div className="border-b border-slate-100 bg-white px-4 py-3">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
@@ -583,7 +645,9 @@ export function ScenarioPanel({
                 <span className="rounded-full bg-indigo-50 px-2 py-1 text-indigo-700">Condition urgency 60%</span>
                 <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">Historical gap 25%</span>
                 <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">Cost efficiency 15%</span>
-                <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">ML Priority Score: Not integrated yet</span>
+                <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">
+                  ML Priority Score: {mlScenarioSummary.hasRuntimeData ? 'Loaded as context, not used in optimization yet' : 'Not integrated yet'}
+                </span>
               </div>
             </div>
 

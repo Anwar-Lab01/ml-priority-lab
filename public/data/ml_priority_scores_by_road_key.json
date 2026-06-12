@@ -1,0 +1,1618 @@
+{
+  "metadata": {
+    "source": "outputs/thesis_appendix/appendix_ANY_Top105_RF_medium_full.csv",
+    "source_scenario_id": "refined_recall_max_any2026",
+    "scenario": "planned_any_2026",
+    "target": "planned_any_2026",
+    "model": "RandomForest",
+    "score_type": "rerank_medium",
+    "model_family": "RandomForest rerank_medium",
+    "generated_at": "2026-06-12T22:13:53.693Z",
+    "identity": "road_key",
+    "total_ml_records": 160,
+    "dd2_road_key_matches": 160,
+    "treatment_engine_total_roads": 350
+  },
+  "scores": {
+    "padang batung - batulaki - malilingin": {
+      "road_key": "padang batung - batulaki - malilingin",
+      "rank": 1,
+      "score": 0.9119857142857144,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "taniran selatan kubah - buntut taniran wawaran": {
+      "road_key": "taniran selatan kubah - buntut taniran wawaran",
+      "rank": 2,
+      "score": 0.9056428571428573,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "siang gantung - desa baru": {
+      "road_key": "siang gantung - desa baru",
+      "rank": 3,
+      "score": 0.8666428571428573,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "sei raya selatan - malutu - goa berangin": {
+      "road_key": "sei raya selatan - malutu - goa berangin",
+      "rank": 4,
+      "score": 0.8664428571428572,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "padang haur - desa wasah tengah": {
+      "road_key": "padang haur - desa wasah tengah",
+      "rank": 5,
+      "score": 0.8656714285714286,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "palajau - desa baluti": {
+      "road_key": "palajau - desa baluti",
+      "rank": 6,
+      "score": 0.8651857142857143,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "jafri zamzam": {
+      "road_key": "jafri zamzam",
+      "rank": 7,
+      "score": 0.8568428571428571,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sei paring - sei hanyar pantai ulin": {
+      "road_key": "sei paring - sei hanyar pantai ulin",
+      "rank": 8,
+      "score": 0.8529857142857142,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "samuda - bajayau": {
+      "road_key": "samuda - bajayau",
+      "rank": 9,
+      "score": 0.8445285714285714,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "pandak daun - baruh jaya - samuda": {
+      "road_key": "pandak daun - baruh jaya - samuda",
+      "rank": 10,
+      "score": 0.8426142857142858,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "bajayau - desa bajayau tengah": {
+      "road_key": "bajayau - desa bajayau tengah",
+      "rank": 11,
+      "score": 0.8417857142857144,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "tambangan - desa baruh jaya": {
+      "road_key": "tambangan - desa baruh jaya",
+      "rank": 12,
+      "score": 0.8360142857142857,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "singakarsa - palas": {
+      "road_key": "singakarsa - palas",
+      "rank": 13,
+      "score": 0.8356428571428571,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "malinau - katingin - kamawakan": {
+      "road_key": "malinau - katingin - kamawakan",
+      "rank": 14,
+      "score": 0.8300428571428571,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "mawangi - bukuanin - telaga langsat": {
+      "road_key": "mawangi - bukuanin - telaga langsat",
+      "rank": 15,
+      "score": 0.8293285714285715,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "baiturrahim parincahan": {
+      "road_key": "baiturrahim parincahan",
+      "rank": 16,
+      "score": 0.8272428571428572,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tanuhi - ulang": {
+      "road_key": "tanuhi - ulang",
+      "rank": 17,
+      "score": 0.8267571428571429,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "mandapai - madang": {
+      "road_key": "mandapai - madang",
+      "rank": 18,
+      "score": 0.8253000000000001,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "dahlia": {
+      "road_key": "dahlia",
+      "rank": 19,
+      "score": 0.8216428571428572,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sei mandala murung raya": {
+      "road_key": "sei mandala murung raya",
+      "rank": 20,
+      "score": 0.8187857142857143,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "paku jambu hulu - ganda": {
+      "road_key": "paku jambu hulu - ganda",
+      "rank": 21,
+      "score": 0.8171571428571428,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "bayanan - habirau tengah": {
+      "road_key": "bayanan - habirau tengah",
+      "rank": 22,
+      "score": 0.8165,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "loklahung - kamawakan": {
+      "road_key": "loklahung - kamawakan",
+      "rank": 23,
+      "score": 0.8160428571428572,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "angkinang - kayu abang - panggang hijau": {
+      "road_key": "angkinang - kayu abang - panggang hijau",
+      "rank": 24,
+      "score": 0.8127857142857143,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "bayanan - pihanin": {
+      "road_key": "bayanan - pihanin",
+      "rank": 25,
+      "score": 0.8119000000000001,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "hamalau - telaga bidadari - wasah hilir": {
+      "road_key": "hamalau - telaga bidadari - wasah hilir",
+      "rank": 26,
+      "score": 0.8071285714285715,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "amawang muka - getek": {
+      "road_key": "amawang muka - getek",
+      "rank": 27,
+      "score": 0.8035285714285714,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "gumbil - masimpan": {
+      "road_key": "gumbil - masimpan",
+      "rank": 28,
+      "score": 0.8031285714285713,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "samping bappeda - mesjid darul halik": {
+      "road_key": "samping bappeda - mesjid darul halik",
+      "rank": 29,
+      "score": 0.8005571428571429,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "halunuk - riam tajam talo - hamak umpaya": {
+      "road_key": "halunuk - riam tajam talo - hamak umpaya",
+      "rank": 30,
+      "score": 0.8004428571428571,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "tembok baru - desa baluti": {
+      "road_key": "tembok baru - desa baluti",
+      "rank": 31,
+      "score": 0.8003857142857143,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tukang garit tambangan": {
+      "road_key": "tukang garit tambangan",
+      "rank": 32,
+      "score": 0.8001571428571428,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "wasah hulu - amparaya - simpur": {
+      "road_key": "wasah hulu - amparaya - simpur",
+      "rank": 33,
+      "score": 0.7967285714285715,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "sp 4 mesjid sirih - sarang nyamuk - asam tamiyang": {
+      "road_key": "sp 4 mesjid sirih - sarang nyamuk - asam tamiyang",
+      "rank": 34,
+      "score": 0.7963571428571429,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sp 4 banjarbaru - pihanin raya": {
+      "road_key": "sp 4 banjarbaru - pihanin raya",
+      "rank": 35,
+      "score": 0.7875857142857143,
+      "model": "RandomForest",
+      "top35": true,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tumbukan banyu - banua hanyar": {
+      "road_key": "tumbukan banyu - banua hanyar",
+      "rank": 36,
+      "score": 0.7871857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tembok lama - loklua": {
+      "road_key": "tembok lama - loklua",
+      "rank": 37,
+      "score": 0.7827285714285713,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tabihi - telaga langsat": {
+      "road_key": "tabihi - telaga langsat",
+      "rank": 38,
+      "score": 0.7796428571428571,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "hamalau - ganda": {
+      "road_key": "hamalau - ganda",
+      "rank": 39,
+      "score": 0.7731857142857144,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "angkinang - telaga langsat": {
+      "road_key": "angkinang - telaga langsat",
+      "rank": 40,
+      "score": 0.7724428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sei raya - jambu hulu paku": {
+      "road_key": "sei raya - jambu hulu paku",
+      "rank": 41,
+      "score": 0.7701857142857144,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "bakarung - tabihi - karang jawa": {
+      "road_key": "bakarung - tabihi - karang jawa",
+      "rank": 42,
+      "score": 0.7686714285714287,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "bamban selatan - pakuan": {
+      "road_key": "bamban selatan - pakuan",
+      "rank": 43,
+      "score": 0.7562428571428571,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "baluti - jambu hulu paku": {
+      "road_key": "baluti - jambu hulu paku",
+      "rank": 44,
+      "score": 0.7554142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "bumi berkat - mungkur galah": {
+      "road_key": "bumi berkat - mungkur galah",
+      "rank": 45,
+      "score": 0.752357142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "hamalau - anjiran": {
+      "road_key": "hamalau - anjiran",
+      "rank": 46,
+      "score": 0.7521571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "taal batang kulur - sp 3 muara prg agung": {
+      "road_key": "taal batang kulur - sp 3 muara prg agung",
+      "rank": 47,
+      "score": 0.7518714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "asam cangkuk - telaga bidadari": {
+      "road_key": "asam cangkuk - telaga bidadari",
+      "rank": 48,
+      "score": 0.7494714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "kalumpang - balimau": {
+      "road_key": "kalumpang - balimau",
+      "rank": 49,
+      "score": 0.7481,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "karasikan - sarang halang": {
+      "road_key": "karasikan - sarang halang",
+      "rank": 50,
+      "score": 0.7431000000000001,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": false
+    },
+    "pakan dalam - kaminting batu": {
+      "road_key": "pakan dalam - kaminting batu",
+      "rank": 51,
+      "score": 0.7424142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "wasah hilir - amparaya": {
+      "road_key": "wasah hilir - amparaya",
+      "rank": 52,
+      "score": 0.7407285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "bago tanggul - katilang - teratai": {
+      "road_key": "bago tanggul - katilang - teratai",
+      "rank": 53,
+      "score": 0.7376714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "panggang hijau - desa tawar": {
+      "road_key": "panggang hijau - desa tawar",
+      "rank": 54,
+      "score": 0.7365285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sp empat lungau - bangkau": {
+      "road_key": "sp empat lungau - bangkau",
+      "rank": 55,
+      "score": 0.7364428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "teluk pinang - baluti": {
+      "road_key": "teluk pinang - baluti",
+      "rank": 56,
+      "score": 0.7357,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "gerilya depan pustu habirau": {
+      "road_key": "gerilya depan pustu habirau",
+      "rank": 57,
+      "score": 0.7342428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "pangeran antasari - loklua": {
+      "road_key": "pangeran antasari - loklua",
+      "rank": 58,
+      "score": 0.7335285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "malilingin - lokbahan - paniungan": {
+      "road_key": "malilingin - lokbahan - paniungan",
+      "rank": 59,
+      "score": 0.7334999999999999,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "negara - tumbukan banyu": {
+      "road_key": "negara - tumbukan banyu",
+      "rank": 60,
+      "score": 0.7330142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "mawangi - pariangan": {
+      "road_key": "mawangi - pariangan",
+      "rank": 61,
+      "score": 0.7328428571428571,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "angkinang selatan - tawia - wawaran": {
+      "road_key": "angkinang selatan - tawia - wawaran",
+      "rank": 62,
+      "score": 0.7304999999999999,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "longawang - gumbil": {
+      "road_key": "longawang - gumbil",
+      "rank": 63,
+      "score": 0.7275285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "karang jawa - ambarai - sei bungur": {
+      "road_key": "karang jawa - ambarai - sei bungur",
+      "rank": 64,
+      "score": 0.7271285714285713,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sp 4 banjarbaru - pasar negara": {
+      "road_key": "sp 4 banjarbaru - pasar negara",
+      "rank": 65,
+      "score": 0.7249571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "rel angkinang": {
+      "road_key": "rel angkinang",
+      "rank": 66,
+      "score": 0.7214714285714287,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "teluk pinang - padang rasau": {
+      "road_key": "teluk pinang - padang rasau",
+      "rank": 67,
+      "score": 0.7214714285714284,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tanjungan - sp 10 batang kulur - sei kali": {
+      "road_key": "tanjungan - sp 10 batang kulur - sei kali",
+      "rank": 68,
+      "score": 0.7148428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "tanayung - simp ambarai": {
+      "road_key": "tanayung - simp ambarai",
+      "rank": 69,
+      "score": 0.7134714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": null
+    },
+    "telaga langsat - pakuan timur": {
+      "road_key": "telaga langsat - pakuan timur",
+      "rank": 70,
+      "score": 0.7121285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": true,
+      "top105": true,
+      "hit_2026": true
+    },
+    "pagat batu - muara hariang": {
+      "road_key": "pagat batu - muara hariang",
+      "rank": 71,
+      "score": 0.7029285714285716,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "mawar daha selatan": {
+      "road_key": "mawar daha selatan",
+      "rank": 72,
+      "score": 0.7022142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "hamalau - asam cangkok": {
+      "road_key": "hamalau - asam cangkok",
+      "rank": 73,
+      "score": 0.7000428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "kaliring - sp padang batung": {
+      "road_key": "kaliring - sp padang batung",
+      "rank": 74,
+      "score": 0.699157142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "bakarung tengah - karang jawa": {
+      "road_key": "bakarung tengah - karang jawa",
+      "rank": 75,
+      "score": 0.6955857142857144,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "panjampang bahagia - hanau": {
+      "road_key": "panjampang bahagia - hanau",
+      "rank": 76,
+      "score": 0.6944428571428573,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "tibung raya - hamalau dalam": {
+      "road_key": "tibung raya - hamalau dalam",
+      "rank": 77,
+      "score": 0.6902714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "kaminting batu": {
+      "road_key": "kaminting batu",
+      "rank": 78,
+      "score": 0.6891285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "sp hamalau - teluk pinang": {
+      "road_key": "sp hamalau - teluk pinang",
+      "rank": 79,
+      "score": 0.6877285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": true
+    },
+    "banyu barau - sei kalang": {
+      "road_key": "banyu barau - sei kalang",
+      "rank": 80,
+      "score": 0.6803857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "tajun - sp 3 muara paring agung": {
+      "road_key": "tajun - sp 3 muara paring agung",
+      "rank": 81,
+      "score": 0.6800714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": true
+    },
+    "jend sudirman": {
+      "road_key": "jend sudirman",
+      "rank": 82,
+      "score": 0.6746142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "harapan sdn habirau ii sei palangan": {
+      "road_key": "harapan sdn habirau ii sei palangan",
+      "rank": 83,
+      "score": 0.6730714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "teluk mesjid - sp 4 muara banta": {
+      "road_key": "teluk mesjid - sp 4 muara banta",
+      "rank": 84,
+      "score": 0.6687571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "baru - desa bajayau": {
+      "road_key": "baru - desa bajayau",
+      "rank": 85,
+      "score": 0.6665714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "tamiyang - desa tamiyang eks": {
+      "road_key": "tamiyang - desa tamiyang eks",
+      "rank": 86,
+      "score": 0.6643857142857142,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "karya bakti - desa balimau": {
+      "road_key": "karya bakti - desa balimau",
+      "rank": 87,
+      "score": 0.6637857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "amawang kanan - wasah hulu": {
+      "road_key": "amawang kanan - wasah hulu",
+      "rank": 88,
+      "score": 0.6634142857142856,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "balimau - murung dalam": {
+      "road_key": "balimau - murung dalam",
+      "rank": 89,
+      "score": 0.6595571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "taal jarau - sp baru tampang": {
+      "road_key": "taal jarau - sp baru tampang",
+      "rank": 90,
+      "score": 0.6589,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": true
+    },
+    "bakarung - rantauan": {
+      "road_key": "bakarung - rantauan",
+      "rank": 91,
+      "score": 0.6583857142857142,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "loksado - haratai": {
+      "road_key": "loksado - haratai",
+      "rank": 92,
+      "score": 0.6581857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "hulu banyu - datar mangkung - tumingki": {
+      "road_key": "hulu banyu - datar mangkung - tumingki",
+      "rank": 93,
+      "score": 0.6565,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "papagaran palangsatan": {
+      "road_key": "papagaran palangsatan",
+      "rank": 94,
+      "score": 0.6560142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sei raya selatan - sarang halang": {
+      "road_key": "sei raya selatan - sarang halang",
+      "rank": 95,
+      "score": 0.6557571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": true
+    },
+    "teluk haur ii": {
+      "road_key": "teluk haur ii",
+      "rank": 96,
+      "score": 0.6518428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "bariang - getek": {
+      "road_key": "bariang - getek",
+      "rank": 97,
+      "score": 0.6495857142857142,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "asam duhat - desa pantai ulin": {
+      "road_key": "asam duhat - desa pantai ulin",
+      "rank": 98,
+      "score": 0.6458714285714287,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": true
+    },
+    "tungkaran - desa ulin": {
+      "road_key": "tungkaran - desa ulin",
+      "rank": 99,
+      "score": 0.6431285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "ida manggala - padang makmur": {
+      "road_key": "ida manggala - padang makmur",
+      "rank": 100,
+      "score": 0.6426142857142857,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "sei kudung - kalinduku": {
+      "road_key": "sei kudung - kalinduku",
+      "rank": 101,
+      "score": 0.6401,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "hariti - sei raya selatan": {
+      "road_key": "hariti - sei raya selatan",
+      "rank": 102,
+      "score": 0.6385714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "kalimput desa wasah hilir": {
+      "road_key": "kalimput desa wasah hilir",
+      "rank": 103,
+      "score": 0.6382428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "pandak daun buntut muradiyah - pakan dalam": {
+      "road_key": "pandak daun buntut muradiyah - pakan dalam",
+      "rank": 104,
+      "score": 0.6339857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": false
+    },
+    "sukaramai - keramat": {
+      "road_key": "sukaramai - keramat",
+      "rank": 105,
+      "score": 0.6323571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": true,
+      "hit_2026": null
+    },
+    "pandan sari - desa angkinang": {
+      "road_key": "pandan sari - desa angkinang",
+      "rank": 106,
+      "score": 0.6322142857142856,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "banua kambang - desa wasah tengah": {
+      "road_key": "banua kambang - desa wasah tengah",
+      "rank": 107,
+      "score": 0.6319285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "banua hanyar - desa tanjung selor": {
+      "road_key": "banua hanyar - desa tanjung selor",
+      "rank": 108,
+      "score": 0.6252571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "ks tubun": {
+      "road_key": "ks tubun",
+      "rank": 109,
+      "score": 0.6241,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "tanah habang - desa simpur": {
+      "road_key": "tanah habang - desa simpur",
+      "rank": 110,
+      "score": 0.6209,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "sp empat lungau - garis": {
+      "road_key": "sp empat lungau - garis",
+      "rank": 111,
+      "score": 0.6200714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "inst pdam negara": {
+      "road_key": "inst pdam negara",
+      "rank": 112,
+      "score": 0.6194999999999999,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "cangkingan herman": {
+      "road_key": "cangkingan herman",
+      "rank": 113,
+      "score": 0.6185571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "datar belimbing - muara kitar": {
+      "road_key": "datar belimbing - muara kitar",
+      "rank": 114,
+      "score": 0.6165285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "muning tengah - batang alai pihanin raya": {
+      "road_key": "muning tengah - batang alai pihanin raya",
+      "rank": 115,
+      "score": 0.6162857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "wasah hilir - sarang halang": {
+      "road_key": "wasah hilir - sarang halang",
+      "rank": 116,
+      "score": 0.6103285714285713,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "habib ibrahim - desa sei mandala": {
+      "road_key": "habib ibrahim - desa sei mandala",
+      "rank": 117,
+      "score": 0.6095857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "gang bidan desa tambak bitin": {
+      "road_key": "gang bidan desa tambak bitin",
+      "rank": 118,
+      "score": 0.6085571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp mandampa tel sili - sili - sp sei bungur": {
+      "road_key": "sp mandampa tel sili - sili - sp sei bungur",
+      "rank": 119,
+      "score": 0.6082142857142856,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "batang kulur kanan - bumi berkat kisung": {
+      "road_key": "batang kulur kanan - bumi berkat kisung",
+      "rank": 120,
+      "score": 0.6076428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "tanjung selor - desa badaun": {
+      "road_key": "tanjung selor - desa badaun",
+      "rank": 121,
+      "score": 0.6068000000000001,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "h m thaib": {
+      "road_key": "h m thaib",
+      "rank": 122,
+      "score": 0.6065857142857142,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "simpur - sp 3 muara paring agung": {
+      "road_key": "simpur - sp 3 muara paring agung",
+      "rank": 123,
+      "score": 0.6061857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "gambah luar - sei kudung": {
+      "road_key": "gambah luar - sei kudung",
+      "rank": 124,
+      "score": 0.6045857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "haratai 3 balai kedayang sdn haratai 3": {
+      "road_key": "haratai 3 balai kedayang sdn haratai 3",
+      "rank": 125,
+      "score": 0.6042428571428573,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "haratai 2 balai ujung atas sdn haratai2": {
+      "road_key": "haratai 2 balai ujung atas sdn haratai2",
+      "rank": 126,
+      "score": 0.6013,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "muning tengah - desa muning dalam": {
+      "road_key": "muning tengah - desa muning dalam",
+      "rank": 127,
+      "score": 0.6005428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "kalaka dayuh - desa sei raya utara": {
+      "road_key": "kalaka dayuh - desa sei raya utara",
+      "rank": 128,
+      "score": 0.5999857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "kacang parang ulang - balai mawak - kias": {
+      "road_key": "kacang parang ulang - balai mawak - kias",
+      "rank": 129,
+      "score": 0.5993285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "badaun - desa bjayau lama": {
+      "road_key": "badaun - desa bjayau lama",
+      "rank": 130,
+      "score": 0.5991428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp malutu - tambak": {
+      "road_key": "sp malutu - tambak",
+      "rank": 131,
+      "score": 0.5967285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp 3 baluti - amawang": {
+      "road_key": "sp 3 baluti - amawang",
+      "rank": 132,
+      "score": 0.5901285714285713,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp bakarung selatan - sei kudung": {
+      "road_key": "sp bakarung selatan - sei kudung",
+      "rank": 133,
+      "score": 0.5834714285714285,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp malutu - pahampangan": {
+      "road_key": "sp malutu - pahampangan",
+      "rank": 134,
+      "score": 0.5785571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": true
+    },
+    "guru h izim - desa pantai ulin": {
+      "road_key": "guru h izim - desa pantai ulin",
+      "rank": 135,
+      "score": 0.5781571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "tibung raya - asam cangkuk": {
+      "road_key": "tibung raya - asam cangkuk",
+      "rank": 136,
+      "score": 0.5764428571428571,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp batang kulur kiri - tatas": {
+      "road_key": "sp batang kulur kiri - tatas",
+      "rank": 137,
+      "score": 0.5731571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "manggis - desa baru": {
+      "road_key": "manggis - desa baru",
+      "rank": 138,
+      "score": 0.5727857142857142,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "sei namang - desa tanah bangkang": {
+      "road_key": "sei namang - desa tanah bangkang",
+      "rank": 139,
+      "score": 0.5719285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sp 3 bukuanin - riam talo": {
+      "road_key": "sp 3 bukuanin - riam talo",
+      "rank": 140,
+      "score": 0.5707857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "rambai - bariang": {
+      "road_key": "rambai - bariang",
+      "rank": 141,
+      "score": 0.5681285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "kalumpang desa balanti - teratai": {
+      "road_key": "kalumpang desa balanti - teratai",
+      "rank": 142,
+      "score": 0.5677714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "batu laki - muara pipii": {
+      "road_key": "batu laki - muara pipii",
+      "rank": 143,
+      "score": 0.5657571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "gambah luar - gambah dalam": {
+      "road_key": "gambah luar - gambah dalam",
+      "rank": 144,
+      "score": 0.5655285714285715,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "amd - desa lok binuang": {
+      "road_key": "amd - desa lok binuang",
+      "rank": 145,
+      "score": 0.5646714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "hakurung dalam - desa sei haji": {
+      "road_key": "hakurung dalam - desa sei haji",
+      "rank": 146,
+      "score": 0.5637,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "kalumpang - baruh": {
+      "road_key": "kalumpang - baruh",
+      "rank": 147,
+      "score": 0.5629571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "suriangpati - gambah dalam barat": {
+      "road_key": "suriangpati - gambah dalam barat",
+      "rank": 148,
+      "score": 0.5603285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "teluk haur i": {
+      "road_key": "teluk haur i",
+      "rank": 149,
+      "score": 0.5568714285714286,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "hamayung - hakurung dalam": {
+      "road_key": "hamayung - hakurung dalam",
+      "rank": 150,
+      "score": 0.5556428571428571,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": false
+    },
+    "sei bugundi": {
+      "road_key": "sei bugundi",
+      "rank": 151,
+      "score": 0.5549571428571428,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": true
+    },
+    "pegangsaan timur - teluk aman": {
+      "road_key": "pegangsaan timur - teluk aman",
+      "rank": 152,
+      "score": 0.5533571428571429,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "biti - sei kupang karya bakti tni": {
+      "road_key": "biti - sei kupang karya bakti tni",
+      "rank": 153,
+      "score": 0.5511285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "tembok baru asam cangkok": {
+      "road_key": "tembok baru asam cangkok",
+      "rank": 154,
+      "score": 0.5490428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "sei paring - toba": {
+      "road_key": "sei paring - toba",
+      "rank": 155,
+      "score": 0.5436428571428572,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "jangkang - pantai ulin": {
+      "road_key": "jangkang - pantai ulin",
+      "rank": 156,
+      "score": 0.5425857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "madang - ambutun": {
+      "road_key": "madang - ambutun",
+      "rank": 157,
+      "score": 0.5420999999999999,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "tibung dalam - teratai": {
+      "road_key": "tibung dalam - teratai",
+      "rank": 158,
+      "score": 0.5409857142857143,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "gambah dalam - rantauan": {
+      "road_key": "gambah dalam - rantauan",
+      "rank": 159,
+      "score": 0.5367285714285714,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    },
+    "tembok kacil sei kudung": {
+      "road_key": "tembok kacil sei kudung",
+      "rank": 160,
+      "score": 0.5364428571428571,
+      "model": "RandomForest",
+      "top35": false,
+      "top70": false,
+      "top105": false,
+      "hit_2026": null
+    }
+  }
+}

@@ -37,6 +37,7 @@ import type {
   PlanningNote,
   CandidateBasketItem,
   CandidateStatus,
+  MLPriorityScoresByRoadKey,
 } from '../../lib/treatmentTypes';
 
 import {
@@ -131,6 +132,7 @@ function useTreatmentData() {
   const [asbRules, setAsbRules] = useState<any>(null);
   const [segmentData, setSegmentData] = useState<DD2DamageSegmentData | null>(null);
   const [historicalTreatmentData, setHistoricalTreatmentData] = useState<HistoricalTreatmentData | null>(null);
+  const [mlPriorityData, setMlPriorityData] = useState<MLPriorityScoresByRoadKey | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
 
   const [manualOverrides, setManualOverridesState] = useState<Record<string, ManualASBOverride>>(() => {
@@ -302,14 +304,15 @@ function useTreatmentData() {
     async function load() {
       setStatus('loading');
       try {
-        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules, resHistory] = await Promise.all([
+        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules, resHistory, resMlPriority] = await Promise.all([
           fetch('/data/maps/map-config.json'),
           fetch('/data/maps/road-geometries.json'),
           fetch('/data/dd2_road_features.json'),
           fetch('/data/dd2_damage_segments.json'),
           fetch('/data/asb_unit_prices.json'),
           fetch('/data/asb_budget_package_rules.json'),
-          fetch('/data/treatment_history_by_road_key.json')
+          fetch('/data/treatment_history_by_road_key.json'),
+          fetch('/data/ml_priority_scores_by_road_key.json').catch(() => null),
         ]);
         
         if (!resCfg.ok || !resGeo.ok) throw new Error('Failed to load map data');
@@ -324,6 +327,8 @@ function useTreatmentData() {
         if (resAsbRules.ok) setAsbRules(await resAsbRules.json());
         if (resHistory.ok) setHistoricalTreatmentData(await resHistory.json());
         else setHistoricalTreatmentData(null);
+        if (resMlPriority?.ok) setMlPriorityData(await resMlPriority.json());
+        else setMlPriorityData(null);
         
         if (resDd2.ok) setRawData(await resDd2.json());
         if (resSeg && resSeg.ok) {
@@ -406,7 +411,7 @@ function useTreatmentData() {
     };
   }, [rawData, asbItems, asbRules, manualOverrides]);
 
-  return { config, geos, dd2Data, segmentData, historicalTreatmentData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, clearAllPlanningNotes, syncCandidateBasketWithCurrentASB };
+  return { config, geos, dd2Data, segmentData, historicalTreatmentData, mlPriorityData, status, manualOverrides, setManualOverrides, asbItems, hpsOverrides, setHpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, clearAllPlanningNotes, syncCandidateBasketWithCurrentASB };
 }
 
 // ── Roadmap step data ─────────────────────────────────────────────────────────
@@ -532,7 +537,7 @@ function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
 // ── Page component ────────────────────────────────────────────────────────────
 
 export function TreatmentEnginePage() {
-  const { config, geos, dd2Data, segmentData, historicalTreatmentData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, syncCandidateBasketWithCurrentASB } = useTreatmentData();
+  const { config, geos, dd2Data, segmentData, historicalTreatmentData, mlPriorityData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, syncCandidateBasketWithCurrentASB } = useTreatmentData();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showSegments, setShowSegments] = useState(false);
@@ -831,6 +836,11 @@ export function TreatmentEnginePage() {
     if (!selectedDd2Feature) return null;
     return historicalTreatmentByRoadKey.get(selectedDd2Feature.road_key) ?? null;
   }, [selectedDd2Feature, historicalTreatmentByRoadKey]);
+
+  const selectedMlPriorityScore = useMemo(() => {
+    if (!selectedDd2Feature) return null;
+    return mlPriorityData?.scores?.[selectedDd2Feature.road_key] ?? null;
+  }, [selectedDd2Feature, mlPriorityData]);
 
   const optimizationRoadLookup = useMemo(() => {
     const map = new Map<string, OptimizationRoadInput>();
@@ -1550,6 +1560,8 @@ export function TreatmentEnginePage() {
             selectedDd2Feature={selectedDd2Feature}
             selectedSegmentSummary={selectedSegmentSummary}
             selectedHistoricalTreatmentRecord={selectedHistoricalTreatmentRecord}
+            selectedMlPriorityScore={selectedMlPriorityScore}
+            mlPriorityMetadata={mlPriorityData?.metadata ?? null}
             diagnosticKey={diagnosticKey}
             matchMethod={matchMethod}
             manualOverrides={manualOverrides}
@@ -1665,6 +1677,8 @@ export function TreatmentEnginePage() {
         scenarioKecamatanSummaryHasMultiKecamatanRoads={scenarioKecamatanSummary.hasMultiKecamatanRoads}
         optimizationRoadLookup={optimizationRoadLookup}
         optimizationHistoryLookup={optimizationHistoryLookup}
+        mlPriorityScores={mlPriorityData?.scores ?? null}
+        mlPriorityMetadata={mlPriorityData?.metadata ?? null}
         removeFromCandidateBasket={removeFromCandidateBasket}
         setCandidateStatus={setCandidateStatus}
         onSelectRoad={selectRoadFromScenario}

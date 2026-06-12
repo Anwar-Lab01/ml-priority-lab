@@ -1,5 +1,5 @@
 import { X, Calculator, Info, Save, Trash2, Check } from 'lucide-react';
-import type { GeoRoad, DD2RoadFeatureWithRule, ManualASBOverride, CandidateBasketItem, CandidateStatus, PlanningNote } from '../../../../lib/treatmentTypes';
+import type { GeoRoad, DD2RoadFeatureWithRule, ManualASBOverride, CandidateBasketItem, CandidateStatus, PlanningNote, MLPriorityMetadata, MLPriorityScore } from '../../../../lib/treatmentTypes';
 import { getDominantCondition, getDisplayRuleCategory } from '../../../../lib/treatmentEngine';
 import { SegmentStripCard } from './SegmentStripCard';
 import { ASBBudgetPanel } from './ASBBudgetPanel';
@@ -133,6 +133,8 @@ interface RoadFocusPanelProps {
   clearHPSOverrideForRoad: (road_key: string) => void;
   setHpsOverrideForRoad: (road_key: string, override: any) => void;
   selectedHistoricalTreatmentRecord: HistoricalTreatmentRecord | null;
+  selectedMlPriorityScore: MLPriorityScore | null;
+  mlPriorityMetadata: MLPriorityMetadata | null;
   // Phase 5: Planning Scenario
   candidateBasket: Record<string, CandidateBasketItem>;
   planningNotes: Record<string, PlanningNote>;
@@ -161,6 +163,8 @@ export function RoadFocusPanel({
   clearHPSOverrideForRoad,
   setHpsOverrideForRoad,
   selectedHistoricalTreatmentRecord,
+  selectedMlPriorityScore,
+  mlPriorityMetadata,
   // Phase 5
   candidateBasket,
   planningNotes,
@@ -170,6 +174,11 @@ export function RoadFocusPanel({
   savePlanningNoteForRoad,
   }: RoadFocusPanelProps) {
   const historicalYears = ['2021', '2022', '2023', '2024', '2025'] as const;
+
+  const formatMlScore = (score: number | null | undefined) => {
+    if (score == null) return '—';
+    return score.toFixed(4);
+  };
 
   const getYearSummary = (record: HistoricalTreatmentRecord | null, year: string): HistoricalTreatmentYearSummary => {
     const yearBlock = record?.handled?.[year];
@@ -276,6 +285,67 @@ export function RoadFocusPanel({
               <p className="text-[10px] leading-relaxed text-indigo-700/80 italic">
                 "{selectedDd2Feature.rule_v1.rule_reason}"
               </p>
+            </div>
+
+            <div className="rounded-lg border border-sky-100 bg-sky-50/60 px-3 py-2.5">
+              <p className="text-[9px] font-bold uppercase tracking-widest text-sky-600">
+                ML Priority Context
+              </p>
+              <p className="mt-1 text-[10px] leading-relaxed text-sky-700/80">
+                Read-only ranking context from the separate ML priority module. This does not change ASB, treatment rules, or scenario planning.
+              </p>
+
+              {selectedMlPriorityScore ? (
+                <>
+                  <div className="mt-2 grid grid-cols-2 gap-2">
+                    <div className="rounded-md border border-white bg-white px-2.5 py-2">
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">ML Rank</p>
+                      <p className="mt-0.5 font-mono text-sm font-bold text-slate-800">
+                        {selectedMlPriorityScore.rank ?? '—'}
+                      </p>
+                    </div>
+                    <div className="rounded-md border border-white bg-white px-2.5 py-2">
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">ML Score</p>
+                      <p className="mt-0.5 font-mono text-sm font-bold text-slate-800">
+                        {formatMlScore(selectedMlPriorityScore.score)}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-[10px] text-sky-700">
+                    Model: <strong>{selectedMlPriorityScore.model || mlPriorityMetadata?.model_family || '—'}</strong>
+                    <span className="mx-1 text-sky-300">|</span>
+                    Scenario: <strong>{mlPriorityMetadata?.scenario || '—'}</strong>
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {selectedMlPriorityScore.top35 !== undefined && (
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.top35 ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'}`}>
+                        Top-35 {selectedMlPriorityScore.top35 ? 'Yes' : 'No'}
+                      </span>
+                    )}
+                    {selectedMlPriorityScore.top70 !== undefined && (
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.top70 ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'}`}>
+                        Top-70 {selectedMlPriorityScore.top70 ? 'Yes' : 'No'}
+                      </span>
+                    )}
+                    {selectedMlPriorityScore.top105 !== undefined && (
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.top105 ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'}`}>
+                        Top-105 {selectedMlPriorityScore.top105 ? 'Yes' : 'No'}
+                      </span>
+                    )}
+                    {selectedMlPriorityScore.hit_2026 !== null && selectedMlPriorityScore.hit_2026 !== undefined && (
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.hit_2026 ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>
+                        2026 validation/target indicator: {selectedMlPriorityScore.hit_2026 ? 'Hit' : 'No hit'}
+                      </span>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <p className="mt-2 rounded-md border border-slate-100 bg-white px-2.5 py-2 text-[10px] font-semibold text-slate-500">
+                  {mlPriorityMetadata
+                    ? 'ML Priority Score data is not available for this road.'
+                    : 'ML Priority Score data is not loaded yet.'}
+                </p>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-2">

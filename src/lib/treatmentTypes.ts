@@ -181,6 +181,30 @@ export interface DD2DataWithRules {
   };
 }
 
+export interface MLPriorityScore {
+  road_key: string;
+  rank: number | null;
+  score: number | null;
+  model?: string | null;
+  top35?: boolean;
+  top70?: boolean;
+  top105?: boolean;
+  hit_2026?: boolean | null;
+}
+
+export interface MLPriorityMetadata {
+  source?: string;
+  scenario?: string;
+  model_family?: string;
+  generated_at?: string;
+  identity?: 'road_key' | string;
+}
+
+export interface MLPriorityScoresByRoadKey {
+  metadata: MLPriorityMetadata;
+  scores: Record<string, MLPriorityScore>;
+}
+
 // ── Display type aliases ──────────────────────────────────────────────────────
 
 export type MapDisplayMode = 'threshold' | 'dominant' | 'rule';
