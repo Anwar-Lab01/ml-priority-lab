@@ -30,6 +30,21 @@ type ScenarioKecamatanSummaryItem = {
   force_exclude_count: number;
 };
 
+type MLOptimizationComparisonLabel =
+  | 'Aligned'
+  | 'Condition/Budget Selected'
+  | 'ML High, Budget Deferred'
+  | 'Manually Deferred'
+  | 'Force Included'
+  | 'Force Excluded'
+  | 'Not Selected';
+
+type MLOptimizationComparison = {
+  label: MLOptimizationComparisonLabel;
+  detail: string;
+  badgeClassName: string;
+};
+
 // ── Types ────────────────────────────────────────────────────────────────────
 
 interface ScenarioPanelProps {
@@ -57,6 +72,37 @@ const STATUS_META: Record<CandidateStatus, { label: string; color: string; bg: s
   included:      { label: 'Included',      color: 'text-indigo-700',  bg: 'bg-indigo-50',   border: 'border-indigo-200',  dot: 'bg-indigo-500' },
   deferred:      { label: 'Deferred',      color: 'text-slate-600',   bg: 'bg-slate-100',   border: 'border-slate-200',   dot: 'bg-slate-400' },
   force_exclude: { label: 'Force Exclude', color: 'text-red-700',     bg: 'bg-red-50',      border: 'border-red-200',     dot: 'bg-red-500' },
+};
+
+const ML_COMPARISON_META: Record<MLOptimizationComparisonLabel, { badgeClassName: string; detail: string }> = {
+  'Aligned': {
+    badgeClassName: 'border-emerald-200 bg-emerald-50 text-emerald-700',
+    detail: 'Optimized selected and present in Top-35/70/105 ML context.',
+  },
+  'Condition/Budget Selected': {
+    badgeClassName: 'border-indigo-200 bg-indigo-50 text-indigo-700',
+    detail: 'Optimized selected by condition/budget preview; outside Top-105 or no ML record.',
+  },
+  'ML High, Budget Deferred': {
+    badgeClassName: 'border-amber-200 bg-amber-50 text-amber-700',
+    detail: 'Top-35/70 ML context, but deferred by current optimization budget preview.',
+  },
+  'Manually Deferred': {
+    badgeClassName: 'border-slate-200 bg-slate-50 text-slate-600',
+    detail: 'Candidate status is manually deferred.',
+  },
+  'Force Included': {
+    badgeClassName: 'border-emerald-200 bg-emerald-50 text-emerald-700',
+    detail: 'Candidate status is force_include.',
+  },
+  'Force Excluded': {
+    badgeClassName: 'border-red-200 bg-red-50 text-red-700',
+    detail: 'Candidate status is force_exclude.',
+  },
+  'Not Selected': {
+    badgeClassName: 'border-slate-200 bg-white text-slate-500',
+    detail: 'Not selected by the current optimization preview.',
+  },
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -135,12 +181,13 @@ interface RowProps {
   note: PlanningNote | undefined;
   isFunded: boolean;
   isForceExcluded: boolean;
+  comparison?: MLOptimizationComparison;
   onRemove: () => void;
   onSetStatus: (status: CandidateStatus) => void;
   onSelectRoad?: (road_key: string) => void;
 }
 
-function CandidateRow({ item, note, isFunded, isForceExcluded, onRemove, onSetStatus, onSelectRoad }: RowProps) {
+function CandidateRow({ item, note, isFunded, isForceExcluded, comparison, onRemove, onSetStatus, onSelectRoad }: RowProps) {
   const [expanded, setExpanded] = useState(false);
   const meta = STATUS_META[item.status];
 
@@ -182,6 +229,15 @@ function CandidateRow({ item, note, isFunded, isForceExcluded, onRemove, onSetSt
         <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-bold ${meta.border} ${meta.color}`}>
           {meta.label}
         </span>
+
+        {comparison && (
+          <span
+            className={`hidden shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-bold md:inline-flex ${comparison.badgeClassName}`}
+            title={comparison.detail}
+          >
+            {comparison.label}
+          </span>
+        )}
 
         {/* Note indicator */}
         {note && (
@@ -227,6 +283,12 @@ function CandidateRow({ item, note, isFunded, isForceExcluded, onRemove, onSetSt
               {item.asb_type && (
                 <span>ASB: <strong className="text-slate-700">{item.asb_type}</strong></span>
               )}
+            </div>
+          )}
+
+          {comparison && (
+            <div className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold ${comparison.badgeClassName}`}>
+              {comparison.label}: <span className="ml-1 font-medium">{comparison.detail}</span>
             </div>
           )}
 
@@ -326,6 +388,67 @@ export function ScenarioPanel({
       averageRank: ranks.length > 0 ? ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length : null,
     };
   }, [items, mlPriorityScores]);
+
+  const mlOptimizationComparison = useMemo(() => {
+    const scores = mlPriorityScores ?? {};
+    const optimizedSelectedKeys = new Set(optimizationPreview.optimizedSelected.map(candidate => candidate.item.road_key));
+    const optimizedDeferredKeys = new Set(optimizationPreview.optimizedDeferred.map(candidate => candidate.item.road_key));
+    const byRoadKey = new Map<string, MLOptimizationComparison>();
+
+    let aligned = 0;
+    let mlHighBudgetDeferred = 0;
+    let selectedOutsideTop105 = 0;
+    let withoutMlData = 0;
+
+    items.forEach(item => {
+      const mlScore = scores[item.road_key];
+      const hasMlData = Boolean(mlScore);
+      const isMlTop35Or70 = mlScore?.top35 === true || mlScore?.top70 === true;
+      const isMlTopAny = isMlTop35Or70 || mlScore?.top105 === true;
+      const isOptimizedSelected = optimizedSelectedKeys.has(item.road_key);
+      const isOptimizedDeferred = optimizedDeferredKeys.has(item.road_key);
+
+      if (!hasMlData) withoutMlData++;
+
+      let label: MLOptimizationComparisonLabel;
+
+      if (item.status === 'force_include') {
+        label = 'Force Included';
+      } else if (item.status === 'force_exclude') {
+        label = 'Force Excluded';
+      } else if (item.status === 'deferred') {
+        label = 'Manually Deferred';
+      } else if (isOptimizedSelected && isMlTopAny) {
+        label = 'Aligned';
+        aligned++;
+      } else if (isOptimizedSelected) {
+        label = 'Condition/Budget Selected';
+        selectedOutsideTop105++;
+      } else if (isOptimizedDeferred && isMlTop35Or70) {
+        label = 'ML High, Budget Deferred';
+        mlHighBudgetDeferred++;
+      } else {
+        label = 'Not Selected';
+      }
+
+      const meta = ML_COMPARISON_META[label];
+      byRoadKey.set(item.road_key, {
+        label,
+        detail: meta.detail,
+        badgeClassName: meta.badgeClassName,
+      });
+    });
+
+    return {
+      byRoadKey,
+      summary: {
+        aligned,
+        mlHighBudgetDeferred,
+        selectedOutsideTop105,
+        withoutMlData,
+      },
+    };
+  }, [items, mlPriorityScores, optimizationPreview.optimizedSelected, optimizationPreview.optimizedDeferred]);
 
   const optimizationWarnings = useMemo(() => {
     const warnings = [...optimizationPreview.warnings];
@@ -709,6 +832,36 @@ export function ScenarioPanel({
               Optimization Preview is advisory only. Final planning remains manual and ASB pagu indikatif remains the canonical budget source.
             </p>
           </div>
+
+          <div className="border-b border-slate-100 bg-white px-4 py-3">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                  ML–Optimization Comparison
+                </p>
+                <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Read-only comparison between historical ML ranking and the current Optimization Preview. ML score is not used in optimization.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
+                <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">
+                  Aligned {mlOptimizationComparison.summary.aligned}
+                </span>
+                <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">
+                  ML high but deferred {mlOptimizationComparison.summary.mlHighBudgetDeferred}
+                </span>
+                <span className="rounded-full bg-indigo-50 px-2 py-1 text-indigo-700">
+                  Selected outside Top-105 {mlOptimizationComparison.summary.selectedOutsideTop105}
+                </span>
+                <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">
+                  Without ML data {mlOptimizationComparison.summary.withoutMlData}
+                </span>
+              </div>
+            </div>
+            <p className="mt-2 text-[9px] leading-relaxed text-slate-400">
+              Roads outside the 160-row ML lookup remain valid Treatment Engine candidates and receive a no-ML-data comparison context.
+            </p>
+          </div>
           <div className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-2">
             <div className="flex items-center gap-2">
               <button
@@ -779,6 +932,7 @@ export function ScenarioPanel({
                       note={planningNotes[item.road_key]}
                       isFunded={true}
                       isForceExcluded={false}
+                      comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -802,6 +956,7 @@ export function ScenarioPanel({
                       note={planningNotes[item.road_key]}
                       isFunded={false}
                       isForceExcluded={false}
+                      comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -826,6 +981,7 @@ export function ScenarioPanel({
                       note={planningNotes[item.road_key]}
                       isFunded={false}
                       isForceExcluded={true}
+                      comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
