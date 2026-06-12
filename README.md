@@ -62,6 +62,28 @@ src/
 4. **Pages** consume data from the hook and pass it to chart/table components
 5. **FilterBar** manages filter state; pages derive filtered data with `useMemo`
 
+## Treatment Engine Reference
+
+The Treatment Engine has a separate handover document:
+
+- `TREATMENT_ENGINE_HANDOVER.md`
+
+Current runtime treatment context assets:
+
+- `public/data/dd2_road_features.json`
+- `public/data/dd2_damage_segments.json`
+- `public/data/treatment_history_by_road_key.json`
+
+Identity and roadmap guardrails:
+
+- Use `road_key` as the canonical cross-dataset identity
+- ASB pagu indikatif is the canonical budget source
+- HPS/AHSP is comparison/detail only
+- Historical Treatment Context is read-only
+- Scenario Kecamatan Summary is read-only metadata only
+- ML Priority Score remains in the separate ranking module/page
+- Constrained Multi-Objective Optimization is not implemented yet
+
 ### Data Files
 
 | File | Records | Description |

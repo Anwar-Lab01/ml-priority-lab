@@ -106,3 +106,16 @@ Not yet implemented:
 Connect **ASB price table** and implement indicative cost estimation.
 
 No ASB costing should be added until the user explicitly requests it.
+
+---
+
+## Current Treatment Engine State
+
+- Current academic flow uses DD1 / FormDD1 phrasing and `road_key` as the canonical cross-dataset identity.
+- Active condition fields: `unpaved_pct`, `non_mantap_pct`, `rusak_berat_pct`.
+- ASB pagu indikatif remains the canonical budget source.
+- HPS/AHSP remains comparison/detail only.
+- RoadFocusPanel now includes DD1/FormDD1 context, ASB budget panel, HPS/AHSP profile, Historical Treatment Context, and Planning Scenario controls.
+- ScenarioPanel now includes candidate basket, budget cap preview, funded/deferred preview, Sync ASB Snapshot, Export Scenario JSON, Clear Scenario, and read-only Scenario Kecamatan Summary.
+- ML Priority Score is still in the separate ranking module/page and is not integrated into Treatment Engine yet.
+- Constrained Multi-Objective Optimization is not implemented yet.

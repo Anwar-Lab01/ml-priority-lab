@@ -51,6 +51,7 @@ import {
 } from '../../lib/treatmentEngine';
 
 import { projectSegment } from '../../lib/projectSegment';
+import type { HistoricalTreatmentContext, OptimizationRoadInput } from '../../lib/treatmentOptimization';
 
 // Import extracted Phase 2 components
 import { ASBTypeGuide } from './treatment-engine/components/ASBTypeGuide';
@@ -830,6 +831,32 @@ export function TreatmentEnginePage() {
     if (!selectedDd2Feature) return null;
     return historicalTreatmentByRoadKey.get(selectedDd2Feature.road_key) ?? null;
   }, [selectedDd2Feature, historicalTreatmentByRoadKey]);
+
+  const optimizationRoadLookup = useMemo(() => {
+    const map = new Map<string, OptimizationRoadInput>();
+    if (!dd2Data) return map;
+
+    dd2Data.roads.forEach((road) => {
+      map.set(road.road_key, {
+        road_key: road.road_key,
+        canonical_road_name: road.canonical_road_name,
+        non_mantap_pct: road.non_mantap_pct,
+        kondisi_rusak_berat_pct: road.kondisi_rusak_berat_pct,
+        kecamatan_dilalui: road.kecamatan_dilalui,
+        unpaved_pct: (road as DD2RoadFeature & { unpaved_pct?: number | null }).unpaved_pct ?? null,
+      });
+    });
+
+    return map;
+  }, [dd2Data]);
+
+  const optimizationHistoryLookup = useMemo(() => {
+    const map = new Map<string, HistoricalTreatmentContext>();
+    historicalTreatmentByRoadKey.forEach((record, roadKey) => {
+      map.set(roadKey, record);
+    });
+    return map;
+  }, [historicalTreatmentByRoadKey]);
 
   const roadKeyToKecamatanMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -1636,6 +1663,8 @@ export function TreatmentEnginePage() {
         planningNotes={planningNotes}
         scenarioKecamatanSummary={scenarioKecamatanSummary.items}
         scenarioKecamatanSummaryHasMultiKecamatanRoads={scenarioKecamatanSummary.hasMultiKecamatanRoads}
+        optimizationRoadLookup={optimizationRoadLookup}
+        optimizationHistoryLookup={optimizationHistoryLookup}
         removeFromCandidateBasket={removeFromCandidateBasket}
         setCandidateStatus={setCandidateStatus}
         onSelectRoad={selectRoadFromScenario}

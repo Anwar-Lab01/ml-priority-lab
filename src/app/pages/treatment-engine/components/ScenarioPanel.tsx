@@ -13,6 +13,12 @@ import {
   RefreshCw,
 } from 'lucide-react';
 import type { CandidateBasketItem, CandidateStatus, PlanningNote } from '../../../../lib/treatmentTypes';
+import {
+  runScenarioOptimizationPreview,
+  type HistoricalTreatmentContext,
+  type OptimizationRoadInput,
+  type ScenarioOptimizationCandidate,
+} from '../../../../lib/treatmentOptimization';
 
 type ScenarioKecamatanSummaryItem = {
   kecamatan: string;
@@ -31,6 +37,8 @@ interface ScenarioPanelProps {
   planningNotes: Record<string, PlanningNote>;
   scenarioKecamatanSummary: ScenarioKecamatanSummaryItem[];
   scenarioKecamatanSummaryHasMultiKecamatanRoads: boolean;
+  optimizationRoadLookup: Map<string, OptimizationRoadInput>;
+  optimizationHistoryLookup: Map<string, HistoricalTreatmentContext>;
   removeFromCandidateBasket: (road_key: string) => void;
   setCandidateStatus: (road_key: string, status: CandidateStatus) => void;
   onSelectRoad?: (road_key: string) => void;
@@ -56,6 +64,14 @@ function formatRp(v: number | null | undefined): string {
   if (v >= 1_000_000_000) return `Rp ${(v / 1_000_000_000).toFixed(2)} M`;
   if (v >= 1_000_000)     return `Rp ${(v / 1_000_000).toFixed(1)} jt`;
   return `Rp ${v.toLocaleString('id-ID')}`;
+}
+
+function getOptimizationReason(candidate: ScenarioOptimizationCandidate): string {
+  return [
+    `urgency ${candidate.score.condition_urgency_score.toFixed(2)}`,
+    `gap ${candidate.score.historical_gap_score.toFixed(2)}`,
+    `efficiency ${candidate.score.cost_efficiency_score.toFixed(2)}`,
+  ].join(' / ');
 }
 
 // ── Funded/Deferred Budget Preview Logic ────────────────────────────────────
@@ -241,6 +257,8 @@ export function ScenarioPanel({
   planningNotes,
   scenarioKecamatanSummary,
   scenarioKecamatanSummaryHasMultiKecamatanRoads,
+  optimizationRoadLookup,
+  optimizationHistoryLookup,
   removeFromCandidateBasket,
   setCandidateStatus,
   onSelectRoad,
@@ -270,6 +288,28 @@ export function ScenarioPanel({
     () => computeBudgetPreview(items, budgetCapRp),
     [items, budgetCapRp],
   );
+
+  const optimizationPreview = useMemo(
+    () => runScenarioOptimizationPreview({
+      candidates: items,
+      roadsByKey: optimizationRoadLookup,
+      historyByKey: optimizationHistoryLookup,
+      budgetCapRp,
+    }),
+    [items, optimizationRoadLookup, optimizationHistoryLookup, budgetCapRp],
+  );
+
+  const missingHistoryCount = useMemo(
+    () => items.filter(item => !optimizationHistoryLookup.get(item.road_key)).length,
+    [items, optimizationHistoryLookup],
+  );
+
+  const optimizationWarnings = useMemo(() => {
+    const warnings = [...optimizationPreview.warnings];
+    if (budgetCapRp == null) warnings.unshift('No budget cap set.');
+    if (missingHistoryCount > 0) warnings.push(`${missingHistoryCount} candidate road(s) have missing history data.`);
+    return warnings;
+  }, [optimizationPreview.warnings, budgetCapRp, missingHistoryCount]);
 
   const totalActivePagu = useMemo(
     () => items
@@ -527,6 +567,83 @@ export function ScenarioPanel({
                 Roads with multiple kecamatan values are counted in each matching kecamatan. Budget is not divided for this read-only summary.
               </p>
             )}
+          </div>
+
+          <div className="border-b border-slate-100 bg-white px-4 py-3">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                  Optimization Preview
+                </p>
+                <p className="mt-1 text-[10px] leading-relaxed text-slate-500">
+                  Read-only preview using ASB budget, DD1/FormDD1 condition urgency, and 2021–2025 historical treatment context. This does not change the scenario.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
+                <span className="rounded-full bg-indigo-50 px-2 py-1 text-indigo-700">Condition urgency 60%</span>
+                <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">Historical gap 25%</span>
+                <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">Cost efficiency 15%</span>
+                <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">ML Priority Score: Not integrated yet</span>
+              </div>
+            </div>
+
+            {budgetCapRp == null ? (
+              <div className="mt-3 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2 text-[10px] font-semibold text-amber-700">
+                Enter Budget Cap to enable Optimization Preview.
+              </div>
+            ) : (
+              <>
+                <div className="mt-3 grid gap-2 md:grid-cols-3">
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Optimized Selected</p>
+                    <p className="mt-1 text-sm font-bold text-slate-800">{optimizationPreview.optimizedSelected.length} roads</p>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Optimized Deferred</p>
+                    <p className="mt-1 text-sm font-bold text-slate-800">{optimizationPreview.optimizedDeferred.length} roads</p>
+                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Optimized ASB Budget</p>
+                    <p className="mt-1 text-sm font-bold text-slate-800">{formatRp(optimizationPreview.totalOptimizedBudget)}</p>
+                  </div>
+                </div>
+
+                {optimizationPreview.optimizedSelected.length > 0 && (
+                  <div className="mt-3 space-y-1.5">
+                    <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
+                      Recommended Funded Preview
+                    </p>
+                    {optimizationPreview.optimizedSelected.slice(0, 6).map(candidate => (
+                      <div key={candidate.item.road_key} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-[11px] font-semibold text-slate-800">{candidate.item.canonical_road_name}</p>
+                          <p className="mt-0.5 text-[9px] text-slate-500">{getOptimizationReason(candidate)}</p>
+                        </div>
+                        <div className="shrink-0 text-right">
+                          <p className="text-[10px] font-bold text-slate-700">{formatRp(candidate.item.pagu_indikatif_rp)}</p>
+                          <p className="text-[9px] font-bold text-indigo-600">Score {candidate.score.weighted_score.toFixed(3)}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
+            {optimizationWarnings.length > 0 && (
+              <div className="mt-3 space-y-1">
+                {optimizationWarnings.map(warning => (
+                  <p key={warning} className="flex items-start gap-1.5 text-[10px] leading-relaxed text-amber-700">
+                    <AlertTriangle className="mt-0.5 h-3 w-3 shrink-0" />
+                    {warning}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            <p className="mt-3 border-t border-slate-100 pt-2 text-[9px] leading-relaxed text-slate-400">
+              Optimization Preview is advisory only. Final planning remains manual and ASB pagu indikatif remains the canonical budget source.
+            </p>
           </div>
           <div className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-2">
             <div className="flex items-center gap-2">

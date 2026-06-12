@@ -114,4 +114,14 @@ Objek yang dihasilkan akan memiliki skema di bawah ini:
    - Merancang serta menata ulang layout panel detail visualisasi dan datatable utama untuk menampilkan estimasi pagu dengan rapi, informatif, dan patuh terhadap kebijakan disclaimer.
    - Menambahkan DEV diagnostics global di sisi browser.
 3. **`update.md`** *(Baru)*
-   - Dokumen log kerja/progress harian tertanggal 18 Mei 2026.
+    - Dokumen log kerja/progress harian tertanggal 18 Mei 2026.
+
+---
+
+## Tambahan Handover Terbaru
+
+- Phase 5, 5B, 5C, 6A, dan 6B sudah selesai pada Treatment Engine.
+- Historical Treatment Context menggunakan `public/data/treatment_history_by_road_key.json` dan bersifat read-only.
+- Scenario Kecamatan Summary menggunakan `kecamatan_dilalui` sebagai metadata read-only.
+- ASB tetap canonical budget source; HPS/AHSP tetap comparison/detail only.
+- ML Priority Score tetap berada di modul/page ranking terpisah.

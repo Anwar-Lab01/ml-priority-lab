@@ -112,6 +112,31 @@ Validated metrics after fix:
 - Do **not** modify the global `normalizeRoadIdentity()` in `utils.ts` to add `sungai → sei` unless the full 350-road identity audit (rankings, targets, Map Explorer, DD2) is revalidated.
 - Do **not** modify `dd2_road_features.json` to change road_key values unless the upstream DD2 identity audit script is also updated.
 
+### 11. Treatment Engine Historical Context Identity
+The read-only Historical Treatment Context uses `public/data/treatment_history_by_road_key.json` and must join to Treatment Engine roads by canonical `road_key` only.
+
+Validated reconciliation:
+
+- DD2 runtime roads: `350`
+- Historical records: `350`
+- Exact matches: `76`
+- Normalized bridge matches: `274`
+- Matched: `350`
+- Missing: `0`
+- Extra: `0`
+- Duplicate: `0`
+
+Identity method:
+
+- `normalized_canonical_name_bridge`
+
+Guardrails:
+
+- Do not reintroduce `road_id` for this join
+- Do not treat `planned_2026/2027` as historical realization
+- Keep Historical Treatment Context read-only
+- Keep Scenario Kecamatan Summary read-only metadata only
+
 ### 7. Target Truth Rule
 `target_rows.json` is the authoritative target truth source and must not be regenerated casually.
 
