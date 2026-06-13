@@ -12,7 +12,7 @@ import {
   Download,
   RefreshCw,
 } from 'lucide-react';
-import type { CandidateBasketItem, CandidateStatus, PlanningNote, MLPriorityMetadata, MLPriorityScore } from '../../../../lib/treatmentTypes';
+import type { CandidateBasketItem, CandidateStatus, PlanningNote, MLPriorityMetadata, MLPriorityScore, MLPriorityScoresByRoadKey } from '../../../../lib/treatmentTypes';
 import {
   runScenarioOptimizationPreview,
   type HistoricalTreatmentContext,
@@ -46,6 +46,8 @@ type MLOptimizationComparison = {
   badgeClassName: string;
 };
 
+type ScenarioPanelTab = 'candidates' | 'budget' | 'optimization';
+
 // ── Types ────────────────────────────────────────────────────────────────────
 
 interface ScenarioPanelProps {
@@ -57,6 +59,7 @@ interface ScenarioPanelProps {
   optimizationHistoryLookup: Map<string, HistoricalTreatmentContext>;
   mlPriorityScores: Record<string, MLPriorityScore> | null;
   mlPriorityMetadata: MLPriorityMetadata | null;
+  mlPriorityConfigurations?: MLPriorityScoresByRoadKey['configurations'] | null;
   removeFromCandidateBasket: (road_key: string) => void;
   setCandidateStatus: (road_key: string, status: CandidateStatus) => void;
   onSelectRoad?: (road_key: string) => void;
@@ -184,12 +187,13 @@ interface RowProps {
   isFunded: boolean;
   isForceExcluded: boolean;
   comparison?: MLOptimizationComparison;
+  mlScore?: MLPriorityScore | null;
   onRemove: () => void;
   onSetStatus: (status: CandidateStatus) => void;
   onSelectRoad?: (road_key: string) => void;
 }
 
-function CandidateRow({ item, note, isFunded, isForceExcluded, comparison, onRemove, onSetStatus, onSelectRoad }: RowProps) {
+function CandidateRow({ item, note, isFunded, isForceExcluded, comparison, mlScore, onRemove, onSetStatus, onSelectRoad }: RowProps) {
   const [expanded, setExpanded] = useState(false);
   const meta = STATUS_META[item.status];
 
@@ -213,6 +217,10 @@ function CandidateRow({ item, note, isFunded, isForceExcluded, comparison, onRem
           </p>
           <div className="flex items-center gap-1.5 mt-0.5">
             <p className="text-[9px] font-mono text-slate-400 truncate">{item.road_key}</p>
+            <span className="text-[9px] font-semibold text-sky-600">
+              ML {mlScore?.rank != null ? `#${mlScore.rank}` : '—'}
+              {mlScore?.score != null ? ` / ${mlScore.score.toFixed(3)}` : ''}
+            </span>
             <span className="text-[8px] font-bold text-violet-600 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest bg-violet-100 px-1 rounded">Focus Map</span>
           </div>
         </div>
@@ -327,6 +335,7 @@ export function ScenarioPanel({
   optimizationHistoryLookup,
   mlPriorityScores,
   mlPriorityMetadata,
+  mlPriorityConfigurations,
   removeFromCandidateBasket,
   setCandidateStatus,
   onSelectRoad,
@@ -337,6 +346,10 @@ export function ScenarioPanel({
   const [budgetCapInput, setBudgetCapInput] = useState('');
   const [isOpen, setIsOpen] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [activeTab, setActiveTab] = useState<ScenarioPanelTab>('candidates');
+  const [selectedMlScenario, setSelectedMlScenario] = useState('refined_recall_max_any2026');
+  const [selectedMlModel, setSelectedMlModel] = useState('RandomForest');
+  const [selectedMlScoreType, setSelectedMlScoreType] = useState('rerank_medium');
 
   // Budget validation
   const budgetCapNumber = parseFloat(budgetCapInput);
@@ -358,6 +371,43 @@ export function ScenarioPanel({
     [items, budgetCapRp],
   );
 
+  const availableMlScenarios = useMemo(
+    () => Object.keys(mlPriorityConfigurations ?? {}).sort(),
+    [mlPriorityConfigurations],
+  );
+
+  const availableMlModels = useMemo(
+    () => Object.keys(mlPriorityConfigurations?.[selectedMlScenario] ?? {}).sort(),
+    [mlPriorityConfigurations, selectedMlScenario],
+  );
+
+  const availableMlScoreTypes = useMemo(
+    () => Object.keys(mlPriorityConfigurations?.[selectedMlScenario]?.[selectedMlModel] ?? {}).sort(),
+    [mlPriorityConfigurations, selectedMlScenario, selectedMlModel],
+  );
+
+  useEffect(() => {
+    if (availableMlScenarios.length > 0 && !availableMlScenarios.includes(selectedMlScenario)) {
+      setSelectedMlScenario(availableMlScenarios[0]);
+    }
+  }, [availableMlScenarios, selectedMlScenario]);
+
+  useEffect(() => {
+    if (availableMlModels.length > 0 && !availableMlModels.includes(selectedMlModel)) {
+      setSelectedMlModel(availableMlModels[0]);
+    }
+  }, [availableMlModels, selectedMlModel]);
+
+  useEffect(() => {
+    if (availableMlScoreTypes.length > 0 && !availableMlScoreTypes.includes(selectedMlScoreType)) {
+      setSelectedMlScoreType(availableMlScoreTypes[0]);
+    }
+  }, [availableMlScoreTypes, selectedMlScoreType]);
+
+  const selectedMlConfiguration = mlPriorityConfigurations?.[selectedMlScenario]?.[selectedMlModel]?.[selectedMlScoreType] ?? null;
+  const selectedMlPriorityScores = selectedMlConfiguration?.scores ?? mlPriorityScores ?? {};
+  const selectedMlPriorityMetadata = selectedMlConfiguration?.metadata ?? mlPriorityMetadata;
+
   const optimizationPreview = useMemo(
     () => runScenarioOptimizationPreview({
       candidates: items,
@@ -378,7 +428,7 @@ export function ScenarioPanel({
   );
 
   const mlScenarioSummary = useMemo(() => {
-    const scores = mlPriorityScores ?? {};
+    const scores = selectedMlPriorityScores;
     const candidateScores = items
       .map(item => scores[item.road_key])
       .filter((score): score is MLPriorityScore => Boolean(score));
@@ -394,10 +444,10 @@ export function ScenarioPanel({
       top105: candidateScores.filter(score => score.top105 === true).length,
       averageRank: ranks.length > 0 ? ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length : null,
     };
-  }, [items, mlPriorityScores]);
+  }, [items, selectedMlPriorityScores]);
 
   const mlOptimizationComparison = useMemo(() => {
-    const scores = mlPriorityScores ?? {};
+    const scores = selectedMlPriorityScores;
     const optimizedSelectedKeys = new Set(optimizationPreview.optimizedSelected.map(candidate => candidate.item.road_key));
     const optimizedDeferredKeys = new Set(optimizationPreview.optimizedDeferred.map(candidate => candidate.item.road_key));
     const byRoadKey = new Map<string, MLOptimizationComparison>();
@@ -455,7 +505,7 @@ export function ScenarioPanel({
         withoutMlData,
       },
     };
-  }, [items, mlPriorityScores, optimizationPreview.optimizedSelected, optimizationPreview.optimizedDeferred]);
+  }, [items, selectedMlPriorityScores, optimizationPreview.optimizedSelected, optimizationPreview.optimizedDeferred]);
 
   const optimizationWarnings = useMemo(() => {
     const warnings = [...optimizationPreview.warnings];
@@ -576,7 +626,57 @@ export function ScenarioPanel({
       {isOpen && (
         <>
           {/* ── Budget Summary Row ─────────────────────────────────────────── */}
-          <div className="grid grid-cols-2 gap-px bg-slate-100 lg:grid-cols-4">
+          <div className="border-b border-slate-100 bg-white px-4 py-3">
+            <div className="grid grid-cols-2 gap-2 text-[10px] md:grid-cols-5">
+              <div className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2">
+                <p className="font-black uppercase tracking-widest text-slate-400">Candidates</p>
+                <p className="text-sm font-bold text-slate-800">{items.length}</p>
+              </div>
+              <div className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2">
+                <p className="font-black uppercase tracking-widest text-slate-400">Funded / Deferred</p>
+                <p className="text-sm font-bold text-slate-800">{preview.funded.length} / {preview.deferred.length}</p>
+              </div>
+              <div className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2">
+                <p className="font-black uppercase tracking-widest text-slate-400">Excluded</p>
+                <p className="text-sm font-bold text-slate-800">{preview.forceExcluded.length}</p>
+              </div>
+              <div className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2">
+                <p className="font-black uppercase tracking-widest text-slate-400">Total ASB Pagu</p>
+                <p className="text-sm font-bold text-slate-800">{formatRp(totalActivePagu)}</p>
+              </div>
+              <div className="rounded-md border border-slate-200 bg-slate-50 px-2.5 py-2">
+                <p className="font-black uppercase tracking-widest text-slate-400">Budget Cap</p>
+                <p className={`text-sm font-bold ${budgetCapRp == null ? 'text-slate-500' : preview.totalFundedRp <= budgetCapRp ? 'text-emerald-700' : 'text-red-600'}`}>
+                  {budgetCapRp == null ? 'No cap' : preview.totalFundedRp <= budgetCapRp ? 'Within cap' : 'Over cap'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-b border-slate-100 bg-white px-4 py-2">
+            <div className="flex flex-wrap gap-1">
+              {[
+                { id: 'candidates' as const, label: 'Candidates' },
+                { id: 'budget' as const, label: 'Budget & Kecamatan' },
+                { id: 'optimization' as const, label: 'Optimization & ML' },
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+                    activeTab === tab.id
+                      ? 'bg-slate-900 text-white'
+                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={`grid grid-cols-2 gap-px bg-slate-100 lg:grid-cols-4 ${activeTab === 'budget' ? '' : 'hidden'}`}>
             {/* Total Pagu Indikatif ASB */}
             <div className="flex flex-col gap-0.5 bg-white px-4 py-3">
               <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
@@ -665,7 +765,7 @@ export function ScenarioPanel({
           </div>
 
           {/* ── Toolbar Actions ──────────────────────────────────────────────── */}
-          <div className="border-b border-slate-100 bg-white px-4 py-3">
+          <div className={`border-b border-slate-100 bg-white px-4 py-3 ${activeTab === 'budget' ? '' : 'hidden'}`}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
@@ -722,7 +822,7 @@ export function ScenarioPanel({
             )}
           </div>
 
-          <div className="border-b border-slate-100 bg-sky-50/40 px-4 py-3">
+          <div className={`border-b border-slate-100 bg-sky-50/40 px-4 py-3 ${activeTab === 'optimization' ? '' : 'hidden'}`}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-sky-600">
@@ -732,6 +832,44 @@ export function ScenarioPanel({
                   ML context only — not used by Optimization Preview yet.
                 </p>
               </div>
+              <div className="grid w-full gap-2 md:grid-cols-3">
+                <label className="text-[10px] font-semibold text-slate-600">
+                  Scenario
+                  <select
+                    value={selectedMlScenario}
+                    onChange={(event) => setSelectedMlScenario(event.target.value)}
+                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs"
+                    disabled={availableMlScenarios.length === 0}
+                  >
+                    {availableMlScenarios.map(value => <option key={value} value={value}>{value}</option>)}
+                  </select>
+                </label>
+                <label className="text-[10px] font-semibold text-slate-600">
+                  Model
+                  <select
+                    value={selectedMlModel}
+                    onChange={(event) => setSelectedMlModel(event.target.value)}
+                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs"
+                    disabled={availableMlModels.length === 0}
+                  >
+                    {availableMlModels.map(value => <option key={value} value={value}>{value}</option>)}
+                  </select>
+                </label>
+                <label className="text-[10px] font-semibold text-slate-600">
+                  Score Type
+                  <select
+                    value={selectedMlScoreType}
+                    onChange={(event) => setSelectedMlScoreType(event.target.value)}
+                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs"
+                    disabled={availableMlScoreTypes.length === 0}
+                  >
+                    {availableMlScoreTypes.map(value => <option key={value} value={value}>{value || '(default)'}</option>)}
+                  </select>
+                </label>
+              </div>
+              <p className="w-full text-[10px] leading-relaxed text-sky-700/80">
+                Selected ML ranking is comparison context only and is not used by Optimization Preview.
+              </p>
               {mlScenarioSummary.hasRuntimeData ? (
                 <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
                   <span className="rounded-full bg-white px-2 py-1 text-sky-700">
@@ -750,7 +888,7 @@ export function ScenarioPanel({
                     Avg rank {mlScenarioSummary.averageRank == null ? '—' : mlScenarioSummary.averageRank.toFixed(1)}
                   </span>
                   <span className="rounded-full bg-white px-2 py-1 text-slate-500">
-                    {mlPriorityMetadata?.scenario ?? 'scenario n/a'}
+                    {selectedMlPriorityMetadata?.scenario ?? selectedMlScenario}
                   </span>
                 </div>
               ) : (
@@ -761,7 +899,7 @@ export function ScenarioPanel({
             </div>
           </div>
 
-          <div className="border-b border-slate-100 bg-white px-4 py-3">
+          <div className={`border-b border-slate-100 bg-white px-4 py-3 ${activeTab === 'optimization' ? '' : 'hidden'}`}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
@@ -840,7 +978,7 @@ export function ScenarioPanel({
             </p>
           </div>
 
-          <div className="border-b border-slate-100 bg-white px-4 py-3">
+          <div className={`border-b border-slate-100 bg-white px-4 py-3 ${activeTab === 'optimization' ? '' : 'hidden'}`}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
@@ -869,7 +1007,11 @@ export function ScenarioPanel({
               Roads outside the 160-row ML lookup remain valid Treatment Engine candidates and receive a no-ML-data comparison context.
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-slate-50 px-4 py-2">
+          <details className="border-b border-slate-100 bg-slate-50 px-4 py-2">
+            <summary className="cursor-pointer text-[10px] font-bold uppercase tracking-widest text-slate-500">
+              Scenario Utilities
+            </summary>
+          <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <button
                 onClick={handleSync}
@@ -910,10 +1052,11 @@ export function ScenarioPanel({
               </button>
             </div>
           </div>
+          </details>
 
           {/* ── Force Include notice if total exceeds cap ──────────────────── */}
           {budgetCapRp != null && preview.totalForceIncludeRp > budgetCapRp && (
-            <div className="flex items-start gap-2 bg-amber-50 border-b border-amber-100 px-5 py-2">
+            <div className={`flex items-start gap-2 bg-amber-50 border-b border-amber-100 px-5 py-2 ${activeTab === 'budget' ? '' : 'hidden'}`}>
               <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-500" />
               <p className="text-[10px] text-amber-700 leading-relaxed">
                 Force-included roads alone ({formatRp(preview.totalForceIncludeRp)}) already exceed the budget cap.
@@ -923,7 +1066,7 @@ export function ScenarioPanel({
           )}
 
           {/* ── Candidate Road List ────────────────────────────────────────── */}
-          <div className="p-4 space-y-2">
+          <div className={`p-4 space-y-2 ${activeTab === 'candidates' ? '' : 'hidden'}`}>
             {/* Funded section */}
             {preview.funded.length > 0 && (
               <div>
@@ -940,6 +1083,7 @@ export function ScenarioPanel({
                       isFunded={true}
                       isForceExcluded={false}
                       comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
+                      mlScore={selectedMlPriorityScores[item.road_key] ?? null}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -964,6 +1108,7 @@ export function ScenarioPanel({
                       isFunded={false}
                       isForceExcluded={false}
                       comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
+                      mlScore={selectedMlPriorityScores[item.road_key] ?? null}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -989,6 +1134,7 @@ export function ScenarioPanel({
                       isFunded={false}
                       isForceExcluded={true}
                       comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
+                      mlScore={selectedMlPriorityScores[item.road_key] ?? null}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -1001,7 +1147,7 @@ export function ScenarioPanel({
 
           {/* ── Planning Notes Summary ─────────────────────────────────────── */}
           {notesCount > 0 && (
-            <div className="border-t border-slate-100 px-5 py-3">
+            <div className={`border-t border-slate-100 px-5 py-3 ${activeTab === 'candidates' ? '' : 'hidden'}`}>
               <p className="text-[9px] font-black uppercase tracking-widest text-amber-600 mb-2 flex items-center gap-1">
                 <StickyNote className="h-3 w-3" />
                 Planning Notes Summary ({notesCount})

@@ -33,6 +33,8 @@ type HistoricalTreatmentRecord = {
 
 // ── Planning Note Editor Sub-component ────────────────────────────────────────
 
+type RoadFocusTab = 'overview' | 'budget' | 'context' | 'planning';
+
 function PlanningNoteEditor({ roadKey, initialNote, onSave }: { roadKey: string, initialNote: string, onSave: (note: string) => void }) {
   const [draft, setDraft] = useState(initialNote);
   const [isSaved, setIsSaved] = useState(false);
@@ -174,6 +176,11 @@ export function RoadFocusPanel({
   savePlanningNoteForRoad,
   }: RoadFocusPanelProps) {
   const historicalYears = ['2021', '2022', '2023', '2024', '2025'] as const;
+  const [activeTab, setActiveTab] = useState<RoadFocusTab>('overview');
+
+  useEffect(() => {
+    setActiveTab('overview');
+  }, [selectedGeo?.road_id, selectedGeo?.legacy_ref, selectedGeo?.road_name, selectedDd2Feature?.road_key]);
 
   const formatMlScore = (score: number | null | undefined) => {
     if (score == null) return '—';
@@ -210,6 +217,22 @@ export function RoadFocusPanel({
   const yearsSinceLastHandled = selectedHistoricalTreatmentRecord?.prior_history_pre2026?.years_since_last
     ?? (lastHandledYear ? 2026 - lastHandledYear : null);
 
+  const roadKey = selectedDd2Feature?.road_key ?? null;
+  const candidateItem = roadKey ? candidateBasket[roadKey] : null;
+  const scenarioStatus = candidateItem?.status ?? null;
+  const scenarioStatusLabel: Record<CandidateStatus, string> = {
+    included: 'Included',
+    force_include: 'Force Include',
+    force_exclude: 'Force Exclude',
+    deferred: 'Deferred',
+  };
+  const formatCompactRp = (value: number | null | undefined) => {
+    if (value == null || !Number.isFinite(value)) return '—';
+    if (value >= 1_000_000_000) return `Rp ${(value / 1_000_000_000).toFixed(2)} M`;
+    if (value >= 1_000_000) return `Rp ${(value / 1_000_000).toFixed(1)} jt`;
+    return `Rp ${value.toLocaleString('id-ID')}`;
+  };
+
   if (!selectedGeo) {
     return (
       <div className="flex h-full min-h-[400px] flex-col items-center justify-center bg-slate-50 p-6 text-center">
@@ -225,7 +248,7 @@ export function RoadFocusPanel({
   }
 
   return (
-    <div className="flex h-[480px] lg:h-[560px] flex-col overflow-y-auto bg-white border-l border-slate-200 shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] relative z-20">
+    <div className="flex h-[480px] lg:h-[560px] flex-col overflow-hidden bg-white border-l border-slate-200 shadow-[-4px_0_15px_-3px_rgba(0,0,0,0.05)] relative z-20">
       {/* Header */}
       <div className="sticky top-0 z-10 flex items-start justify-between border-b border-slate-100 bg-white p-4 shadow-sm">
         <div className="pr-2">
@@ -245,15 +268,87 @@ export function RoadFocusPanel({
         </button>
       </div>
 
-      <div className="flex-1 p-4 space-y-4">
+      {selectedDd2Feature && (
+        <div className="border-b border-slate-100 bg-slate-50/80 px-4 py-3">
+          <div className="grid grid-cols-2 gap-2 text-[10px]">
+            <div className="col-span-2">
+              <p className="font-semibold leading-snug text-slate-800">{selectedGeo.road_name}</p>
+              <p className="mt-0.5 text-slate-500">{getDisplayRuleCategory(selectedDd2Feature.rule_v1.treatment_category)}</p>
+            </div>
+            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
+              <p className="font-bold uppercase tracking-wide text-slate-400">Non-Mantap</p>
+              <p className="font-mono font-semibold text-amber-600">{selectedDd2Feature.non_mantap_pct !== null ? `${selectedDd2Feature.non_mantap_pct}%` : '—'}</p>
+            </div>
+            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
+              <p className="font-bold uppercase tracking-wide text-slate-400">Final ASB Pagu</p>
+              <p className="font-semibold text-slate-800">{formatCompactRp(selectedDd2Feature.final_asb_budget?.final_pagu_indikatif_rp)}</p>
+            </div>
+            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
+              <p className="font-bold uppercase tracking-wide text-slate-400">ML Rank</p>
+              <p className="font-mono font-semibold text-slate-800">{selectedMlPriorityScore?.rank ?? '—'}</p>
+            </div>
+            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
+              <p className="font-bold uppercase tracking-wide text-slate-400">Scenario</p>
+              <p className="font-semibold text-slate-800">{scenarioStatus ? scenarioStatusLabel[scenarioStatus] : 'Not added'}</p>
+            </div>
+          </div>
+          <div className="mt-2">
+            {candidateItem ? (
+              <button
+                id={`scenario-summary-remove-${selectedDd2Feature.road_key}`}
+                onClick={() => removeFromCandidateBasket(selectedDd2Feature.road_key)}
+                className="flex w-full items-center justify-center gap-1.5 rounded-md border border-red-200 bg-red-50 py-1.5 text-[11px] font-semibold text-red-600 hover:bg-red-100 transition-colors"
+              >
+                <MinusCircle className="h-3.5 w-3.5" />
+                Remove from Scenario
+              </button>
+            ) : (
+              <button
+                id={`scenario-summary-add-${selectedDd2Feature.road_key}`}
+                onClick={() => addToCandidateBasket(selectedDd2Feature)}
+                className="flex w-full items-center justify-center gap-1.5 rounded-md border border-violet-200 bg-violet-100 py-1.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-200 transition-colors"
+              >
+                <PlusCircle className="h-3.5 w-3.5" />
+                Add to Scenario
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="border-b border-slate-100 bg-white px-3 py-2">
+        <div className="grid grid-cols-4 gap-1">
+          {[
+            { id: 'overview' as const, label: 'Overview' },
+            { id: 'budget' as const, label: 'Budget' },
+            { id: 'context' as const, label: 'Context' },
+            { id: 'planning' as const, label: 'Planning' },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(tab.id)}
+              className={`rounded-md px-2 py-1.5 text-[10px] font-bold transition-colors ${
+                activeTab === tab.id
+                  ? 'bg-slate-900 text-white'
+                  : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {/* Placeholder for future minimap */}
-        <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 flex items-center justify-center h-24">
+        <div className={`rounded-lg border border-dashed border-slate-300 bg-slate-50 flex items-center justify-center h-24 ${activeTab === 'overview' ? '' : 'hidden'}`}>
           <p className="text-xs font-semibold text-slate-400">Mini Map Preview — Phase 3B</p>
         </div>
 
         {selectedDd2Feature ? (
           <>
-            <div className="rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
+            <div className={`rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 ${activeTab === 'overview' ? '' : 'hidden'}`}>
               <p className="text-[9px] font-bold uppercase tracking-widest text-emerald-600">
                 Canonical Match
               </p>
@@ -272,7 +367,7 @@ export function RoadFocusPanel({
           </div>
 
             {/* DD2 treatment status */}
-            <div className="flex flex-col gap-2 rounded-lg border border-indigo-100 bg-indigo-50/50 px-3 py-2.5">
+            <div className={`flex flex-col gap-2 rounded-lg border border-indigo-100 bg-indigo-50/50 px-3 py-2.5 ${activeTab === 'overview' ? '' : 'hidden'}`}>
               <div className="flex items-center gap-2">
                 <Calculator className="h-3.5 w-3.5 text-indigo-500" />
                 <p className="text-[9px] font-bold uppercase tracking-widest text-indigo-500">
@@ -287,7 +382,7 @@ export function RoadFocusPanel({
               </p>
             </div>
 
-            <div className="rounded-lg border border-sky-100 bg-sky-50/60 px-3 py-2.5">
+            <div className={`rounded-lg border border-sky-100 bg-sky-50/60 px-3 py-2.5 ${activeTab === 'context' ? '' : 'hidden'}`}>
               <p className="text-[9px] font-bold uppercase tracking-widest text-sky-600">
                 ML Priority Context
               </p>
@@ -348,7 +443,7 @@ export function RoadFocusPanel({
               )}
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className={`grid grid-cols-2 gap-2 ${activeTab === 'overview' ? '' : 'hidden'}`}>
               <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
                 <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Length</p>
                 <p className="mt-0.5 font-mono text-xs font-semibold text-slate-700">
@@ -363,7 +458,7 @@ export function RoadFocusPanel({
               </div>
             </div>
 
-            <div className="rounded-lg border border-slate-100 bg-white px-3 py-2">
+            <div className={`rounded-lg border border-slate-100 bg-white px-3 py-2 ${activeTab === 'overview' ? '' : 'hidden'}`}>
               <div className="flex items-center justify-between mb-1.5">
                 <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Surface Condition</p>
                 <span className="inline-flex items-center rounded bg-indigo-50 px-1.5 py-0.5 text-[9px] font-bold text-indigo-600">
@@ -380,12 +475,15 @@ export function RoadFocusPanel({
               </div>
             </div>
 
-            <SegmentStripCard
-              selectedSegmentSummary={selectedSegmentSummary}
-              selectedDd2Feature={selectedDd2Feature}
-            />
+            <div className={activeTab === 'overview' ? '' : 'hidden'}>
+              <SegmentStripCard
+                selectedSegmentSummary={selectedSegmentSummary}
+                selectedDd2Feature={selectedDd2Feature}
+              />
+            </div>
 
             {/* Extracted ASBBudgetPanel / ASBOverrideForm Components */}
+            <div className={activeTab === 'budget' ? 'space-y-4' : 'hidden'}>
             {!isEditingOverride ? (
               <ASBBudgetPanel
                 selectedDd2Feature={selectedDd2Feature}
@@ -443,8 +541,9 @@ export function RoadFocusPanel({
             <p className="text-[10px] text-slate-500 leading-relaxed">
               HPS/AHSP is a comparison/detail layer only. ASB pagu indikatif remains the canonical budget source.
             </p>
+            </div>
 
-            <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2.5 space-y-2">
+            <div className={`rounded-lg border border-slate-100 bg-slate-50 px-3 py-2.5 space-y-2 ${activeTab === 'context' ? '' : 'hidden'}`}>
               <div>
                 <p className="text-[9px] font-bold uppercase tracking-widest text-slate-500">
                   Historical Treatment Context
@@ -529,7 +628,7 @@ export function RoadFocusPanel({
               };
 
               return (
-                <div className="rounded-lg border border-violet-100 bg-violet-50/50 px-3 py-2.5 mt-2 space-y-2.5">
+                <div className={`rounded-lg border border-violet-100 bg-violet-50/50 px-3 py-2.5 mt-2 space-y-2.5 ${activeTab === 'planning' ? '' : 'hidden'}`}>
                   {/* Header */}
                   <div className="flex items-center gap-1.5">
                     <ClipboardList className="h-3.5 w-3.5 text-violet-500" />
@@ -602,8 +701,11 @@ export function RoadFocusPanel({
               );
             })()}
 
-            <div className="rounded-lg border border-slate-100 bg-white px-3 py-2 mt-4">
-              <p className="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Diagnostics</p>
+            <details className={`rounded-lg border border-slate-100 bg-white px-3 py-2 mt-4 ${activeTab === 'overview' ? '' : 'hidden'}`}>
+              <summary className="cursor-pointer text-[9px] font-bold uppercase tracking-widest text-slate-400">
+                Diagnostics
+              </summary>
+              <div className="mt-2">
               <div className="space-y-1">
                 <div className="flex justify-between items-center text-[10px] text-slate-500">
                   <span>Canonical Key:</span>
@@ -620,7 +722,8 @@ export function RoadFocusPanel({
                   <span className="font-mono text-slate-700">{matchMethod}</span>
                 </div>
               </div>
-            </div>
+              </div>
+            </details>
           </>
         ) : (
           <div className="rounded-lg border border-amber-100 bg-amber-50 px-3 py-4 text-center">

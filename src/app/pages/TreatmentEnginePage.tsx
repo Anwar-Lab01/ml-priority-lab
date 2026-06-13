@@ -2,16 +2,12 @@ import { useState, useEffect, useMemo, useCallback, useRef, Fragment } from 'rea
 import { MapContainer, TileLayer, Polyline, Tooltip, useMap, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import {
-  Wrench,
   Database,
   Route,
   FileJson,
   DollarSign,
   Calculator,
   AlertTriangle,
-  CheckCircle,
-  Clock,
-  ArrowRight,
   Map as MapIcon,
   Info
 } from 'lucide-react';
@@ -115,6 +111,7 @@ type HistoricalTreatmentData = {
 type MLPriorityOverlayFilter = 'all' | 'top35' | 'top70' | 'top105' | 'optimization_selected' | 'ml_high_deferred';
 
 type MLPriorityOverlayTier = 'top35' | 'top70' | 'top105' | 'neutral';
+type WorkspaceTab = 'inspect' | 'scenario' | 'data-table';
 
 const ML_PRIORITY_OVERLAY_STYLES: Record<MLPriorityOverlayTier, { color: string; weight: number; opacity: number }> = {
   top35: { color: '#dc2626', weight: 6, opacity: 0.95 },
@@ -322,7 +319,7 @@ function useTreatmentData() {
     async function load() {
       setStatus('loading');
       try {
-        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules, resHistory, resMlPriority] = await Promise.all([
+        const [resCfg, resGeo, resDd2, resSeg, resAsbItems, resAsbRules, resHistory, resMlPriority, resMlPriorityConfigs] = await Promise.all([
           fetch('/data/maps/map-config.json'),
           fetch('/data/maps/road-geometries.json'),
           fetch('/data/dd2_road_features.json'),
@@ -331,6 +328,7 @@ function useTreatmentData() {
           fetch('/data/asb_budget_package_rules.json'),
           fetch('/data/treatment_history_by_road_key.json'),
           fetch('/data/ml_priority_scores_by_road_key.json').catch(() => null),
+          fetch('/data/ml_priority_rankings_by_config.json').catch(() => null),
         ]);
         
         if (!resCfg.ok || !resGeo.ok) throw new Error('Failed to load map data');
@@ -345,8 +343,18 @@ function useTreatmentData() {
         if (resAsbRules.ok) setAsbRules(await resAsbRules.json());
         if (resHistory.ok) setHistoricalTreatmentData(await resHistory.json());
         else setHistoricalTreatmentData(null);
-        if (resMlPriority?.ok) setMlPriorityData(await resMlPriority.json());
-        else setMlPriorityData(null);
+        if (resMlPriority?.ok) {
+          const mlPriorityJson = await resMlPriority.json();
+          if (resMlPriorityConfigs?.ok) {
+            const mlPriorityConfigJson = await resMlPriorityConfigs.json();
+            setMlPriorityData({
+              ...mlPriorityJson,
+              configurations: mlPriorityConfigJson.configurations,
+            });
+          } else {
+            setMlPriorityData(mlPriorityJson);
+          }
+        } else setMlPriorityData(null);
         
         if (resDd2.ok) setRawData(await resDd2.json());
         if (resSeg && resSeg.ok) {
@@ -554,6 +562,18 @@ function MapAutoFitter({ coords }: { coords: [number, number][] | null }) {
 
 // ── Page component ────────────────────────────────────────────────────────────
 
+function MapVisibilityInvalidator({ active }: { active: boolean }) {
+  const map = useMap();
+  useEffect(() => {
+    if (!active) return;
+    const frame = requestAnimationFrame(() => {
+      map.invalidateSize();
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [active, map]);
+  return null;
+}
+
 export function TreatmentEnginePage() {
   const { config, geos, dd2Data, segmentData, historicalTreatmentData, mlPriorityData, status: mapStatus, manualOverrides, setManualOverrides, hpsOverrides, clearHPSOverrideForRoad, setHpsOverrideForRoad, planningNotes, candidateBasket, savePlanningNoteForRoad, addToCandidateBasket, removeFromCandidateBasket, setCandidateStatus, clearCandidateBasket, syncCandidateBasketWithCurrentASB } = useTreatmentData();
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
@@ -562,6 +582,7 @@ export function TreatmentEnginePage() {
   const [isEditingOverride, setIsEditingOverride] = useState(false);
   const [overrideForm, setOverrideForm] = useState<Partial<ManualASBOverride>>({});
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [activeWorkspaceTab, setActiveWorkspaceTab] = useState<WorkspaceTab>('inspect');
 
   // Category Filters
   const [filterAsbType, setFilterAsbType] = useState('All');
@@ -739,6 +760,7 @@ export function TreatmentEnginePage() {
   const selectRoadFromScenario = useCallback((road_key: string) => {
     const geoKey = roadKeyToGeoKeyMap.get(road_key);
     if (geoKey) {
+      setActiveWorkspaceTab('inspect');
       setSelectedKey(geoKey);
       requestAnimationFrame(() => {
         mapSectionRef.current?.scrollIntoView({
@@ -748,6 +770,13 @@ export function TreatmentEnginePage() {
       });
     }
   }, [roadKeyToGeoKeyMap]);
+
+  const selectRoadFromDataTable = useCallback((key: string | null) => {
+    if (key) {
+      setActiveWorkspaceTab('inspect');
+    }
+    setSelectedKey(key);
+  }, []);
 
   // Phase 5C: Bound sync function
   const handleSyncScenario = useCallback(() => {
@@ -1183,90 +1212,88 @@ export function TreatmentEnginePage() {
     <div id="treatment-engine-page" className="space-y-6">
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-6">
-        <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-indigo-100/40 blur-2xl" />
-        <div className="absolute -bottom-8 -left-8 h-36 w-36 rounded-full bg-violet-100/40 blur-2xl" />
-        <div className="relative flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 shadow-lg shadow-indigo-200">
-            <Wrench className="h-6 w-6 text-white" />
+      <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className="text-lg font-semibold text-slate-900">Treatment Engine</h2>
+            <p className="mt-0.5 text-xs leading-relaxed text-slate-600">
+              Rule-based treatment indication and indicative ASB budgeting from DD1 / FormDD1 road-condition data.
+            </p>
           </div>
-          <div className="flex-1">
-            <h2 className="text-xl font-bold text-slate-900">Treatment Engine</h2>
-            <p className="mt-1 text-sm leading-relaxed text-slate-600">
-              Rule-based treatment indication and indicative budgeting from DD1&nbsp;/&nbsp;FormDD1 road-condition data and ASB.
-              This module applies road-condition rules from DD1&nbsp;/&nbsp;FormDD1 to recommend treatment types and estimate budget allocations using ASB unit prices.
-            </p>
-            <p className="mt-2 text-xs leading-relaxed text-slate-500">
-              ML Priority Score is available only as a read-only context layer and is not used in treatment rules, ASB costing, or optimization scoring.
-            </p>
+          <div className="flex flex-wrap items-center gap-2 text-[11px]">
+            {[
+              { label: 'roads loaded', value: dd2Data?._metadata.total_records ?? '—' },
+              { label: 'identity', value: dd2Data ? `${dd2Data._metadata.matched}/${dd2Data._metadata.total_records}` : '—' },
+              { label: 'ASB', value: dd2Data?.asbStats ? `${dd2Data.asbStats.totalItemsLoaded} items / ${dd2Data.asbStats.totalRulesLoaded} rules` : '—' },
+              { label: 'historical', value: historicalTreatmentData ? 'loaded' : '—' },
+              { label: 'ML', value: mlPriorityData ? 'context loaded' : '—' },
+            ].map((item) => (
+              <span key={item.label} className="inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">
+                <span className="font-medium text-slate-500">{item.label}:</span>
+                <span className="font-semibold text-slate-800">{item.value}</span>
+              </span>
+            ))}
           </div>
         </div>
       </div>
 
       {/* ── Data provenance & Identity Status ──────────────────────────────────── */}
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white flex flex-col">
-          <div className="border-b border-slate-100 px-5 py-3.5">
-            <h3 className="text-sm font-semibold text-slate-800">Data Provenance</h3>
-          </div>
-          <div className="grid gap-px bg-slate-100 grid-rows-3 flex-1">
-            {[
-              { label: 'DD1 / FormDD1 Source', value: 'FormDD1-2025.xlsx', sub: 'staging-source/dd2/raw/',       icon: Database,    color: 'text-blue-600 bg-blue-50' },
-              { label: 'Processed Staging', value: '2 CSV files',       sub: 'staging-source/dd2/processed/', icon: FileJson,    color: 'text-emerald-600 bg-emerald-50' },
-              { label: 'Extraction Audit',  value: '350 rows confirmed', sub: 'staging-source/dd2/audit/',    icon: CheckCircle, color: 'text-violet-600 bg-violet-50' },
-            ].map((item) => (
-              <div key={item.label} className="flex items-center gap-3 bg-white px-5 py-3">
-                <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${item.color}`}>
-                  <item.icon className="h-4 w-4" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs font-medium text-slate-500">{item.label}</p>
-                  <p className="mt-0.5 text-sm font-semibold text-slate-800">{item.value}</p>
+      <details className="rounded-lg border border-slate-200 bg-white">
+        <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-800">
+          System Status
+        </summary>
+        <div className="grid gap-4 border-t border-slate-100 p-4 lg:grid-cols-2">
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Data Provenance</h3>
+            <div className="mt-2 grid gap-2">
+              {[
+                { label: 'DD1 / FormDD1 Source', value: 'FormDD1-2025.xlsx', sub: 'staging-source/dd2/raw/' },
+                { label: 'Processed Staging', value: '2 CSV files', sub: 'staging-source/dd2/processed/' },
+                { label: 'Extraction Audit', value: '350 rows confirmed', sub: 'staging-source/dd2/audit/' },
+              ].map((item) => (
+                <div key={item.label} className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-[11px] font-medium text-slate-500">{item.label}</p>
+                  <p className="text-xs font-semibold text-slate-800">{item.value}</p>
                   <p className="truncate font-mono text-[10px] text-slate-400">{item.sub}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="rounded-xl border border-slate-200 bg-white flex flex-col">
-          <div className="border-b border-slate-100 px-5 py-3.5 flex justify-between items-center">
-            <h3 className="text-sm font-semibold text-slate-800">Identity Audit Status</h3>
-            {dd2Data && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold text-emerald-700">
-                <CheckCircle className="h-3 w-3" />
-                Clean Audit
-              </span>
-            )}
-          </div>
-          <div className="p-5 flex-1 flex flex-col justify-center">
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Runtime Audit</h3>
             {dd2Data ? (
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-lg border border-slate-100 bg-slate-50 p-4 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Roads Loaded</p>
-                  <p className="mt-1 text-3xl font-bold text-slate-800">{dd2Data._metadata.total_records}</p>
+              <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
+                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">Roads loaded</p>
+                  <p className="font-semibold text-slate-800">{dd2Data._metadata.total_records}</p>
                 </div>
-                <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Identity Matched</p>
-                  <p className="mt-1 text-3xl font-bold text-emerald-700">{dd2Data._metadata.matched}</p>
+                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">Identity matched</p>
+                  <p className="font-semibold text-slate-800">{dd2Data._metadata.matched}</p>
                 </div>
-                <div className="rounded-lg border border-slate-100 bg-slate-50 p-4 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Unmatched</p>
-                  <p className="mt-1 text-3xl font-bold text-slate-800">{dd2Data._metadata.unmatched}</p>
+                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">Unmatched / ambiguous</p>
+                  <p className="font-semibold text-slate-800">{dd2Data._metadata.unmatched} / {dd2Data._metadata.ambiguous}</p>
                 </div>
-                <div className="rounded-lg border border-slate-100 bg-slate-50 p-4 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Ambiguous</p>
-                  <p className="mt-1 text-3xl font-bold text-slate-800">{dd2Data._metadata.ambiguous}</p>
+                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">ASB items / rules</p>
+                  <p className="font-semibold text-slate-800">{dd2Data.asbStats?.totalItemsLoaded ?? 0} / {dd2Data.asbStats?.totalRulesLoaded ?? 0}</p>
+                </div>
+                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">Historical data</p>
+                  <p className="font-semibold text-slate-800">{historicalTreatmentData ? 'loaded' : 'not loaded'}</p>
+                </div>
+                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">ML context</p>
+                  <p className="font-semibold text-slate-800">{mlPriorityData ? 'loaded' : 'not loaded'}</p>
                 </div>
               </div>
             ) : (
-              <div className="flex h-full items-center justify-center">
-                <p className="text-sm text-slate-500">Loading identity summary...</p>
-              </div>
+              <p className="mt-2 text-xs text-slate-500">Loading runtime audit...</p>
             )}
           </div>
         </div>
-      </div>
+      </details>
 
       {/* ── Extracted Stats Cards (Indicative Rule + Budget Estimator Overview) ── */}
       <TreatmentStatsCards 
@@ -1275,6 +1302,30 @@ export function TreatmentEnginePage() {
       />
 
       {/* ── Spatial Treatment Context ─────────────────────────────────────────── */}
+      <div className="rounded-lg border border-slate-200 bg-white p-1">
+        <div className="flex flex-wrap gap-1">
+          {[
+            { id: 'inspect' as const, label: 'Inspect' },
+            { id: 'scenario' as const, label: 'Scenario' },
+            { id: 'data-table' as const, label: 'Data Table' },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveWorkspaceTab(tab.id)}
+              className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+                activeWorkspaceTab === tab.id
+                  ? 'bg-slate-900 text-white'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={activeWorkspaceTab === 'inspect' ? 'block' : 'hidden'}>
       <div ref={mapSectionRef} className="rounded-xl border border-slate-200 bg-white overflow-hidden">
         {/* Section header */}
         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3.5">
@@ -1529,6 +1580,7 @@ export function TreatmentEnginePage() {
 
               {/* Sync view to selected object */}
               <MapAutoFitter coords={selectedGeo?.coordinates || null} />
+              <MapVisibilityInvalidator active={activeWorkspaceTab === 'inspect'} />
 
               {/* 350 road geometries */}
               {geos.map((geo, idx) => {
@@ -1827,6 +1879,9 @@ export function TreatmentEnginePage() {
       </div>
 
       {/* ── Extracted Read-only DD2 Table ────────────────────────────────────── */}
+      </div>
+
+      <div className={activeWorkspaceTab === 'data-table' ? 'block space-y-4' : 'hidden'}>
       <div className="mb-4">
         <TreatmentFiltersPanel
           filterAsbType={filterAsbType}
@@ -1851,6 +1906,9 @@ export function TreatmentEnginePage() {
       </div>
 
       {/* ── Phase 5: Scenario Panel ──────────────────────────────────────────── */}
+      </div>
+
+      <div className={activeWorkspaceTab === 'scenario' ? 'block' : 'hidden'}>
       <ScenarioPanel
         candidateBasket={candidateBasket}
         planningNotes={planningNotes}
@@ -1860,6 +1918,7 @@ export function TreatmentEnginePage() {
         optimizationHistoryLookup={optimizationHistoryLookup}
         mlPriorityScores={mlPriorityData?.scores ?? null}
         mlPriorityMetadata={mlPriorityData?.metadata ?? null}
+        mlPriorityConfigurations={mlPriorityData?.configurations ?? null}
         removeFromCandidateBasket={removeFromCandidateBasket}
         setCandidateStatus={setCandidateStatus}
         onSelectRoad={selectRoadFromScenario}
@@ -1868,13 +1927,16 @@ export function TreatmentEnginePage() {
         onOptimizationPreviewChange={handleScenarioOptimizationPreviewChange}
       />
 
+      </div>
+
+      <div className={activeWorkspaceTab === 'data-table' ? 'block' : 'hidden'}>
       <TreatmentRoadTable
         dd2Data={dd2Data}
         filteredTableData={filteredTableData}
         paginatedTableData={paginatedTableData}
         selectedDd2Feature={selectedDd2Feature}
         selectedKey={selectedKey}
-        setSelectedKey={setSelectedKey}
+        setSelectedKey={selectRoadFromDataTable}
         roadKeyToGeoKeyMap={roadKeyToGeoKeyMap}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -1886,70 +1948,60 @@ export function TreatmentEnginePage() {
       />
 
       {/* ── Implementation roadmap ────────────────────────────────────────────── */}
-      <div className="rounded-xl border border-slate-200 bg-white">
-        <div className="border-b border-slate-100 px-5 py-3.5">
-          <h3 className="text-sm font-semibold text-slate-800">Conceptual Flow</h3>
-          <p className="mt-0.5 text-xs text-slate-500">Current academic consultation flow for the Treatment Engine</p>
-        </div>
-        <div className="divide-y divide-slate-50">
-          {NEXT_STEPS.map((item, idx) => {
-            const style = STATUS_STYLES[item.status];
-            return (
-              <div key={item.step} className="flex items-start gap-4 px-5 py-4">
-                {/* Timeline */}
-                <div className="flex flex-col items-center gap-1 pt-0.5">
-                  <div className={`h-3 w-3 rounded-full ${style.dot} ring-4 ring-white`} />
-                  {idx < NEXT_STEPS.length - 1 && (
-                     <div className={`h-full w-px flex-1 ${item.status === 'done' ? 'bg-emerald-200' : 'bg-slate-200'}`} />
-                  )}
-                </div>
-                {/* Icon */}
-                <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${item.status === 'done' ? 'bg-emerald-50' : 'bg-slate-50'}`}>
-                  <item.icon className={`h-4 w-4 ${item.status === 'done' ? 'text-emerald-500' : 'text-slate-400'}`} />
-                </div>
-                {/* Content */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm font-medium text-slate-800">
-                      <span className="mr-1.5 font-mono text-xs text-slate-400">{item.step}.</span>
-                      {item.label}
-                    </p>
-                    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${style.badge}`}>
-                      {item.status === 'done' ? <CheckCircle className="h-2.5 w-2.5" /> : <Clock className="h-2.5 w-2.5" />}
-                      {style.label}
-                    </span>
-                  </div>
-                  <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{item.description}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
+
+      <details className="rounded-lg border border-slate-200 bg-white">
+        <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-800">
+          About, Method, and Data Identity
+        </summary>
+        <div className="border-t border-slate-100 p-4">
+          <div className="mb-4">
+            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Conceptual Flow</h3>
+            <p className="mt-0.5 text-xs text-slate-500">Current academic consultation flow for the Treatment Engine</p>
+          </div>
+          <div className="divide-y divide-slate-100 rounded-md border border-slate-100">
+            {NEXT_STEPS.map((item) => {
+              const style = STATUS_STYLES[item.status];
+              return (
+                <div key={item.step} className="flex items-start gap-3 px-3 py-2.5">
+                  <div className={`mt-1 h-2 w-2 shrink-0 rounded-full ${style.dot}`} />
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="text-xs font-medium text-slate-800">
+                        <span className="mr-1.5 font-mono text-[11px] text-slate-400">{item.step}.</span>
+                        {item.label}
+                      </p>
+                      <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium ${style.badge}`}>
+                        {style.label}
+                      </span>
+                    </div>
+                    <p className="mt-0.5 text-xs leading-relaxed text-slate-500">{item.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-4 grid gap-3 text-xs leading-relaxed text-slate-600 lg:grid-cols-2">
+            <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2.5">
+              Utility features: <span className="font-medium text-slate-700">Sync ASB Snapshot</span> and <span className="font-medium text-slate-700">Export Scenario JSON</span> are available in the scenario panel, but they are not part of the academic flowchart.
+              <div className="mt-2">
+                Future roadmap only: Kecamatan linkage, spatial equity/distribution analysis, and constrained multi-objective optimization.
+              </div>
+            </div>
+            <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2.5">
+              <span className="font-semibold text-slate-700">Identity Rule Reminder:</span>{' '}
+              All road matching must follow{' '}
+              <code className="rounded bg-white px-1 py-0.5 font-mono text-[10px]">DATA_IDENTITY_RULES.md</code>
+              . Logical road universe = <strong>350</strong>. Use canonical{' '}
+              <code className="font-mono text-[10px]">nama_ruas_norm</code> /{' '}
+              <code className="font-mono text-[10px]">road_key</code> identity. Do not use{' '}
+              <code className="font-mono text-[10px]">road_id</code> as cross-scenario identity.
+            </div>
+          </div>
+        </div>
+      </details>
 
       {/* ── Identity rules reminder ───────────────────────────────────────────── */}
-      <div className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-xs text-slate-500">
-        Utility features: <span className="font-medium text-slate-700">Sync ASB Snapshot</span> and <span className="font-medium text-slate-700">Export Scenario JSON</span> are available in the scenario panel, but they are not part of the academic flowchart.
-        <div className="mt-2">
-          Future roadmap only: Kecamatan linkage, spatial equity/distribution analysis, and constrained multi-objective optimization.
-        </div>
-      </div>
-
-      <div className="flex items-start gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3">
-        <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-blue-500" />
-        <div className="text-xs leading-relaxed text-blue-700">
-          <span className="font-semibold">Identity Rule Reminder:</span>{' '}
-          All road matching must follow{' '}
-          <code className="rounded bg-blue-100 px-1 py-0.5 font-mono text-[10px]">
-            DATA_IDENTITY_RULES.md
-          </code>
-          . Logical road universe = <strong>350</strong>. Use canonical{' '}
-          <code className="font-mono text-[10px]">nama_ruas_norm</code> /{' '}
-          <code className="font-mono text-[10px]">road_key</code> identity. Do not use{' '}
-          <code className="font-mono text-[10px]">road_id</code> as cross-scenario identity.
-        </div>
-      </div>
-      
       {/* ── Extracted ASB Type Guide Modal Component ─────────────────────────── */}
       <ASBTypeGuide 
         isOpen={isGuideOpen}

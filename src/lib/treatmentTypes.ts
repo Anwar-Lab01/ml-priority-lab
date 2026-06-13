@@ -186,6 +186,8 @@ export interface MLPriorityScore {
   rank: number | null;
   score: number | null;
   model?: string | null;
+  scenario?: string | null;
+  score_type?: string | null;
   top35?: boolean;
   top70?: boolean;
   top105?: boolean;
@@ -210,6 +212,10 @@ export interface MLPriorityMetadata {
 export interface MLPriorityScoresByRoadKey {
   metadata: MLPriorityMetadata;
   scores: Record<string, MLPriorityScore>;
+  configurations?: Record<string, Record<string, Record<string, {
+    metadata: MLPriorityMetadata;
+    scores: Record<string, MLPriorityScore>;
+  }>>>;
 }
 
 // ── Display type aliases ──────────────────────────────────────────────────────
