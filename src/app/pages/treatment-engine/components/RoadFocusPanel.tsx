@@ -178,6 +178,16 @@ export function RoadFocusPanel({
   const historicalYears = ['2021', '2022', '2023', '2024', '2025'] as const;
   const [activeTab, setActiveTab] = useState<RoadFocusTab>('overview');
 
+  const activeCutoff = mlPriorityMetadata?.score_type === 'rerank_population_focus'
+    ? 'top35'
+    : mlPriorityMetadata?.score_type === 'grid_0005'
+      ? 'top70'
+      : 'top105';
+
+  const activeThreshold = activeCutoff === 'top35' ? 35 : activeCutoff === 'top70' ? 70 : 105;
+  const inActiveCutoff = selectedMlPriorityScore && selectedMlPriorityScore.rank !== null && selectedMlPriorityScore.rank <= activeThreshold;
+
+
   useEffect(() => {
     setActiveTab('overview');
   }, [selectedGeo?.road_id, selectedGeo?.legacy_ref, selectedGeo?.road_name, selectedDd2Feature?.road_key]);
@@ -412,23 +422,11 @@ export function RoadFocusPanel({
                     Scenario: <strong>{mlPriorityMetadata?.scenario || '—'}</strong>
                   </p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
-                    {selectedMlPriorityScore.top35 !== undefined && (
-                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.top35 ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'}`}>
-                        Top-35 {selectedMlPriorityScore.top35 ? 'Yes' : 'No'}
-                      </span>
-                    )}
-                    {selectedMlPriorityScore.top70 !== undefined && (
-                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.top70 ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'}`}>
-                        Top-70 {selectedMlPriorityScore.top70 ? 'Yes' : 'No'}
-                      </span>
-                    )}
-                    {selectedMlPriorityScore.top105 !== undefined && (
-                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.top105 ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'}`}>
-                        Top-105 {selectedMlPriorityScore.top105 ? 'Yes' : 'No'}
-                      </span>
-                    )}
+                    <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold border ${inActiveCutoff ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-500 border-slate-200'}`}>
+                      In Cutoff ({activeCutoff === 'top35' ? 'Top-35' : activeCutoff === 'top70' ? 'Top-70' : 'Top-105'}): {inActiveCutoff ? 'Yes' : 'No'}
+                    </span>
                     {selectedMlPriorityScore.hit_2026 !== null && selectedMlPriorityScore.hit_2026 !== undefined && (
-                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${selectedMlPriorityScore.hit_2026 ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>
+                      <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold border ${selectedMlPriorityScore.hit_2026 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-500 border-slate-200'}`}>
                         2026 validation/target indicator: {selectedMlPriorityScore.hit_2026 ? 'Hit' : 'No hit'}
                       </span>
                     )}

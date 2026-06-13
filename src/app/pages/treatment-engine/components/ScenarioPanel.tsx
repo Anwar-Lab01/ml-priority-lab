@@ -59,6 +59,8 @@ interface ScenarioPanelProps {
   optimizationHistoryLookup: Map<string, HistoricalTreatmentContext>;
   mlPriorityScores: Record<string, MLPriorityScore> | null;
   mlPriorityMetadata: MLPriorityMetadata | null;
+  selectedMlCutoff?: 'top35' | 'top70' | 'top105';
+  onMlCutoffChange?: (cutoff: 'top35' | 'top70' | 'top105') => void;
   mlPriorityConfigurations?: MLPriorityScoresByRoadKey['configurations'] | null;
   removeFromCandidateBasket: (road_key: string) => void;
   setCandidateStatus: (road_key: string, status: CandidateStatus) => void;
@@ -335,7 +337,8 @@ export function ScenarioPanel({
   optimizationHistoryLookup,
   mlPriorityScores,
   mlPriorityMetadata,
-  mlPriorityConfigurations,
+  selectedMlCutoff,
+  onMlCutoffChange,
   removeFromCandidateBasket,
   setCandidateStatus,
   onSelectRoad,
@@ -347,9 +350,7 @@ export function ScenarioPanel({
   const [isOpen, setIsOpen] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
   const [activeTab, setActiveTab] = useState<ScenarioPanelTab>('candidates');
-  const [selectedMlScenario, setSelectedMlScenario] = useState('refined_recall_max_any2026');
-  const [selectedMlModel, setSelectedMlModel] = useState('RandomForest');
-  const [selectedMlScoreType, setSelectedMlScoreType] = useState('rerank_medium');
+
 
   // Budget validation
   const budgetCapNumber = parseFloat(budgetCapInput);
@@ -371,42 +372,8 @@ export function ScenarioPanel({
     [items, budgetCapRp],
   );
 
-  const availableMlScenarios = useMemo(
-    () => Object.keys(mlPriorityConfigurations ?? {}).sort(),
-    [mlPriorityConfigurations],
-  );
-
-  const availableMlModels = useMemo(
-    () => Object.keys(mlPriorityConfigurations?.[selectedMlScenario] ?? {}).sort(),
-    [mlPriorityConfigurations, selectedMlScenario],
-  );
-
-  const availableMlScoreTypes = useMemo(
-    () => Object.keys(mlPriorityConfigurations?.[selectedMlScenario]?.[selectedMlModel] ?? {}).sort(),
-    [mlPriorityConfigurations, selectedMlScenario, selectedMlModel],
-  );
-
-  useEffect(() => {
-    if (availableMlScenarios.length > 0 && !availableMlScenarios.includes(selectedMlScenario)) {
-      setSelectedMlScenario(availableMlScenarios[0]);
-    }
-  }, [availableMlScenarios, selectedMlScenario]);
-
-  useEffect(() => {
-    if (availableMlModels.length > 0 && !availableMlModels.includes(selectedMlModel)) {
-      setSelectedMlModel(availableMlModels[0]);
-    }
-  }, [availableMlModels, selectedMlModel]);
-
-  useEffect(() => {
-    if (availableMlScoreTypes.length > 0 && !availableMlScoreTypes.includes(selectedMlScoreType)) {
-      setSelectedMlScoreType(availableMlScoreTypes[0]);
-    }
-  }, [availableMlScoreTypes, selectedMlScoreType]);
-
-  const selectedMlConfiguration = mlPriorityConfigurations?.[selectedMlScenario]?.[selectedMlModel]?.[selectedMlScoreType] ?? null;
-  const selectedMlPriorityScores = selectedMlConfiguration?.scores ?? mlPriorityScores ?? {};
-  const selectedMlPriorityMetadata = selectedMlConfiguration?.metadata ?? mlPriorityMetadata;
+  const selectedMlPriorityScores = mlPriorityScores;
+  const selectedMlPriorityMetadata = mlPriorityMetadata;
 
   const optimizationPreview = useMemo(
     () => runScenarioOptimizationPreview({
@@ -428,6 +395,14 @@ export function ScenarioPanel({
   );
 
   const mlScenarioSummary = useMemo(() => {
+    if (!selectedMlPriorityScores) {
+      return {
+        hasRuntimeData: false,
+        withData: 0,
+        inActiveCutoff: 0,
+        averageRank: null,
+      };
+    }
     const scores = selectedMlPriorityScores;
     const candidateScores = items
       .map(item => scores[item.road_key])
@@ -436,18 +411,18 @@ export function ScenarioPanel({
       .map(score => score.rank)
       .filter((rank): rank is number => typeof rank === 'number' && Number.isFinite(rank));
 
+    const threshold = selectedMlCutoff === 'top35' ? 35 : selectedMlCutoff === 'top70' ? 70 : 105;
+
     return {
-      hasRuntimeData: Object.keys(scores).length > 0,
+      hasRuntimeData: true,
       withData: candidateScores.length,
-      top35: candidateScores.filter(score => score.top35 === true).length,
-      top70: candidateScores.filter(score => score.top70 === true).length,
-      top105: candidateScores.filter(score => score.top105 === true).length,
+      inActiveCutoff: candidateScores.filter(score => score.rank !== null && score.rank <= threshold).length,
       averageRank: ranks.length > 0 ? ranks.reduce((sum, rank) => sum + rank, 0) / ranks.length : null,
     };
-  }, [items, selectedMlPriorityScores]);
+  }, [items, selectedMlPriorityScores, selectedMlCutoff]);
 
   const mlOptimizationComparison = useMemo(() => {
-    const scores = selectedMlPriorityScores;
+    const scores = selectedMlPriorityScores || {};
     const optimizedSelectedKeys = new Set(optimizationPreview.optimizedSelected.map(candidate => candidate.item.road_key));
     const optimizedDeferredKeys = new Set(optimizationPreview.optimizedDeferred.map(candidate => candidate.item.road_key));
     const byRoadKey = new Map<string, MLOptimizationComparison>();
@@ -457,11 +432,14 @@ export function ScenarioPanel({
     let selectedOutsideTop105 = 0;
     let withoutMlData = 0;
 
+    const cutoffVal = selectedMlCutoff === 'top35' ? 35 : selectedMlCutoff === 'top70' ? 70 : 105;
+    const mlHighThreshold = selectedMlCutoff === 'top35' ? 35 : 70;
+
     items.forEach(item => {
       const mlScore = scores[item.road_key];
       const hasMlData = Boolean(mlScore);
-      const isMlTop35Or70 = mlScore?.top35 === true || mlScore?.top70 === true;
-      const isMlTopAny = isMlTop35Or70 || mlScore?.top105 === true;
+      const isMlTop35Or70 = mlScore && mlScore.rank !== null && mlScore.rank <= mlHighThreshold;
+      const isMlTopAny = mlScore && mlScore.rank !== null && mlScore.rank <= cutoffVal;
       const isOptimizedSelected = optimizedSelectedKeys.has(item.road_key);
       const isOptimizedDeferred = optimizedDeferredKeys.has(item.road_key);
 
@@ -505,7 +483,7 @@ export function ScenarioPanel({
         withoutMlData,
       },
     };
-  }, [items, selectedMlPriorityScores, optimizationPreview.optimizedSelected, optimizationPreview.optimizedDeferred]);
+  }, [items, selectedMlPriorityScores, selectedMlCutoff, optimizationPreview.optimizedSelected, optimizationPreview.optimizedDeferred]);
 
   const optimizationWarnings = useMemo(() => {
     const warnings = [...optimizationPreview.warnings];
@@ -832,38 +810,17 @@ export function ScenarioPanel({
                   ML context only — not used by Optimization Preview yet.
                 </p>
               </div>
-              <div className="grid w-full gap-2 md:grid-cols-3">
-                <label className="text-[10px] font-semibold text-slate-600">
-                  Scenario
+              <div className="w-full md:w-auto">
+                <label className="text-[10px] font-semibold text-slate-600 block">
+                  ML Priority Cutoff (Final Thesis Configuration)
                   <select
-                    value={selectedMlScenario}
-                    onChange={(event) => setSelectedMlScenario(event.target.value)}
-                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs"
-                    disabled={availableMlScenarios.length === 0}
+                    value={selectedMlCutoff || 'top70'}
+                    onChange={(event) => onMlCutoffChange?.(event.target.value as any)}
+                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs font-bold text-slate-700 focus:ring-1 focus:ring-sky-500"
                   >
-                    {availableMlScenarios.map(value => <option key={value} value={value}>{value}</option>)}
-                  </select>
-                </label>
-                <label className="text-[10px] font-semibold text-slate-600">
-                  Model
-                  <select
-                    value={selectedMlModel}
-                    onChange={(event) => setSelectedMlModel(event.target.value)}
-                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs"
-                    disabled={availableMlModels.length === 0}
-                  >
-                    {availableMlModels.map(value => <option key={value} value={value}>{value}</option>)}
-                  </select>
-                </label>
-                <label className="text-[10px] font-semibold text-slate-600">
-                  Score Type
-                  <select
-                    value={selectedMlScoreType}
-                    onChange={(event) => setSelectedMlScoreType(event.target.value)}
-                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs"
-                    disabled={availableMlScoreTypes.length === 0}
-                  >
-                    {availableMlScoreTypes.map(value => <option key={value} value={value}>{value || '(default)'}</option>)}
+                    <option value="top35">Top-35 (DecisionTree + rerank_population_focus)</option>
+                    <option value="top70">Top-70 (RandomForest + grid_0005)</option>
+                    <option value="top105">Top-105 (RandomForest + rerank_medium)</option>
                   </select>
                 </label>
               </div>
@@ -872,28 +829,31 @@ export function ScenarioPanel({
               </p>
               {mlScenarioSummary.hasRuntimeData ? (
                 <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
-                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
-                    {mlScenarioSummary.withData}/{items.length} with ML data
+                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                    Active Cutoff: {selectedMlCutoff === 'top35' ? 'Top-35' : selectedMlCutoff === 'top70' ? 'Top-70' : 'Top-105'}
                   </span>
-                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
-                    Top-35 {mlScenarioSummary.top35}
+                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                    Model: {selectedMlPriorityMetadata?.model || '—'}
                   </span>
-                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
-                    Top-70 {mlScenarioSummary.top70}
+                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                    Adjustment: {selectedMlPriorityMetadata?.score_type || '(default)'}
                   </span>
-                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
-                    Top-105 {mlScenarioSummary.top105}
+                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                    Candidates with ML Data: {mlScenarioSummary.withData}/{items.length}
                   </span>
-                  <span className="rounded-full bg-white px-2 py-1 text-sky-700">
-                    Avg rank {mlScenarioSummary.averageRank == null ? '—' : mlScenarioSummary.averageRank.toFixed(1)}
+                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-indigo-700 border border-indigo-200">
+                    In Active Cutoff: {mlScenarioSummary.inActiveCutoff}
                   </span>
-                  <span className="rounded-full bg-white px-2 py-1 text-slate-500">
-                    {selectedMlPriorityMetadata?.scenario ?? selectedMlScenario}
+                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                    Avg Rank: {mlScenarioSummary.averageRank == null ? '—' : mlScenarioSummary.averageRank.toFixed(1)}
+                  </span>
+                  <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700 border border-emerald-200">
+                    Thesis Recall: {selectedMlCutoff === 'top35' ? '28.57% (8/28)' : selectedMlCutoff === 'top70' ? '50.00% (14/28)' : '64.29% (18/28)'}
                   </span>
                 </div>
               ) : (
-                <p className="rounded-md border border-slate-100 bg-white px-2.5 py-2 text-[10px] font-semibold text-slate-500">
-                  ML Priority Score data is not loaded yet.
+                <p className="rounded-md border border-red-100 bg-red-50/50 px-2.5 py-2 text-[10px] font-semibold text-red-600">
+                  ML Priority Score data is not available for this configuration.
                 </p>
               )}
             </div>
@@ -1083,7 +1043,7 @@ export function ScenarioPanel({
                       isFunded={true}
                       isForceExcluded={false}
                       comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
-                      mlScore={selectedMlPriorityScores[item.road_key] ?? null}
+                      mlScore={selectedMlPriorityScores?.[item.road_key] ?? null}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -1108,7 +1068,7 @@ export function ScenarioPanel({
                       isFunded={false}
                       isForceExcluded={false}
                       comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
-                      mlScore={selectedMlPriorityScores[item.road_key] ?? null}
+                      mlScore={selectedMlPriorityScores?.[item.road_key] ?? null}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}
@@ -1134,7 +1094,7 @@ export function ScenarioPanel({
                       isFunded={false}
                       isForceExcluded={true}
                       comparison={mlOptimizationComparison.byRoadKey.get(item.road_key)}
-                      mlScore={selectedMlPriorityScores[item.road_key] ?? null}
+                      mlScore={selectedMlPriorityScores?.[item.road_key] ?? null}
                       onRemove={() => removeFromCandidateBasket(item.road_key)}
                       onSetStatus={s => setCandidateStatus(item.road_key, s)}
                       onSelectRoad={onSelectRoad}

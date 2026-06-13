@@ -113,6 +113,39 @@ type MLPriorityOverlayFilter = 'all' | 'top35' | 'top70' | 'top105' | 'optimizat
 type MLPriorityOverlayTier = 'top35' | 'top70' | 'top105' | 'neutral';
 type WorkspaceTab = 'inspect' | 'scenario' | 'data-table';
 
+type MlCutoff = 'top35' | 'top70' | 'top105';
+
+const ML_THESIS_CONFIGS: Record<MlCutoff, {
+  scenario: string;
+  model: string;
+  scoreType: string;
+  captureStr: string;
+  recallStr: string;
+}> = {
+  top35: {
+    scenario: 'refined_recall_max_any2026',
+    model: 'DecisionTree',
+    scoreType: 'rerank_population_focus',
+    captureStr: '8/28',
+    recallStr: '28.57%',
+  },
+  top70: {
+    scenario: 'refined_recall_max_any2026',
+    model: 'RandomForest',
+    scoreType: 'grid_0005',
+    captureStr: '14/28',
+    recallStr: '50.00%',
+  },
+  top105: {
+    scenario: 'refined_recall_max_any2026',
+    model: 'RandomForest',
+    scoreType: 'rerank_medium',
+    captureStr: '18/28',
+    recallStr: '64.29%',
+  },
+};
+
+
 const ML_PRIORITY_OVERLAY_STYLES: Record<MLPriorityOverlayTier, { color: string; weight: number; opacity: number }> = {
   top35: { color: '#dc2626', weight: 6, opacity: 0.95 },
   top70: { color: '#f97316', weight: 5, opacity: 0.9 },
@@ -597,7 +630,16 @@ export function TreatmentEnginePage() {
   // Map Display Mode State
   const [displayMode, setDisplayMode] = useState<MapDisplayMode>('threshold');
   const [mlOverlayEnabled, setMlOverlayEnabled] = useState(false);
+  const [selectedMlCutoff, setSelectedMlCutoff] = useState<MlCutoff>('top70');
   const [mlOverlayFilter, setMlOverlayFilter] = useState<MLPriorityOverlayFilter>('all');
+
+  // Synchronize spatial overlay filter when global cutoff changes
+  useEffect(() => {
+    if (mlOverlayFilter === 'top35' || mlOverlayFilter === 'top70' || mlOverlayFilter === 'top105') {
+      setMlOverlayFilter(selectedMlCutoff);
+    }
+  }, [selectedMlCutoff, mlOverlayFilter]);
+
   const [scenarioOptimizationPreview, setScenarioOptimizationPreview] = useState<ScenarioOptimizationPreviewResult | null>(null);
 
   const handleScenarioOptimizationPreviewChange = useCallback((preview: ScenarioOptimizationPreviewResult) => {
@@ -891,10 +933,27 @@ export function TreatmentEnginePage() {
     return historicalTreatmentByRoadKey.get(selectedDd2Feature.road_key) ?? null;
   }, [selectedDd2Feature, historicalTreatmentByRoadKey]);
 
+  const activeMlConfig = useMemo(() => {
+    return ML_THESIS_CONFIGS[selectedMlCutoff];
+  }, [selectedMlCutoff]);
+
+  const activeMlScores = useMemo(() => {
+    if (!mlPriorityData) return null;
+    const cfg = mlPriorityData.configurations?.[activeMlConfig.scenario]?.[activeMlConfig.model]?.[activeMlConfig.scoreType];
+    // Return null if missing, no silent fallback to default scores
+    return cfg?.scores ?? null;
+  }, [mlPriorityData, activeMlConfig]);
+
+  const activeMlMetadata = useMemo(() => {
+    if (!mlPriorityData) return null;
+    const cfg = mlPriorityData.configurations?.[activeMlConfig.scenario]?.[activeMlConfig.model]?.[activeMlConfig.scoreType];
+    return cfg?.metadata ?? null;
+  }, [mlPriorityData, activeMlConfig]);
+
   const selectedMlPriorityScore = useMemo(() => {
-    if (!selectedDd2Feature) return null;
-    return mlPriorityData?.scores?.[selectedDd2Feature.road_key] ?? null;
-  }, [selectedDd2Feature, mlPriorityData]);
+    if (!selectedDd2Feature || !activeMlScores) return null;
+    return activeMlScores[selectedDd2Feature.road_key] ?? null;
+  }, [selectedDd2Feature, activeMlScores]);
 
   const optimizationRoadLookup = useMemo(() => {
     const map = new Map<string, OptimizationRoadInput>();
@@ -932,35 +991,40 @@ export function TreatmentEnginePage() {
 
   const mlHighDeferredRoadKeys = useMemo(() => {
     const keys = new Set<string>();
-    const scores = mlPriorityData?.scores ?? {};
+    if (!activeMlScores) return keys;
+    const scores = activeMlScores;
+    const threshold = selectedMlCutoff === 'top35' ? 35 : selectedMlCutoff === 'top70' ? 70 : 105;
     optimizationDeferredRoadKeys.forEach(roadKey => {
       const score = scores[roadKey];
-      if (score?.top35 === true || score?.top70 === true) keys.add(roadKey);
+      if (score && score.rank !== null && score.rank <= threshold) keys.add(roadKey);
     });
     return keys;
-  }, [mlPriorityData, optimizationDeferredRoadKeys]);
+  }, [activeMlScores, selectedMlCutoff, optimizationDeferredRoadKeys]);
 
   const getMlPriorityTier = useCallback((roadKey: string | null | undefined): MLPriorityOverlayTier => {
-    if (!roadKey) return 'neutral';
-    const score = mlPriorityData?.scores?.[roadKey];
-    if (score?.top35 === true) return 'top35';
-    if (score?.top70 === true) return 'top70';
-    if (score?.top105 === true) return 'top105';
+    if (!roadKey || !activeMlScores) return 'neutral';
+    const score = activeMlScores[roadKey];
+    if (!score || score.rank === null) return 'neutral';
+    if (score.rank <= 35) return 'top35';
+    if (score.rank <= 70) return 'top70';
+    if (score.rank <= 105) return 'top105';
     return 'neutral';
-  }, [mlPriorityData]);
+  }, [activeMlScores]);
 
   const matchesMlOverlayFilter = useCallback((roadKey: string | null | undefined): boolean => {
     if (!roadKey) return mlOverlayFilter === 'all';
-    const score = mlPriorityData?.scores?.[roadKey];
+    if (!activeMlScores) return false;
+    const score = activeMlScores[roadKey];
+    if (!score) return false;
 
     if (mlOverlayFilter === 'all') return true;
-    if (mlOverlayFilter === 'top35') return score?.top35 === true;
-    if (mlOverlayFilter === 'top70') return score?.top70 === true;
-    if (mlOverlayFilter === 'top105') return score?.top105 === true;
+    if (mlOverlayFilter === 'top35') return score.rank !== null && score.rank <= 35;
+    if (mlOverlayFilter === 'top70') return score.rank !== null && score.rank <= 70;
+    if (mlOverlayFilter === 'top105') return score.rank !== null && score.rank <= 105;
     if (mlOverlayFilter === 'optimization_selected') return optimizationSelectedRoadKeys.has(roadKey);
     if (mlOverlayFilter === 'ml_high_deferred') return mlHighDeferredRoadKeys.has(roadKey);
     return true;
-  }, [mlOverlayFilter, mlPriorityData, optimizationSelectedRoadKeys, mlHighDeferredRoadKeys]);
+  }, [mlOverlayFilter, activeMlScores, optimizationSelectedRoadKeys, mlHighDeferredRoadKeys]);
 
   const getOptimizationPreviewStatus = useCallback((roadKey: string | null | undefined): string => {
     if (!roadKey || !scenarioOptimizationPreview) return 'Not available';
@@ -1192,21 +1256,25 @@ export function TreatmentEnginePage() {
 
   const mlOverlaySummary = useMemo(() => {
     const roads = dd2Data?.roads ?? [];
-    const scores = mlPriorityData?.scores ?? {};
+    const scores = activeMlScores ?? {};
     const visibleRoads = mlOverlayEnabled
       ? roads.filter(road => matchesMlOverlayFilter(road.road_key)).length
-      : roads.length;
+      : 0;
+
+    const activeConfigMeta = ML_THESIS_CONFIGS[selectedMlCutoff];
 
     return {
       visibleRoads,
       roadsWithMlData: roads.filter(road => Boolean(scores[road.road_key])).length,
-      top35: roads.filter(road => scores[road.road_key]?.top35 === true).length,
-      top70: roads.filter(road => scores[road.road_key]?.top70 === true).length,
-      top105: roads.filter(road => scores[road.road_key]?.top105 === true).length,
+      activeCutoffLabel: selectedMlCutoff === 'top35' ? 'Top-35' : selectedMlCutoff === 'top70' ? 'Top-70' : 'Top-105',
+      model: activeConfigMeta.model,
+      adjustment: activeConfigMeta.scoreType,
+      capture: activeConfigMeta.captureStr,
+      recall: activeConfigMeta.recallStr,
       optimizationSelected: optimizationSelectedRoadKeys.size,
       mlHighDeferred: mlHighDeferredRoadKeys.size,
     };
-  }, [dd2Data, mlPriorityData, mlOverlayEnabled, matchesMlOverlayFilter, optimizationSelectedRoadKeys, mlHighDeferredRoadKeys]);
+  }, [dd2Data, activeMlScores, selectedMlCutoff, mlOverlayEnabled, matchesMlOverlayFilter, optimizationSelectedRoadKeys, mlHighDeferredRoadKeys]);
 
   return (
     <div id="treatment-engine-page" className="space-y-6">
@@ -1464,7 +1532,12 @@ export function TreatmentEnginePage() {
                   key={value}
                   type="button"
                   disabled={!mlOverlayEnabled}
-                  onClick={() => setMlOverlayFilter(value as MLPriorityOverlayFilter)}
+                  onClick={() => {
+                    setMlOverlayFilter(value as MLPriorityOverlayFilter);
+                    if (value === 'top35' || value === 'top70' || value === 'top105') {
+                      setSelectedMlCutoff(value);
+                    }
+                  }}
                   className={`rounded-full border px-2.5 py-1 text-[10px] font-bold transition-colors ${
                     mlOverlayFilter === value
                       ? 'border-sky-300 bg-sky-100 text-sky-800'
@@ -1477,17 +1550,22 @@ export function TreatmentEnginePage() {
             </div>
 
             <div className="ml-auto flex flex-wrap items-center gap-1.5 text-[9px] font-bold">
-              <span className="rounded-full bg-white px-2 py-1 text-slate-600">Visible {mlOverlaySummary.visibleRoads}</span>
-              <span className="rounded-full bg-white px-2 py-1 text-sky-700">ML data {mlOverlaySummary.roadsWithMlData}</span>
-              <span className="rounded-full bg-red-50 px-2 py-1 text-red-700">Top-35 {mlOverlaySummary.top35}</span>
-              <span className="rounded-full bg-orange-50 px-2 py-1 text-orange-700">Top-70 {mlOverlaySummary.top70}</span>
-              <span className="rounded-full bg-blue-50 px-2 py-1 text-blue-700">Top-105 {mlOverlaySummary.top105}</span>
-              <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">Opt selected {mlOverlaySummary.optimizationSelected}</span>
-              <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">ML-high deferred {mlOverlaySummary.mlHighDeferred}</span>
+              <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">Visible: {mlOverlaySummary.visibleRoads}</span>
+              <span className="rounded-full bg-sky-50 px-2.5 py-1 text-sky-800 border border-sky-200">ML Records: {mlOverlaySummary.roadsWithMlData}</span>
+              <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-indigo-800 border border-indigo-200">Cutoff: {mlOverlaySummary.activeCutoffLabel}</span>
+              <span className="rounded-full bg-violet-50 px-2.5 py-1 text-violet-800 border border-violet-200">Model: {mlOverlaySummary.model}</span>
+              <span className="rounded-full bg-amber-50 px-2.5 py-1 text-amber-800 border border-amber-200">Adjustment: {mlOverlaySummary.adjustment}</span>
+              <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-800 border border-emerald-200">Recall: {mlOverlaySummary.recall} ({mlOverlaySummary.capture})</span>
+              <span className="rounded-full bg-slate-50 px-2.5 py-1 text-slate-700 border border-slate-200">Opt Selected: {mlOverlaySummary.optimizationSelected}</span>
+              <span className="rounded-full bg-red-50 px-2.5 py-1 text-red-700 border border-red-200">ML-High Deferred: {mlOverlaySummary.mlHighDeferred}</span>
             </div>
           </div>
           <p className="mt-1.5 text-[10px] leading-relaxed text-sky-700/80">
-            Read-only overlay from fixed runtime ML configuration: refined_recall_max_any2026 / planned_any_2026 / RandomForest / rerank_medium. Matching uses Treatment Engine road_key only.
+            {activeMlScores ? (
+              `Read-only overlay from dynamic thesis configuration: refined_recall_max_any2026 / ${mlOverlaySummary.model} / ${mlOverlaySummary.adjustment}. Matching uses Treatment Engine road_key only.`
+            ) : (
+              <span className="text-red-500 font-semibold">ML priority data is not available/loaded for the selected cutoff configuration.</span>
+            )}
           </p>
         </div>
 
@@ -1601,15 +1679,13 @@ export function TreatmentEnginePage() {
                 let color = '#6366f1';
                 let weight = 3;
                 let opacity = 0.65;
-                const mlScore = f ? mlPriorityData?.scores?.[f.road_key] ?? null : null;
+                const mlScore = f && activeMlScores ? activeMlScores[f.road_key] ?? null : null;
                 const mlTier = f ? getMlPriorityTier(f.road_key) : 'neutral';
                 const mlOverlayMatches = f ? matchesMlOverlayFilter(f.road_key) : mlOverlayFilter === 'all';
                 const mlTopStatus = mlScore
-                  ? [
-                      mlScore.top35 === true ? 'Top-35' : null,
-                      mlScore.top70 === true ? 'Top-70' : null,
-                      mlScore.top105 === true ? 'Top-105' : null,
-                    ].filter(Boolean).join(' / ') || 'Outside Top-105'
+                  ? (mlScore.rank !== null && mlScore.rank <= (selectedMlCutoff === 'top35' ? 35 : selectedMlCutoff === 'top70' ? 70 : 105)
+                      ? `In Active Cutoff (${selectedMlCutoff === 'top35' ? 'Top-35' : selectedMlCutoff === 'top70' ? 'Top-70' : 'Top-105'})`
+                      : `Outside Active Cutoff (${selectedMlCutoff === 'top35' ? 'Top-35' : selectedMlCutoff === 'top70' ? 'Top-70' : 'Top-105'})`)
                   : 'No ML data';
 
                 if (isSelected) {
@@ -1703,7 +1779,7 @@ export function TreatmentEnginePage() {
                                     Status: <strong className="text-slate-700">{mlTopStatus}</strong>
                                   </span>
                                   <span className="block">
-                                    Model/scenario: <strong className="text-slate-700">{mlScore?.model || mlPriorityData?.metadata?.model || '—'} / {mlPriorityData?.metadata?.source_scenario_id || mlPriorityData?.metadata?.scenario || '—'}</strong>
+                                    Model/scenario: <strong className="text-slate-700">{mlScore?.model || activeMlMetadata?.model || '—'} / {activeMlMetadata?.source_scenario_id || activeMlMetadata?.scenario || '—'}</strong>
                                   </span>
                                   <span className="block">
                                     Optimization: <strong className="text-slate-700">{getOptimizationPreviewStatus(f.road_key)}</strong>
@@ -1794,7 +1870,7 @@ export function TreatmentEnginePage() {
             selectedSegmentSummary={selectedSegmentSummary}
             selectedHistoricalTreatmentRecord={selectedHistoricalTreatmentRecord}
             selectedMlPriorityScore={selectedMlPriorityScore}
-            mlPriorityMetadata={mlPriorityData?.metadata ?? null}
+            mlPriorityMetadata={activeMlMetadata}
             diagnosticKey={diagnosticKey}
             matchMethod={matchMethod}
             manualOverrides={manualOverrides}
@@ -1916,9 +1992,10 @@ export function TreatmentEnginePage() {
         scenarioKecamatanSummaryHasMultiKecamatanRoads={scenarioKecamatanSummary.hasMultiKecamatanRoads}
         optimizationRoadLookup={optimizationRoadLookup}
         optimizationHistoryLookup={optimizationHistoryLookup}
-        mlPriorityScores={mlPriorityData?.scores ?? null}
-        mlPriorityMetadata={mlPriorityData?.metadata ?? null}
-        mlPriorityConfigurations={mlPriorityData?.configurations ?? null}
+        mlPriorityScores={activeMlScores}
+        mlPriorityMetadata={activeMlMetadata}
+        selectedMlCutoff={selectedMlCutoff}
+        onMlCutoffChange={setSelectedMlCutoff}
         removeFromCandidateBasket={removeFromCandidateBasket}
         setCandidateStatus={setCandidateStatus}
         onSelectRoad={selectRoadFromScenario}
