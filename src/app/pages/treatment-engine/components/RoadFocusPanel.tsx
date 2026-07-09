@@ -279,27 +279,27 @@ export function RoadFocusPanel({
       </div>
 
       {selectedDd2Feature && (
-        <div className="border-b border-slate-100 bg-slate-50/80 px-4 py-3">
-          <div className="grid grid-cols-2 gap-2 text-[10px]">
+        <div className="border-b border-slate-100 bg-white px-4 py-3">
+          <div className="grid grid-cols-2 gap-2 text-[11px]">
             <div className="col-span-2">
               <p className="font-semibold leading-snug text-slate-800">{selectedGeo.road_name}</p>
               <p className="mt-0.5 text-slate-500">{getDisplayRuleCategory(selectedDd2Feature.rule_v1.treatment_category)}</p>
             </div>
-            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
-              <p className="font-bold uppercase tracking-wide text-slate-400">Non-Mantap</p>
-              <p className="font-mono font-semibold text-amber-600">{selectedDd2Feature.non_mantap_pct !== null ? `${selectedDd2Feature.non_mantap_pct}%` : '—'}</p>
+            <div className="rounded-md border border-slate-100 bg-slate-50/70 px-2 py-1.5">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Non-Mantap</p>
+              <p className="font-mono text-[11px] font-semibold text-amber-600">{selectedDd2Feature.non_mantap_pct !== null ? `${selectedDd2Feature.non_mantap_pct}%` : '—'}</p>
             </div>
-            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
-              <p className="font-bold uppercase tracking-wide text-slate-400">Final ASB Pagu</p>
-              <p className="font-semibold text-slate-800">{formatCompactRp(selectedDd2Feature.final_asb_budget?.final_pagu_indikatif_rp)}</p>
+            <div className="rounded-md border border-slate-100 bg-slate-50/70 px-2 py-1.5">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Final ASB Pagu</p>
+              <p className="text-[11px] font-semibold text-slate-800">{formatCompactRp(selectedDd2Feature.final_asb_budget?.final_pagu_indikatif_rp)}</p>
             </div>
-            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
-              <p className="font-bold uppercase tracking-wide text-slate-400">ML Rank</p>
-              <p className="font-mono font-semibold text-slate-800">{selectedMlPriorityScore?.rank ?? '—'}</p>
+            <div className="rounded-md border border-slate-100 bg-slate-50/70 px-2 py-1.5">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">ML Rank</p>
+              <p className="font-mono text-[11px] font-semibold text-slate-800">{selectedMlPriorityScore?.rank ?? '—'}</p>
             </div>
-            <div className="rounded-md border border-slate-200 bg-white px-2 py-1.5">
-              <p className="font-bold uppercase tracking-wide text-slate-400">Scenario</p>
-              <p className="font-semibold text-slate-800">{scenarioStatus ? scenarioStatusLabel[scenarioStatus] : 'Not added'}</p>
+            <div className="rounded-md border border-slate-100 bg-slate-50/70 px-2 py-1.5">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-slate-400">Scenario</p>
+              <p className="text-[11px] font-semibold text-slate-800">{scenarioStatus ? scenarioStatusLabel[scenarioStatus] : 'Not added'}</p>
             </div>
           </div>
           <div className="mt-2">
@@ -316,7 +316,7 @@ export function RoadFocusPanel({
               <button
                 id={`scenario-summary-add-${selectedDd2Feature.road_key}`}
                 onClick={() => addToCandidateBasket(selectedDd2Feature)}
-                className="flex w-full items-center justify-center gap-1.5 rounded-md border border-violet-200 bg-violet-100 py-1.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-200 transition-colors"
+                className="flex w-full items-center justify-center gap-1.5 rounded-md border border-violet-200 bg-violet-50 py-1.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-100 transition-colors"
               >
                 <PlusCircle className="h-3.5 w-3.5" />
                 Add to Scenario
@@ -643,7 +643,7 @@ export function RoadFocusPanel({
                     <button
                       id={`scenario-add-${rk}`}
                       onClick={() => addToCandidateBasket(selectedDd2Feature)}
-                      className="flex w-full items-center justify-center gap-1.5 rounded-md border border-violet-200 bg-violet-100 py-1.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-200 transition-colors"
+                      className="flex w-full items-center justify-center gap-1.5 rounded-md border border-violet-200 bg-violet-50 py-1.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-100 transition-colors"
                     >
                       <PlusCircle className="h-3.5 w-3.5" />
                       Add to Scenario

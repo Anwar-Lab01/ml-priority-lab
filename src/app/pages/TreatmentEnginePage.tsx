@@ -9,7 +9,8 @@ import {
   Calculator,
   AlertTriangle,
   Map as MapIcon,
-  Info
+  Info,
+  ClipboardList
 } from 'lucide-react';
 import {
   getMapExplorerRoadKey,
@@ -1280,11 +1281,12 @@ export function TreatmentEnginePage() {
     <div id="treatment-engine-page" className="space-y-6">
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <div className="rounded-lg border border-slate-200 bg-white px-4 py-3">
+      <div className="rounded-lg border border-slate-200 bg-white px-4 py-3 shadow-sm shadow-slate-100/60">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">Treatment Engine</h2>
-            <p className="mt-0.5 text-xs leading-relaxed text-slate-600">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">Presentation workspace</p>
+            <h2 className="mt-0.5 text-base font-semibold text-slate-900">Rule-based treatment and planning review</h2>
+            <p className="mt-0.5 text-[13px] leading-relaxed text-slate-600">
               Rule-based treatment indication and indicative ASB budgeting from DD1 / FormDD1 road-condition data.
             </p>
           </div>
@@ -1370,27 +1372,31 @@ export function TreatmentEnginePage() {
       />
 
       {/* ── Spatial Treatment Context ─────────────────────────────────────────── */}
-      <div className="rounded-lg border border-slate-200 bg-white p-1">
-        <div className="flex flex-wrap gap-1">
+      <div className="rounded-xl border border-slate-200 bg-white p-1.5 shadow-sm shadow-slate-100/70">
+        <div className="flex flex-wrap gap-1.5">
           {[
-            { id: 'inspect' as const, label: 'Inspect' },
-            { id: 'scenario' as const, label: 'Scenario' },
-            { id: 'data-table' as const, label: 'Data Table' },
+            { id: 'inspect' as const, label: 'Inspect', icon: MapIcon },
+            { id: 'scenario' as const, label: 'Scenario', icon: ClipboardList },
+            { id: 'data-table' as const, label: 'Data Table', icon: Database },
           ].map((tab) => (
             <button
               key={tab.id}
               type="button"
               onClick={() => setActiveWorkspaceTab(tab.id)}
-              className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-[13px] font-semibold transition-colors ${
                 activeWorkspaceTab === tab.id
-                  ? 'bg-slate-900 text-white'
+                  ? 'bg-slate-900 text-white shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
               }`}
             >
+              <tab.icon className="h-3.5 w-3.5" />
               {tab.label}
             </button>
           ))}
         </div>
+        <p className="px-2 pb-1 pt-2 text-[11px] leading-relaxed text-slate-500">
+          Inspect: map + selected road | Scenario: planning basket | Data Table: full road inventory
+        </p>
       </div>
 
       <div className={activeWorkspaceTab === 'inspect' ? 'block' : 'hidden'}>
@@ -1506,9 +1512,9 @@ export function TreatmentEnginePage() {
            </div>
         )}
 
-        <div className="border-b border-slate-100 bg-sky-50/40 px-5 py-2.5">
+        <div className="border-b border-slate-100 bg-slate-50/70 px-5 py-3">
           <div className="flex flex-wrap items-center gap-3">
-            <label className="flex cursor-pointer items-center gap-1.5 text-xs font-semibold text-slate-700">
+            <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-semibold text-slate-700">
               <input
                 type="checkbox"
                 checked={mlOverlayEnabled}
@@ -1518,6 +1524,9 @@ export function TreatmentEnginePage() {
               />
               ML Spatial Overlay
             </label>
+            <span className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+              Read-Only Context
+            </span>
 
             <div className={`flex flex-wrap items-center gap-1.5 transition-opacity ${mlOverlayEnabled ? 'opacity-100' : 'opacity-50'}`}>
               {[
@@ -1538,7 +1547,7 @@ export function TreatmentEnginePage() {
                       setSelectedMlCutoff(value);
                     }
                   }}
-                  className={`rounded-full border px-2.5 py-1 text-[10px] font-bold transition-colors ${
+                  className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition-colors ${
                     mlOverlayFilter === value
                       ? 'border-sky-300 bg-sky-100 text-sky-800'
                       : 'border-slate-200 bg-white text-slate-500 hover:border-sky-200 hover:text-sky-700'
@@ -1549,24 +1558,31 @@ export function TreatmentEnginePage() {
               ))}
             </div>
 
-            <div className="ml-auto flex flex-wrap items-center gap-1.5 text-[9px] font-bold">
-              <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">Visible: {mlOverlaySummary.visibleRoads}</span>
-              <span className="rounded-full bg-sky-50 px-2.5 py-1 text-sky-800 border border-sky-200">ML Records: {mlOverlaySummary.roadsWithMlData}</span>
-              <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-indigo-800 border border-indigo-200">Cutoff: {mlOverlaySummary.activeCutoffLabel}</span>
-              <span className="rounded-full bg-violet-50 px-2.5 py-1 text-violet-800 border border-violet-200">Model: {mlOverlaySummary.model}</span>
-              <span className="rounded-full bg-amber-50 px-2.5 py-1 text-amber-800 border border-amber-200">Adjustment: {mlOverlaySummary.adjustment}</span>
-              <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-800 border border-emerald-200">Recall: {mlOverlaySummary.recall} ({mlOverlaySummary.capture})</span>
-              <span className="rounded-full bg-slate-50 px-2.5 py-1 text-slate-700 border border-slate-200">Opt Selected: {mlOverlaySummary.optimizationSelected}</span>
-              <span className="rounded-full bg-red-50 px-2.5 py-1 text-red-700 border border-red-200">ML-High Deferred: {mlOverlaySummary.mlHighDeferred}</span>
+            <div className="ml-auto flex flex-wrap items-center gap-1.5 text-[11px] font-semibold">
+              <span className="rounded-full bg-white px-2.5 py-1 text-slate-700 border border-slate-200">Cutoff: {mlOverlaySummary.activeCutoffLabel}</span>
+              <span className="rounded-full bg-white px-2.5 py-1 text-slate-700 border border-slate-200">Visible: {mlOverlaySummary.visibleRoads}</span>
+              <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-800 border border-emerald-200">Recall: {mlOverlaySummary.recall}</span>
             </div>
           </div>
-          <p className="mt-1.5 text-[10px] leading-relaxed text-sky-700/80">
+          <p className="mt-2 text-[11px] leading-relaxed text-slate-600">
             {activeMlScores ? (
-              `Read-only overlay from dynamic thesis configuration: refined_recall_max_any2026 / ${mlOverlaySummary.model} / ${mlOverlaySummary.adjustment}. Matching uses Treatment Engine road_key only.`
+              'ML is read-only context and does not change ASB budgeting, treatment rules, or optimization.'
             ) : (
               <span className="text-red-500 font-semibold">ML priority data is not available/loaded for the selected cutoff configuration.</span>
             )}
           </p>
+          {activeMlScores && (
+            <details className="mt-2 text-[11px] text-slate-500">
+              <summary className="cursor-pointer font-semibold text-slate-500">ML overlay metadata</summary>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">ML Records: {mlOverlaySummary.roadsWithMlData}</span>
+                <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">Capture: {mlOverlaySummary.capture}</span>
+                <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">Opt Selected: {mlOverlaySummary.optimizationSelected}</span>
+                <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">ML-High Deferred: {mlOverlaySummary.mlHighDeferred}</span>
+                <span className="rounded-full bg-white px-2.5 py-1 font-mono text-slate-500 border border-slate-200">refined_recall_max_any2026 / {mlOverlaySummary.model} / {mlOverlaySummary.adjustment}</span>
+              </div>
+            </details>
+          )}
         </div>
 
          {/* Diagnostics summary for segments if enabled */}

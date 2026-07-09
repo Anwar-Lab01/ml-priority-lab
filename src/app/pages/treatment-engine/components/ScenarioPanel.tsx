@@ -654,13 +654,13 @@ export function ScenarioPanel({
             </div>
           </div>
 
-          <div className={`grid grid-cols-2 gap-px bg-slate-100 lg:grid-cols-4 ${activeTab === 'budget' ? '' : 'hidden'}`}>
+          <div className={`grid grid-cols-2 gap-px bg-slate-100/70 lg:grid-cols-4 ${activeTab === 'budget' ? '' : 'hidden'}`}>
             {/* Total Pagu Indikatif ASB */}
-            <div className="flex flex-col gap-0.5 bg-white px-4 py-3">
+            <div className="flex flex-col gap-0.5 bg-slate-50/60 px-4 py-3">
               <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
                 Total Pagu Indikatif ASB
               </p>
-              <p className="text-lg font-bold text-slate-800 leading-none mt-1">
+              <p className="text-base font-semibold text-slate-800 leading-none mt-1">
                 {formatRp(totalActivePagu)}
               </p>
               <p className="text-[9px] text-slate-400">
@@ -669,7 +669,7 @@ export function ScenarioPanel({
             </div>
 
             {/* Budget Cap */}
-            <div className="flex flex-col gap-1 bg-white px-4 py-3">
+            <div className="flex flex-col gap-1 bg-white px-4 py-3 ring-1 ring-inset ring-violet-100">
               <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
                 Budget Cap (Miliar Rp)
               </p>
@@ -687,7 +687,7 @@ export function ScenarioPanel({
                     setBudgetCapInput(val);
                   }}
                   placeholder="Contoh: 10"
-                  className={`w-full rounded border px-2 py-1 text-xs font-semibold focus:outline-none focus:ring-1 transition-colors ${
+                  className={`w-full rounded-md border px-2.5 py-1.5 text-[13px] font-semibold focus:outline-none focus:ring-1 transition-colors ${
                     isBudgetWarning 
                       ? 'border-amber-300 bg-amber-50 text-amber-900 focus:border-amber-500 focus:ring-amber-400'
                       : 'border-slate-200 bg-slate-50 text-slate-700 focus:border-violet-400 focus:ring-violet-300'
@@ -704,11 +704,11 @@ export function ScenarioPanel({
             </div>
 
             {/* Total Funded */}
-            <div className="flex flex-col gap-0.5 bg-white px-4 py-3">
+            <div className="flex flex-col gap-0.5 bg-slate-50/60 px-4 py-3">
               <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
                 Est. Funded Total
               </p>
-              <p className="text-lg font-bold text-emerald-700 leading-none mt-1">
+              <p className="text-base font-semibold text-emerald-700 leading-none mt-1">
                 {formatRp(preview.totalFundedRp)}
               </p>
               <p className="text-[9px] text-emerald-600">
@@ -717,13 +717,13 @@ export function ScenarioPanel({
             </div>
 
             {/* vs Cap indicator */}
-            <div className="flex flex-col gap-0.5 bg-white px-4 py-3">
+            <div className="flex flex-col gap-0.5 bg-slate-50/60 px-4 py-3">
               <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">
                 vs. Cap
               </p>
               {budgetCapRp != null ? (
                 <>
-                  <p className={`text-lg font-bold leading-none mt-1 ${
+                  <p className={`text-base font-semibold leading-none mt-1 ${
                     preview.totalFundedRp <= budgetCapRp ? 'text-emerald-700' : 'text-red-600'
                   }`}>
                     {preview.totalFundedRp <= budgetCapRp ? 'Within Cap' : 'Exceeds Cap'}
@@ -735,7 +735,7 @@ export function ScenarioPanel({
                 </>
               ) : (
                 <>
-                  <p className="text-lg font-bold text-slate-400 leading-none mt-1">No cap set</p>
+                  <p className="text-base font-semibold text-slate-400 leading-none mt-1">No cap set</p>
                   <p className="text-[9px] text-slate-400">Enter cap to enable ranking</p>
                 </>
               )}
@@ -800,23 +800,26 @@ export function ScenarioPanel({
             )}
           </div>
 
-          <div className={`border-b border-slate-100 bg-sky-50/40 px-4 py-3 ${activeTab === 'optimization' ? '' : 'hidden'}`}>
+          <div className={`border-b border-slate-100 bg-slate-50/70 px-4 py-3 ${activeTab === 'optimization' ? '' : 'hidden'}`}>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
-                <p className="text-[9px] font-black uppercase tracking-widest text-sky-600">
+                <p className="text-[9px] font-black uppercase tracking-widest text-slate-500">
                   ML Priority Context
                 </p>
-                <p className="mt-1 text-[10px] leading-relaxed text-sky-700/80">
-                  ML context only — not used by Optimization Preview yet.
+                <p className="mt-1 text-[11px] leading-relaxed text-slate-600">
+                  Read-Only Context - ML is comparison context only and is not used by Optimization Preview.
                 </p>
               </div>
+              <span className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
+                Read-Only Context
+              </span>
               <div className="w-full md:w-auto">
                 <label className="text-[10px] font-semibold text-slate-600 block">
                   ML Priority Cutoff (Final Thesis Configuration)
                   <select
                     value={selectedMlCutoff || 'top70'}
                     onChange={(event) => onMlCutoffChange?.(event.target.value as any)}
-                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1 text-xs font-bold text-slate-700 focus:ring-1 focus:ring-sky-500"
+                    className="mt-1 w-full rounded border border-slate-200 bg-white px-2 py-1.5 text-[13px] font-semibold text-slate-700 focus:ring-1 focus:ring-sky-500"
                   >
                     <option value="top35">Top-35 (DecisionTree + rerank_population_focus)</option>
                     <option value="top70">Top-70 (RandomForest + grid_0005)</option>
@@ -824,27 +827,27 @@ export function ScenarioPanel({
                   </select>
                 </label>
               </div>
-              <p className="w-full text-[10px] leading-relaxed text-sky-700/80">
+              <p className="w-full text-[11px] leading-relaxed text-slate-600">
                 Selected ML ranking is comparison context only and is not used by Optimization Preview.
               </p>
               {mlScenarioSummary.hasRuntimeData ? (
-                <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
-                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                <div className="flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                  <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">
                     Active Cutoff: {selectedMlCutoff === 'top35' ? 'Top-35' : selectedMlCutoff === 'top70' ? 'Top-70' : 'Top-105'}
                   </span>
-                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                  <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">
                     Model: {selectedMlPriorityMetadata?.model || '—'}
                   </span>
-                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                  <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">
                     Adjustment: {selectedMlPriorityMetadata?.score_type || '(default)'}
                   </span>
-                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                  <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">
                     Candidates with ML Data: {mlScenarioSummary.withData}/{items.length}
                   </span>
-                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-indigo-700 border border-indigo-200">
+                  <span className="rounded-full bg-white px-2.5 py-1 text-slate-700 border border-slate-200">
                     In Active Cutoff: {mlScenarioSummary.inActiveCutoff}
                   </span>
-                  <span className="rounded-full bg-white px-2.5 py-1 text-sky-700 border border-sky-200">
+                  <span className="rounded-full bg-white px-2.5 py-1 text-slate-600 border border-slate-200">
                     Avg Rank: {mlScenarioSummary.averageRank == null ? '—' : mlScenarioSummary.averageRank.toFixed(1)}
                   </span>
                   <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700 border border-emerald-200">
@@ -869,10 +872,10 @@ export function ScenarioPanel({
                   Read-only preview using ASB budget, DD1/FormDD1 condition urgency, and 2021–2025 historical treatment context. This does not change the scenario.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
-                <span className="rounded-full bg-indigo-50 px-2 py-1 text-indigo-700">Condition urgency 60%</span>
-                <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">Historical gap 25%</span>
-                <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">Cost efficiency 15%</span>
+              <div className="flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">Condition urgency 60%</span>
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">Historical gap 25%</span>
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">Cost efficiency 15%</span>
                 <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">
                   ML Priority Score: {mlScenarioSummary.hasRuntimeData ? 'Loaded as context, not used in optimization yet' : 'Not integrated yet'}
                 </span>
@@ -948,14 +951,14 @@ export function ScenarioPanel({
                   Read-only comparison between historical ML ranking and the current Optimization Preview. ML score is not used in optimization.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1.5 text-[9px] font-bold">
-                <span className="rounded-full bg-emerald-50 px-2 py-1 text-emerald-700">
+              <div className="flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">
                   Aligned {mlOptimizationComparison.summary.aligned}
                 </span>
-                <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">
                   ML high but deferred {mlOptimizationComparison.summary.mlHighBudgetDeferred}
                 </span>
-                <span className="rounded-full bg-indigo-50 px-2 py-1 text-indigo-700">
+                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-slate-600">
                   Selected outside Top-105 {mlOptimizationComparison.summary.selectedOutsideTop105}
                 </span>
                 <span className="rounded-full bg-slate-100 px-2 py-1 text-slate-600">
@@ -1003,6 +1006,7 @@ export function ScenarioPanel({
                 <Download className="h-3.5 w-3.5 text-slate-400" />
                 Export Scenario JSON
               </button>
+              <div className="h-5 w-px bg-slate-200" />
               <button
                 onClick={handleClear}
                 className="flex items-center gap-1.5 rounded border border-red-200 bg-red-50 px-2 py-1 text-[10px] font-bold text-red-600 hover:bg-red-100 hover:text-red-700 transition-colors"

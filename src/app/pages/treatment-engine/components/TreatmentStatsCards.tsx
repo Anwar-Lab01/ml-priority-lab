@@ -17,12 +17,12 @@ function StatCell({
   action?: ReactNode;
 }) {
   return (
-    <div className="min-w-0 border-t border-slate-100 px-3 py-2 text-center md:border-l md:first:border-l-0">
+    <div className="min-w-0 border-t border-slate-100 px-3 py-1.5 text-center md:border-l md:first:border-l-0">
       <div className="flex items-center justify-center gap-1.5">
         <p className="truncate text-[10px] font-semibold uppercase tracking-wide text-slate-500">{label}</p>
         {action}
       </div>
-      <p className="mt-0.5 text-lg font-semibold text-slate-800">{value}</p>
+      <p className="mt-0.5 text-base font-semibold text-slate-700">{value}</p>
     </div>
   );
 }
@@ -32,9 +32,9 @@ export function TreatmentStatsCards({ dd2Data, onExportOverrides }: TreatmentSta
     dd2Data?.ruleStats ? (dd2Data.ruleStats.rehab || 0) + (dd2Data.ruleStats.rekon || 0) : 0;
 
   return (
-    <div className="space-y-3">
-      <section className="overflow-hidden rounded-lg border border-slate-200 bg-white">
-        <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2">
+    <div className="space-y-2.5">
+      <section className="overflow-hidden rounded-lg border border-slate-100 bg-white shadow-sm shadow-slate-100/60">
+        <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-50/50 px-3 py-2">
           <div>
             <h3 className="text-sm font-semibold text-slate-800">Rule v0.1 Indicative Classification</h3>
             <p className="mt-0.5 text-[11px] text-slate-500">
@@ -57,8 +57,8 @@ export function TreatmentStatsCards({ dd2Data, onExportOverrides }: TreatmentSta
         )}
       </section>
 
-      <section className="overflow-hidden rounded-lg border border-slate-200 bg-white">
-        <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2">
+      <section className="overflow-hidden rounded-lg border border-slate-100 bg-white shadow-sm shadow-slate-100/60">
+        <div className="flex flex-wrap items-center justify-between gap-2 bg-slate-50/50 px-3 py-2">
           <div>
             <h3 className="text-sm font-semibold text-slate-800">Estimasi Kewajaran Anggaran (ASB)</h3>
             <p className="mt-0.5 text-[11px] text-slate-500">
