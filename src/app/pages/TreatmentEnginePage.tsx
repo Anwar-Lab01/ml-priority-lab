@@ -115,6 +115,7 @@ type MLPriorityOverlayTier = 'top35' | 'top70' | 'top105' | 'neutral';
 type WorkspaceTab = 'inspect' | 'scenario' | 'data-table';
 
 type MlCutoff = 'top35' | 'top70' | 'top105';
+type BasemapId = 'osm' | 'esri-streets' | 'esri-satellite' | 'carto-light';
 
 const ML_THESIS_CONFIGS: Record<MlCutoff, {
   scenario: string;
@@ -143,6 +144,33 @@ const ML_THESIS_CONFIGS: Record<MlCutoff, {
     scoreType: 'rerank_medium',
     captureStr: '18/28',
     recallStr: '64.29%',
+  },
+};
+
+const BASEMAP_OPTIONS: Record<BasemapId, {
+  label: string;
+  url: string;
+  attribution: string;
+}> = {
+  osm: {
+    label: 'OpenStreetMap',
+    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  },
+  'esri-streets': {
+    label: 'ESRI Streets',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, HERE, Garmin, FAO, NOAA, USGS, OpenStreetMap contributors',
+  },
+  'esri-satellite': {
+    label: 'ESRI Satellite',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
+  },
+  'carto-light': {
+    label: 'Carto Light',
+    url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   },
 };
 
@@ -633,6 +661,8 @@ export function TreatmentEnginePage() {
   const [mlOverlayEnabled, setMlOverlayEnabled] = useState(false);
   const [selectedMlCutoff, setSelectedMlCutoff] = useState<MlCutoff>('top70');
   const [mlOverlayFilter, setMlOverlayFilter] = useState<MLPriorityOverlayFilter>('all');
+  const [activeBasemapId, setActiveBasemapId] = useState<BasemapId>('osm');
+  const activeBasemap = BASEMAP_OPTIONS[activeBasemapId];
 
   // Synchronize spatial overlay filter when global cutoff changes
   useEffect(() => {
@@ -1307,69 +1337,6 @@ export function TreatmentEnginePage() {
         </div>
       </div>
 
-      {/* ── Data provenance & Identity Status ──────────────────────────────────── */}
-      <details className="rounded-lg border border-slate-200 bg-white">
-        <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-800">
-          System Status
-        </summary>
-        <div className="grid gap-4 border-t border-slate-100 p-4 lg:grid-cols-2">
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Data Provenance</h3>
-            <div className="mt-2 grid gap-2">
-              {[
-                { label: 'DD1 / FormDD1 Source', value: 'FormDD1-2025.xlsx', sub: 'staging-source/dd2/raw/' },
-                { label: 'Processed Staging', value: '2 CSV files', sub: 'staging-source/dd2/processed/' },
-                { label: 'Extraction Audit', value: '350 rows confirmed', sub: 'staging-source/dd2/audit/' },
-              ].map((item) => (
-                <div key={item.label} className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-[11px] font-medium text-slate-500">{item.label}</p>
-                  <p className="text-xs font-semibold text-slate-800">{item.value}</p>
-                  <p className="truncate font-mono text-[10px] text-slate-400">{item.sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Runtime Audit</h3>
-            {dd2Data ? (
-              <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
-                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">Roads loaded</p>
-                  <p className="font-semibold text-slate-800">{dd2Data._metadata.total_records}</p>
-                </div>
-                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">Identity matched</p>
-                  <p className="font-semibold text-slate-800">{dd2Data._metadata.matched}</p>
-                </div>
-                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">Unmatched / ambiguous</p>
-                  <p className="font-semibold text-slate-800">{dd2Data._metadata.unmatched} / {dd2Data._metadata.ambiguous}</p>
-                </div>
-                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">ASB items / rules</p>
-                  <p className="font-semibold text-slate-800">{dd2Data.asbStats?.totalItemsLoaded ?? 0} / {dd2Data.asbStats?.totalRulesLoaded ?? 0}</p>
-                </div>
-                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">Historical data</p>
-                  <p className="font-semibold text-slate-800">{historicalTreatmentData ? 'loaded' : 'not loaded'}</p>
-                </div>
-                <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">ML context</p>
-                  <p className="font-semibold text-slate-800">{mlPriorityData ? 'loaded' : 'not loaded'}</p>
-                </div>
-              </div>
-            ) : (
-              <p className="mt-2 text-xs text-slate-500">Loading runtime audit...</p>
-            )}
-          </div>
-        </div>
-      </details>
-
-      {/* ── Extracted Stats Cards (Indicative Rule + Budget Estimator Overview) ── */}
-      <TreatmentStatsCards 
-        dd2Data={dd2Data}
-        onExportOverrides={handleExportOverrides}
-      />
 
       {/* ── Spatial Treatment Context ─────────────────────────────────────────── */}
       <div className="rounded-xl border border-slate-200 bg-white p-1.5 shadow-sm shadow-slate-100/70">
@@ -1400,7 +1367,7 @@ export function TreatmentEnginePage() {
       </div>
 
       <div className={activeWorkspaceTab === 'inspect' ? 'block' : 'hidden'}>
-      <div ref={mapSectionRef} className="rounded-xl border border-slate-200 bg-white overflow-hidden">
+      <div ref={mapSectionRef} className="flex flex-col rounded-xl border border-slate-200 bg-white overflow-hidden">
         {/* Section header */}
         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-3.5">
           <div className="flex items-center gap-2.5">
@@ -1414,8 +1381,13 @@ export function TreatmentEnginePage() {
           </span>
         </div>
 
+        <details className="order-2 border-t border-slate-100 bg-slate-50/60">
+          <summary className="cursor-pointer px-5 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-slate-500 hover:text-slate-700">
+            Map Options / Overlay Settings
+          </summary>
+
         {/* Map Control Toolbar — Primary Row */}
-        <div className="border-b border-slate-100 bg-slate-50 px-5 py-3 flex flex-wrap items-center gap-4">
+        <div className="border-t border-slate-100 bg-white px-5 py-3 flex flex-wrap items-center gap-4">
            {/* Mode Selector */}
            <div className="flex items-center gap-2 border-r border-slate-200 pr-4">
               <label className="text-xs font-semibold text-slate-600 whitespace-nowrap">View Mode:</label>
@@ -1444,6 +1416,19 @@ export function TreatmentEnginePage() {
               </label>
            </div>
 
+           <div className="flex items-center gap-2 border-l border-slate-200 pl-4">
+              <label className="text-xs font-semibold text-slate-600 whitespace-nowrap">Basemap:</label>
+              <select
+                 value={activeBasemapId}
+                 onChange={(e) => setActiveBasemapId(e.target.value as BasemapId)}
+                 className="text-xs font-semibold border border-slate-200 rounded-md bg-white py-1 pl-2 pr-6 focus:ring-1 focus:ring-indigo-500 text-slate-700"
+              >
+                 {Object.entries(BASEMAP_OPTIONS).map(([id, basemap]) => (
+                   <option key={id} value={id}>{basemap.label}</option>
+                 ))}
+              </select>
+           </div>
+
            {displayMode !== 'threshold' && dd2Data && (
               <div className="ml-auto flex items-center gap-2 text-xs">
                  <span className="font-semibold text-slate-700">{dd2Data.roads.length}</span>
@@ -1454,7 +1439,7 @@ export function TreatmentEnginePage() {
 
         {/* Map Control Toolbar — Secondary Row (Conditional Context) */}
         {displayMode === 'threshold' && (
-           <div className="border-b border-slate-100 bg-white px-5 py-2.5 flex flex-wrap items-center gap-4">
+           <div className="border-t border-slate-100 bg-slate-50 px-5 py-2.5 flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-2 border-r border-slate-200 pr-4">
                  <label className="text-xs font-semibold text-slate-700 flex items-center gap-1.5 cursor-pointer">
                     <input 
@@ -1511,8 +1496,9 @@ export function TreatmentEnginePage() {
               )}
            </div>
         )}
+        </details>
 
-        <div className="border-b border-slate-100 bg-slate-50/70 px-5 py-3">
+        <div className="order-3 border-t border-slate-100 bg-slate-50/70 px-5 py-3">
           <div className="flex flex-wrap items-center gap-3">
             <label className="flex cursor-pointer items-center gap-1.5 text-[13px] font-semibold text-slate-700">
               <input
@@ -1587,7 +1573,7 @@ export function TreatmentEnginePage() {
 
          {/* Diagnostics summary for segments if enabled */}
          {showSegments && segmentDiagStats && (
-            <div className="border-b border-slate-100 bg-indigo-50/30 px-5 py-2 flex flex-wrap items-center gap-y-1 gap-x-3.5 text-[10px]">
+            <div className="order-4 border-t border-slate-100 bg-indigo-50/30 px-5 py-2 flex flex-wrap items-center gap-y-1 gap-x-3.5 text-[10px]">
                <div className="flex items-center gap-1 font-medium text-slate-500">
                   <Database className="h-3 w-3 text-indigo-400" />
                   Loaded: <span className="text-slate-700 font-bold">{segmentDiagStats.totalRowsLoaded}</span>
@@ -1624,7 +1610,7 @@ export function TreatmentEnginePage() {
          )}
 
         {/* Explanatory note */}
-        <div className="flex items-start gap-2 border-b border-slate-100 bg-slate-50/60 px-5 py-2.5">
+        <div className="order-5 flex items-start gap-2 border-t border-slate-100 bg-slate-50/60 px-5 py-2.5">
           <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
           <p className="text-[11px] leading-relaxed text-slate-500">
             {showSegments 
@@ -1635,7 +1621,7 @@ export function TreatmentEnginePage() {
         </div>
 
         {/* Map & Focus Panel Workspace */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px]">
+        <div className="order-1 grid grid-cols-1 lg:grid-cols-[1fr_400px]">
           <div className="relative h-[480px] lg:h-[560px] bg-slate-50">
           {/* Loading overlay */}
           {mapStatus === 'loading' && (
@@ -1668,8 +1654,9 @@ export function TreatmentEnginePage() {
               className="h-full w-full"
             >
               <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                key={activeBasemapId}
+                attribution={activeBasemap.attribution}
+                url={activeBasemap.url}
               />
 
               {/* Sync view to selected object */}
@@ -1911,7 +1898,7 @@ export function TreatmentEnginePage() {
         </div>
 
         {/* Dynamic Map Legend */}
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-100 bg-slate-50/60 px-5 py-2.5">
+        <div className="order-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-slate-100 bg-slate-50/60 px-5 py-2.5">
           <p className="text-[9px] font-black uppercase tracking-widest text-slate-400">Symbology</p>
           
           <div className="flex items-center gap-1.5">
@@ -2042,6 +2029,78 @@ export function TreatmentEnginePage() {
 
       {/* ── Implementation roadmap ────────────────────────────────────────────── */}
       </div>
+
+      <details className="rounded-lg border border-slate-200 bg-white shadow-sm shadow-slate-100/50">
+        <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-800">
+          Supporting Summary
+          <span className="ml-2 text-[11px] font-medium text-slate-500">Rule stats, ASB estimation, and runtime status</span>
+        </summary>
+        <div className="space-y-4 border-t border-slate-100 p-4">
+        {/* ── Extracted Stats Cards (Indicative Rule + Budget Estimator Overview) ── */}
+        <TreatmentStatsCards
+          dd2Data={dd2Data}
+          onExportOverrides={handleExportOverrides}
+        />
+        {/* ── Data provenance & Identity Status ──────────────────────────────────── */}
+            <details className="rounded-lg border border-slate-200 bg-slate-50/40">
+          <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-800">
+            System Status
+          </summary>
+          <div className="grid gap-4 border-t border-slate-100 p-4 lg:grid-cols-2">
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Data Provenance</h3>
+              <div className="mt-2 grid gap-2">
+                {[
+                  { label: 'DD1 / FormDD1 Source', value: 'FormDD1-2025.xlsx', sub: 'staging-source/dd2/raw/' },
+                  { label: 'Processed Staging', value: '2 CSV files', sub: 'staging-source/dd2/processed/' },
+                  { label: 'Extraction Audit', value: '350 rows confirmed', sub: 'staging-source/dd2/audit/' },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-[11px] font-medium text-slate-500">{item.label}</p>
+                    <p className="text-xs font-semibold text-slate-800">{item.value}</p>
+                    <p className="truncate font-mono text-[10px] text-slate-400">{item.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">Runtime Audit</h3>
+              {dd2Data ? (
+                <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
+                  <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-slate-500">Roads loaded</p>
+                    <p className="font-semibold text-slate-800">{dd2Data._metadata.total_records}</p>
+                  </div>
+                  <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-slate-500">Identity matched</p>
+                    <p className="font-semibold text-slate-800">{dd2Data._metadata.matched}</p>
+                  </div>
+                  <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-slate-500">Unmatched / ambiguous</p>
+                    <p className="font-semibold text-slate-800">{dd2Data._metadata.unmatched} / {dd2Data._metadata.ambiguous}</p>
+                  </div>
+                  <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-slate-500">ASB items / rules</p>
+                    <p className="font-semibold text-slate-800">{dd2Data.asbStats?.totalItemsLoaded ?? 0} / {dd2Data.asbStats?.totalRulesLoaded ?? 0}</p>
+                  </div>
+                  <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-slate-500">Historical data</p>
+                    <p className="font-semibold text-slate-800">{historicalTreatmentData ? 'loaded' : 'not loaded'}</p>
+                  </div>
+                  <div className="rounded-md border border-slate-100 bg-slate-50 px-3 py-2">
+                    <p className="text-slate-500">ML context</p>
+                    <p className="font-semibold text-slate-800">{mlPriorityData ? 'loaded' : 'not loaded'}</p>
+                  </div>
+                </div>
+              ) : (
+                <p className="mt-2 text-xs text-slate-500">Loading runtime audit...</p>
+              )}
+            </div>
+          </div>
+        </details>
+
+        </div>
+      </details>
 
       <details className="rounded-lg border border-slate-200 bg-white">
         <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-slate-800">
